@@ -1,33 +1,490 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fatmasoylu — Blog</title>
-<meta name="description" content="Fatmasoylu kişisel blog">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fatmasoylu | Kişisel Blog</title>
+
+<meta name="description" content="Fatmasoylu kişisel blog - düşünceler, hikâyeler, notlar ve güzel anılar.">
+
 <style>
-:root{--bg:#fafafa;--card:#fff;--text:#171717;--muted:#666;--line:#e8e8e8;--accent:#111}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
-.container{max-width:1050px;margin:auto;padding:0 22px}header{border-bottom:1px solid var(--line);background:rgba(250,250,250,.92);position:sticky;top:0;backdrop-filter:blur(10px);z-index:5}
-.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:800;letter-spacing:-.5px}.links{display:flex;gap:24px}.links a{color:var(--text);text-decoration:none;font-size:14px}
-.hero{padding:85px 0 60px}.eyebrow{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:2px}.hero h1{font-size:clamp(42px,7vw,76px);line-height:1.02;letter-spacing:-3px;margin:14px 0}.hero p{max-width:650px;color:var(--muted);font-size:18px}
-.section-title{display:flex;justify-content:space-between;align-items:end;margin:20px 0}.section-title h2{font-size:28px;margin:0}.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:80px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:25px;min-height:230px;display:flex;flex-direction:column}.tag{font-size:12px;color:var(--muted);margin-bottom:20px}.card h3{font-size:22px;line-height:1.25;margin:0 0 12px}.card p{color:var(--muted);margin:0 0 20px}.read{margin-top:auto;color:var(--text);text-decoration:none;font-weight:700;font-size:14px}
-.about{border-top:1px solid var(--line);padding:65px 0 90px}.about p{max-width:680px;color:var(--muted)}
-footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px}
-@media(max-width:750px){.links{gap:12px}.links a:nth-child(2){display:none}.posts{grid-template-columns:1fr}.hero{padding-top:60px}.hero h1{letter-spacing:-2px}}
+
+:root{
+  --bg:#fafafa;
+  --text:#111;
+  --muted:#6b6b6b;
+  --line:#e7e7e7;
+  --card:#fff;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(250,250,250,.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:26px;
+  font-weight:800;
+}
+
+nav{
+  display:flex;
+  gap:22px;
+  font-weight:600;
+}
+
+.hero{
+  max-width:1100px;
+  margin:auto;
+  padding:90px 20px 75px;
+}
+
+.eyebrow{
+  font-size:13px;
+  letter-spacing:4px;
+  color:#777;
+  font-weight:bold;
+}
+
+h1{
+  font-size:clamp(45px,8vw,82px);
+  line-height:.98;
+  letter-spacing:-4px;
+  margin:25px 0;
+}
+
+.lead{
+  max-width:700px;
+  font-size:20px;
+  line-height:1.6;
+  color:var(--muted);
+}
+
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:45px 20px 80px;
+}
+
+h2{
+  font-size:42px;
+  letter-spacing:-2px;
+  margin:0 0 30px;
+}
+
+.post{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:25px;
+  padding:35px;
+  margin-bottom:30px;
+}
+
+.post small{
+  color:#777;
+  letter-spacing:2px;
+}
+
+.post h3{
+  font-size:34px;
+  margin:15px 0;
+}
+
+.post p{
+  font-size:18px;
+  line-height:1.7;
+  color:var(--muted);
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.photo{
+  border:0;
+  padding:0;
+  background:none;
+  cursor:pointer;
+  overflow:hidden;
+  border-radius:22px;
+  position:relative;
+  display:block;
+}
+
+.photo img{
+  width:100%;
+  height:400px;
+  display:block;
+  object-fit:cover;
+  transition:transform .4s ease;
+}
+
+.photo:hover img{
+  transform:scale(1.04);
+}
+
+.photo.wide{
+  grid-column:span 2;
+}
+
+.photo.wide img{
+  height:540px;
+}
+
+.caption{
+  position:absolute;
+  left:18px;
+  bottom:18px;
+  background:rgba(0,0,0,.65);
+  color:white;
+  padding:10px 15px;
+  border-radius:30px;
+  font-size:14px;
+}
+
+.contact{
+  border-top:1px solid var(--line);
+}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:30px 20px;
+  color:#777;
+  text-align:center;
+}
+
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.92);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:50;
+  padding:20px;
+}
+
+.lightbox.open{
+  display:flex;
+}
+
+.lightbox img{
+  max-width:96vw;
+  max-height:90vh;
+  object-fit:contain;
+  border-radius:12px;
+}
+
+.close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  color:white;
+  font-size:40px;
+  background:none;
+  border:0;
+  cursor:pointer;
+}
+
+@media(max-width:700px){
+
+  .nav{
+    padding:17px;
+  }
+
+  .logo{
+    font-size:22px;
+  }
+
+  nav{
+    gap:15px;
+    font-size:14px;
+  }
+
+  .hero{
+    padding:70px 18px 60px;
+  }
+
+  section{
+    padding:40px 18px 65px;
+  }
+
+  h1{
+    letter-spacing:-3px;
+  }
+
+  .lead{
+    font-size:18px;
+  }
+
+  h2{
+    font-size:36px;
+  }
+
+  .post{
+    padding:27px;
+  }
+
+  .post h3{
+    font-size:29px;
+  }
+
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .photo.wide{
+    grid-column:span 1;
+  }
+
+  .photo img,
+  .photo.wide img{
+    height:390px;
+  }
+
+}
+
 </style>
 </head>
+
 <body>
-<header><div class="container nav"><div class="logo">Fatmasoylu</div><nav class="links"><a href="#yazilar">Yazılar</a><a href="#hakkimda">Hakkımda</a><a href="#iletisim">İletişim</a></nav></div></header>
+
+<header>
+
+<div class="nav">
+
+<a class="logo" href="#">Fatmasoylu</a>
+
+<nav>
+<a href="#yazilar">Yazılar</a>
+<a href="#fotograflar">Fotoğraflar</a>
+<a href="#iletisim">İletişim</a>
+</nav>
+
+</div>
+
+</header>
+
+
 <main>
-<section class="container hero"><div class="eyebrow">Fatmasoylu Blog</div><h1>Düşünceler,<br>hikâyeler ve notlar.</h1><p>Günlük hayattan fikirler, deneyimler ve keşifler. Yeni yazılar burada.</p></section>
-<section class="container" id="yazilar"><div class="section-title"><h2>Son Yazılar</h2></div>
-<div class="posts">
-<article class="card"><div class="tag">01 · YAŞAM</div><h3>Yeni bir başlangıç</h3><p>Burada ilk blog yazımız yer alacak. Zamanla içeriklerimizi birlikte çoğaltacağız.</p><a class="read" href="#">Devamını oku →</a></article>
-<article class="card"><div class="tag">02 · GÜNLÜK</div><h3>Bugünden bir not</h3><p>Günlük hayattan küçük notlar, düşünceler ve paylaşımlar.</p><a class="read" href="#">Devamını oku →</a></article>
-<article class="card"><div class="tag">03 · KEŞİF</div><h3>Yeni şeyler keşfetmek</h3><p>Geziler, deneyimler ve ilham veren keşifler için yeni bir bölüm.</p><a class="read" href="#">Devamını oku →</a></article>
-</div></section>
-<section class="about" id="hakkimda"><div class="container"><div class="eyebrow">Hakkımda</div><h2>Fatmasoylu</h2><p>Bu alanı kendimizi tanıtmak, ilgi alanlarımızı paylaşmak ve blogun hikâyesini anlatmak için kullanacağız.</p></div></section>
+
+<section class="hero">
+
+<div class="eyebrow">
+FATMASOYLU BLOG
+</div>
+
+<h1>
+Düşünceler,<br>
+hikâyeler ve notlar.
+</h1>
+
+<p class="lead">
+Günlük hayattan fikirler, deneyimler, keşifler ve birlikte biriktirdiğimiz güzel anılar.
+</p>
+
+</section>
+
+
+<section id="yazilar">
+
+<h2>Son Yazılar</h2>
+
+<article class="post">
+
+<small>01 · YAŞAM</small>
+
+<h3>
+Yeni bir başlangıç
+</h3>
+
+<p>
+Hayattan güzel anları, düşüncelerimizi,
+gezilerimizi ve birlikte biriktirdiğimiz
+anıları burada paylaşacağız.
+</p>
+
+</article>
+
+</section>
+
+
+<section id="fotograflar">
+
+<h2>Fotoğraflarımız</h2>
+
+<div class="gallery">
+
+
+<button class="photo wide"
+onclick="openPhoto('cicekler.jpg')">
+
+<img
+src="cicekler.jpg"
+alt="Çiçeklerle güzel bir an"
+loading="lazy">
+
+<span class="caption">
+Güzel bir sürpriz 🌹
+</span>
+
+</button>
+
+
+<button class="photo"
+onclick="openPhoto('gezi.jpg')">
+
+<img
+src="gezi.jpg"
+alt="Günlük yaşamdan güzel bir an"
+loading="lazy">
+
+<span class="caption">
+Güzel bir an ❤️
+</span>
+
+</button>
+
+
+<button class="photo"
+onclick="openPhoto('kafe.jpg')">
+
+<img
+src="kafe.jpg"
+alt="Kafede keyifli bir an"
+loading="lazy">
+
+<span class="caption">
+Kahve molası ☕
+</span>
+
+</button>
+
+
+</div>
+
+</section>
+
+
+<section id="iletisim" class="contact">
+
+<h2>İletişim</h2>
+
+<p class="lead">
+Yeni yazılar ve fotoğraflar zamanla burada yer alacak.
+</p>
+
+</section>
+
 </main>
-<footer id="iletisim"><div class="container">© 2026 Fatmasoylu · Tüm hakları saklıdır.</div></footer>
-</body></html>
+
+
+<footer>
+
+© 2026 Fatmasoylu · Kişisel Blog
+
+</footer>
+
+
+<div
+class="lightbox"
+id="lightbox"
+onclick="closePhoto(event)">
+
+<button
+class="close"
+aria-label="Kapat">
+×
+</button>
+
+<img
+id="lightboxImg"
+src=""
+alt="">
+
+</div>
+
+
+<script>
+
+function openPhoto(src){
+
+document.getElementById("lightboxImg").src=src;
+
+document.getElementById("lightbox").classList.add("open");
+
+document.body.style.overflow="hidden";
+
+}
+
+function closePhoto(e){
+
+if(
+e.target.id==="lightbox" ||
+e.target.classList.contains("close")
+){
+
+document
+.getElementById("lightbox")
+.classList.remove("open");
+
+document.body.style.overflow="";
+
+}
+
+}
+
+document.addEventListener("keydown",function(e){
+
+if(e.key==="Escape"){
+
+document
+.getElementById("lightbox")
+.classList.remove("open");
+
+document.body.style.overflow="";
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
