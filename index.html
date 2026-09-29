@@ -1,2944 +1,818 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#a71932">
-
-<title>Fatmasoylu | Aşk, Anılar ve Güzel Anlar</title>
-
-<meta name="description" content="Fatmasoylu kişisel blog — aşk, anılar, fotoğraflar ve güzel anlar.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#8f1832">
+<meta name="description" content="Fatmasoylu | Aşk, anılar, fotoğraflar ve güzel anlar">
+<title>Fatmasoylu ❤️ Bizim Hikâyemiz</title>
 
 <style>
-
 :root{
---bg:#fff7f8;
---paper:#fff;
---ink:#241719;
---muted:#78696c;
---line:#ead9dd;
---red:#a71932;
---rose:#df5b7b;
---pink:#f7dce4;
---dark:#241015;
---shadow:0 15px 45px rgba(100,20,40,.10)
+--bg:#fff7f8;--card:#fff;--text:#29171b;--muted:#806d72;
+--red:#a71932;--rose:#e56b87;--soft:#f8dce4;
+--dark:#1b090e;--line:#ead8dd;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+font-family:Arial,sans-serif;overflow-x:hidden;padding-bottom:110px}
+body.night{
+--bg:#080509;--card:#160d11;--text:#fff2f5;--muted:#c7afb5;
+--line:#3b2029
+}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+.container{width:min(1120px,calc(100% - 28px));margin:auto}
+
+/* AÇILIŞ */
+.intro{
+position:fixed;inset:0;z-index:99999;background:
+radial-gradient(circle,#67182c,#250912 60%,#080306);
+color:white;display:flex;align-items:center;justify-content:center;
+text-align:center;transition:1s
+}
+.intro.hide{opacity:0;visibility:hidden}
+.intro-inner{animation:intro .9s ease}
+.intro-heart{font-size:48px;animation:pulse 1.4s infinite}
+.intro-date{font:700 clamp(48px,11vw,95px) Georgia;letter-spacing:4px}
+.intro-line{width:80px;height:1px;background:#e994a7;margin:20px auto}
+.intro-text{font:italic 20px Georgia;color:#f5dce1}
+.intro-inf{font-size:35px;color:#ef9aac;margin-top:15px}
+@keyframes intro{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{50%{transform:scale(1.18)}}
+
+/* KALPLER */
+.hearts{position:fixed;inset:0;z-index:90000;pointer-events:none;overflow:hidden}
+.heart{position:absolute;bottom:-50px;animation:heart 5s linear forwards}
+.heart:nth-child(1){left:5%;font-size:28px}
+.heart:nth-child(2){left:18%;font-size:38px;animation-delay:.4s}
+.heart:nth-child(3){left:32%;font-size:24px;animation-delay:.8s}
+.heart:nth-child(4){left:47%;font-size:35px;animation-delay:.2s}
+.heart:nth-child(5){left:61%;font-size:27px;animation-delay:1s}
+.heart:nth-child(6){left:76%;font-size:40px;animation-delay:.5s}
+.heart:nth-child(7){left:91%;font-size:30px;animation-delay:1.2s}
+@keyframes heart{
+0%{transform:translateY(0) scale(.3);opacity:0}
+15%{opacity:1}100%{transform:translateY(-115vh) rotate(25deg);opacity:0}
 }
 
-*{
-box-sizing:border-box
-}
-
-html{
-scroll-behavior:smooth
-}
-
-body{
-margin:0;
-background:var(--bg);
-color:var(--ink);
-font-family:Arial,Helvetica,sans-serif;
-overflow-x:hidden;
-padding-bottom:120px;
-transition:.3s
-}
-
-body.dark{
---bg:#130c0f;
---paper:#211317;
---ink:#fff4f6;
---muted:#c5b4b8;
---line:#43252d;
---pink:#351a22;
---shadow:0 15px 45px rgba(0,0,0,.35)
-}
-
-a{
-color:inherit;
-text-decoration:none
-}
-
-button{
-font-family:inherit
-}
-
-.container{
-width:min(1160px,calc(100% - 30px));
-margin:auto
-}
-
-
-/* =========================
-   EVLİLİK AÇILIŞI
-========================= */
-
-.wedding-intro{
-position:fixed;
-inset:0;
-z-index:60000;
-background:
-radial-gradient(circle at center,#641b2c 0%,#290b14 50%,#100507 100%);
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-color:#fff;
-transition:opacity 1s ease,visibility 1s ease
-}
-
-.wedding-intro.hide{
-opacity:0;
-visibility:hidden;
-pointer-events:none
-}
-
-.wedding-content{
-animation:introShow 1.5s ease both
-}
-
-.wedding-heart{
-font-size:48px;
-animation:pulse 1.5s infinite;
-margin-bottom:15px
-}
-
-.wedding-date{
-font-family:Georgia,serif;
-font-size:clamp(52px,11vw,100px);
-letter-spacing:4px;
-font-weight:bold
-}
-
-.wedding-line{
-width:75px;
-height:1px;
-background:#e8a4b3;
-margin:22px auto
-}
-
-.wedding-text{
-font-family:Georgia,serif;
-font-size:clamp(17px,3vw,24px);
-font-style:italic;
-color:#f2d9de
-}
-
-.wedding-infinity{
-font-size:34px;
-color:#f09caf;
-margin-top:16px
-}
-
-@keyframes introShow{
-from{
-opacity:0;
-transform:scale(.82) translateY(20px)
-}
-to{
-opacity:1;
-transform:scale(1) translateY(0)
-}
-}
-
-@keyframes pulse{
-50%{
-transform:scale(1.18)
-}
-}
-
-
-/* =========================
-   KALPLER
-========================= */
-
-.intro-hearts{
-position:fixed;
-inset:0;
-z-index:55000;
-pointer-events:none;
-overflow:hidden
-}
-
-.intro-heart{
-position:absolute;
-bottom:-80px;
-opacity:0;
-animation:rise 5s ease-out forwards
-}
-
-.intro-heart:nth-child(1){left:5%;font-size:28px;animation-delay:.1s}
-.intro-heart:nth-child(2){left:15%;font-size:36px;animation-delay:.5s}
-.intro-heart:nth-child(3){left:25%;font-size:24px;animation-delay:.9s}
-.intro-heart:nth-child(4){left:36%;font-size:40px;animation-delay:.2s}
-.intro-heart:nth-child(5){left:47%;font-size:29px;animation-delay:1s}
-.intro-heart:nth-child(6){left:58%;font-size:35px;animation-delay:.6s}
-.intro-heart:nth-child(7){left:68%;font-size:25px;animation-delay:1.2s}
-.intro-heart:nth-child(8){left:78%;font-size:38px;animation-delay:.4s}
-.intro-heart:nth-child(9){left:88%;font-size:28px;animation-delay:.8s}
-.intro-heart:nth-child(10){left:95%;font-size:34px;animation-delay:1.5s}
-
-@keyframes rise{
-0%{
-transform:translateY(0) scale(.4) rotate(-10deg);
-opacity:0
-}
-15%{
-opacity:1
-}
-100%{
-transform:translateY(-120vh) scale(1.2) rotate(20deg);
-opacity:0
-}
-}
-
-
-/* =========================
-   GÜL YAPRAKLARI
-========================= */
-
-.petals{
-position:fixed;
-inset:0;
-z-index:80;
-pointer-events:none;
-overflow:hidden
-}
-
-.petal{
-position:absolute;
-top:-40px;
-font-size:19px;
-opacity:.65;
-animation:fall linear infinite
-}
-
-.petal:nth-child(1){left:8%;animation-duration:9s}
-.petal:nth-child(2){left:23%;animation-duration:11s;animation-delay:2s}
-.petal:nth-child(3){left:41%;animation-duration:10s;animation-delay:4s}
-.petal:nth-child(4){left:59%;animation-duration:12s;animation-delay:1s}
-.petal:nth-child(5){left:77%;animation-duration:9s;animation-delay:3s}
-.petal:nth-child(6){left:92%;animation-duration:13s;animation-delay:5s}
-
-@keyframes fall{
-0%{
-transform:translateY(-50px) rotate(0);
-opacity:0
-}
-15%{
-opacity:.7
-}
-100%{
-transform:translateY(110vh) translateX(80px) rotate(360deg);
-opacity:0
-}
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
+/* HEADER */
 header{
-position:sticky;
-top:0;
-z-index:1000;
-background:rgba(255,247,248,.9);
-backdrop-filter:blur(18px);
-border-bottom:1px solid var(--line)
+position:sticky;top:0;z-index:5000;background:#fff9fae8;
+backdrop-filter:blur(16px);border-bottom:1px solid var(--line)
+}
+body.night header{background:#090509e8}
+.nav{height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:23px;font-weight:900;color:var(--red)}
+.menu{display:flex;gap:15px;font-size:12px;font-weight:bold}
+.menu a:hover{color:var(--red)}
+.mode{border:1px solid var(--line);background:var(--card);border-radius:50%;
+width:38px;height:38px}
+
+/* SAYAÇ */
+.counter{margin:18px auto;background:linear-gradient(135deg,#581423,#240b12);
+color:#fff;border-radius:24px;text-align:center;padding:22px 12px;
+box-shadow:0 15px 40px #5b122530}
+.counter-title{font:italic 18px Georgia;color:#f5dbe0}
+.counter-date{font-size:10px;letter-spacing:2px;color:#ef9baa;margin-top:5px}
+.counter-values{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
+margin-top:12px;font:700 27px Georgia}
+.counter-clock{margin-top:8px;font-weight:bold;letter-spacing:2px}
+.counter-total{font-size:10px;color:#cdb8bd;margin-top:8px}
+.anniv{display:none;color:#ffb3c2;margin-top:10px;font-weight:bold}
+.anniv.show{display:block}
+
+/* HERO */
+.hero{min-height:78vh;display:grid;grid-template-columns:1fr 1fr;
+align-items:center;gap:45px;padding:55px 0}
+.kicker{font-size:10px;letter-spacing:3px;font-weight:900;color:var(--red)}
+.hero h1{font:700 clamp(55px,8vw,95px)/.9 Georgia;margin:18px 0;
+letter-spacing:-5px}
+.hero p{font-size:17px;line-height:1.8;color:var(--muted)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+.btn{padding:13px 19px;border:1px solid var(--text);border-radius:50px;
+display:inline-block;font-weight:bold}
+.btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.hero-img{border-radius:30px;overflow:hidden;border:6px solid #fff;
+box-shadow:0 20px 60px #5b122522}
+.hero-img img{display:block;width:100%;height:560px;object-fit:cover}
+
+/* SECTIONS */
+section{padding:70px 0}
+.head{margin-bottom:28px}
+.head h2{font:700 clamp(38px,6vw,60px) Georgia;margin:8px 0;letter-spacing:-3px}
+.head p{color:var(--muted);line-height:1.7}
+
+/* MEKTUP */
+.letter-box{text-align:center;background:var(--card);border:1px solid var(--line);
+border-radius:28px;padding:45px 20px;box-shadow:0 15px 45px #6b152015}
+.envelope{width:180px;height:125px;background:#c9284a;margin:25px auto;
+position:relative;border-radius:8px;display:flex;align-items:center;justify-content:center;
+font-size:55px;box-shadow:0 18px 35px #a7193230;transition:.4s}
+.envelope:hover{transform:translateY(-8px) rotate(-2deg)}
+.letter-note{font:italic 22px Georgia;color:#fff}
+.modal{position:fixed;inset:0;background:#12060beF;z-index:30000;
+display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.letter-paper{background:#fff8f0;color:#342124;max-width:650px;
+border-radius:18px;padding:35px;box-shadow:0 20px 70px #000;
+max-height:85vh;overflow:auto}
+.letter-paper h2{font:32px Georgia;color:#a71932}
+.letter-paper p{font:17px/1.9 Georgia}
+.close{position:absolute;right:20px;top:10px;background:none;border:0;
+font-size:40px;color:white}
+
+/* GALERİ */
+.gallery{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+.photo{border:0;padding:0;border-radius:22px;overflow:hidden;position:relative;
+background:none;min-height:250px}
+.photo.big{grid-row:span 2}
+.photo img{width:100%;height:310px;object-fit:cover;display:block;transition:.5s}
+.photo.big img{height:634px}
+.photo:hover img{transform:scale(1.06)}
+.caption{position:absolute;bottom:15px;left:16px;color:white;font-weight:bold;
+text-shadow:0 2px 8px #000;z-index:2}
+
+/* HİKAYE */
+.timeline{border-left:2px solid var(--soft);margin-left:12px}
+.story{position:relative;padding:0 0 28px 35px}
+.story:before{content:"❤️";position:absolute;left:-15px;top:0;background:var(--bg);
+font-size:18px}
+.story-card{background:var(--card);border:1px solid var(--line);
+border-radius:20px;padding:23px;box-shadow:0 12px 35px #65152510}
+.story-date{font-size:10px;color:var(--red);letter-spacing:2px;font-weight:bold}
+.story h3{margin:8px 0}
+.story p{color:var(--muted);line-height:1.7;margin:0}
+
+/* SÜRPRİZ */
+.surprise{text-align:center;background:linear-gradient(135deg,#581423,#240a11);
+color:white;border-radius:30px;padding:50px 20px}
+.gift{font-size:85px;display:inline-block;animation:gift 1.8s infinite}
+@keyframes gift{50%{transform:translateY(-8px) rotate(4deg)}}
+.secret{display:none;margin-top:20px;font:italic 25px Georgia;color:#ffb3c2}
+.secret.show{display:block}
+
+/* KALP */
+.love-touch{text-align:center}
+.big-heart{width:110px;height:110px;border:0;border-radius:50%;
+background:#c9284a;color:white;font-size:45px;box-shadow:0 15px 40px #a7193245;
+transition:.15s}
+.big-heart:active{transform:scale(.82)}
+.love-message{height:30px;margin-top:15px;font:italic 20px Georgia;color:var(--red)}
+
+/* BURÇ */
+.zodiac{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sign{background:var(--card);border:1px solid var(--line);border-radius:18px;
+padding:18px}
+.sign b{font-size:28px}.sign h3{margin:7px 0}.sign small{color:#999}
+.sign p{font-size:13px;line-height:1.5;color:var(--muted)}
+
+/* SÖZLER */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.quote{background:var(--dark);color:#fff;padding:32px;border-radius:24px}
+.quote p{font:20px/1.6 Georgia}.quote cite{font-size:11px;color:#d7c3c8}
+
+/* İMZA */
+.signature{background:var(--card);border:1px solid var(--line);border-radius:25px;
+padding:40px;text-align:center}
+.sign-name{font:70px "Brush Script MT","Segoe Script",cursive;color:var(--red)}
+
+/* GECE YILDIZLARI */
+.stars{display:none;position:fixed;inset:0;pointer-events:none;z-index:1}
+body.night .stars{display:block}
+.star{position:absolute;color:#fff;animation:twinkle 2s infinite alternate}
+@keyframes twinkle{to{opacity:.2;transform:scale(.6)}}
+
+/* MÜZİK */
+.player{position:fixed;z-index:10000;bottom:9px;left:50%;
+transform:translateX(-50%);width:min(550px,calc(100% - 16px));
+background:#280b12f7;color:#fff;border-radius:19px;padding:11px 13px;
+box-shadow:0 15px 50px #0009;backdrop-filter:blur(15px)}
+.player-top{display:flex;align-items:center;gap:10px}
+.disc{width:42px;height:42px;border-radius:50%;background:#d64261;
+display:grid;place-items:center}
+.music-info{flex:1;min-width:0}
+.music-title{font-size:12px;font-weight:bold;white-space:nowrap;
+overflow:hidden;text-overflow:ellipsis}
+.music-state{font-size:9px;color:#cdbbc0}
+.music-btns{display:flex;gap:4px}
+.music-btns button{border:0;background:#4a242c;color:white;border-radius:50%;
+width:32px;height:32px}
+.music-btns .play{background:white;color:#111}
+.progress{width:100%;height:4px;accent-color:#e66b87;margin-top:8px}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:#050204f2;z-index:20000;
+display:none;align-items:center;justify-content:center;padding:20px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:94vw;max-height:85vh;border-radius:15px}
+.x{position:absolute;right:15px;top:5px;background:none;border:0;color:#fff;font-size:45px}
+.arr{position:absolute;top:50%;background:#ffffff22;color:white;border:0;
+border-radius:50%;width:45px;height:45px;font-size:25px}
+.prev{left:12px}.next{right:12px}
+
+/* YUKARI */
+.top{position:fixed;right:15px;bottom:125px;width:40px;height:40px;
+border:0;border-radius:50%;background:var(--red);color:white;display:none;z-index:9000}
+.top.show{display:block}
+
+.reveal{opacity:0;transform:translateY(20px);transition:.7s}
+.reveal.show{opacity:1;transform:none}
+
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:11px}
+
+@media(max-width:800px){
+.menu a:nth-child(n+3){display:none}
+.hero{grid-template-columns:1fr;padding:40px 0}
+.hero-img img{height:430px}
+.gallery{grid-template-columns:1fr}
+.photo.big{grid-row:auto}
+.photo img,.photo.big img{height:370px}
+.zodiac{grid-template-columns:repeat(2,1fr)}
+.quotes{grid-template-columns:1fr}
+.counter-values{font-size:23px}
+}
+@media(max-width:480px){
+.hero h1{font-size:53px}
+.sign-name{font-size:52px}
+.envelope{width:150px;height:105px}
 }
-
-body.dark header{
-background:rgba(19,12,15,.92)
-}
-
-.nav{
-min-height:70px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:12px
-}
-
-.logo{
-font-size:24px;
-font-weight:900;
-color:var(--red)
-}
-
-.navlinks{
-display:flex;
-gap:18px;
-font-size:13px;
-font-weight:800
-}
-
-.navlinks a:hover{
-color:var(--red)
-}
-
-.theme{
-width:38px;
-height:38px;
-border-radius:50%;
-border:1px solid var(--line);
-background:var(--paper);
-cursor:pointer;
-font-size:17px
-}
-
-
-/* =========================
-   ROMANTİK CANLI SAYAÇ
-========================= */
-
-.counter-section{
-padding:18px 0 25px
-}
-
-.counter{
-background:
-linear-gradient(135deg,#571522,#2a0d14);
-border:1px solid #ffffff15;
-border-radius:25px;
-color:#fff;
-padding:24px 20px;
-text-align:center;
-box-shadow:0 14px 40px rgba(80,10,30,.16);
-position:relative;
-overflow:hidden
-}
-
-.counter:before{
-content:"♥";
-position:absolute;
-right:-15px;
-top:-45px;
-font-size:140px;
-color:#ffffff08
-}
-
-.counter-title{
-font-family:Georgia,serif;
-font-size:18px;
-font-style:italic;
-color:#f5dbe0
-}
-
-.counter-date{
-font-size:11px;
-letter-spacing:2px;
-font-weight:bold;
-color:#ed9aaa;
-margin-top:4px
-}
-
-.counter-main{
-display:flex;
-justify-content:center;
-align-items:baseline;
-flex-wrap:wrap;
-gap:7px;
-margin-top:13px
-}
-
-.big-time{
-font-family:Georgia,serif;
-font-size:clamp(24px,5vw,38px);
-font-weight:bold;
-white-space:nowrap
-}
-
-.dot{
-color:#e79aaa;
-font-size:18px
-}
-
-.counter-clock{
-margin-top:8px;
-font-size:14px;
-font-weight:bold;
-letter-spacing:1px;
-color:#fff
-}
-
-.counter-total{
-margin-top:9px;
-font-size:10px;
-color:#cdb8bd
-}
-
-.counter-anniversary{
-display:none;
-margin-top:10px;
-font-weight:bold;
-color:#ffb2c1;
-font-size:13px
-}
-
-.counter-anniversary.show{
-display:block
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-min-height:calc(100vh - 70px);
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:55px;
-align-items:center;
-padding:60px 0 80px
-}
-
-.kicker{
-font-size:11px;
-letter-spacing:3px;
-font-weight:900;
-color:var(--red)
-}
-
-.hero h1{
-font-size:clamp(54px,8vw,100px);
-line-height:.9;
-letter-spacing:-6px;
-margin:20px 0
-}
-
-.hero p{
-font-size:18px;
-line-height:1.7;
-color:var(--muted);
-max-width:600px
-}
-
-.actions{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-top:25px
-}
-
-.btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:13px 20px;
-border:1px solid var(--ink);
-border-radius:999px;
-font-weight:bold;
-transition:.25s;
-cursor:pointer
-}
-
-.btn:hover{
-transform:translateY(-2px)
-}
-
-.btn.primary{
-background:var(--red);
-color:#fff;
-border-color:var(--red);
-box-shadow:0 10px 25px #a7193230
-}
-
-.hero-photo{
-border:6px solid #fff;
-border-radius:32px;
-overflow:hidden;
-box-shadow:var(--shadow);
-position:relative
-}
-
-.hero-photo img{
-width:100%;
-height:570px;
-object-fit:cover;
-display:block
-}
-
-.hero-photo:after{
-content:"♥";
-position:absolute;
-right:20px;
-bottom:15px;
-font-size:50px;
-color:white;
-text-shadow:0 3px 15px #0008
-}
-
-
-/* =========================
-   SECTIONS
-========================= */
-
-.section{
-padding:85px 0
-}
-
-.section-head{
-display:flex;
-justify-content:space-between;
-align-items:end;
-gap:25px;
-margin-bottom:30px
-}
-
-.section-head h2{
-font-size:clamp(38px,6vw,62px);
-letter-spacing:-4px;
-margin:8px 0 0
-}
-
-.section-head p{
-max-width:420px;
-color:var(--muted);
-line-height:1.7
-}
-
-
-/* =========================
-   YAZI
-========================= */
-
-.post{
-background:var(--paper);
-border:1px solid var(--line);
-border-radius:27px;
-padding:38px;
-box-shadow:var(--shadow);
-position:relative;
-overflow:hidden
-}
-
-.post:after{
-content:"♥";
-position:absolute;
-right:20px;
-top:5px;
-font-size:75px;
-color:var(--pink)
-}
-
-.post h3{
-font-size:32px;
-margin:10px 0
-}
-
-.post p{
-font-size:17px;
-line-height:1.8;
-color:var(--muted);
-max-width:800px
-}
-
-
-/* =========================
-   GALERİ
-========================= */
-
-.gallery{
-display:grid;
-grid-template-columns:1.2fr .8fr;
-gap:16px
-}
-
-.gallery-item{
-padding:0;
-border:0;
-background:none;
-border-radius:23px;
-overflow:hidden;
-position:relative;
-cursor:pointer;
-min-height:280px
-}
-
-.gallery-item.big{
-grid-row:span 2
-}
-
-.gallery-item img{
-width:100%;
-height:330px;
-object-fit:cover;
-display:block;
-transition:.5s
-}
-
-.gallery-item.big img{
-height:600px
-}
-
-.gallery-item:hover img{
-transform:scale(1.05)
-}
-
-.gallery-item:after{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(to top,#000b,transparent 60%)
-}
-
-.gallery-caption{
-position:absolute;
-z-index:2;
-left:18px;
-bottom:16px;
-color:#fff;
-font-weight:bold
-}
-
-
-/* =========================
-   ANILAR
-========================= */
-
-.timeline{
-position:relative
-}
-
-.timeline:before{
-content:"";
-position:absolute;
-left:23px;
-top:0;
-bottom:0;
-width:2px;
-background:var(--pink)
-}
-
-.memory{
-position:relative;
-padding-left:60px;
-margin-bottom:27px
-}
-
-.memory-dot{
-position:absolute;
-left:12px;
-top:4px;
-width:24px;
-height:24px;
-border-radius:50%;
-background:var(--red);
-border:5px solid var(--pink)
-}
-
-.memory-card{
-background:var(--paper);
-border:1px solid var(--line);
-border-radius:21px;
-padding:23px;
-box-shadow:var(--shadow)
-}
-
-.memory-date{
-font-size:10px;
-font-weight:900;
-letter-spacing:2px;
-color:var(--red)
-}
-
-.memory h3{
-margin:8px 0
-}
-
-.memory p{
-margin:0;
-color:var(--muted);
-line-height:1.7
-}
-
-
-/* =========================
-   BURÇLAR
-========================= */
-
-.zodiac{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:13px
-}
-
-.sign{
-background:var(--paper);
-border:1px solid var(--line);
-border-radius:20px;
-padding:20px;
-transition:.25s
-}
-
-.sign:hover{
-transform:translateY(-4px);
-box-shadow:var(--shadow)
-}
-
-.symbol{
-font-size:32px
-}
-
-.sign h3{
-margin:7px 0 2px
-}
-
-.dates{
-font-size:10px;
-color:#999
-}
-
-.sign p{
-font-size:13px;
-line-height:1.5;
-color:var(--muted)
-}
-
-
-/* =========================
-   SÖZLER
-========================= */
-
-.quotes{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:16px
-}
-
-.quote{
-background:var(--dark);
-color:#fff;
-border-radius:25px;
-padding:32px;
-min-height:220px;
-display:flex;
-flex-direction:column;
-justify-content:space-between
-}
-
-.quote.ataturk{
-background:linear-gradient(135deg,#561522,#210d11)
-}
-
-.quote-mark{
-font-family:Georgia,serif;
-font-size:50px;
-color:#e99bad
-}
-
-.quote p{
-font-family:Georgia,serif;
-font-size:20px;
-line-height:1.5
-}
-
-.quote cite{
-font-size:11px;
-color:#d7c4c8
-}
-
-
-/* =========================
-   HAKKIMDA
-========================= */
-
-.about{
-display:grid;
-grid-template-columns:.8fr 1.2fr;
-gap:22px
-}
-
-.about-image{
-border-radius:28px;
-overflow:hidden;
-min-height:380px
-}
-
-.about-image img{
-width:100%;
-height:100%;
-object-fit:cover
-}
-
-.about-card{
-background:var(--paper);
-border:1px solid var(--line);
-border-radius:28px;
-padding:40px;
-box-shadow:var(--shadow)
-}
-
-.about-card h3{
-font-size:32px
-}
-
-.about-card p{
-color:var(--muted);
-line-height:1.8
-}
-
-
-/* =========================
-   İMZA
-========================= */
-
-.signature-box{
-background:var(--paper);
-border:1px solid var(--line);
-border-radius:28px;
-padding:45px;
-text-align:center;
-box-shadow:var(--shadow)
-}
-
-.signature{
-font-family:"Brush Script MT","Segoe Script",cursive;
-font-size:68px;
-color:var(--red);
-margin:10px 0
-}
-
-
-/* =========================
-   İLETİŞİM
-========================= */
-
-.contact{
-background:linear-gradient(135deg,#42131e,#1d0c10);
-color:#fff;
-border-radius:30px;
-padding:50px
-}
-
-.contact h2{
-font-size:42px
-}
-
-.contact p{
-color:#d9c6ca;
-line-height:1.8;
-max-width:600px
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-border-top:1px solid var(--line);
-padding:32px 0;
-color:var(--muted)
-}
-
-.footer-row{
-display:flex;
-justify-content:space-between;
-gap:15px;
-flex-wrap:wrap;
-font-size:12px
-}
-
-
-/* =========================
-   LIGHTBOX
-========================= */
-
-.lightbox{
-position:fixed;
-inset:0;
-z-index:40000;
-background:#0a0305ed;
-display:none;
-align-items:center;
-justify-content:center;
-padding:20px
-}
-
-.lightbox.open{
-display:flex
-}
-
-.lightbox img{
-max-width:92vw;
-max-height:85vh;
-border-radius:15px
-}
-
-.lightbox-close{
-position:absolute;
-right:15px;
-top:5px;
-background:none;
-border:0;
-color:#fff;
-font-size:45px
-}
-
-.lightbox-arrow{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-width:45px;
-height:45px;
-border:0;
-border-radius:50%;
-background:#ffffff20;
-color:#fff;
-font-size:25px
-}
-
-.lightbox-prev{
-left:12px
-}
-
-.lightbox-next{
-right:12px
-}
-
-
-/* =========================
-   MÜZİK
-========================= */
-
-.music-player{
-position:fixed;
-left:50%;
-bottom:10px;
-transform:translateX(-50%);
-z-index:30000;
-width:min(550px,calc(100% - 18px));
-background:rgba(38,12,17,.97);
-color:#fff;
-border:1px solid #ffffff20;
-border-radius:20px;
-padding:12px 14px;
-box-shadow:0 15px 45px #0009;
-backdrop-filter:blur(18px)
-}
-
-.music-top{
-display:flex;
-align-items:center;
-gap:10px
-}
-
-.music-cover{
-width:43px;
-height:43px;
-border-radius:50%;
-display:grid;
-place-items:center;
-background:linear-gradient(135deg,#a71932,#e66c89);
-flex-shrink:0
-}
-
-.music-info{
-flex:1;
-min-width:0
-}
-
-.music-title{
-font-size:13px;
-font-weight:bold;
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis
-}
-
-.music-status{
-font-size:10px;
-color:#cdbcc0;
-margin-top:3px
-}
-
-.music-buttons{
-display:flex;
-gap:5px
-}
-
-.music-buttons button{
-width:34px;
-height:34px;
-border:0;
-border-radius:50%;
-background:#47252c;
-color:#fff;
-cursor:pointer
-}
-
-.music-buttons .play{
-background:#fff;
-color:#111
-}
-
-.music-progress{
-width:100%;
-height:4px;
-margin-top:9px;
-accent-color:#df5b7b
-}
-
-.playlist{
-display:none;
-border-top:1px solid #ffffff15;
-margin-top:8px;
-padding-top:7px
-}
-
-.playlist.open{
-display:block
-}
-
-.track{
-padding:8px;
-font-size:11px;
-border-radius:8px;
-cursor:pointer
-}
-
-.track:hover,
-.track.active{
-background:#ffffff12;
-color:#ff9fb3
-}
-
-
-/* =========================
-   YUKARI
-========================= */
-
-.to-top{
-position:fixed;
-right:15px;
-bottom:135px;
-z-index:25000;
-width:40px;
-height:40px;
-border:0;
-border-radius:50%;
-background:var(--red);
-color:#fff;
-font-size:17px;
-opacity:0;
-pointer-events:none;
-transition:.3s
-}
-
-.to-top.show{
-opacity:1;
-pointer-events:auto
-}
-
-
-/* =========================
-   REVEAL
-========================= */
-
-.reveal{
-opacity:0;
-transform:translateY(18px);
-transition:.7s
-}
-
-.reveal.show{
-opacity:1;
-transform:none
-}
-
-
-/* =========================
-   MOBİL
-========================= */
-
-@media(max-width:850px){
-
-.container{
-width:calc(100% - 24px)
-}
-
-.navlinks{
-gap:9px;
-font-size:10px
-}
-
-.navlinks a:nth-child(3),
-.navlinks a:nth-child(4),
-.navlinks a:nth-child(5),
-.navlinks a:nth-child(6){
-display:none
-}
-
-.hero{
-grid-template-columns:1fr;
-gap:28px;
-padding:45px 0 65px
-}
-
-.hero h1{
-letter-spacing:-4px
-}
-
-.hero-photo img{
-height:450px
-}
-
-.section{
-padding:65px 0
-}
-
-.section-head{
-display:block
-}
-
-.section-head p{
-margin-top:12px
-}
-
-.gallery{
-grid-template-columns:1fr
-}
-
-.gallery-item.big{
-grid-row:auto
-}
-
-.gallery-item img,
-.gallery-item.big img{
-height:370px
-}
-
-.zodiac{
-grid-template-columns:repeat(2,1fr)
-}
-
-.quotes{
-grid-template-columns:1fr
-}
-
-.about{
-grid-template-columns:1fr
-}
-
-.about-image{
-height:380px
-}
-
-.counter{
-padding:22px 10px
-}
-
-.counter-main{
-gap:5px
-}
-
-.big-time{
-font-size:25px
-}
-
-}
-
-@media(max-width:500px){
-
-.logo{
-font-size:20px
-}
-
-.theme{
-width:34px;
-height:34px
-}
-
-.hero h1{
-font-size:53px
-}
-
-.hero p{
-font-size:16px
-}
-
-.post,
-.about-card{
-padding:27px
-}
-
-.contact{
-padding:32px 24px
-}
-
-.signature{
-font-size:50px
-}
-
-.music-player{
-border-radius:18px
-}
-
-.music-buttons button{
-width:32px;
-height:32px
-}
-
-.counter-title{
-font-size:16px
-}
-
-.counter-date{
-font-size:9px
-}
-
-.big-time{
-font-size:23px
-}
-
-.counter-clock{
-font-size:12px
-}
-
-.counter-total{
-font-size:9px
-}
-
-.wedding-date{
-font-size:51px;
-letter-spacing:2px
-}
-
-.wedding-text{
-font-size:16px
-}
-
-}
-
-
-/* =========================
-   HAREKET AZALTMA
-========================= */
-
-@media(prefers-reduced-motion:reduce){
-
-*{
-animation:none!important;
-transition:none!important
-}
-
-.intro-hearts,
-.petals{
-display:none
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-
-<!-- ==================================================
-     EVLİLİK TARİHİ AÇILIŞI
-================================================== -->
-
-<div class="wedding-intro" id="weddingIntro">
-
-<div class="wedding-content">
-
-<div class="wedding-heart">
-❤️
+<!-- AÇILIŞ -->
+<div class="intro" id="intro">
+<div class="intro-inner">
+<div class="intro-heart">❤️</div>
+<div class="intro-date">16.10.2024</div>
+<div class="intro-line"></div>
+<div class="intro-text">Birlikte başlayan hikâyemiz...</div>
+<div class="intro-inf">∞</div>
 </div>
-
-<div class="wedding-date">
-16.10.2024
 </div>
-
-<div class="wedding-line"></div>
-
-<div class="wedding-text">
-Birlikte başlayan hikâyemiz...
-</div>
-
-<div class="wedding-infinity">
-∞
-</div>
-
-</div>
-
-</div>
-
 
 <!-- KALPLER -->
-
-<div class="intro-hearts" id="introHearts">
-
-<span class="intro-heart">❤️</span>
-<span class="intro-heart">💕</span>
-<span class="intro-heart">💗</span>
-<span class="intro-heart">💖</span>
-<span class="intro-heart">❤️</span>
-<span class="intro-heart">💞</span>
-<span class="intro-heart">💓</span>
-<span class="intro-heart">💕</span>
-<span class="intro-heart">❤️</span>
-<span class="intro-heart">💗</span>
-
+<div class="hearts">
+<span class="heart">❤️</span><span class="heart">💕</span>
+<span class="heart">💗</span><span class="heart">💖</span>
+<span class="heart">❤️</span><span class="heart">💞</span>
+<span class="heart">💓</span>
 </div>
 
-
-<!-- GÜL YAPRAKLARI -->
-
-<div class="petals">
-
-<span class="petal">🌹</span>
-<span class="petal">🌹</span>
-<span class="petal">🌹</span>
-<span class="petal">🌹</span>
-<span class="petal">🌹</span>
-<span class="petal">🌹</span>
-
+<!-- YILDIZLAR -->
+<div class="stars">
+<span class="star" style="left:10%;top:20%">✦</span>
+<span class="star" style="left:25%;top:70%">✧</span>
+<span class="star" style="left:45%;top:15%">✦</span>
+<span class="star" style="left:65%;top:55%">✧</span>
+<span class="star" style="left:82%;top:25%">✦</span>
+<span class="star" style="left:92%;top:80%">✧</span>
 </div>
-
-
-<!-- HEADER -->
 
 <header>
-
 <div class="container nav">
-
-<a class="logo" href="#anasayfa">
-Fatmasoylu
-</a>
-
-<nav class="navlinks">
-
-<a href="#yazilar">Yazılar</a>
-<a href="#fotograflar">Fotoğraflar</a>
-<a href="#anilar">Anılar</a>
+<a class="logo" href="#home">Fatmasoylu ❤️</a>
+<nav class="menu">
+<a href="#hikaye">Hikâyemiz</a>
+<a href="#mektup">Mektup</a>
+<a href="#fotolar">Fotoğraflar</a>
 <a href="#burclar">Burçlar</a>
 <a href="#sozler">Sözler</a>
-<a href="#iletisim">İletişim</a>
-
 </nav>
-
-<button
-class="theme"
-id="themeBtn"
-onclick="toggleDark()">
-🌙
-</button>
-
+<button class="mode" onclick="nightMode()">🌙</button>
 </div>
-
 </header>
 
+<main id="home">
 
-<main id="anasayfa">
-
-
-<!-- ==================================================
-     CANLI EVLİLİK SAYACI
-================================================== -->
-
-<section class="container counter-section">
-
+<!-- SAYAÇ -->
+<div class="container">
 <div class="counter reveal">
+<div class="counter-title">Birlikte geçen zaman... ❤️</div>
+<div class="counter-date">💍 16.10.2024</div>
 
-<div class="counter-title">
-Birlikte geçen zaman... ❤️
+<div class="counter-values">
+<span id="years">0 yıl</span> ·
+<span id="months">0 ay</span> ·
+<span id="days">0 gün</span>
 </div>
-
-<div class="counter-date">
-💍 16.10.2024
-</div>
-
-
-<div class="counter-main">
-
-<span class="big-time" id="years">0 yıl</span>
-
-<span class="dot">·</span>
-
-<span class="big-time" id="months">0 ay</span>
-
-<span class="dot">·</span>
-
-<span class="big-time" id="days">0 gün</span>
-
-</div>
-
 
 <div class="counter-clock">
-
-<span id="hours">00</span>
-:
-<span id="minutes">00</span>
-:
+<span id="hours">00</span> :
+<span id="minutes">00</span> :
 <span id="seconds">00</span>
-
 </div>
 
-
-<div class="counter-total" id="totalDays">
-Toplam geçen gün hesaplanıyor...
+<div class="counter-total" id="total">Hesaplanıyor...</div>
+<div class="anniv" id="anniv">🎉 Evlilik yıldönümümüz kutlu olsun! ❤️</div>
+</div>
 </div>
 
-
-<div
-class="counter-anniversary"
-id="anniversaryMessage">
-
-🎉 Evlilik yıldönümümüz kutlu olsun! ❤️
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ==================================================
-     HERO
-================================================== -->
-
+<!-- HERO -->
 <section class="container hero">
-
 <div class="reveal">
-
-<div class="kicker">
-FATMASOYLU BLOG
-</div>
-
-<h1>
-Hayattan<br>
-güzel anlar.
-</h1>
-
+<div class="kicker">BİZİM HİKÂYEMİZ</div>
+<h1>Birlikte<br>güzel. ❤️</h1>
 <p>
-Düşünceler, hikâyeler, keşifler, burçlar ve birlikte biriktirdiğimiz güzel anılar.
+16.10.2024'te başlayan hikâyemizin küçük bir dijital anı defteri.
+Fotoğraflarımız, anılarımız, şarkılarımız ve söylemek istediğim güzel sözler burada.
 </p>
-
-<div class="actions">
-
-<a
-class="btn primary"
-href="#fotograflar">
-Fotoğraflara bak ❤️
-</a>
-
-<a
-class="btn"
-href="#anilar">
-Anılarımız 💌
-</a>
-
+<div class="btns">
+<a class="btn red" href="#mektup">💌 Mektubumu Aç</a>
+<a class="btn" href="#hikaye">Hikâyemiz ↓</a>
+</div>
 </div>
 
+<div class="hero-img reveal">
+<img src="cicekler.jpg" alt="Güzel bir an">
 </div>
-
-
-<div class="hero-photo reveal">
-
-<img
-src="cicekler.jpg"
-alt="Güzel bir an">
-
-</div>
-
 </section>
 
-
-<!-- ==================================================
-     YAZILAR
-================================================== -->
-
-<section
-class="container section"
-id="yazilar">
-
-<div class="section-head reveal">
-
-<div>
-
-<div class="kicker">
-01 · YAZILAR
+<!-- MEKTUP -->
+<section class="container" id="mektup">
+<div class="head reveal">
+<div class="kicker">01 · SANA ÖZEL</div>
+<h2>Bir mektubum var... 💌</h2>
+<p>Bu zarfı açmadan geçme.</p>
 </div>
 
-<h2>
-Son Yazılar
-</h2>
-
+<div class="letter-box reveal">
+<div class="envelope" onclick="openLetter()">💌</div>
+<strong>Dokun ve mektubu aç ❤️</strong>
 </div>
-
-<p>
-Hayattan küçük notlar, düşünceler ve zamanla birikecek güzel hikâyeler.
-</p>
-
-</div>
-
-
-<article class="post reveal">
-
-<div class="kicker">
-AŞK & YAŞAM
-</div>
-
-<h3>
-Yeni bir başlangıç ❤️
-</h3>
-
-<p>
-Her güzel hikâye küçük bir adımla başlar.
-Bu blog; güzel anları, düşünceleri, gezileri, sevgiyi ve zamanla biriktirilen hikâyeleri paylaşacağımız özel bir alan.
-</p>
-
-<div class="actions">
-
-<a
-class="btn primary"
-href="#anilar">
-
-Hikâyeye devam et →
-
-</a>
-
-</div>
-
-</article>
-
 </section>
 
-
-<!-- ==================================================
-     FOTOĞRAFLAR
-================================================== -->
-
-<section
-class="container section"
-id="fotograflar">
-
-<div class="section-head reveal">
-
-<div>
-
-<div class="kicker">
-02 · ANILAR
+<!-- HİKAYE -->
+<section class="container" id="hikaye">
+<div class="head reveal">
+<div class="kicker">02 · BİZİM HİKÂYEMİZ</div>
+<h2>Bir gün başladı...</h2>
+<p>Ve her geçen gün yeni bir sayfa ekleniyor.</p>
 </div>
-
-<h2>
-Fotoğraflarımız
-</h2>
-
-</div>
-
-<p>
-Bazı anlar fotoğraf olarak kalır, bazıları ise kalbin bir köşesinde.
-</p>
-
-</div>
-
-
-<div class="gallery">
-
-
-<button
-class="gallery-item big reveal"
-onclick="openPhoto(0)">
-
-<img
-src="cicekler.jpg"
-alt="Çiçeklerle güzel bir an">
-
-<span class="gallery-caption">
-Güzel bir sürpriz 🌹
-</span>
-
-</button>
-
-
-<button
-class="gallery-item reveal"
-onclick="openPhoto(1)">
-
-<img
-src="gezi.jpg"
-alt="Güzel bir gezi anı">
-
-<span class="gallery-caption">
-Güzel bir gün ❤️
-</span>
-
-</button>
-
-
-<button
-class="gallery-item reveal"
-onclick="openPhoto(2)">
-
-<img
-src="kafe.jpg"
-alt="Kafede güzel bir an">
-
-<span class="gallery-caption">
-Kahve molası ☕
-</span>
-
-</button>
-
-
-</div>
-
-</section>
-
-
-<!-- ==================================================
-     ANILAR
-================================================== -->
-
-<section
-class="container section"
-id="anilar">
-
-<div class="section-head reveal">
-
-<div>
-
-<div class="kicker">
-03 · HATIRALAR
-</div>
-
-<h2>
-Anılarımız
-</h2>
-
-</div>
-
-<p>
-Zaman geçer ama güzel anılar burada kalır.
-</p>
-
-</div>
-
 
 <div class="timeline">
 
-
-<div class="memory reveal">
-
-<div class="memory-dot"></div>
-
-<div class="memory-card">
-
-<div class="memory-date">
-16.10.2024 · 💍
+<div class="story reveal">
+<div class="story-card">
+<div class="story-date">16.10.2024 · 💍</div>
+<h3>Birlikte başlayan hikâyemiz</h3>
+<p>Hayatımızın en özel tarihlerinden biri. Yeni bir hayatın ilk sayfası.</p>
+</div>
 </div>
 
-<h3>
-Birlikte başlayan hikâyemiz
-</h3>
-
-<p>
-Hayatımızın en özel tarihlerinden biri.
-Birlikte yeni bir sayfa açtığımız gün.
-</p>
-
+<div class="story reveal">
+<div class="story-card">
+<div class="story-date">SONRA · ❤️</div>
+<h3>Biriktirdiğimiz anılar</h3>
+<p>Küçük geziler, kahveler, fotoğraflar ve sadece bize ait güzel anlar.</p>
+</div>
 </div>
 
+<div class="story reveal">
+<div class="story-card">
+<div class="story-date">BUGÜN · ♾️</div>
+<h3>Hikâyemiz devam ediyor...</h3>
+<p>Bu sayfa gibi hikâyemiz de her gün biraz daha büyüyor.</p>
 </div>
-
-
-<div class="memory reveal">
-
-<div class="memory-dot"></div>
-
-<div class="memory-card">
-
-<div class="memory-date">
-GÜZEL BİR GÜN ❤️
-</div>
-
-<h3>
-Birlikte geçirilen zaman
-</h3>
-
-<p>
-Bazen büyük planlara gerek yoktur.
-Güzel bir sohbet, küçük bir gezi ve sevdiğin insanla geçirilen birkaç saat yeterlidir.
-</p>
-
 </div>
 
 </div>
-
-
-<div class="memory reveal">
-
-<div class="memory-dot"></div>
-
-<div class="memory-card">
-
-<div class="memory-date">
-KÜÇÜK MUTLULUKLAR ☕
-</div>
-
-<h3>
-Kahve, sohbet ve huzur
-</h3>
-
-<p>
-Hayatın en güzel taraflarından biri sıradan görünen anların sonradan en değerli hatıralara dönüşmesidir.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="memory reveal">
-
-<div class="memory-dot"></div>
-
-<div class="memory-card">
-
-<div class="memory-date">
-BUGÜN ❤️
-</div>
-
-<h3>
-Hikâyemiz devam ediyor...
-</h3>
-
-<p>
-Bu sayfa yeni fotoğraflar, yeni yazılar ve yeni anılarla zaman içinde büyümeye devam edecek.
-</p>
-
-</div>
-
-</div>
-
-
-</div>
-
 </section>
 
-
-<!-- ==================================================
-     BURÇLAR
-================================================== -->
-
-<section
-class="container section"
-id="burclar">
-
-<div class="section-head reveal">
-
-<div>
-
-<div class="kicker">
-04 · GÜNLÜK REHBER
+<!-- FOTOĞRAFLAR -->
+<section class="container" id="fotolar">
+<div class="head reveal">
+<div class="kicker">03 · ANILAR</div>
+<h2>Fotoğraflarımız 📸</h2>
+<p>Bazı anlar sadece fotoğraf değildir.</p>
 </div>
 
-<h2>
-Burçlar
-</h2>
+<div class="gallery">
+
+<button class="photo big reveal" onclick="photo(0)">
+<img src="cicekler.jpg" alt="Çiçekler">
+<span class="caption">🌹 Güzel bir sürpriz...</span>
+</button>
+
+<button class="photo reveal" onclick="photo(1)">
+<img src="gezi.jpg" alt="Gezi">
+<span class="caption">❤️ Birlikte güzel bir gün</span>
+</button>
+
+<button class="photo reveal" onclick="photo(2)">
+<img src="kafe.jpg" alt="Kafe">
+<span class="caption">☕ Küçük mutluluklar</span>
+</button>
 
 </div>
+</section>
 
-<p>
-12 burç için kısa ve eğlenceli karakter notları.
-</p>
+<!-- SÜRPRİZ KUTUSU -->
+<section class="container">
+<div class="surprise reveal">
+<div class="kicker" style="color:#f5a0b2">04 · SÜRPRİZ</div>
+<h2>Senin için küçük bir şey var... 🎁</h2>
+<div class="gift" onclick="surprise()">🎁</div>
+<div>Dokun ve aç ❤️</div>
+<div class="secret" id="secret">
+“Bu kutunun içindeki en güzel şey sensin.” ❤️<br>
+∞ Sonsuza kadar...
+</div>
+</div>
+</section>
 
+<!-- KALP -->
+<section class="container love-touch">
+<div class="head reveal">
+<div class="kicker">05 · BİR DOKUNUŞ</div>
+<h2>Kalbine dokun ❤️</h2>
 </div>
 
+<button class="big-heart" onclick="loveTouch()">❤️</button>
+<div class="love-message" id="loveMessage"></div>
+</section>
+
+<!-- BURÇ -->
+<section class="container" id="burclar">
+<div class="head reveal">
+<div class="kicker">06 · BURÇLAR</div>
+<h2>Burçlar ✨</h2>
+</div>
 
 <div class="zodiac">
 
-<div class="sign reveal">
-<div class="symbol">♈</div>
-<h3>Koç</h3>
-<div class="dates">21 Mart – 19 Nisan</div>
-<p>Cesaret, hareket ve yeni başlangıçlar.</p>
-</div>
-
-<div class="sign reveal">
-<div class="symbol">♉</div>
-<h3>Boğa</h3>
-<div class="dates">20 Nisan – 20 Mayıs</div>
-<p>Sabır, güven ve konforu önemser.</p>
-</div>
-
-<div class="sign reveal">
-<div class="symbol">♊</div>
-<h3>İkizler</h3>
-<div class="dates">21 Mayıs – 20 Haziran</div>
-<p>Meraklı, sosyal ve iletişim odaklı.</p>
-</div>
-
-<div class="sign reveal">
-<div class="symbol">♋</div>
-<h3>Yengeç</h3>
-<div class="dates">21 Haziran – 22 Temmuz</div>
-<p>Duygusal bağlara ve aileye değer verir.</p>
-</div>
-
-<div class="sign reveal">
-<div class="symbol">♌</div>
-<h3>Aslan</h3>
-<div class="dates">23 Temmuz – 22 Ağustos</div>
-<p>Özgüven, yaratıcılık ve sıcaklık.</p>
-</div>
-
-<div class="sign reveal">
-<div class="symbol">♍</div>
-<h3>Başak</h3>
-<div class="dates">23 Ağustos – 22 Eylül</div>
-<p>Detay, düzen ve planlama ön planda.</p>
-</div>
-
-<div class="sign reveal">
-<div class="symbol">♎</div>
-<h3>Terazi</h3>
-<div class="dates">23 Eylül – 22 Ekim</div>
-<p>Denge, uyum ve ilişkiler önemlidir.</p>
-</div>
-
-<div class="sign reveal">
-<div class="symbol">♏</div>
-<h3>Akrep</h3>
-<div class="dates">23 Ekim – 21 Kasım</div>
-<p>Derinlik, kararlılık ve güçlü sezgiler.</p>
-</div>
-
-<div class="sign reveal">
-<div class="symbol">♐</div>
-<h3>Yay</h3>
-<div class="dates">22 Kasım – 21 Aralık</div>
-<p>Özgürlük, keşif ve macera.</p>
-</div>
-
-<div class="sign reveal">
-<div class="symbol">♑</div>
-<h3>Oğlak</h3>
-<div class="dates">22 Aralık – 19 Ocak</div>
-<p>Hedef, sorumluluk ve istikrar.</p>
-</div>
-
-<div class="sign reveal">
-<div class="symbol">♒</div>
-<h3>Kova</h3>
-<div class="dates">20 Ocak – 18 Şubat</div>
-<p>Özgün fikirler ve bağımsızlık.</p>
-</div>
-
-<div class="sign reveal">
-<div class="symbol">♓</div>
-<h3>Balık</h3>
-<div class="dates">19 Şubat – 20 Mart</div>
-<p>Hayal gücü, empati ve hassasiyet.</p>
-</div>
+<div class="sign reveal"><b>♈</b><h3>Koç</h3><small>21 Mar – 19 Nis</small><p>Cesaret ve hareket.</p></div>
+<div class="sign reveal"><b>♉</b><h3>Boğa</h3><small>20 Nis – 20 May</small><p>Güven ve sabır.</p></div>
+<div class="sign reveal"><b>♊</b><h3>İkizler</h3><small>21 May – 20 Haz</small><p>Merak ve iletişim.</p></div>
+<div class="sign reveal"><b>♋</b><h3>Yengeç</h3><small>21 Haz – 22 Tem</small><p>Duygu ve aile.</p></div>
+<div class="sign reveal"><b>♌</b><h3>Aslan</h3><small>23 Tem – 22 Ağu</small><p>Sıcaklık ve özgüven.</p></div>
+<div class="sign reveal"><b>♍</b><h3>Başak</h3><small>23 Ağu – 22 Eyl</small><p>Düzen ve detay.</p></div>
+<div class="sign reveal"><b>♎</b><h3>Terazi</h3><small>23 Eyl – 22 Eki</small><p>Denge ve uyum.</p></div>
+<div class="sign reveal"><b>♏</b><h3>Akrep</h3><small>23 Eki – 21 Kas</small><p>Derinlik ve sezgi.</p></div>
+<div class="sign reveal"><b>♐</b><h3>Yay</h3><small>22 Kas – 21 Ara</small><p>Özgürlük ve keşif.</p></div>
+<div class="sign reveal"><b>♑</b><h3>Oğlak</h3><small>22 Ara – 19 Oca</small><p>Hedef ve istikrar.</p></div>
+<div class="sign reveal"><b>♒</b><h3>Kova</h3><small>20 Oca – 18 Şub</small><p>Özgünlük ve fikir.</p></div>
+<div class="sign reveal"><b>♓</b><h3>Balık</h3><small>19 Şub – 20 Mar</small><p>Hayal ve empati.</p></div>
 
 </div>
-
 </section>
 
-
-<!-- ==================================================
-     SÖZLER
-================================================== -->
-
-<section
-class="container section"
-id="sozler">
-
-<div class="section-head reveal">
-
-<div>
-
-<div class="kicker">
-05 · İLHAM
+<!-- SÖZLER -->
+<section class="container" id="sozler">
+<div class="head reveal">
+<div class="kicker">07 · İLHAM</div>
+<h2>Güzel Sözler</h2>
 </div>
-
-<h2>
-Güzel Sözler
-</h2>
-
-</div>
-
-<p>
-Tarihten ve edebiyattan ilham veren kısa sözler.
-</p>
-
-</div>
-
 
 <div class="quotes">
-
-<div class="quote ataturk reveal">
-
-<div class="quote-mark">“</div>
-
-<p>
-Hayatta en hakiki mürşit ilimdir.
-</p>
-
-<cite>
-Mustafa Kemal Atatürk
-</cite>
-
+<div class="quote reveal">
+<p>“Hayatta en hakiki mürşit ilimdir.”</p>
+<cite>Mustafa Kemal Atatürk</cite>
 </div>
-
-
-<div class="quote ataturk reveal">
-
-<div class="quote-mark">“</div>
-
-<p>
-Yurtta sulh, cihanda sulh.
-</p>
-
-<cite>
-Mustafa Kemal Atatürk
-</cite>
-
-</div>
-
 
 <div class="quote reveal">
-
-<div class="quote-mark">“</div>
-
-<p>
-Kendin ol; diğer herkes zaten alınmış.
-</p>
-
-<cite>
-Oscar Wilde
-</cite>
-
+<p>“Yurtta sulh, cihanda sulh.”</p>
+<cite>Mustafa Kemal Atatürk</cite>
 </div>
-
 
 <div class="quote reveal">
-
-<div class="quote-mark">“</div>
-
-<p>
-Ne olursan ol, yine gel.
-</p>
-
-<cite>
-Mevlânâ
-</cite>
-
+<p>“Kendin ol; diğer herkes zaten alınmış.”</p>
+<cite>Oscar Wilde</cite>
 </div>
 
+<div class="quote reveal">
+<p>“Ne olursan ol, yine gel.”</p>
+<cite>Mevlânâ</cite>
 </div>
-
+</div>
 </section>
-
-
-<!-- ==================================================
-     HAKKIMDA
-================================================== -->
-
-<section
-class="container section"
-id="hakkimda">
-
-<div class="section-head reveal">
-
-<div>
-
-<div class="kicker">
-06 · HAKKIMDA
-</div>
-
-<h2>
-Ben Kimim?
-</h2>
-
-</div>
-
-<p>
-Bu alan zamanla kişisel hikâyeler ve yeni yazılarla gelişecek.
-</p>
-
-</div>
-
-
-<div class="about">
-
-<div class="about-image reveal">
-
-<img
-src="kafe.jpg"
-alt="Fatmasoylu">
-
-</div>
-
-
-<div class="about-card reveal">
-
-<div class="kicker">
-FATMASOYLU
-</div>
-
-<h3>
-Hayatın güzel taraflarını biriktiriyorum. ❤️
-</h3>
-
-<p>
-Burası düşüncelerimi, fotoğraflarımı, gezilerimi ve hayatın küçük mutluluklarını paylaşmak için oluşturduğum kişisel alan.
-</p>
-
-<p>
-Zamanla yeni yazılar, yeni fotoğraflar ve yeni hikâyeler eklenecek.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
 
 <!-- İMZA -->
-
-<section class="container section">
-
-<div class="signature-box reveal">
-
-<div class="kicker">
-07 · İMZA
+<section class="container">
+<div class="signature reveal">
+<div class="kicker">08 · İMZA</div>
+<div class="sign-name">Fatmasoylu</div>
+<p>Sevgiyle, güzel anılarla... ❤️</p>
 </div>
-
-<div class="signature">
-Fatmasoylu
-</div>
-
-<p style="color:var(--muted)">
-Sevgiyle, güzel anılarla ❤️
-</p>
-
-</div>
-
-</section>
-
-
-<!-- İLETİŞİM -->
-
-<section
-class="container section"
-id="iletisim">
-
-<div class="contact reveal">
-
-<div
-class="kicker"
-style="color:#f09caf">
-
-08 · İLETİŞİM
-
-</div>
-
-<h2>
-Merhaba 👋❤️
-</h2>
-
-<p>
-Yeni yazılar, fotoğraflar ve güzel içerikler zamanla burada yer alacak.
-Bu sayfa her yeni anıyla biraz daha büyüyecek.
-</p>
-
-<a
-class="btn"
-style="background:#fff;border-color:#fff"
-href="#anasayfa">
-
-Başa dön ↑
-
-</a>
-
-</div>
-
 </section>
 
 </main>
 
-
-<!-- FOOTER -->
-
 <footer>
-
-<div class="container footer-row">
-
-<span>
-© 2026 Fatmasoylu
-</span>
-
-<span>
-❤️ Aşk · Anılar · Hikâyeler · Güzel Anlar ❤️
-</span>
-
+<div class="container">
+© 2026 Fatmasoylu · ❤️ Aşk · Anılar · Güzel Anlar
 </div>
-
 </footer>
 
+<!-- MEKTUP MODAL -->
+<div class="modal" id="letterModal">
+<button class="close" onclick="closeLetter()">×</button>
+<div class="letter-paper">
+<h2>Sana... ❤️</h2>
+<p>
+16.10.2024'te başlayan hikâyemizin bugün hâlâ devam ediyor olması,
+benim için hayatın en güzel hediyelerinden biri.
+</p>
+<p>
+Birlikte geçirdiğimiz her gün, sıradan görünen küçük anları bile
+değerli bir hatıraya dönüştürüyor.
+</p>
+<p>
+Bazen bir fotoğraf, bazen bir kahve, bazen küçük bir gülümseme...
+Ama hepsinin ortak noktası sensin.
+</p>
+<p>
+İyi ki varsın.<br>
+İyi ki hayatımdasın.<br>
+İyi ki bizim hikâyemiz var.
+</p>
+<p style="text-align:center;font-size:25px">
+Seni seviyorum. ❤️<br>∞
+</p>
+</div>
+</div>
 
 <!-- LIGHTBOX -->
-
-<div
-class="lightbox"
-id="lightbox">
-
-<button
-class="lightbox-close"
-onclick="closePhoto()">
-×
-</button>
-
-<button
-class="lightbox-arrow lightbox-prev"
-onclick="changePhoto(-1)">
-‹
-</button>
-
-<img
-id="lightboxImg"
-src=""
-alt="">
-
-<button
-class="lightbox-arrow lightbox-next"
-onclick="changePhoto(1)">
-›
-</button>
-
+<div class="lightbox" id="lightbox">
+<button class="x" onclick="closePhoto()">×</button>
+<button class="arr prev" onclick="changePhoto(-1)">‹</button>
+<img id="lightImg" src="">
+<button class="arr next" onclick="changePhoto(1)">›</button>
 </div>
-
-
-<!-- YUKARI -->
-
-<button
-class="to-top"
-id="topBtn"
-onclick="window.scrollTo({top:0,behavior:'smooth'})">
-↑
-</button>
-
 
 <!-- MÜZİK -->
-
-<div class="music-player">
-
-<div class="music-top">
-
-<div class="music-cover">
-🎵
-</div>
-
+<div class="player">
+<div class="player-top">
+<div class="disc">🎵</div>
 <div class="music-info">
-
-<div
-class="music-title"
-id="musicTitle">
-Kutupta Yaz Gibi — Baha
+<div class="music-title" id="musicTitle">Kutupta Yaz Gibi — Baha</div>
+<div class="music-state" id="musicState">Müzik hazır</div>
 </div>
-
-<div
-class="music-status"
-id="musicStatus">
-Müzik hazır
-</div>
-
-</div>
-
-<div class="music-buttons">
-
+<div class="music-btns">
 <button onclick="prevSong()">⏮</button>
-
-<button
-class="play"
-id="playBtn"
-onclick="toggleMusic()">
-▶
-</button>
-
+<button class="play" id="play" onclick="toggleMusic()">▶</button>
 <button onclick="nextSong()">⏭</button>
-
-<button onclick="togglePlaylist()">☷</button>
-
+</div>
+</div>
+<input class="progress" id="progress" type="range" min="0" max="100" value="0">
+<audio id="audio" preload="metadata" playsinline></audio>
 </div>
 
-</div>
-
-<input
-class="music-progress"
-id="progress"
-type="range"
-min="0"
-max="100"
-value="0">
-
-<div
-class="playlist"
-id="playlist">
-</div>
-
-<audio
-id="musicAudio"
-preload="metadata"
-playsinline>
-</audio>
-
-</div>
-
+<button class="top" id="top" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
 
-/* =====================================================
-   CANLI EVLİLİK SAYACI
-===================================================== */
+/* SAYAÇ */
 
-const weddingDate =
-new Date(2024,9,16,0,0,0);
+const wedding=new Date(2024,9,16);
 
-function updateMarriageCounter(){
+function counter(){
 
-const now = new Date();
+const now=new Date();
+let y=now.getFullYear()-wedding.getFullYear();
+let m=now.getMonth()-wedding.getMonth();
+let d=now.getDate()-wedding.getDate();
+let h=now.getHours();
+let min=now.getMinutes();
+let s=now.getSeconds();
 
-let years =
-now.getFullYear() -
-weddingDate.getFullYear();
-
-let months =
-now.getMonth() -
-weddingDate.getMonth();
-
-let days =
-now.getDate() -
-weddingDate.getDate();
-
-let hours =
-now.getHours() -
-weddingDate.getHours();
-
-let minutes =
-now.getMinutes() -
-weddingDate.getMinutes();
-
-let seconds =
-now.getSeconds() -
-weddingDate.getSeconds();
-
-
-if(seconds < 0){
-
-seconds += 60;
-minutes--;
-
+if(d<0){
+m--;
+d+=new Date(now.getFullYear(),now.getMonth(),0).getDate();
 }
+if(m<0){m+=12;y--}
 
-if(minutes < 0){
+document.getElementById("years").textContent=y+" yıl";
+document.getElementById("months").textContent=m+" ay";
+document.getElementById("days").textContent=d+" gün";
+document.getElementById("hours").textContent=String(h).padStart(2,"0");
+document.getElementById("minutes").textContent=String(min).padStart(2,"0");
+document.getElementById("seconds").textContent=String(s).padStart(2,"0");
 
-minutes += 60;
-hours--;
-
-}
-
-if(hours < 0){
-
-hours += 24;
-days--;
-
-}
-
-if(days < 0){
-
-months--;
-
-const previousMonth =
-new Date(
-now.getFullYear(),
-now.getMonth(),
-0
-);
-
-days += previousMonth.getDate();
-
-}
-
-if(months < 0){
-
-months += 12;
-years--;
-
-}
-
-
-/* YIL / AY / GÜN */
-
-document.getElementById("years")
-.textContent =
-years+" yıl";
-
-document.getElementById("months")
-.textContent =
-months+" ay";
-
-document.getElementById("days")
-.textContent =
-days+" gün";
-
-
-/* SAAT / DAKİKA / SANİYE */
-
-document.getElementById("hours")
-.textContent =
-String(hours).padStart(2,"0");
-
-document.getElementById("minutes")
-.textContent =
-String(minutes).padStart(2,"0");
-
-document.getElementById("seconds")
-.textContent =
-String(seconds).padStart(2,"0");
-
-
-/* TOPLAM GÜN */
-
-const difference =
-now.getTime() -
-weddingDate.getTime();
-
-const totalDays =
-Math.floor(
-difference /
-86400000
-);
-
-document.getElementById("totalDays")
-.textContent =
+document.getElementById("total").textContent=
 "16.10.2024'ten beri "+
-totalDays.toLocaleString("tr-TR")+
+Math.floor((now-wedding)/86400000).toLocaleString("tr-TR")+
 " gün ❤️";
 
-
-/* YILDÖNÜMÜ */
-
-const anniversary =
-document.getElementById(
-"anniversaryMessage"
-);
-
-if(
-now.getMonth()===9 &&
-now.getDate()===16
-){
-
-anniversary.classList.add("show");
-
-anniversary.textContent =
-"🎉 Evlilik yıldönümümüz kutlu olsun! ❤️";
-
-}else{
-
-anniversary.classList.remove("show");
-
+if(now.getMonth()===9&&now.getDate()===16)
+document.getElementById("anniv").classList.add("show");
 }
 
-}
+counter();
+setInterval(counter,1000);
 
 
-/* İlk hesaplama */
+/* AÇILIŞ */
 
-updateMarriageCounter();
-
-
-/* Her saniye */
-
-setInterval(
-updateMarriageCounter,
-1000
-);
-
-
-/* =====================================================
-   SCROLL ANİMASYONLARI
-===================================================== */
-
-const observer =
-new IntersectionObserver(
-entries=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("show");
-
-observer.unobserve(entry.target);
-
-}
-
+window.addEventListener("load",()=>{
+setTimeout(()=>document.getElementById("intro").classList.add("hide"),3300);
+setTimeout(()=>document.querySelector(".hearts").style.display="none",7600);
+setTimeout(()=>playMusic(),900);
 });
 
-},
-{threshold:.08}
-);
 
-document
-.querySelectorAll(".reveal")
-.forEach(el=>observer.observe(el));
+/* REVEAL */
 
-
-/* =====================================================
-   GECE MODU
-===================================================== */
-
-function toggleDark(){
-
-document.body.classList.toggle("dark");
-
-const dark =
-document.body.classList.contains("dark");
-
-document.getElementById("themeBtn")
-.textContent =
-dark ? "☀️" : "🌙";
-
-localStorage.setItem(
-"fatmaDark",
-dark ? "1" : "0"
-);
-
+const observer=new IntersectionObserver(e=>{
+e.forEach(x=>{
+if(x.isIntersecting){
+x.target.classList.add("show");
+observer.unobserve(x.target);
 }
+})
+},{threshold:.08});
 
-if(
-localStorage.getItem("fatmaDark")==="1"
-){
+document.querySelectorAll(".reveal").forEach(x=>observer.observe(x));
 
-document.body.classList.add("dark");
 
-document.getElementById("themeBtn")
-.textContent="☀️";
+/* GECE */
 
+function nightMode(){
+document.body.classList.toggle("night");
+document.querySelector(".mode").textContent=
+document.body.classList.contains("night")?"☀️":"🌙";
 }
 
 
-/* =====================================================
-   FOTOĞRAF GALERİSİ
-===================================================== */
+/* MEKTUP */
 
-const photos=[
-
-{
-src:"cicekler.jpg",
-title:"Güzel bir sürpriz 🌹"
-},
-
-{
-src:"gezi.jpg",
-title:"Güzel bir gün ❤️"
-},
-
-{
-src:"kafe.jpg",
-title:"Kahve molası ☕"
+function openLetter(){
+document.getElementById("letterModal").classList.add("open");
+document.body.style.overflow="hidden";
 }
 
+function closeLetter(){
+document.getElementById("letterModal").classList.remove("open");
+document.body.style.overflow="";
+}
+
+
+/* SÜRPRİZ */
+
+function surprise(){
+
+const s=document.getElementById("secret");
+s.classList.toggle("show");
+
+for(let i=0;i<15;i++){
+const h=document.createElement("span");
+h.textContent=["❤️","💕","✨"][Math.floor(Math.random()*3)];
+h.style.position="fixed";
+h.style.left=Math.random()*100+"vw";
+h.style.top="60vh";
+h.style.fontSize=(15+Math.random()*25)+"px";
+h.style.zIndex="50000";
+h.style.transition="2s";
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.style.transform=
+"translateY(-300px) rotate(30deg)";
+h.style.opacity="0";
+},50);
+
+setTimeout(()=>h.remove(),2100);
+}
+
+}
+
+
+/* KALBE DOKUN */
+
+const messages=[
+"Seni seviyorum. ❤️",
+"İyi ki varsın. 🌹",
+"İyi ki hayatımdasın. 💕",
+"Sen benim en güzel anımsın. 🥰",
+"Bizim hikâyemiz çok güzel. ♾️",
+"Her şey seninle daha güzel. ❤️"
 ];
 
-let photoIndex=0;
+let msg=0;
 
+function loveTouch(){
 
-function openPhoto(index){
-
-photoIndex=index;
-
-document.getElementById(
-"lightboxImg"
-).src=photos[index].src;
-
-document.getElementById(
-"lightboxImg"
-).alt=photos[index].title;
-
-document.getElementById(
-"lightbox"
-).classList.add("open");
-
-document.body.style.overflow="hidden";
+document.getElementById("loveMessage").textContent=
+messages[msg++%messages.length];
 
 }
 
+
+/* FOTOĞRAF */
+
+const pics=["cicekler.jpg","gezi.jpg","kafe.jpg"];
+let pi=0;
+
+function photo(i){
+pi=i;
+document.getElementById("lightImg").src=pics[i];
+document.getElementById("lightbox").classList.add("open");
+}
 
 function closePhoto(){
+document.getElementById("lightbox").classList.remove("open");
+}
 
-document.getElementById(
-"lightbox"
-).classList.remove("open");
-
-document.body.style.overflow="";
-
+function changePhoto(n){
+pi=(pi+n+pics.length)%pics.length;
+document.getElementById("lightImg").src=pics[pi];
 }
 
 
-function changePhoto(step){
-
-photoIndex =
-(photoIndex+step+photos.length)
-%photos.length;
-
-openPhoto(photoIndex);
-
-}
-
-
-document.getElementById(
-"lightbox"
-).addEventListener(
-"click",
-function(e){
-
-if(e.target===this){
-
-closePhoto();
-
-}
-
-}
-);
-
-
-document.addEventListener(
-"keydown",
-function(e){
-
-if(e.key==="Escape"){
-closePhoto();
-}
-
-if(e.key==="ArrowRight"){
-changePhoto(1);
-}
-
-if(e.key==="ArrowLeft"){
-changePhoto(-1);
-}
-
-}
-);
-
-
-/* =====================================================
-   YUKARI BUTONU
-===================================================== */
-
-window.addEventListener(
-"scroll",
-()=>{
-
-document.getElementById(
-"topBtn"
-).classList.toggle(
-"show",
-window.scrollY>450
-);
-
-}
-);
-
-
-/* =====================================================
-   MÜZİK
-===================================================== */
+/* MÜZİK */
 
 const songs=[
-
-{
-title:"Kutupta Yaz Gibi — Baha",
-file:"Kutupta Yaz Gibi (Baha) Official Audio -kutuptayazgibi -baha - Esen Müzik.mp3"
-},
-
-{
-title:"Canım Sevgilim — Baha",
-file:"Canım Sevgilim (Baha) Official Music Video -canımsevgilim -baha - Esen Müzik.mp3"
-},
-
-{
-title:"Ey Aşk — Sezen Aksu",
-file:"Sezen Aksu - Ey Aşk [Official Audio].mp3"
-},
-
-{
-title:"Ta Ki Seni Görene Kadar",
-file:"Ta Ki Seni Görene Kadar.mp3"
-}
-
+[
+"Kutupta Yaz Gibi — Baha",
+"Kutupta Yaz Gibi (Baha) Official Audio -kutuptayazgibi -baha - Esen Müzik.mp3"
+],
+[
+"Canım Sevgilim — Baha",
+"Canım Sevgilim (Baha) Official Music Video -canımsevgilim -baha - Esen Müzik.mp3"
+],
+[
+"Ey Aşk — Sezen Aksu",
+"Sezen Aksu - Ey Aşk [Official Audio].mp3"
+],
+[
+"Ta Ki Seni Görene Kadar",
+"Ta Ki Seni Görene Kadar.mp3"
+]
 ];
 
-let songIndex=0;
+let si=0;
+const audio=document.getElementById("audio");
 
-const audio =
-document.getElementById("musicAudio");
-
-const musicTitle =
-document.getElementById("musicTitle");
-
-const musicStatus =
-document.getElementById("musicStatus");
-
-const playBtn =
-document.getElementById("playBtn");
-
-const progress =
-document.getElementById("progress");
-
-const playlist =
-document.getElementById("playlist");
-
-
-function loadSong(
-index,
-autoplay=false
-){
-
-songIndex =
-(index+songs.length)
-%songs.length;
-
-audio.src =
-songs[songIndex].file;
-
-musicTitle.textContent =
-songs[songIndex].title;
-
-progress.value=0;
-
-musicStatus.textContent =
-"Müzik hazır";
-
-renderPlaylist();
-
-if(autoplay){
-
-playMusic();
-
+function loadSong(auto=false){
+audio.src=songs[si][1];
+document.getElementById("musicTitle").textContent=songs[si][0];
+if(auto)playMusic();
 }
-
-}
-
-
-function renderPlaylist(){
-
-playlist.innerHTML="";
-
-songs.forEach(
-(song,i)=>{
-
-const item =
-document.createElement("div");
-
-item.className =
-"track"+
-(i===songIndex?" active":"");
-
-item.textContent =
-(i+1)+". "+song.title;
-
-item.onclick=()=>{
-
-loadSong(i,true);
-
-};
-
-playlist.appendChild(item);
-
-}
-);
-
-}
-
 
 async function playMusic(){
-
 try{
-
 await audio.play();
-
-playBtn.textContent="⏸";
-
-musicStatus.textContent=
-"Şimdi çalıyor";
-
-}catch(error){
-
-playBtn.textContent="▶";
-
-musicStatus.textContent=
-"Başlatmak için ▶ düğmesine dokun";
-
+document.getElementById("play").textContent="⏸";
+document.getElementById("musicState").textContent="Şimdi çalıyor ❤️";
+}catch(e){
+document.getElementById("musicState").textContent="▶ Başlatmak için dokun";
 }
-
 }
-
 
 function toggleMusic(){
-
-if(audio.paused){
-
-playMusic();
-
-}else{
-
+if(audio.paused)playMusic();
+else{
 audio.pause();
-
-playBtn.textContent="▶";
-
-musicStatus.textContent=
-"Duraklatıldı";
-
+document.getElementById("play").textContent="▶";
+document.getElementById("musicState").textContent="Duraklatıldı";
 }
-
 }
-
 
 function nextSong(){
-
-loadSong(
-songIndex+1,
-true
-);
-
+si=(si+1)%songs.length;
+loadSong(true);
 }
-
 
 function prevSong(){
-
-loadSong(
-songIndex-1,
-true
-);
-
+si=(si-1+songs.length)%songs.length;
+loadSong(true);
 }
 
+audio.addEventListener("ended",nextSong);
 
-function togglePlaylist(){
+audio.addEventListener("timeupdate",()=>{
+if(audio.duration)
+document.getElementById("progress").value=
+audio.currentTime/audio.duration*100;
+});
 
-playlist.classList.toggle("open");
+document.getElementById("progress").addEventListener("input",e=>{
+if(audio.duration)
+audio.currentTime=e.target.value/100*audio.duration;
+});
 
+loadSong();
+
+
+/* YUKARI */
+
+window.addEventListener("scroll",()=>{
+document.getElementById("top").classList.toggle("show",scrollY>450);
+});
+
+
+/* ESC */
+
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape"){
+closeLetter();
+closePhoto();
 }
-
-
-audio.addEventListener(
-"ended",
-()=>{
-nextSong();
-}
-);
-
-
-audio.addEventListener(
-"timeupdate",
-()=>{
-
-if(audio.duration){
-
-progress.value =
-(audio.currentTime/
-audio.duration)*100;
-
-}
-
-}
-);
-
-
-progress.addEventListener(
-"input",
-()=>{
-
-if(audio.duration){
-
-audio.currentTime =
-(progress.value/100)*
-audio.duration;
-
-}
-
-}
-);
-
-
-audio.addEventListener(
-"playing",
-()=>{
-
-playBtn.textContent="⏸";
-
-musicStatus.textContent=
-"Şimdi çalıyor";
-
-}
-);
-
-
-audio.addEventListener(
-"pause",
-()=>{
-
-if(!audio.ended){
-
-playBtn.textContent="▶";
-
-}
-
-}
-);
-
-
-audio.addEventListener(
-"error",
-()=>{
-
-playBtn.textContent="▶";
-
-musicStatus.textContent=
-"Müzik dosyası yüklenemedi";
-
-}
-);
-
-
-loadSong(0);
-
-
-/* =====================================================
-   AÇILIŞ
-===================================================== */
-
-window.addEventListener(
-"load",
-()=>{
-
-const intro =
-document.getElementById(
-"weddingIntro"
-);
-
-const hearts =
-document.getElementById(
-"introHearts"
-);
-
-
-/*
-   Tarih ekranı
-*/
-
-setTimeout(
-()=>{
-
-intro.classList.add("hide");
-
-},
-3200
-);
-
-
-/*
-   Kalpler
-*/
-
-setTimeout(
-()=>{
-
-hearts.style.display="block";
-
-},
-2500
-);
-
-
-/*
-   Kalpleri kaldır
-*/
-
-setTimeout(
-()=>{
-
-hearts.style.display="none";
-
-},
-7600
-);
-
-
-/*
-   Müzik otomatik denemesi.
-   Tarayıcı engellerse play
-   düğmesi kullanılabilir.
-*/
-
-setTimeout(
-()=>{
-
-playMusic();
-
-},
-900
-);
-
-}
-);
-
-
-/* =====================================================
-   TELEFONDA FOTOĞRAF SWIPE
-===================================================== */
-
-let touchStartX=0;
-
-
-document.getElementById(
-"lightbox"
-).addEventListener(
-"touchstart",
-e=>{
-
-touchStartX =
-e.changedTouches[0].screenX;
-
-},
-{passive:true}
-);
-
-
-document.getElementById(
-"lightbox"
-).addEventListener(
-"touchend",
-e=>{
-
-const diff =
-e.changedTouches[0].screenX -
-touchStartX;
-
-if(Math.abs(diff)>50){
-
-changePhoto(
-diff<0 ? 1 : -1
-);
-
-}
-
-},
-{passive:true}
-);
+});
 
 </script>
-
 </body>
-   </html>
+                                                </html>
