@@ -8,16 +8,8 @@
 <title>Fatmasoylu ❤️</title>
 
 <style>
-*{
-box-sizing:border-box;
-margin:0;
-padding:0
-}
-
-html{
-scroll-behavior:smooth
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{
 font-family:Georgia,"Times New Roman",serif;
 background:#fff7fa;
@@ -26,17 +18,9 @@ line-height:1.7;
 padding-bottom:100px;
 overflow-x:hidden
 }
+button{font-family:inherit}
+a{text-decoration:none;color:inherit}
 
-a{
-text-decoration:none;
-color:inherit
-}
-
-button{
-font-family:inherit
-}
-
-/* AÇILIŞ */
 #opening{
 position:fixed;
 inset:0;
@@ -49,46 +33,38 @@ text-align:center;
 color:white;
 transition:opacity 1.2s ease,visibility 1.2s ease
 }
-
 #opening.hide{
 opacity:0;
 visibility:hidden;
 pointer-events:none
 }
-
 .opening-content{
 position:relative;
 z-index:5;
 padding:30px
 }
-
 .opening-heart{
 font-size:70px;
 animation:heartbeat 1.3s infinite
 }
-
 .opening-date{
 font-size:clamp(42px,12vw,76px);
 font-weight:bold;
 margin:15px 0;
 letter-spacing:2px
 }
-
 .opening-text{
 font-size:20px;
 font-style:italic
 }
-
 .opening-infinity{
 font-size:50px;
 margin-top:12px
 }
-
 @keyframes heartbeat{
 0%,100%{transform:scale(1)}
 50%{transform:scale(1.18)}
 }
-
 .open-heart{
 position:absolute;
 bottom:-50px;
@@ -96,20 +72,12 @@ font-size:22px;
 animation:floatHeart 4.5s linear forwards;
 opacity:.9
 }
-
 @keyframes floatHeart{
-0%{
-transform:translateY(0) scale(.7) rotate(0);
-opacity:0
-}
+0%{transform:translateY(0) scale(.7) rotate(0);opacity:0}
 15%{opacity:1}
-100%{
-transform:translateY(-110vh) scale(1.5) rotate(35deg);
-opacity:0
-}
+100%{transform:translateY(-110vh) scale(1.5) rotate(35deg);opacity:0}
 }
 
-/* HEADER */
 header{
 position:sticky;
 top:0;
@@ -119,7 +87,6 @@ backdrop-filter:blur(14px);
 border-bottom:1px solid #efd7df;
 padding:16px 22px
 }
-
 .header-inner{
 max-width:1100px;
 margin:auto;
@@ -128,42 +95,30 @@ align-items:center;
 justify-content:space-between;
 gap:15px
 }
-
 .logo{
 font-size:28px;
 font-weight:bold;
 color:#8e1535
 }
-
-.logo span{
-font-size:30px
-}
-
+.logo span{font-size:30px}
 nav{
 display:flex;
 gap:8px;
 flex-wrap:wrap
 }
-
 nav a{
 padding:7px 10px;
 border-radius:20px;
-font-size:14px;
-transition:.3s
+font-size:14px
 }
+nav a:hover{background:#f7dce5}
 
-nav a:hover{
-background:#f7dce5
-}
-
-/* ANA */
 main{
 max-width:1100px;
 margin:auto;
 padding:0 18px
 }
 
-/* SAYAÇ */
 .counter{
 margin:22px auto 35px;
 padding:22px 14px;
@@ -173,19 +128,15 @@ background:linear-gradient(180deg,#fffafb,#fff0f5);
 box-shadow:0 10px 35px rgba(115,20,52,.08);
 text-align:center
 }
-
 .counter-title{
 font-size:17px;
-font-style:italic;
-margin-bottom:5px
+font-style:italic
 }
-
 .counter-date{
 font-size:15px;
 color:#96717c;
 margin-bottom:14px
 }
-
 .counter-grid{
 display:flex;
 justify-content:center;
@@ -193,29 +144,22 @@ align-items:center;
 gap:12px;
 flex-wrap:wrap
 }
-
-.counter-item{
-min-width:75px
-}
-
+.counter-item{min-width:65px}
 .counter-number{
 font-size:34px;
 font-weight:bold;
 color:#8d1536;
 line-height:1.1
 }
-
 .counter-label{
 font-size:12px;
 color:#90717b;
 text-transform:uppercase
 }
-
 .counter-dot{
 font-size:25px;
 color:#d7a0af
 }
-
 .counter-love{
 margin-top:14px;
 font-size:16px;
@@ -223,7 +167,6 @@ font-style:italic;
 font-weight:bold
 }
 
-/* HERO */
 .hero{
 min-height:70vh;
 display:grid;
@@ -232,30 +175,23 @@ align-items:center;
 gap:40px;
 padding:35px 0 70px
 }
-
 .hero-text h1{
 font-size:clamp(48px,7vw,82px);
 line-height:1.05;
 color:#8f1437;
 margin-bottom:20px
 }
-
-.hero-text h1 span{
-color:#d52151
-}
-
+.hero-text h1 span{color:#d52151}
 .hero-text p{
 font-size:20px;
 color:#704452;
 margin-bottom:25px
 }
-
 .hero-buttons{
 display:flex;
 gap:12px;
 flex-wrap:wrap
 }
-
 .btn{
 display:inline-block;
 padding:13px 23px;
@@ -265,23 +201,12 @@ color:white;
 font-weight:bold;
 border:none;
 cursor:pointer;
-box-shadow:0 8px 20px rgba(167,25,50,.2);
-transition:.3s
+box-shadow:0 8px 20px rgba(167,25,50,.2)
 }
-
-.btn:hover{
-transform:translateY(-2px)
-}
-
 .btn-light{
 background:#f7dce5;
 color:#8d1536
 }
-
-.hero-photo{
-position:relative
-}
-
 .hero-photo img{
 width:100%;
 height:520px;
@@ -290,18 +215,13 @@ border-radius:35px;
 box-shadow:0 20px 55px rgba(93,20,43,.18)
 }
 
-/* BÖLÜMLER */
-section{
-padding:75px 0
-}
-
+section{padding:75px 0}
 .section-title{
 text-align:center;
 font-size:clamp(38px,7vw,62px);
 color:#a71932;
 margin-bottom:15px
 }
-
 .section-sub{
 text-align:center;
 max-width:700px;
@@ -310,29 +230,19 @@ font-size:18px;
 color:#76515d
 }
 
-/* HİKAYE */
 .story{
 text-align:center;
 max-width:800px;
 margin:auto
 }
+.story-heart{font-size:60px}
+.story p{font-size:20px;margin:15px 0}
 
-.story-heart{
-font-size:60px
-}
-
-.story p{
-font-size:20px;
-margin:15px 0
-}
-
-/* TIMELINE */
 .timeline{
 max-width:850px;
 margin:auto;
 position:relative
 }
-
 .timeline:before{
 content:"";
 position:absolute;
@@ -343,17 +253,12 @@ width:2px;
 background:#e5b4c1;
 transform:translateX(-50%)
 }
-
 .timeline-item{
 width:50%;
 padding:15px 35px;
 position:relative
 }
-
-.timeline-item:nth-child(even){
-margin-left:50%
-}
-
+.timeline-item:nth-child(even){margin-left:50%}
 .timeline-dot{
 position:absolute;
 top:25px;
@@ -364,11 +269,9 @@ background:#a71932;
 border:4px solid #fff7fa;
 border-radius:50%
 }
-
 .timeline-item:nth-child(even) .timeline-dot{
 left:-9px
 }
-
 .timeline-card{
 background:white;
 padding:22px;
@@ -376,19 +279,16 @@ border-radius:22px;
 box-shadow:0 10px 30px rgba(80,20,40,.08);
 border:1px solid #f0d9df
 }
-
 .timeline-card h3{
 color:#a71932;
 margin-bottom:8px
 }
 
-/* GALERİ */
 .gallery{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:18px
 }
-
 .gallery-item{
 overflow:hidden;
 border-radius:24px;
@@ -396,7 +296,6 @@ cursor:pointer;
 background:white;
 box-shadow:0 10px 30px rgba(80,20,40,.1)
 }
-
 .gallery-item img{
 width:100%;
 height:350px;
@@ -404,18 +303,13 @@ object-fit:cover;
 display:block;
 transition:.5s
 }
+.gallery-item:hover img{transform:scale(1.05)}
 
-.gallery-item:hover img{
-transform:scale(1.05)
-}
-
-/* KARTLAR */
 .cards{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:18px
 }
-
 .card{
 background:white;
 padding:28px 22px;
@@ -424,59 +318,70 @@ border:1px solid #f0d9df;
 box-shadow:0 10px 30px rgba(80,20,40,.07);
 text-align:center
 }
-
-.card-icon{
-font-size:42px;
-margin-bottom:12px
-}
-
+.card-icon{font-size:42px;margin-bottom:12px}
 .card h3{
 color:#a71932;
 margin-bottom:8px
 }
 
-/* BURÇLAR */
+/* VIDEO */
+.video-section{
+padding-top:40px
+}
+.video-box{
+max-width:850px;
+margin:auto;
+background:#fff;
+padding:12px;
+border-radius:30px;
+box-shadow:0 18px 50px rgba(80,20,40,.15);
+border:1px solid #efd7df
+}
+.video-box video{
+display:block;
+width:100%;
+max-height:75vh;
+border-radius:22px;
+background:#18050b
+}
+.video-caption{
+text-align:center;
+padding:18px 10px 8px
+}
+.video-caption h3{
+font-size:24px;
+color:#a71932;
+margin-bottom:5px
+}
+.video-caption p{
+color:#80616c
+}
+
 .zodiac-grid{
 display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:12px
 }
-
 .zodiac{
 background:white;
 padding:18px 8px;
 text-align:center;
 border-radius:18px;
-border:1px solid #efd8df;
-transition:.3s
+border:1px solid #efd8df
 }
-
-.zodiac:hover{
-transform:translateY(-4px);
-box-shadow:0 10px 25px rgba(80,20,40,.08)
-}
-
-.zodiac-icon{
-font-size:30px
-}
-
+.zodiac-icon{font-size:30px}
 .zodiac strong{
 display:block;
 margin-top:5px;
 font-size:14px
 }
+.zodiac small{color:#94717c}
 
-.zodiac small{
-color:#94717c
-}
-
-/* ALINTILAR */
 .quote-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:18px
 }
-
 .quote{
 background:#fff;
 padding:28px;
@@ -484,12 +389,10 @@ border-radius:25px;
 border-left:5px solid #a71932;
 box-shadow:0 10px 25px rgba(80,20,40,.06)
 }
-
 .quote p{
 font-size:20px;
 font-style:italic
 }
-
 .quote cite{
 display:block;
 margin-top:12px;
@@ -497,18 +400,15 @@ color:#a71932;
 font-weight:bold
 }
 
-/* İMZA */
 .signature{
 text-align:center;
 padding:80px 20px
 }
-
 .signature-name{
 font-size:55px;
 font-style:italic;
 color:#a71932
 }
-
 .signature-line{
 width:100px;
 height:2px;
@@ -516,7 +416,6 @@ background:#d89aaa;
 margin:12px auto
 }
 
-/* MODAL */
 .modal{
 position:fixed;
 inset:0;
@@ -527,11 +426,7 @@ align-items:center;
 justify-content:center;
 padding:20px
 }
-
-.modal.show{
-display:flex
-}
-
+.modal.show{display:flex}
 .modal-box{
 background:#fff8fa;
 max-width:700px;
@@ -541,7 +436,6 @@ padding:35px;
 border-radius:28px;
 position:relative
 }
-
 .close{
 position:absolute;
 right:15px;
@@ -552,7 +446,6 @@ font-size:30px;
 color:#a71932;
 cursor:pointer
 }
-
 .lightbox img{
 max-width:95vw;
 max-height:85vh;
@@ -571,20 +464,17 @@ background:linear-gradient(135deg,#47091d,#74132f);
 color:white;
 box-shadow:0 -8px 30px rgba(0,0,0,.25)
 }
-
 .music-progress{
 width:100%;
 height:5px;
 background:#4c2632;
 cursor:pointer
 }
-
 .music-progress-bar{
 height:100%;
 width:0;
 background:#ffb0c4
 }
-
 .music-main{
 max-width:1100px;
 margin:auto;
@@ -595,7 +485,6 @@ align-items:center;
 gap:12px;
 padding:8px 15px
 }
-
 .music-cover{
 width:48px;
 height:48px;
@@ -604,14 +493,9 @@ background:linear-gradient(135deg,#d51e50,#7d0f30);
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:25px;
-box-shadow:0 5px 15px rgba(0,0,0,.25)
+font-size:25px
 }
-
-.music-info{
-min-width:0
-}
-
+.music-info{min-width:0}
 .music-title{
 font-size:14px;
 font-weight:bold;
@@ -619,25 +503,20 @@ white-space:nowrap;
 overflow:hidden;
 text-overflow:ellipsis
 }
-
 .music-sub{
 font-size:11px;
-opacity:.7;
-margin-top:2px
+opacity:.7
 }
-
 .music-extra{
 display:flex;
 align-items:center;
 gap:5px
 }
-
 .music-buttons{
 display:flex;
 align-items:center;
 gap:4px
 }
-
 .music-buttons button{
 width:36px;
 height:36px;
@@ -646,23 +525,14 @@ border-radius:50%;
 background:rgba(255,255,255,.1);
 color:white;
 cursor:pointer;
-font-size:15px;
-display:flex;
-align-items:center;
-justify-content:center
+font-size:15px
 }
-
-.music-buttons button:hover{
-background:rgba(255,255,255,.2)
-}
-
 .music-buttons .play{
 width:43px;
 height:43px;
 background:#d51e50;
 font-size:18px
 }
-
 .volume{
 width:75px;
 accent-color:#ffb0c4
@@ -680,11 +550,7 @@ box-shadow:0 10px 40px rgba(0,0,0,.35);
 overflow:hidden;
 display:none
 }
-
-.playlist.show{
-display:block
-}
-
+.playlist.show{display:block}
 .playlist-head{
 padding:15px 18px;
 background:#72132f;
@@ -693,21 +559,14 @@ display:flex;
 align-items:center;
 justify-content:space-between
 }
-
-.playlist-head strong{
-font-size:16px
-}
-
 .playlist-count{
 font-size:12px;
 opacity:.8
 }
-
 .song-list{
 max-height:55vh;
 overflow-y:auto
 }
-
 .song{
 display:flex;
 align-items:center;
@@ -716,24 +575,18 @@ padding:12px 15px;
 border-bottom:1px solid #f0dce2;
 cursor:pointer
 }
-
-.song:hover{
-background:#fff0f4
-}
-
+.song:hover{background:#fff0f4}
 .song.active{
 background:#f7d6df;
 color:#a71932;
 font-weight:bold
 }
-
 .song-number{
 width:25px;
 text-align:center;
 font-size:12px;
 color:#a71932
 }
-
 .song-name{
 flex:1;
 font-size:13px;
@@ -742,7 +595,6 @@ overflow:hidden;
 text-overflow:ellipsis
 }
 
-/* SCROLL TOP */
 .top-button{
 position:fixed;
 right:15px;
@@ -758,40 +610,37 @@ cursor:pointer;
 z-index:1000;
 display:none
 }
+.top-button.show{display:block}
 
-.top-button.show{
-display:block
-}
-
-/* FOOTER */
 footer{
 text-align:center;
 padding:50px 20px;
 color:#94717c
 }
 
-/* MOBİL */
+.reveal{
+opacity:0;
+transform:translateY(25px);
+transition:.7s
+}
+.reveal.visible{
+opacity:1;
+transform:none
+}
+
 @media(max-width:800px){
 
-header{
-padding:13px 15px
-}
-
-.header-inner{
-display:block
-}
-
+header{padding:13px 15px}
+.header-inner{display:block}
 .logo{
 text-align:center;
 font-size:24px;
 margin-bottom:7px
 }
-
 nav{
 justify-content:center;
 gap:3px
 }
-
 nav a{
 font-size:11px;
 padding:5px 7px
@@ -801,43 +650,17 @@ padding:5px 7px
 grid-template-columns:1fr;
 padding-top:20px
 }
+.hero-text{text-align:center}
+.hero-text h1{font-size:48px}
+.hero-photo img{height:430px}
 
-.hero-text{
-text-align:center
-}
+.gallery{grid-template-columns:1fr}
+.gallery-item img{height:400px}
+.cards{grid-template-columns:1fr}
+.quote-grid{grid-template-columns:1fr}
+.zodiac-grid{grid-template-columns:repeat(3,1fr)}
 
-.hero-text h1{
-font-size:48px
-}
-
-.hero-photo img{
-height:430px
-}
-
-.gallery{
-grid-template-columns:1fr
-}
-
-.gallery-item img{
-height:400px
-}
-
-.cards{
-grid-template-columns:1fr
-}
-
-.quote-grid{
-grid-template-columns:1fr
-}
-
-.zodiac-grid{
-grid-template-columns:repeat(3,1fr)
-}
-
-.timeline:before{
-left:10px
-}
-
+.timeline:before{left:10px}
 .timeline-item,
 .timeline-item:nth-child(even){
 width:100%;
@@ -845,7 +668,6 @@ margin-left:0;
 padding-left:35px;
 padding-right:0
 }
-
 .timeline-dot,
 .timeline-item:nth-child(even) .timeline-dot{
 left:1px;
@@ -857,100 +679,59 @@ grid-template-columns:43px 1fr auto;
 gap:6px;
 padding:7px 8px
 }
-
 .music-cover{
 width:42px;
 height:42px;
 font-size:20px
 }
-
 .music-extra{
 display:flex;
 align-items:center;
 gap:2px
 }
-
 .music-buttons{
 display:flex;
 align-items:center;
 gap:2px
 }
-
 .music-buttons button{
 width:31px;
 height:31px;
 font-size:12px
 }
-
 .music-buttons .play{
 width:37px;
 height:37px;
 font-size:15px
 }
-
-.volume{
-display:none
-}
-
-.music-title{
-font-size:11px
-}
-
-.music-sub{
-font-size:9px
-}
+.volume{display:none}
+.music-title{font-size:11px}
+.music-sub{font-size:9px}
 
 .playlist{
 left:8px;
 right:8px;
 bottom:76px;
-width:auto;
-max-height:65vh
+width:auto
 }
 
-.song-list{
-max-height:55vh
-}
+.song-list{max-height:55vh}
 
-.counter{
-margin-top:10px
-}
+.counter-grid{gap:7px}
+.counter-item{min-width:60px}
+.counter-number{font-size:28px}
+.counter-dot{font-size:20px}
 
-.counter-grid{
-gap:7px
-}
+.section-title{font-size:42px}
+.signature-name{font-size:42px}
 
-.counter-item{
-min-width:62px
+.video-box{
+padding:7px;
+border-radius:22px
 }
-
-.counter-number{
-font-size:28px
+.video-box video{
+border-radius:16px
 }
-
-.counter-dot{
-font-size:20px
-}
-
-.section-title{
-font-size:42px
-}
-
-.signature-name{
-font-size:42px
-}
-}
-
-/* ANİMASYON */
-.reveal{
-opacity:0;
-transform:translateY(25px);
-transition:.7s
-}
-
-.reveal.visible{
-opacity:1;
-transform:none
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -978,9 +759,9 @@ transition:none!important
 <header>
 <div class="header-inner">
 <div class="logo">Fatmasoylu <span>❤️</span></div>
-
 <nav>
 <a href="#hikayemiz">Hikâyemiz</a>
+<a href="#video">Video</a>
 <a href="#anilar">Anılar</a>
 <a href="#burclar">Burçlar</a>
 <a href="#sozler">Sözler</a>
@@ -1019,21 +800,21 @@ transition:none!important
 <div class="counter-dot">•</div>
 
 <div class="counter-item">
-<div class="counter-number" id="hours">0</div>
+<div class="counter-number" id="hours">00</div>
 <div class="counter-label">Saat</div>
 </div>
 
 <div class="counter-dot">•</div>
 
 <div class="counter-item">
-<div class="counter-number" id="minutes">0</div>
+<div class="counter-number" id="minutes">00</div>
 <div class="counter-label">Dakika</div>
 </div>
 
 <div class="counter-dot">•</div>
 
 <div class="counter-item">
-<div class="counter-number" id="seconds">0</div>
+<div class="counter-number" id="seconds">00</div>
 <div class="counter-label">Saniye</div>
 </div>
 
@@ -1058,7 +839,7 @@ ve her geçen gün biraz daha güzelleşir.
 
 <div class="hero-buttons">
 <button class="btn" onclick="openLetter()">💌 Mektubumuzu Oku</button>
-<a class="btn btn-light" href="#anilar">📷 Anılarımız</a>
+<a class="btn btn-light" href="#video">🎬 Videomuz</a>
 </div>
 </div>
 
@@ -1068,7 +849,7 @@ ve her geçen gün biraz daha güzelleşir.
 
 </section>
 
-<!-- HİKAYEMİZ -->
+<!-- HİKAYE -->
 <section id="hikayemiz" class="reveal">
 
 <h2 class="section-title">Bizim Hikâyemiz ❤️</h2>
@@ -1081,9 +862,7 @@ Bir tarih ile başlayan ve her gün yeni bir sayfası yazılan hikâyemiz...
 
 <div class="story-heart">💗</div>
 
-<p>
-16 Ekim 2024...
-</p>
+<p>16 Ekim 2024...</p>
 
 <p>
 İki insanın hayatını aynı hikâyede buluşturduğu gün.
@@ -1098,6 +877,40 @@ Ve en güzel tarafı:
 </p>
 
 </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" class="video-section reveal">
+
+<h2 class="section-title">Sana Hazırladığım Video 🎬❤️</h2>
+
+<p class="section-sub">
+Bizim için hazırladığım güzel anların küçük bir hikâyesi...
+</p>
+
+<div class="video-box">
+
+<video
+id="loveVideo"
+controls
+playsinline
+preload="metadata"
+poster="cicekler.jpg">
+
+<source
+src="7_fotografli_reels_muzikli_5inci_daha_kucuk.mp4"
+type="video/mp4">
+
+Tarayıcınız video oynatmayı desteklemiyor.
+</video>
+
+<div class="video-caption">
+<h3>Bizim Hikâyemiz ❤️</h3>
+<p>İyi ki hayatımdasın. İyi ki bizim hikâyemiz var. ♾️</p>
+</div>
+
+</div>
+
 </section>
 
 <!-- ZAMAN ÇİZELGESİ -->
@@ -1231,16 +1044,12 @@ Gökyüzündeki 12 farklı hikâye...
 <div class="quote-grid">
 
 <div class="quote">
-<p>
-“Yurtta sulh, cihanda sulh.”
-</p>
+<p>“Yurtta sulh, cihanda sulh.”</p>
 <cite>— Mustafa Kemal Atatürk</cite>
 </div>
 
 <div class="quote">
-<p>
-“Hayatta en hakiki mürşit ilimdir.”
-</p>
+<p>“Hayatta en hakiki mürşit ilimdir.”</p>
 <cite>— Mustafa Kemal Atatürk</cite>
 </div>
 
@@ -1252,16 +1061,12 @@ Gökyüzündeki 12 farklı hikâye...
 </div>
 
 <div class="quote">
-<p>
-“Ne olursan ol, yine gel.”
-</p>
+<p>“Ne olursan ol, yine gel.”</p>
 <cite>— Mevlânâ</cite>
 </div>
 
 <div class="quote">
-<p>
-“Kendin ol; diğer herkes zaten alınmış.”
-</p>
+<p>“Kendin ol; diğer herkes zaten alınmış.”</p>
 <cite>— Oscar Wilde</cite>
 </div>
 
@@ -1279,12 +1084,8 @@ Gökyüzündeki 12 farklı hikâye...
 <section class="signature reveal">
 
 <div class="signature-name">Fatmasoylu</div>
-
 <div class="signature-line"></div>
-
-<p>
-❤️ Sevgiyle yazılmış bir hikâyenin imzası...
-</p>
+<p>❤️ Sevgiyle yazılmış bir hikâyenin imzası...</p>
 
 </section>
 
@@ -1295,7 +1096,7 @@ Gökyüzündeki 12 farklı hikâye...
 <small>16.10.2024 ∞</small>
 </footer>
 
-<!-- MEKTUP MODAL -->
+<!-- MEKTUP -->
 <div class="modal" id="letterModal" onclick="closeLetterOutside(event)">
 
 <div class="modal-box">
@@ -1306,9 +1107,7 @@ Gökyüzündeki 12 farklı hikâye...
 💌 Mektubumuz
 </h2>
 
-<p style="font-size:19px">
-Sevgilim,
-</p>
+<p>Sevgilim,</p>
 
 <br>
 
@@ -1344,12 +1143,12 @@ Seni seviyorum. ❤️
 </div>
 </div>
 
-<!-- LIGHTBOX -->
+<!-- FOTOĞRAF -->
 <div class="modal lightbox" id="imageModal" onclick="closeImage()">
 <img id="lightboxImage" src="" alt="Fotoğraf">
 </div>
 
-<!-- MÜZİK -->
+<!-- MÜZİK PLAYER -->
 <div class="music-player">
 
 <div class="music-progress" id="musicProgress">
@@ -1369,15 +1168,13 @@ Seni seviyorum. ❤️
 
 <div class="music-buttons">
 
-<button onclick="previousSong()" aria-label="Önceki">⏮</button>
+<button onclick="previousSong()">⏮</button>
 
-<button class="play" id="playButton" onclick="toggleMusic()" aria-label="Oynat">
-▶
-</button>
+<button class="play" id="playButton" onclick="toggleMusic()">▶</button>
 
-<button onclick="nextSong()" aria-label="Sonraki">⏭</button>
+<button onclick="nextSong()">⏭</button>
 
-<button onclick="togglePlaylist()" aria-label="Şarkı listesi">☰</button>
+<button onclick="togglePlaylist()">☰</button>
 
 </div>
 
@@ -1388,8 +1185,7 @@ type="range"
 min="0"
 max="1"
 step="0.01"
-value="0.8"
->
+value="0.8">
 
 </div>
 </div>
@@ -1413,14 +1209,14 @@ value="0.8"
 
 <audio id="musicAudio" preload="metadata" playsinline></audio>
 
-<button class="top-button" id="topButton" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<button class="top-button" id="topButton"
+onclick="window.scrollTo({top:0,behavior:'smooth'})">
 ↑
 </button>
 
 <script>
 
 /* AÇILIŞ */
-(function(){
 
 const opening=document.getElementById("opening");
 
@@ -1430,7 +1226,6 @@ const heart=document.createElement("div");
 
 heart.className="open-heart";
 heart.innerHTML=Math.random()>.25?"❤️":"💗";
-
 heart.style.left=Math.random()*100+"%";
 heart.style.animationDuration=(3.5+Math.random()*2)+"s";
 heart.style.fontSize=(15+Math.random()*25)+"px";
@@ -1438,6 +1233,7 @@ heart.style.fontSize=(15+Math.random()*25)+"px";
 opening.appendChild(heart);
 
 setTimeout(()=>heart.remove(),6000);
+
 }
 
 for(let i=0;i<18;i++){
@@ -1447,8 +1243,6 @@ setTimeout(createHeart,i*180);
 setTimeout(()=>{
 opening.classList.add("hide");
 },5000);
-
-})();
 
 
 /* SAYAÇ */
@@ -1468,27 +1262,22 @@ weddingDate.getDate()
 );
 
 if(now<anniversary){
+
 years--;
+
 anniversary=new Date(
 weddingDate.getFullYear()+years,
 weddingDate.getMonth(),
 weddingDate.getDate()
 );
+
 }
-
-let remaining=now-anniversary;
-
-let totalSeconds=Math.floor(remaining/1000);
-
-let hours=Math.floor(totalSeconds/3600);
-let minutes=Math.floor((totalSeconds%3600)/60);
-let seconds=totalSeconds%60;
 
 let months=now.getMonth()-weddingDate.getMonth();
 
 if(months<0)months+=12;
 
-let anniversaryThisYear=new Date(
+const anniversaryThisYear=new Date(
 now.getFullYear(),
 weddingDate.getMonth(),
 weddingDate.getDate()
@@ -1498,7 +1287,7 @@ if(now<anniversaryThisYear){
 months--;
 }
 
-if(months<0)months+=12;
+if(months<0)months=11;
 
 let lastAnniversary=new Date(
 now.getFullYear(),
@@ -1514,12 +1303,27 @@ const days=Math.floor(
 (now-lastAnniversary)/(1000*60*60*24)
 );
 
+const totalSeconds=Math.floor(
+(now-lastAnniversary)/(1000)
+);
+
+const hours=Math.floor(
+(totalSeconds%(24*60*60))/3600
+);
+
+const minutes=Math.floor(
+(totalSeconds%3600)/60
+);
+
+const seconds=totalSeconds%60;
+
 document.getElementById("years").textContent=years;
 document.getElementById("months").textContent=months;
 document.getElementById("days").textContent=days;
 document.getElementById("hours").textContent=String(hours).padStart(2,"0");
 document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");
 document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
+
 }
 
 updateCounter();
@@ -1537,9 +1341,11 @@ document.getElementById("letterModal").classList.remove("show");
 }
 
 function closeLetterOutside(e){
+
 if(e.target.id==="letterModal"){
 closeLetter();
 }
+
 }
 
 
@@ -1553,11 +1359,13 @@ document.getElementById("imageModal").classList.add("show");
 }
 
 function closeImage(){
+
 document.getElementById("imageModal").classList.remove("show");
+
 }
 
 
-/* SCROLL ANIMATION */
+/* ANİMASYON */
 
 const observer=new IntersectionObserver(entries=>{
 
@@ -1591,9 +1399,7 @@ btn.classList.remove("show");
 });
 
 
-/* ================================
-   PROFESYONEL MÜZİK PLAYER
-================================ */
+/* MÜZİK */
 
 const audio=document.getElementById("musicAudio");
 const title=document.getElementById("musicTitle");
@@ -1608,31 +1414,20 @@ const volume=document.getElementById("volume");
 
 let songs=[];
 let currentSong=0;
-let loadingSongs=false;
-
-
-/* GITHUB'TAN MP3'LERİ AL */
 
 async function loadSongs(){
 
-if(loadingSongs)return;
-
-loadingSongs=true;
-
 try{
 
-const api=
-"https://api.github.com/repos/fatmasoylu/fatmasoylu/contents/";
-
-const response=await fetch(api,{
+const response=await fetch(
+"https://api.github.com/repos/fatmasoylu/fatmasoylu/contents/",
+{
 headers:{
 "Accept":"application/vnd.github+json"
 }
 });
 
-if(!response.ok){
-throw new Error("GitHub API hatası");
-}
+if(!response.ok)throw new Error();
 
 const files=await response.json();
 
@@ -1644,95 +1439,27 @@ file.name.toLowerCase().endsWith(".mp3")
 .map(file=>({
 name:file.name,
 url:file.download_url
-}));
-
-/* Alfabetik sırala */
-
-songs.sort((a,b)=>
-a.name.localeCompare(b.name,"tr")
-);
+}))
+.sort((a,b)=>a.name.localeCompare(b.name,"tr"));
 
 playlistCount.textContent=songs.length+" şarkı";
 
 renderPlaylist();
 
-if(songs.length>0){
-
-currentSong=0;
+if(songs.length){
 loadSong(false);
-
 }else{
-
 title.textContent="Şarkı bulunamadı";
-status.textContent="GitHub'da MP3 dosyası yok";
-
 }
 
 }catch(error){
 
-console.error(error);
-
 title.textContent="Müzik yüklenemedi";
-status.textContent="Listeyi açıp tekrar deneyin";
-
-songList.innerHTML=`
-<div style="padding:20px;text-align:center">
-Müzikler yüklenirken bir sorun oluştu.
-<br><br>
-<button class="btn" onclick="loadSongs()">Tekrar Dene</button>
-</div>
-`;
-
-}finally{
-
-loadingSongs=false;
+status.textContent="Sayfayı yenileyin";
 
 }
 
 }
-
-
-/* LİSTE */
-
-function renderPlaylist(){
-
-songList.innerHTML="";
-
-songs.forEach((song,index)=>{
-
-const item=document.createElement("div");
-
-item.className="song";
-
-if(index===currentSong){
-item.classList.add("active");
-}
-
-const number=document.createElement("div");
-number.className="song-number";
-number.textContent=index+1;
-
-const name=document.createElement("div");
-name.className="song-name";
-name.textContent=cleanSongName(song.name);
-
-item.appendChild(number);
-item.appendChild(name);
-
-item.addEventListener("click",()=>{
-
-currentSong=index;
-loadSong(true);
-togglePlaylist(false);
-
-});
-
-songList.appendChild(item);
-
-});
-
-}
-
 
 function cleanSongName(name){
 
@@ -1749,8 +1476,38 @@ return name
 
 }
 
+function renderPlaylist(){
 
-/* ŞARKI YÜKLE */
+songList.innerHTML="";
+
+songs.forEach((song,index)=>{
+
+const item=document.createElement("div");
+
+item.className="song";
+
+if(index===currentSong){
+item.classList.add("active");
+}
+
+item.innerHTML=`
+<div class="song-number">${index+1}</div>
+<div class="song-name">${cleanSongName(song.name)}</div>
+`;
+
+item.onclick=()=>{
+
+currentSong=index;
+loadSong(true);
+togglePlaylist(false);
+
+};
+
+songList.appendChild(item);
+
+});
+
+}
 
 function loadSong(autoplay){
 
@@ -1762,9 +1519,7 @@ audio.src=song.url;
 audio.load();
 
 title.textContent=cleanSongName(song.name);
-
 status.textContent="▶ Oynat'a dokunarak müziği başlat";
-
 playButton.textContent="▶";
 
 renderPlaylist();
@@ -1776,27 +1531,17 @@ audio.play().then(()=>{
 playButton.textContent="❚❚";
 status.textContent="♪ Çalıyor";
 
-}).catch(()=>{
-
-playButton.textContent="▶";
-status.textContent="▶ Oynat'a dokunarak müziği başlat";
-
-});
+}).catch(()=>{});
 
 }
 
 }
-
-
-/* OYNAT / DURAKLAT */
 
 function toggleMusic(){
 
 if(!songs.length){
-
 loadSongs();
 return;
-
 }
 
 if(audio.paused){
@@ -1808,7 +1553,7 @@ status.textContent="♪ Çalıyor";
 
 }).catch(()=>{
 
-status.textContent="▶ Müziği başlatmak için tekrar dokunun";
+status.textContent="▶ Tekrar dokunarak başlat";
 
 });
 
@@ -1822,9 +1567,6 @@ status.textContent="Duraklatıldı";
 }
 
 }
-
-
-/* ÖNCEKİ */
 
 function previousSong(){
 
@@ -1840,9 +1582,6 @@ loadSong(true);
 
 }
 
-
-/* SONRAKİ */
-
 function nextSong(){
 
 if(!songs.length)return;
@@ -1857,17 +1596,9 @@ loadSong(true);
 
 }
 
-
-/* OTOMATİK SONRAKİ */
-
 audio.addEventListener("ended",()=>{
-
 nextSong();
-
 });
-
-
-/* PLAYER DURUMU */
 
 audio.addEventListener("play",()=>{
 
@@ -1886,24 +1617,16 @@ status.textContent="Duraklatıldı";
 
 });
 
-
-/* İLERLEME */
-
 audio.addEventListener("timeupdate",()=>{
 
 if(audio.duration){
 
-const percent=
-(audio.currentTime/audio.duration)*100;
-
-progressBar.style.width=percent+"%";
+progressBar.style.width=
+(audio.currentTime/audio.duration)*100+"%";
 
 }
 
 });
-
-
-/* İLERLEMEYE TIKLA */
 
 progress.addEventListener("click",(e)=>{
 
@@ -1919,9 +1642,6 @@ percent*audio.duration;
 
 });
 
-
-/* SES */
-
 volume.addEventListener("input",()=>{
 
 audio.volume=Number(volume.value);
@@ -1930,25 +1650,15 @@ audio.volume=Number(volume.value);
 
 audio.volume=.8;
 
-
-/* PLAYLIST */
-
 function togglePlaylist(force){
 
 if(typeof force==="boolean"){
-
 playlist.classList.toggle("show",force);
-
 }else{
-
 playlist.classList.toggle("show");
-
 }
 
 }
-
-
-/* SAYFA DIŞINA TIKLANINCA LİSTEYİ KAPAT */
 
 document.addEventListener("click",(e)=>{
 
@@ -1964,34 +1674,9 @@ playlist.classList.remove("show");
 
 });
 
-
-/* İLK YÜKLEME */
-
 loadSongs();
-
-
-/* İLK DOKUNUŞTA MÜZİK DENEMESİ */
-
-document.addEventListener("click",function(){
-
-if(
-songs.length &&
-audio.paused &&
-audio.currentTime===0
-){
-
-audio.play().then(()=>{
-
-playButton.textContent="❚❚";
-status.textContent="♪ Çalıyor";
-
-}).catch(()=>{});
-
-}
-
-},{once:true});
 
 </script>
 
 </body>
-   </html>
+</html>
