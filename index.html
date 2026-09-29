@@ -2,1681 +2,4304 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#a71932">
-<meta name="description" content="Fatmasoylu ❤️ Aşk, anılar ve güzel anlar">
-<title>Fatmasoylu ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#711b38">
+<meta name="description" content="16.10.2024'te başlayan bizim hikâyemiz ❤️">
+<title>Fatmasoylu ❤️ Bizim Hikâyemiz</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-font-family:Georgia,"Times New Roman",serif;
-background:#fff7fa;
-color:#5d2639;
-line-height:1.7;
-padding-bottom:100px;
-overflow-x:hidden
+
+/* =========================================================
+   TEMEL AYARLAR
+========================================================= */
+
+:root{
+    --burgundy:#711b38;
+    --burgundy-dark:#3b091c;
+    --burgundy-light:#a83257;
+    --rose:#c64c70;
+    --pink:#fff4f7;
+    --pink-dark:#f5d7e0;
+    --cream:#fffaf8;
+    --text:#4b1729;
+    --muted:#896575;
+    --white:#ffffff;
+    --shadow:0 15px 45px rgba(88,16,42,.12);
+    --shadow-heavy:0 25px 70px rgba(45,0,20,.22);
 }
-button{font-family:inherit}
-a{text-decoration:none;color:inherit}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Georgia,"Times New Roman",serif;
+    background:
+        radial-gradient(circle at top,#fff,#fff7f9 55%,#fff0f5);
+    color:var(--text);
+    overflow-x:hidden;
+    line-height:1.6;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+button{
+    -webkit-tap-highlight-color:transparent;
+}
+
+img,
+video{
+    max-width:100%;
+}
+
+
+/* =========================================================
+   GENEL
+========================================================= */
+
+section{
+    width:100%;
+    max-width:1120px;
+    margin:auto;
+    padding:85px 20px;
+}
+
+.section-title{
+    text-align:center;
+    color:var(--burgundy);
+    font-size:clamp(30px,6vw,48px);
+    line-height:1.2;
+    margin-bottom:15px;
+}
+
+.section-subtitle{
+    max-width:760px;
+    margin:0 auto 42px;
+    text-align:center;
+    color:var(--muted);
+    line-height:1.8;
+    font-size:16px;
+}
+
+.btn{
+    display:inline-block;
+    border:none;
+    padding:14px 25px;
+    border-radius:40px;
+    color:white;
+    background:linear-gradient(135deg,var(--burgundy),var(--rose));
+    cursor:pointer;
+    font-size:15px;
+    box-shadow:0 10px 30px rgba(113,27,56,.25);
+    transition:.3s;
+    text-decoration:none;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(113,27,56,.35);
+}
+
+.btn:active{
+    transform:scale(.97);
+}
+
+
+/* =========================================================
+   AÇILIŞ EKRANI
+========================================================= */
 
 #opening{
-position:fixed;
-inset:0;
-z-index:99999;
-background:linear-gradient(145deg,#5b1026,#9d173d,#d72b5b);
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-color:white;
-transition:opacity 1.2s ease,visibility 1.2s ease
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    background:
+        radial-gradient(circle at center,#a73a60 0%,#67162f 43%,#260611 100%);
+    transition:opacity 1.6s ease,visibility 1.6s ease;
+    overflow:hidden;
 }
+
 #opening.hide{
-opacity:0;
-visibility:hidden;
-pointer-events:none
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
 }
-.opening-content{
-position:relative;
-z-index:5;
-padding:30px
+
+.opening-inner{
+    position:relative;
+    z-index:5;
+    padding:25px;
+    animation:openingIn 1.5s ease;
 }
-.opening-heart{
-font-size:70px;
-animation:heartbeat 1.3s infinite
-}
+
 .opening-date{
-font-size:clamp(42px,12vw,76px);
-font-weight:bold;
-margin:15px 0;
-letter-spacing:2px
+    font-size:clamp(45px,12vw,110px);
+    font-weight:bold;
+    letter-spacing:5px;
+    text-shadow:0 10px 40px rgba(0,0,0,.25);
 }
-.opening-text{
-font-size:20px;
-font-style:italic
+
+.opening-line{
+    width:110px;
+    height:2px;
+    margin:28px auto;
+    background:white;
+    opacity:.7;
 }
-.opening-infinity{
-font-size:50px;
-margin-top:12px
+
+.opening-message{
+    font-size:clamp(18px,4vw,30px);
+    line-height:1.7;
 }
-@keyframes heartbeat{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.18)}
+
+.opening-small{
+    margin-top:22px;
+    font-size:11px;
+    letter-spacing:5px;
+    opacity:.7;
 }
-.open-heart{
-position:absolute;
-bottom:-50px;
-font-size:22px;
-animation:floatHeart 4.5s linear forwards;
-opacity:.9
+
+.opening-click{
+    margin-top:35px;
+    font-size:12px;
+    opacity:.7;
+    animation:blink 2s infinite;
 }
-@keyframes floatHeart{
-0%{transform:translateY(0) scale(.7) rotate(0);opacity:0}
-15%{opacity:1}
-100%{transform:translateY(-110vh) scale(1.5) rotate(35deg);opacity:0}
+
+@keyframes openingIn{
+    from{
+        opacity:0;
+        transform:scale(.75);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
 }
+
+@keyframes blink{
+    50%{opacity:.25}
+}
+
+.float-heart{
+    position:absolute;
+    bottom:-60px;
+    color:#ffbfd0;
+    animation:riseHeart linear infinite;
+    opacity:.8;
+}
+
+@keyframes riseHeart{
+    to{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
-position:sticky;
-top:0;
-z-index:500;
-background:rgba(255,247,250,.94);
-backdrop-filter:blur(14px);
-border-bottom:1px solid #efd7df;
-padding:16px 22px
+    position:sticky;
+    top:0;
+    z-index:5000;
+    background:rgba(91,17,40,.96);
+    backdrop-filter:blur(15px);
+    box-shadow:0 5px 25px rgba(60,0,20,.18);
 }
-.header-inner{
-max-width:1100px;
-margin:auto;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px
-}
-.logo{
-font-size:28px;
-font-weight:bold;
-color:#8e1535
-}
-.logo span{font-size:30px}
-nav{
-display:flex;
-gap:8px;
-flex-wrap:wrap
-}
-nav a{
-padding:7px 10px;
-border-radius:20px;
-font-size:14px
-}
-nav a:hover{background:#f7dce5}
 
-main{
-max-width:1100px;
-margin:auto;
-padding:0 18px
+.nav{
+    max-width:1180px;
+    margin:auto;
+    padding:12px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:19px;
+    white-space:nowrap;
+}
+
+.nav-links{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:3px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:12px;
+    padding:8px 10px;
+    border-radius:20px;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    background:rgba(255,255,255,.13);
+}
+
+
+/* =========================================================
+   SAYAC
+========================================================= */
+
+.counter-section{
+    background:white;
+    padding:15px 12px;
+    text-align:center;
+    box-shadow:0 4px 20px rgba(90,20,45,.08);
+}
+
+.counter-title{
+    color:var(--muted);
+    font-size:12px;
+    margin-bottom:10px;
+    letter-spacing:1px;
 }
 
 .counter{
-margin:22px auto 35px;
-padding:22px 14px;
-border:1px solid #eccbd5;
-border-radius:0 0 35px 35px;
-background:linear-gradient(180deg,#fffafb,#fff0f5);
-box-shadow:0 10px 35px rgba(115,20,52,.08);
-text-align:center
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:7px;
 }
-.counter-title{
-font-size:17px;
-font-style:italic
+
+.counter-box{
+    min-width:65px;
+    padding:8px 9px;
+    border:1px solid #efd2dc;
+    background:#fff7f9;
+    border-radius:13px;
 }
-.counter-date{
-font-size:15px;
-color:#96717c;
-margin-bottom:14px
-}
-.counter-grid{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:12px;
-flex-wrap:wrap
-}
-.counter-item{min-width:65px}
+
 .counter-number{
-font-size:34px;
-font-weight:bold;
-color:#8d1536;
-line-height:1.1
+    display:block;
+    color:var(--burgundy);
+    font-size:19px;
+    font-weight:bold;
 }
+
 .counter-label{
-font-size:12px;
-color:#90717b;
-text-transform:uppercase
+    display:block;
+    color:#a06d7d;
+    font-size:8px;
+    margin-top:2px;
 }
-.counter-dot{
-font-size:25px;
-color:#d7a0af
-}
-.counter-love{
-margin-top:14px;
-font-size:16px;
-font-style:italic;
-font-weight:bold
-}
+
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
-min-height:70vh;
-display:grid;
-grid-template-columns:1fr 1fr;
-align-items:center;
-gap:40px;
-padding:35px 0 70px
+    min-height:82vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding-top:65px;
 }
-.hero-text h1{
-font-size:clamp(48px,7vw,82px);
-line-height:1.05;
-color:#8f1437;
-margin-bottom:20px
+
+.hero-content{
+    max-width:900px;
 }
-.hero-text h1 span{color:#d52151}
-.hero-text p{
-font-size:20px;
-color:#704452;
-margin-bottom:25px
+
+.hero-photo{
+    width:min(340px,80vw);
+    height:min(340px,80vw);
+    object-fit:cover;
+    border-radius:50%;
+    border:8px solid white;
+    box-shadow:0 25px 70px rgba(80,10,35,.18);
+    margin-bottom:30px;
 }
+
+.hero h1{
+    color:var(--burgundy);
+    font-size:clamp(42px,8vw,78px);
+    line-height:1.1;
+    margin-bottom:18px;
+}
+
+.hero p{
+    max-width:780px;
+    margin:auto;
+    color:#6f4051;
+    font-size:clamp(17px,3vw,23px);
+    line-height:1.8;
+}
+
 .hero-buttons{
-display:flex;
-gap:12px;
-flex-wrap:wrap
-}
-.btn{
-display:inline-block;
-padding:13px 23px;
-border-radius:30px;
-background:#a71932;
-color:white;
-font-weight:bold;
-border:none;
-cursor:pointer;
-box-shadow:0 8px 20px rgba(167,25,50,.2)
-}
-.btn-light{
-background:#f7dce5;
-color:#8d1536
-}
-.hero-photo img{
-width:100%;
-height:520px;
-object-fit:cover;
-border-radius:35px;
-box-shadow:0 20px 55px rgba(93,20,43,.18)
+    margin-top:28px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
 }
 
-section{padding:75px 0}
-.section-title{
-text-align:center;
-font-size:clamp(38px,7vw,62px);
-color:#a71932;
-margin-bottom:15px
-}
-.section-sub{
-text-align:center;
-max-width:700px;
-margin:0 auto 40px;
-font-size:18px;
-color:#76515d
+
+/* =========================================================
+   HİKÂYEMİZ
+========================================================= */
+
+.story-box{
+    background:white;
+    border-radius:28px;
+    padding:42px;
+    box-shadow:var(--shadow);
+    text-align:center;
+    font-size:17px;
+    line-height:2;
 }
 
-.story{
-text-align:center;
-max-width:800px;
-margin:auto
+.story-heart{
+    font-size:55px;
+    margin-bottom:15px;
+    animation:pulse 1.5s infinite;
 }
-.story-heart{font-size:60px}
-.story p{font-size:20px;margin:15px 0}
+
+
+/* =========================================================
+   VİDEO
+========================================================= */
+
+.video-card{
+    background:#250811;
+    padding:15px;
+    border-radius:30px;
+    box-shadow:0 25px 70px rgba(50,0,20,.25);
+}
+
+.video-card video{
+    display:block;
+    width:100%;
+    max-height:700px;
+    background:black;
+    border-radius:20px;
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
 
 .timeline{
-max-width:850px;
-margin:auto;
-position:relative
+    max-width:880px;
+    margin:auto;
+    position:relative;
 }
+
 .timeline:before{
-content:"";
-position:absolute;
-left:50%;
-top:0;
-bottom:0;
-width:2px;
-background:#e5b4c1;
-transform:translateX(-50%)
+    content:"";
+    position:absolute;
+    width:3px;
+    height:100%;
+    left:50%;
+    transform:translateX(-50%);
+    background:#e1a0b5;
 }
+
 .timeline-item{
-width:50%;
-padding:15px 35px;
-position:relative
+    position:relative;
+    width:50%;
+    padding:20px 38px;
 }
-.timeline-item:nth-child(even){margin-left:50%}
+
+.timeline-item:nth-child(odd){
+    left:0;
+    text-align:right;
+}
+
+.timeline-item:nth-child(even){
+    left:50%;
+}
+
 .timeline-dot{
-position:absolute;
-top:25px;
-right:-9px;
-width:18px;
-height:18px;
-background:#a71932;
-border:4px solid #fff7fa;
-border-radius:50%
+    position:absolute;
+    top:30px;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:var(--burgundy);
+    border:4px solid white;
+    box-shadow:0 0 0 2px #d88ba3;
 }
+
+.timeline-item:nth-child(odd) .timeline-dot{
+    right:-10px;
+}
+
 .timeline-item:nth-child(even) .timeline-dot{
-left:-9px
+    left:-10px;
 }
+
 .timeline-card{
-background:white;
-padding:22px;
-border-radius:22px;
-box-shadow:0 10px 30px rgba(80,20,40,.08);
-border:1px solid #f0d9df
+    background:white;
+    padding:23px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(90,20,45,.09);
 }
+
 .timeline-card h3{
-color:#a71932;
-margin-bottom:8px
+    color:var(--burgundy);
+    margin-bottom:8px;
 }
+
+.timeline-card p{
+    line-height:1.8;
+    color:var(--muted);
+}
+
+
+/* =========================================================
+   GALERİ
+========================================================= */
 
 .gallery{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
+
 .gallery-item{
-overflow:hidden;
-border-radius:24px;
-cursor:pointer;
-background:white;
-box-shadow:0 10px 30px rgba(80,20,40,.1)
+    position:relative;
+    overflow:hidden;
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    cursor:pointer;
 }
+
 .gallery-item img{
-width:100%;
-height:350px;
-object-fit:cover;
-display:block;
-transition:.5s
-}
-.gallery-item:hover img{transform:scale(1.05)}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px
-}
-.card{
-background:white;
-padding:28px 22px;
-border-radius:25px;
-border:1px solid #f0d9df;
-box-shadow:0 10px 30px rgba(80,20,40,.07);
-text-align:center
-}
-.card-icon{font-size:42px;margin-bottom:12px}
-.card h3{
-color:#a71932;
-margin-bottom:8px
+    display:block;
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    transition:.5s;
 }
 
-/* VIDEO */
-.video-section{
-padding-top:40px
+.gallery-item:hover img{
+    transform:scale(1.07);
 }
-.video-box{
-max-width:850px;
-margin:auto;
-background:#fff;
-padding:12px;
-border-radius:30px;
-box-shadow:0 18px 50px rgba(80,20,40,.15);
-border:1px solid #efd7df
+
+.gallery-overlay{
+    position:absolute;
+    inset:auto 0 0;
+    padding:20px;
+    color:white;
+    background:linear-gradient(transparent,rgba(40,0,15,.8));
+    opacity:0;
+    transition:.3s;
 }
-.video-box video{
-display:block;
-width:100%;
-max-height:75vh;
-border-radius:22px;
-background:#18050b
+
+.gallery-item:hover .gallery-overlay{
+    opacity:1;
 }
-.video-caption{
-text-align:center;
-padding:18px 10px 8px
+
+
+/* =========================================================
+   SEVDİĞİM ŞEYLER
+========================================================= */
+
+.love-things{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
-.video-caption h3{
-font-size:24px;
-color:#a71932;
-margin-bottom:5px
+
+.love-thing{
+    background:white;
+    border-radius:22px;
+    padding:30px 22px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    transition:.3s;
 }
-.video-caption p{
-color:#80616c
+
+.love-thing:hover{
+    transform:translateY(-5px);
 }
+
+.love-icon{
+    font-size:45px;
+    margin-bottom:12px;
+}
+
+.love-thing h3{
+    color:var(--burgundy);
+    margin-bottom:8px;
+}
+
+.love-thing p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   10 NEDEN
+========================================================= */
+
+.reasons{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:17px;
+}
+
+.reason{
+    display:flex;
+    gap:16px;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(80,16,35,.08);
+    transition:.3s;
+}
+
+.reason:hover{
+    transform:translateY(-4px);
+}
+
+.reason-number{
+    flex:0 0 40px;
+    height:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    color:white;
+    background:var(--burgundy);
+}
+
+.reason h3{
+    color:var(--burgundy);
+    margin-bottom:5px;
+}
+
+.reason p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   BURÇLAR
+========================================================= */
 
 .zodiac-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
 }
-.zodiac{
-background:white;
-padding:18px 8px;
-text-align:center;
-border-radius:18px;
-border:1px solid #efd8df
-}
-.zodiac-icon{font-size:30px}
-.zodiac strong{
-display:block;
-margin-top:5px;
-font-size:14px
-}
-.zodiac small{color:#94717c}
 
-.quote-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:18px
+.zodiac{
+    padding:22px 10px;
+    border:1px solid #efd1db;
+    background:white;
+    border-radius:18px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(80,10,35,.06);
+    transition:.3s;
 }
+
+.zodiac:hover{
+    transform:translateY(-5px);
+    background:#fff5f8;
+}
+
+.zodiac-symbol{
+    display:block;
+    font-size:38px;
+    margin-bottom:8px;
+}
+
+.zodiac strong{
+    color:var(--burgundy);
+}
+
+.zodiac small{
+    display:block;
+    margin-top:5px;
+    color:var(--muted);
+}
+
+
+/* =========================================================
+   AÇILABİLİR KARTLAR
+========================================================= */
+
+.open-cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:17px;
+}
+
+.open-card{
+    min-height:190px;
+    border:1px solid #efd0da;
+    background:linear-gradient(145deg,#fff,#fff1f5);
+    border-radius:23px;
+    padding:28px 18px;
+    cursor:pointer;
+    color:var(--text);
+    box-shadow:0 10px 30px rgba(80,10,35,.07);
+    transition:.3s;
+}
+
+.open-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 40px rgba(80,10,35,.12);
+}
+
+.open-card-icon{
+    display:block;
+    font-size:45px;
+    margin-bottom:12px;
+}
+
+.open-card strong{
+    display:block;
+    color:var(--burgundy);
+    font-size:18px;
+}
+
+
+/* =========================================================
+   ANILAR HARİTASI
+========================================================= */
+
+.memory-map{
+    position:relative;
+    min-height:480px;
+    overflow:hidden;
+    border-radius:30px;
+    background:
+        linear-gradient(135deg,#f4e2d7,#ead0c5,#f8e8df);
+    box-shadow:var(--shadow);
+}
+
+.map-line{
+    position:absolute;
+    height:48px;
+    background:rgba(255,255,255,.55);
+    border-radius:50%;
+}
+
+.map-line.one{
+    width:120%;
+    left:-10%;
+    top:32%;
+    transform:rotate(-17deg);
+}
+
+.map-line.two{
+    width:80%;
+    left:10%;
+    top:67%;
+    transform:rotate(23deg);
+}
+
+.map-pin{
+    position:absolute;
+    width:56px;
+    height:56px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50% 50% 50% 0;
+    transform:rotate(-45deg);
+    background:var(--burgundy);
+    color:white;
+    box-shadow:0 8px 25px rgba(80,5,30,.25);
+}
+
+.map-pin span{
+    transform:rotate(45deg);
+    font-size:23px;
+}
+
+.map-label{
+    position:absolute;
+    background:white;
+    color:var(--burgundy);
+    padding:8px 13px;
+    border-radius:14px;
+    font-size:12px;
+    box-shadow:0 5px 18px rgba(50,0,20,.12);
+}
+
+
+/* =========================================================
+   QUIZ
+========================================================= */
+
+.quiz{
+    max-width:780px;
+    margin:auto;
+    background:white;
+    padding:40px;
+    border-radius:28px;
+    box-shadow:var(--shadow);
+}
+
+.quiz-progress{
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:22px;
+}
+
+.question{
+    display:none;
+}
+
+.question.active{
+    display:block;
+    animation:questionIn .45s ease;
+}
+
+@keyframes questionIn{
+    from{
+        opacity:0;
+        transform:translateX(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+.question h3{
+    text-align:center;
+    color:var(--burgundy);
+    line-height:1.7;
+    margin-bottom:24px;
+}
+
+.answers{
+    display:grid;
+    gap:11px;
+}
+
+.answer{
+    width:100%;
+    border:1px solid #edcbd5;
+    background:#fff8fa;
+    color:var(--text);
+    border-radius:15px;
+    padding:15px;
+    cursor:pointer;
+    transition:.25s;
+    font-size:15px;
+}
+
+.answer:hover{
+    background:#fce4eb;
+    transform:translateX(3px);
+}
+
+.quiz-result{
+    display:none;
+    text-align:center;
+}
+
+
+/* =========================================================
+   HEDİYE KUTUSU
+========================================================= */
+
+.gift-box{
+    text-align:center;
+}
+
+.gift{
+    position:relative;
+    width:170px;
+    height:140px;
+    margin:30px auto;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.gift:hover{
+    transform:scale(1.08);
+}
+
+.gift-body{
+    position:absolute;
+    bottom:0;
+    width:170px;
+    height:105px;
+    border-radius:9px;
+    background:linear-gradient(135deg,#d14f73,#8c2044);
+}
+
+.gift-lid{
+    position:absolute;
+    top:10px;
+    left:-8px;
+    width:186px;
+    height:38px;
+    border-radius:9px;
+    background:#c03e64;
+    z-index:2;
+}
+
+.gift-ribbon{
+    position:absolute;
+    left:70px;
+    top:0;
+    width:28px;
+    height:140px;
+    background:#ffd5df;
+    z-index:3;
+}
+
+.gift-bow{
+    position:absolute;
+    top:-25px;
+    left:48px;
+    font-size:55px;
+    z-index:5;
+}
+
+.gift-message{
+    display:none;
+    max-width:680px;
+    margin:25px auto;
+    padding:30px;
+    background:white;
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    line-height:1.9;
+}
+
+.gift-message.show{
+    display:block;
+    animation:openingIn .7s ease;
+}
+
+
+/* =========================================================
+   GİZLİ PIN
+========================================================= */
+
+.secret-section{
+    max-width:1080px;
+    border-radius:32px;
+    background:linear-gradient(145deg,#250711,#69162f);
+    color:white;
+    box-shadow:var(--shadow-heavy);
+}
+
+.secret-section .section-title{
+    color:white;
+}
+
+.secret-section .section-subtitle{
+    color:#f2cbd6;
+}
+
+.pin-area{
+    max-width:370px;
+    margin:auto;
+    text-align:center;
+}
+
+.pin-input{
+    width:100%;
+    border:none;
+    outline:none;
+    padding:16px;
+    border-radius:15px;
+    text-align:center;
+    letter-spacing:9px;
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.pin-error{
+    min-height:20px;
+    margin-top:10px;
+    color:#ffbdce;
+    font-size:13px;
+}
+
+.secret-content{
+    display:none;
+    max-width:760px;
+    margin:auto;
+    text-align:center;
+}
+
+.secret-content.show{
+    display:block;
+    animation:openingIn .8s ease;
+}
+
+.secret-heart{
+    font-size:80px;
+    animation:pulse 1.2s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.18);
+    }
+}
+
+
+/* =========================================================
+   GELECEK SAYFALAR
+========================================================= */
+
+.future-box{
+    padding:45px 25px;
+    border-radius:30px;
+    background:linear-gradient(135deg,#fff4f7,#f8e2e9);
+    text-align:center;
+}
+
+.future-list{
+    max-width:750px;
+    margin:25px auto;
+    display:grid;
+    gap:12px;
+}
+
+.future-item{
+    background:white;
+    border-radius:16px;
+    padding:18px;
+    box-shadow:0 5px 20px rgba(80,10,35,.05);
+}
+
+
+/* =========================================================
+   SÖZLER
+========================================================= */
+
+.quotes{
+    max-width:880px;
+    margin:auto;
+    display:grid;
+    gap:16px;
+}
+
 .quote{
-background:#fff;
-padding:28px;
-border-radius:25px;
-border-left:5px solid #a71932;
-box-shadow:0 10px 25px rgba(80,20,40,.06)
+    background:white;
+    border-left:5px solid var(--rose);
+    border-radius:16px;
+    padding:24px 27px;
+    box-shadow:0 8px 25px rgba(80,10,35,.06);
+    line-height:1.9;
 }
-.quote p{
-font-size:20px;
-font-style:italic
+
+.quote-author{
+    display:block;
+    color:var(--burgundy);
+    margin-top:9px;
+    font-size:13px;
 }
-.quote cite{
-display:block;
-margin-top:12px;
-color:#a71932;
-font-weight:bold
+
+
+/* =========================================================
+   MEKTUP
+========================================================= */
+
+.letter{
+    background:white;
+    padding:45px;
+    border-radius:28px;
+    box-shadow:var(--shadow);
+    text-align:center;
+}
+
+.letter p{
+    font-size:17px;
+    line-height:2;
+    margin-bottom:17px;
 }
 
 .signature{
-text-align:center;
-padding:80px 20px
+    margin-top:30px;
+    color:var(--burgundy);
+    font-size:27px;
+    font-style:italic;
 }
-.signature-name{
-font-size:55px;
-font-style:italic;
-color:#a71932
+
+
+/* =========================================================
+   FİNAL
+========================================================= */
+
+.final{
+    text-align:center;
+    padding-bottom:140px;
 }
-.signature-line{
-width:100px;
-height:2px;
-background:#d89aaa;
-margin:12px auto
+
+.final-heart{
+    font-size:95px;
+    animation:pulse 1.4s infinite;
 }
+
+.final h2{
+    color:var(--burgundy);
+    font-size:clamp(34px,7vw,60px);
+    margin:20px 0;
+}
+
+.final p{
+    font-size:19px;
+    line-height:1.9;
+    margin-bottom:25px;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
 
 .modal{
-position:fixed;
-inset:0;
-background:rgba(35,5,15,.85);
-z-index:2000;
-display:none;
-align-items:center;
-justify-content:center;
-padding:20px
-}
-.modal.show{display:flex}
-.modal-box{
-background:#fff8fa;
-max-width:700px;
-max-height:85vh;
-overflow:auto;
-padding:35px;
-border-radius:28px;
-position:relative
-}
-.close{
-position:absolute;
-right:15px;
-top:10px;
-border:none;
-background:none;
-font-size:30px;
-color:#a71932;
-cursor:pointer
-}
-.lightbox img{
-max-width:95vw;
-max-height:85vh;
-object-fit:contain;
-border-radius:15px
+    position:fixed;
+    inset:0;
+    z-index:20000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(25,0,10,.82);
 }
 
-/* MÜZİK PLAYER */
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    position:relative;
+    width:100%;
+    max-width:650px;
+    max-height:90vh;
+    overflow:auto;
+    padding:38px;
+    border-radius:27px;
+    background:#fff8fa;
+    color:var(--text);
+    text-align:center;
+    box-shadow:0 30px 90px rgba(0,0,0,.35);
+}
+
+.modal-close{
+    position:absolute;
+    top:8px;
+    right:15px;
+    border:none;
+    background:none;
+    color:var(--burgundy);
+    font-size:32px;
+    cursor:pointer;
+}
+
+.modal-content-text{
+    font-size:18px;
+    line-height:1.9;
+}
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+#lightbox{
+    cursor:zoom-out;
+}
+
+#lightbox img{
+    max-width:95vw;
+    max-height:88vh;
+    border-radius:20px;
+    box-shadow:0 25px 80px rgba(0,0,0,.45);
+}
+
+
+/* =========================================================
+   MÜZİK ÇALAR
+========================================================= */
+
 .music-player{
-position:fixed;
-left:0;
-right:0;
-bottom:0;
-z-index:3000;
-background:linear-gradient(135deg,#47091d,#74132f);
-color:white;
-box-shadow:0 -8px 30px rgba(0,0,0,.25)
+    position:fixed;
+    left:10px;
+    right:10px;
+    bottom:10px;
+    z-index:10000;
+    max-width:850px;
+    margin:auto;
+    padding:11px 14px;
+    border-radius:20px;
+    background:rgba(48,7,25,.96);
+    color:white;
+    box-shadow:0 15px 50px rgba(0,0,0,.3);
+    backdrop-filter:blur(15px);
 }
-.music-progress{
-width:100%;
-height:5px;
-background:#4c2632;
-cursor:pointer
+
+.music-row{
+    display:flex;
+    align-items:center;
+    gap:9px;
 }
-.music-progress-bar{
-height:100%;
-width:0;
-background:#ffb0c4
+
+.music-symbol{
+    font-size:23px;
 }
-.music-main{
-max-width:1100px;
-margin:auto;
-min-height:72px;
-display:grid;
-grid-template-columns:52px 1fr auto;
-align-items:center;
-gap:12px;
-padding:8px 15px
+
+.song-title{
+    flex:1;
+    min-width:0;
+    font-size:12px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
-.music-cover{
-width:48px;
-height:48px;
-border-radius:14px;
-background:linear-gradient(135deg,#d51e50,#7d0f30);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:25px
-}
-.music-info{min-width:0}
-.music-title{
-font-size:14px;
-font-weight:bold;
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis
-}
-.music-sub{
-font-size:11px;
-opacity:.7
-}
-.music-extra{
-display:flex;
-align-items:center;
-gap:5px
-}
+
 .music-buttons{
-display:flex;
-align-items:center;
-gap:4px
+    display:flex;
+    gap:5px;
 }
+
 .music-buttons button{
-width:36px;
-height:36px;
-border:0;
-border-radius:50%;
-background:rgba(255,255,255,.1);
-color:white;
-cursor:pointer;
-font-size:15px
+    width:35px;
+    height:35px;
+    border:none;
+    border-radius:50%;
+    color:white;
+    background:#8d2448;
+    cursor:pointer;
+    transition:.2s;
 }
-.music-buttons .play{
-width:43px;
-height:43px;
-background:#d51e50;
-font-size:18px
+
+.music-buttons button:hover{
+    transform:scale(1.08);
+    background:#b53c62;
 }
-.volume{
-width:75px;
-accent-color:#ffb0c4
+
+.progress{
+    display:block;
+    width:100%;
+    margin-top:8px;
+}
+
+.song-count{
+    text-align:center;
+    color:#e5b6c5;
+    font-size:11px;
+    margin-top:4px;
 }
 
 .playlist{
-position:absolute;
-right:15px;
-bottom:82px;
-width:min(390px,calc(100% - 30px));
-background:#fff8fa;
-color:#5d2639;
-border-radius:20px;
-box-shadow:0 10px 40px rgba(0,0,0,.35);
-overflow:hidden;
-display:none
+    display:none;
+    max-height:230px;
+    overflow:auto;
+    margin-top:8px;
+    padding:5px;
+    border-radius:13px;
+    background:#3a0a1d;
 }
-.playlist.show{display:block}
-.playlist-head{
-padding:15px 18px;
-background:#72132f;
-color:white;
-display:flex;
-align-items:center;
-justify-content:space-between
+
+.playlist.show{
+    display:block;
 }
-.playlist-count{
-font-size:12px;
-opacity:.8
+
+.playlist-item{
+    padding:9px;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:12px;
 }
-.song-list{
-max-height:55vh;
-overflow-y:auto
+
+.playlist-item:hover,
+.playlist-item.active{
+    background:#8d2448;
 }
-.song{
-display:flex;
-align-items:center;
-gap:10px;
-padding:12px 15px;
-border-bottom:1px solid #f0dce2;
-cursor:pointer
-}
-.song:hover{background:#fff0f4}
-.song.active{
-background:#f7d6df;
-color:#a71932;
-font-weight:bold
-}
-.song-number{
-width:25px;
-text-align:center;
-font-size:12px;
-color:#a71932
-}
-.song-name{
-flex:1;
-font-size:13px;
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis
-}
+
+
+/* =========================================================
+   YUKARI ÇIK
+========================================================= */
 
 .top-button{
-position:fixed;
-right:15px;
-bottom:95px;
-width:42px;
-height:42px;
-border:0;
-border-radius:50%;
-background:#a71932;
-color:white;
-font-size:18px;
-cursor:pointer;
-z-index:1000;
-display:none
+    position:fixed;
+    right:17px;
+    bottom:95px;
+    z-index:9000;
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    color:white;
+    background:var(--burgundy);
+    cursor:pointer;
+    font-size:20px;
+    box-shadow:0 8px 25px rgba(80,5,30,.25);
 }
-.top-button.show{display:block}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
-text-align:center;
-padding:50px 20px;
-color:#94717c
+    background:#280713;
+    color:#eecbd6;
+    text-align:center;
+    padding:50px 20px 135px;
+    line-height:1.8;
 }
+
+footer strong{
+    color:white;
+    font-size:20px;
+}
+
+
+/* =========================================================
+   KALP KONFETİ
+========================================================= */
+
+.confetti-heart{
+    position:fixed;
+    z-index:30000;
+    pointer-events:none;
+    bottom:-40px;
+    animation:confetti linear forwards;
+}
+
+@keyframes confetti{
+    to{
+        transform:translateY(-115vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
 .reveal{
-opacity:0;
-transform:translateY(25px);
-transition:.7s
+    opacity:0;
+    transform:translateY(35px);
+    transition:opacity .8s ease,transform .8s ease;
 }
+
 .reveal.visible{
-opacity:1;
-transform:none
+    opacity:1;
+    transform:translateY(0);
 }
 
-@media(max-width:800px){
 
-header{padding:13px 15px}
-.header-inner{display:block}
-.logo{
-text-align:center;
-font-size:24px;
-margin-bottom:7px
-}
-nav{
-justify-content:center;
-gap:3px
-}
-nav a{
-font-size:11px;
-padding:5px 7px
+/* =========================================================
+   MOBİL
+========================================================= */
+
+@media(max-width:780px){
+
+    .nav{
+        flex-direction:column;
+        padding:10px;
+    }
+
+    .nav-links{
+        justify-content:center;
+    }
+
+    .nav-links a{
+        font-size:10px;
+        padding:6px 7px;
+    }
+
+    section{
+        padding:60px 15px;
+    }
+
+    .hero{
+        min-height:72vh;
+    }
+
+    .hero-photo{
+        width:250px;
+        height:250px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .hero-buttons .btn{
+        width:90%;
+        max-width:300px;
+    }
+
+    .gallery,
+    .love-things,
+    .reasons,
+    .open-cards{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-item img{
+        height:400px;
+    }
+
+    .zodiac-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .timeline:before{
+        left:14px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even){
+        width:100%;
+        left:0;
+        padding:15px 8px 15px 43px;
+        text-align:left;
+    }
+
+    .timeline-item:nth-child(odd){
+        text-align:left;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot{
+        left:6px;
+        right:auto;
+    }
+
+    .story-box,
+    .letter,
+    .quiz{
+        padding:27px 18px;
+    }
+
+    .memory-map{
+        min-height:520px;
+    }
+
+    .map-label{
+        font-size:10px;
+    }
+
+    .music-player{
+        left:6px;
+        right:6px;
+        bottom:6px;
+    }
+
+    .music-buttons button{
+        width:32px;
+        height:32px;
+    }
+
+    .modal-box{
+        padding:30px 20px;
+    }
+
 }
 
-.hero{
-grid-template-columns:1fr;
-padding-top:20px
-}
-.hero-text{text-align:center}
-.hero-text h1{font-size:48px}
-.hero-photo img{height:430px}
 
-.gallery{grid-template-columns:1fr}
-.gallery-item img{height:400px}
-.cards{grid-template-columns:1fr}
-.quote-grid{grid-template-columns:1fr}
-.zodiac-grid{grid-template-columns:repeat(3,1fr)}
+/* =========================================================
+   ÇOK KÜÇÜK EKRAN
+========================================================= */
 
-.timeline:before{left:10px}
-.timeline-item,
-.timeline-item:nth-child(even){
-width:100%;
-margin-left:0;
-padding-left:35px;
-padding-right:0
-}
-.timeline-dot,
-.timeline-item:nth-child(even) .timeline-dot{
-left:1px;
-right:auto
-}
+@media(max-width:420px){
 
-.music-main{
-grid-template-columns:43px 1fr auto;
-gap:6px;
-padding:7px 8px
-}
-.music-cover{
-width:42px;
-height:42px;
-font-size:20px
-}
-.music-extra{
-display:flex;
-align-items:center;
-gap:2px
-}
-.music-buttons{
-display:flex;
-align-items:center;
-gap:2px
-}
-.music-buttons button{
-width:31px;
-height:31px;
-font-size:12px
-}
-.music-buttons .play{
-width:37px;
-height:37px;
-font-size:15px
-}
-.volume{display:none}
-.music-title{font-size:11px}
-.music-sub{font-size:9px}
+    .counter-box{
+        min-width:57px;
+    }
 
-.playlist{
-left:8px;
-right:8px;
-bottom:76px;
-width:auto
+    .counter-number{
+        font-size:17px;
+    }
+
+    .opening-date{
+        font-size:42px;
+        letter-spacing:2px;
+    }
+
+    .opening-message{
+        font-size:17px;
+    }
+
+    .zodiac-grid{
+        gap:9px;
+    }
+
+    .zodiac{
+        padding:17px 5px;
+    }
+
+    .music-symbol{
+        display:none;
+    }
+
 }
 
-.song-list{max-height:55vh}
-
-.counter-grid{gap:7px}
-.counter-item{min-width:60px}
-.counter-number{font-size:28px}
-.counter-dot{font-size:20px}
-
-.section-title{font-size:42px}
-.signature-name{font-size:42px}
-
-.video-box{
-padding:7px;
-border-radius:22px
-}
-.video-box video{
-border-radius:16px
-}
-}
-
-@media(prefers-reduced-motion:reduce){
-*{
-scroll-behavior:auto!important;
-animation:none!important;
-transition:none!important
-}
-}
 </style>
 </head>
 
 <body>
 
-<!-- AÇILIŞ -->
+
+<!-- =========================================================
+     AÇILIŞ
+========================================================= -->
+
 <div id="opening">
-<div class="opening-content">
-<div class="opening-heart">❤️</div>
-<div class="opening-date">16.10.2024</div>
-<div class="opening-text">Birlikte başlayan hikâyemiz...</div>
-<div class="opening-infinity">∞</div>
+
+    <div class="float-heart" style="left:7%;font-size:20px;animation-duration:11s;">♥</div>
+    <div class="float-heart" style="left:18%;font-size:15px;animation-duration:14s;animation-delay:2s;">♥</div>
+    <div class="float-heart" style="left:31%;font-size:27px;animation-duration:12s;">♥</div>
+    <div class="float-heart" style="left:47%;font-size:18px;animation-duration:16s;">♥</div>
+    <div class="float-heart" style="left:63%;font-size:25px;animation-duration:13s;">♥</div>
+    <div class="float-heart" style="left:79%;font-size:17px;animation-duration:15s;">♥</div>
+    <div class="float-heart" style="left:91%;font-size:23px;animation-duration:12s;">♥</div>
+
+    <div class="opening-inner">
+
+        <div class="opening-date">
+            16.10.2024
+        </div>
+
+        <div class="opening-line"></div>
+
+        <div class="opening-message">
+            Bazı tarihler takvimde kalır...<br>
+            Bazıları ise bir ömür kalpte. ❤️
+        </div>
+
+        <div class="opening-small">
+            HİKÂYEMİZİN BAŞLANGICI
+        </div>
+
+        <div class="opening-click">
+            ❤️ Birkaç saniye sonra hikâyemiz başlayacak...
+        </div>
+
+    </div>
+
 </div>
-</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header>
-<div class="header-inner">
-<div class="logo">Fatmasoylu <span>❤️</span></div>
-<nav>
-<a href="#hikayemiz">Hikâyemiz</a>
-<a href="#video">Video</a>
-<a href="#anilar">Anılar</a>
-<a href="#burclar">Burçlar</a>
-<a href="#sozler">Sözler</a>
-</nav>
-</div>
+
+    <nav class="nav">
+
+        <a href="#top" class="logo">
+            Fatmasoylu ❤️
+        </a>
+
+        <div class="nav-links">
+
+            <a href="#hikayemiz">Hikâyemiz</a>
+            <a href="#video">Video</a>
+            <a href="#anilar">Anılar</a>
+            <a href="#zaman">Zaman</a>
+            <a href="#nedenler">Neden Sen?</a>
+            <a href="#burclar">Burçlar</a>
+            <a href="#kartlar">Mektuplar</a>
+            <a href="#quiz">Quiz</a>
+            <a href="#gizli">Gizli</a>
+
+        </div>
+
+    </nav>
+
 </header>
 
-<main>
 
-<!-- SAYAÇ -->
-<div class="counter reveal">
-<div class="counter-title">💍 Birlikte geçen zaman</div>
-<div class="counter-date">16 Ekim 2024'ten bugüne</div>
+<!-- =========================================================
+     SAYAC
+========================================================= -->
 
-<div class="counter-grid">
+<div class="counter-section">
 
-<div class="counter-item">
-<div class="counter-number" id="years">0</div>
-<div class="counter-label">Yıl</div>
-</div>
+    <div class="counter-title">
+        💍 16 Ekim 2024'ten bugüne birlikte geçen zaman
+    </div>
 
-<div class="counter-dot">•</div>
+    <div class="counter">
 
-<div class="counter-item">
-<div class="counter-number" id="months">0</div>
-<div class="counter-label">Ay</div>
-</div>
+        <div class="counter-box">
+            <span id="years" class="counter-number">0</span>
+            <span class="counter-label">YIL</span>
+        </div>
 
-<div class="counter-dot">•</div>
+        <div class="counter-box">
+            <span id="months" class="counter-number">0</span>
+            <span class="counter-label">AY</span>
+        </div>
 
-<div class="counter-item">
-<div class="counter-number" id="days">0</div>
-<div class="counter-label">Gün</div>
-</div>
+        <div class="counter-box">
+            <span id="days" class="counter-number">0</span>
+            <span class="counter-label">GÜN</span>
+        </div>
 
-<div class="counter-dot">•</div>
+        <div class="counter-box">
+            <span id="hours" class="counter-number">00</span>
+            <span class="counter-label">SAAT</span>
+        </div>
 
-<div class="counter-item">
-<div class="counter-number" id="hours">00</div>
-<div class="counter-label">Saat</div>
-</div>
+        <div class="counter-box">
+            <span id="minutes" class="counter-number">00</span>
+            <span class="counter-label">DAKİKA</span>
+        </div>
 
-<div class="counter-dot">•</div>
+        <div class="counter-box">
+            <span id="seconds" class="counter-number">00</span>
+            <span class="counter-label">SANİYE</span>
+        </div>
 
-<div class="counter-item">
-<div class="counter-number" id="minutes">00</div>
-<div class="counter-label">Dakika</div>
-</div>
-
-<div class="counter-dot">•</div>
-
-<div class="counter-item">
-<div class="counter-number" id="seconds">00</div>
-<div class="counter-label">Saniye</div>
-</div>
+    </div>
 
 </div>
 
-<div class="counter-love">
-❤️ Ve hikâyemiz her saniye devam ediyor...
-</div>
-</div>
 
-<!-- HERO -->
+<main id="top">
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
 <section class="hero reveal">
 
-<div class="hero-text">
-<h1>Bizim<br><span>Hikâyemiz</span> ❤️</h1>
+    <div class="hero-content">
 
-<p>
-Bazı hikâyeler kitaplarda yazmaz.
-Bazıları iki insanın kalbinde başlar
-ve her geçen gün biraz daha güzelleşir.
-</p>
+        <img
+            class="hero-photo"
+            src="cicekler.jpg"
+            alt="Bizim güzel anımız"
+        >
 
-<div class="hero-buttons">
-<button class="btn" onclick="openLetter()">💌 Mektubumuzu Oku</button>
-<a class="btn btn-light" href="#video">🎬 Videomuz</a>
-</div>
-</div>
+        <h1>
+            Bizim Hikâyemiz ❤️
+        </h1>
 
-<div class="hero-photo">
-<img src="cicekler.jpg" alt="Anımız">
-</div>
+        <p>
+            Bazı hikâyeler kitaplarda yazmaz.
+            Bazıları iki insanın kalbinde başlar
+            ve her geçen gün biraz daha güzelleşir.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="btn" onclick="openLetter()">
+                💌 Mektubumuzu Oku
+            </button>
+
+            <a class="btn" href="#video">
+                🎬 Videomuz
+            </a>
+
+            <a class="btn" href="#kartlar">
+                💕 Sana Özel
+            </a>
+
+        </div>
+
+    </div>
 
 </section>
 
-<!-- HİKAYE -->
+
+<!-- =========================================================
+     HİKÂYEMİZ
+========================================================= -->
+
 <section id="hikayemiz" class="reveal">
 
-<h2 class="section-title">Bizim Hikâyemiz ❤️</h2>
+    <h2 class="section-title">
+        Bizim Hikâyemiz ❤️
+    </h2>
 
-<p class="section-sub">
-Bir tarih ile başlayan ve her gün yeni bir sayfası yazılan hikâyemiz...
-</p>
+    <p class="section-subtitle">
+        Bir tarih ile başlayan ve her gün yeni bir sayfası
+        yazılan hikâyemiz...
+    </p>
 
-<div class="story">
+    <div class="story-box">
 
-<div class="story-heart">💗</div>
+        <div class="story-heart">
+            💗
+        </div>
 
-<p>16 Ekim 2024...</p>
+        <p>
+            <strong>16 Ekim 2024...</strong>
+        </p>
 
-<p>
-İki insanın hayatını aynı hikâyede buluşturduğu gün.
-O günden sonra zaman sadece geçmedi;
-anılar birikti, gülüşler çoğaldı,
-küçük mutluluklar büyük bir hikâyeye dönüştü.
-</p>
+        <p>
+            İki insanın hayatını aynı hikâyede
+            buluşturduğu gün.
+        </p>
 
-<p>
-Ve en güzel tarafı:
-<strong>hikâyemiz hâlâ devam ediyor.</strong>
-</p>
+        <p>
+            O günden sonra zaman sadece geçmedi;
+            anılar birikti, gülüşler çoğaldı,
+            küçük mutluluklar büyük bir hikâyeye dönüştü.
+        </p>
 
-</div>
-</section>
+        <p>
+            Bazen bir kahve,
+            bazen küçük bir gezi,
+            bazen birlikte çekilmiş bir fotoğraf...
+        </p>
 
-<!-- VIDEO -->
-<section id="video" class="video-section reveal">
+        <p>
+            Hepsi bizim hikâyemizin küçük bir parçası.
+        </p>
 
-<h2 class="section-title">Sana Hazırladığım Video 🎬❤️</h2>
+        <p>
+            Ve en güzel tarafı:
+            <strong>hikâyemiz hâlâ devam ediyor.</strong>
+        </p>
 
-<p class="section-sub">
-Bizim için hazırladığım güzel anların küçük bir hikâyesi...
-</p>
+        <p>
+            İyi ki hayatımdasın.
+            İyi ki bizim hikâyemiz var. ♾️
+        </p>
 
-<div class="video-box">
-
-<video
-id="loveVideo"
-controls
-playsinline
-preload="metadata"
-poster="cicekler.jpg">
-
-<source
-src="7_fotografli_reels_muzikli_5inci_daha_kucuk.mp4"
-type="video/mp4">
-
-Tarayıcınız video oynatmayı desteklemiyor.
-</video>
-
-<div class="video-caption">
-<h3>Bizim Hikâyemiz ❤️</h3>
-<p>İyi ki hayatımdasın. İyi ki bizim hikâyemiz var. ♾️</p>
-</div>
-
-</div>
+    </div>
 
 </section>
 
-<!-- ZAMAN ÇİZELGESİ -->
-<section class="reveal">
 
-<h2 class="section-title">Anılarımızın Zamanı</h2>
+<!-- =========================================================
+     VİDEO
+========================================================= -->
 
-<div class="timeline">
+<section id="video" class="reveal">
 
-<div class="timeline-item">
-<div class="timeline-dot"></div>
-<div class="timeline-card">
-<h3>💍 16 Ekim 2024</h3>
-<p>Hikâyemizin en özel sayfası başladı.</p>
-</div>
-</div>
+    <h2 class="section-title">
+        Sana Hazırladığım Video 🎬❤️
+    </h2>
 
-<div class="timeline-item">
-<div class="timeline-dot"></div>
-<div class="timeline-card">
-<h3>❤️ 2025</h3>
-<p>Birlikte yeni anılar, yeni yollar ve güzel günler...</p>
-</div>
-</div>
+    <p class="section-subtitle">
+        Bizim için hazırladığım güzel anların
+        küçük bir hikâyesi...
+    </p>
 
-<div class="timeline-item">
-<div class="timeline-dot"></div>
-<div class="timeline-card">
-<h3>🌹 2026</h3>
-<p>Hikâyemizin yeni sayfalarını birlikte yazmaya devam ediyoruz.</p>
-</div>
-</div>
+    <div class="video-card">
 
-<div class="timeline-item">
-<div class="timeline-dot"></div>
-<div class="timeline-card">
-<h3>♾️ Gelecek</h3>
-<p>Henüz yazılmamış binlerce güzel anı bizi bekliyor.</p>
-</div>
-</div>
+        <video
+            id="loveVideo"
+            controls
+            playsinline
+            preload="metadata"
+            poster="cicekler.jpg"
+        >
 
-</div>
+            <source
+                src="7_fotografli_reels_muzikli_5inci_daha_kucuk.mp4"
+                type="video/mp4"
+            >
+
+            Tarayıcınız video oynatmayı desteklemiyor.
+
+        </video>
+
+    </div>
+
 </section>
 
-<!-- GALERİ -->
+
+<!-- =========================================================
+     ZAMAN ÇİZELGESİ
+========================================================= -->
+
+<section id="zaman" class="reveal">
+
+    <h2 class="section-title">
+        Anılarımızın Zamanı 🕰️
+    </h2>
+
+    <p class="section-subtitle">
+        Birlikte yazdığımız sayfalardan bazıları...
+    </p>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            <span class="timeline-dot"></span>
+
+            <div class="timeline-card">
+
+                <h3>
+                    💍 16 Ekim 2024
+                </h3>
+
+                <p>
+                    Hikâyemizin en özel sayfası başladı.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <span class="timeline-dot"></span>
+
+            <div class="timeline-card">
+
+                <h3>
+                    ❤️ İlk Anılarımız
+                </h3>
+
+                <p>
+                    Birlikte yaşadığımız küçük ama
+                    unutulmaz anılar birikmeye başladı.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <span class="timeline-dot"></span>
+
+            <div class="timeline-card">
+
+                <h3>
+                    🌹 2025
+                </h3>
+
+                <p>
+                    Birlikte yeni anılar,
+                    yeni yollar ve güzel günler...
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <span class="timeline-dot"></span>
+
+            <div class="timeline-card">
+
+                <h3>
+                    🌹 2026
+                </h3>
+
+                <p>
+                    Hikâyemizin yeni sayfalarını
+                    birlikte yazmaya devam ediyoruz.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <span class="timeline-dot"></span>
+
+            <div class="timeline-card">
+
+                <h3>
+                    ♾️ Gelecek
+                </h3>
+
+                <p>
+                    Henüz yazılmamış binlerce
+                    güzel anı bizi bekliyor.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GALERİ
+========================================================= -->
+
 <section id="anilar" class="reveal">
 
-<h2 class="section-title">Anılarımız 📷</h2>
+    <h2 class="section-title">
+        Anılarımız 📷
+    </h2>
 
-<p class="section-sub">
-Bazı fotoğraflar sadece bir anı değil, koca bir hikâyeyi saklar.
-</p>
+    <p class="section-subtitle">
+        Bazı fotoğraflar sadece bir anı değil,
+        koca bir hikâyeyi saklar.
+    </p>
 
-<div class="gallery">
+    <div class="gallery">
 
-<div class="gallery-item" onclick="openImage('cicekler.jpg')">
-<img src="cicekler.jpg" alt="Çiçeklerle anımız">
-</div>
+        <div
+            class="gallery-item"
+            onclick="openPhoto('cicekler.jpg')"
+        >
 
-<div class="gallery-item" onclick="openImage('gezi.jpg')">
-<img src="gezi.jpg" alt="Gezi anımız">
-</div>
+            <img
+                src="cicekler.jpg"
+                alt="Çiçeklerle anımız"
+            >
 
-<div class="gallery-item" onclick="openImage('kafe.jpg')">
-<img src="kafe.jpg" alt="Kafe anımız">
-</div>
+            <div class="gallery-overlay">
+                ❤️ Güzel bir anımız
+            </div>
 
-</div>
+        </div>
+
+
+        <div
+            class="gallery-item"
+            onclick="openPhoto('gezi.jpg')"
+        >
+
+            <img
+                src="gezi.jpg"
+                alt="Gezi anımız"
+            >
+
+            <div class="gallery-overlay">
+                🌍 Birlikte güzel bir gün
+            </div>
+
+        </div>
+
+
+        <div
+            class="gallery-item"
+            onclick="openPhoto('kafe.jpg')"
+        >
+
+            <img
+                src="kafe.jpg"
+                alt="Kafe anımız"
+            >
+
+            <div class="gallery-overlay">
+                ☕ Küçük bir mutluluk
+            </div>
+
+        </div>
+
+    </div>
+
 </section>
 
-<!-- SEVDİĞİM ŞEYLER -->
+
+<!-- =========================================================
+     SEVDİĞİM ŞEYLER
+========================================================= -->
+
 <section class="reveal">
 
-<h2 class="section-title">Sende Sevdiğim Şeyler 💕</h2>
+    <h2 class="section-title">
+        Sende Sevdiğim Şeyler 💕
+    </h2>
 
-<div class="cards">
+    <p class="section-subtitle">
+        Aslında saymakla bitmez...
+    </p>
 
-<div class="card">
-<div class="card-icon">😊</div>
-<h3>Gülüşün</h3>
-<p>Güldüğünde dünyadaki bütün güzellikler biraz daha güzel geliyor.</p>
-</div>
+    <div class="love-things">
 
-<div class="card">
-<div class="card-icon">❤️</div>
-<h3>Kalbin</h3>
-<p>İçindeki güzellik, seni sen yapan en özel şeylerden biri.</p>
-</div>
+        <div class="love-thing">
 
-<div class="card">
-<div class="card-icon">🌹</div>
-<h3>Sen</h3>
-<p>Sadece olduğun kişi olduğun için bile benim için çok özelsin.</p>
-</div>
+            <div class="love-icon">
+                😊
+            </div>
 
-</div>
+            <h3>
+                Gülüşün
+            </h3>
+
+            <p>
+                Güldüğünde dünyadaki bütün
+                güzellikler biraz daha güzel geliyor.
+            </p>
+
+        </div>
+
+
+        <div class="love-thing">
+
+            <div class="love-icon">
+                ❤️
+            </div>
+
+            <h3>
+                Kalbin
+            </h3>
+
+            <p>
+                İçindeki güzellik, seni sen yapan
+                en özel şeylerden biri.
+            </p>
+
+        </div>
+
+
+        <div class="love-thing">
+
+            <div class="love-icon">
+                🌹
+            </div>
+
+            <h3>
+                Sen
+            </h3>
+
+            <p>
+                Sadece olduğun kişi olduğun için bile
+                benim için çok özelsin.
+            </p>
+
+        </div>
+
+    </div>
+
 </section>
 
-<!-- BURÇLAR -->
+
+<!-- =========================================================
+     10 NEDEN
+========================================================= -->
+
+<section id="nedenler" class="reveal">
+
+    <h2 class="section-title">
+        Sende Sevdiğim 10 Şey 🌹
+    </h2>
+
+    <p class="section-subtitle">
+        Seni anlatmaya 10 madde yetmez ama...
+    </p>
+
+    <div class="reasons">
+
+        <div class="reason">
+            <div class="reason-number">1</div>
+            <div>
+                <h3>Gülüşün</h3>
+                <p>
+                    En sıradan günü bile güzelleştiriyorsun.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="reason">
+            <div class="reason-number">2</div>
+            <div>
+                <h3>Kalbin</h3>
+                <p>
+                    İçindeki güzellik her şeyden daha değerli.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="reason">
+            <div class="reason-number">3</div>
+            <div>
+                <h3>Bakışların</h3>
+                <p>
+                    Bazen hiçbir şey söylemeden
+                    her şeyi anlatıyor.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="reason">
+            <div class="reason-number">4</div>
+            <div>
+                <h3>Yanımda oluşun</h3>
+                <p>
+                    Hayatı paylaşmanın güzelliğini
+                    gösteriyorsun.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="reason">
+            <div class="reason-number">5</div>
+            <div>
+                <h3>Sesin</h3>
+                <p>
+                    Günüme huzur katıyor.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="reason">
+            <div class="reason-number">6</div>
+            <div>
+                <h3>Sabırın</h3>
+                <p>
+                    Beni olduğum gibi kabul etmen
+                    çok değerli.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="reason">
+            <div class="reason-number">7</div>
+            <div>
+                <h3>Birlikte gülmemiz</h3>
+                <p>
+                    Seninle kahkaha attığım
+                    anları çok seviyorum.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="reason">
+            <div class="reason-number">8</div>
+            <div>
+                <h3>Şefkatin</h3>
+                <p>
+                    Küçük şeyleri bile özel
+                    hale getiriyorsun.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="reason">
+            <div class="reason-number">9</div>
+            <div>
+                <h3>Varlığın</h3>
+                <p>
+                    Hayatımda olman başlı başına
+                    bir sebep.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="reason">
+            <div class="reason-number">10</div>
+            <div>
+                <h3>Sen olduğun için</h3>
+                <p>
+                    Seni sevmek için başka bir
+                    sebebe ihtiyacım yok. ❤️
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BURÇLAR
+========================================================= -->
+
 <section id="burclar" class="reveal">
 
-<h2 class="section-title">Burçlar ✨</h2>
+    <h2 class="section-title">
+        Burçlar ✨
+    </h2>
 
-<p class="section-sub">
-Gökyüzündeki 12 farklı hikâye...
-</p>
+    <p class="section-subtitle">
+        Gökyüzündeki 12 farklı hikâye...
+        Bir burca tıkladığında küçük bir mesaj açılır.
+    </p>
 
-<div class="zodiac-grid">
+    <div class="zodiac-grid">
 
-<div class="zodiac"><div class="zodiac-icon">♈</div><strong>Koç</strong><small>21 Mar - 20 Nis</small></div>
-<div class="zodiac"><div class="zodiac-icon">♉</div><strong>Boğa</strong><small>21 Nis - 21 May</small></div>
-<div class="zodiac"><div class="zodiac-icon">♊</div><strong>İkizler</strong><small>22 May - 21 Haz</small></div>
-<div class="zodiac"><div class="zodiac-icon">♋</div><strong>Yengeç</strong><small>22 Haz - 22 Tem</small></div>
-<div class="zodiac"><div class="zodiac-icon">♌</div><strong>Aslan</strong><small>23 Tem - 23 Ağu</small></div>
-<div class="zodiac"><div class="zodiac-icon">♍</div><strong>Başak</strong><small>24 Ağu - 23 Eyl</small></div>
-<div class="zodiac"><div class="zodiac-icon">♎</div><strong>Terazi</strong><small>24 Eyl - 23 Eki</small></div>
-<div class="zodiac"><div class="zodiac-icon">♏</div><strong>Akrep</strong><small>24 Eki - 22 Kas</small></div>
-<div class="zodiac"><div class="zodiac-icon">♐</div><strong>Yay</strong><small>23 Kas - 21 Ara</small></div>
-<div class="zodiac"><div class="zodiac-icon">♑</div><strong>Oğlak</strong><small>22 Ara - 20 Oca</small></div>
-<div class="zodiac"><div class="zodiac-icon">♒</div><strong>Kova</strong><small>21 Oca - 19 Şub</small></div>
-<div class="zodiac"><div class="zodiac-icon">♓</div><strong>Balık</strong><small>20 Şub - 20 Mar</small></div>
+        <div class="zodiac" onclick="zodiac('Koç','21 Mart - 20 Nisan')">
+            <span class="zodiac-symbol">♈</span>
+            <strong>Koç</strong>
+            <small>21 Mar - 20 Nis</small>
+        </div>
 
-</div>
+        <div class="zodiac" onclick="zodiac('Boğa','21 Nisan - 21 Mayıs')">
+            <span class="zodiac-symbol">♉</span>
+            <strong>Boğa</strong>
+            <small>21 Nis - 21 May</small>
+        </div>
+
+        <div class="zodiac" onclick="zodiac('İkizler','22 Mayıs - 21 Haziran')">
+            <span class="zodiac-symbol">♊</span>
+            <strong>İkizler</strong>
+            <small>22 May - 21 Haz</small>
+        </div>
+
+        <div class="zodiac" onclick="zodiac('Yengeç','22 Haziran - 22 Temmuz')">
+            <span class="zodiac-symbol">♋</span>
+            <strong>Yengeç</strong>
+            <small>22 Haz - 22 Tem</small>
+        </div>
+
+        <div class="zodiac" onclick="zodiac('Aslan','23 Temmuz - 23 Ağustos')">
+            <span class="zodiac-symbol">♌</span>
+            <strong>Aslan</strong>
+            <small>23 Tem - 23 Ağu</small>
+        </div>
+
+        <div class="zodiac" onclick="zodiac('Başak','24 Ağustos - 23 Eylül')">
+            <span class="zodiac-symbol">♍</span>
+            <strong>Başak</strong>
+            <small>24 Ağu - 23 Eyl</small>
+        </div>
+
+        <div class="zodiac" onclick="zodiac('Terazi','24 Eylül - 23 Ekim')">
+            <span class="zodiac-symbol">♎</span>
+            <strong>Terazi</strong>
+            <small>24 Eyl - 23 Eki</small>
+        </div>
+
+        <div class="zodiac" onclick="zodiac('Akrep','24 Ekim - 22 Kasım')">
+            <span class="zodiac-symbol">♏</span>
+            <strong>Akrep</strong>
+            <small>24 Eki - 22 Kas</small>
+        </div>
+
+        <div class="zodiac" onclick="zodiac('Yay','23 Kasım - 21 Aralık')">
+            <span class="zodiac-symbol">♐</span>
+            <strong>Yay</strong>
+            <small>23 Kas - 21 Ara</small>
+        </div>
+
+        <div class="zodiac" onclick="zodiac('Oğlak','22 Aralık - 20 Ocak')">
+            <span class="zodiac-symbol">♑</span>
+            <strong>Oğlak</strong>
+            <small>22 Ara - 20 Oca</small>
+        </div>
+
+        <div class="zodiac" onclick="zodiac('Kova','21 Ocak - 19 Şubat')">
+            <span class="zodiac-symbol">♒</span>
+            <strong>Kova</strong>
+            <small>21 Oca - 19 Şub</small>
+        </div>
+
+        <div class="zodiac" onclick="zodiac('Balık','20 Şubat - 20 Mart')">
+            <span class="zodiac-symbol">♓</span>
+            <strong>Balık</strong>
+            <small>20 Şub - 20 Mar</small>
+        </div>
+
+    </div>
+
 </section>
 
-<!-- SÖZLER -->
+
+<!-- =========================================================
+     AÇILABİLİR MEKTUPLAR
+========================================================= -->
+
+<section id="kartlar" class="reveal">
+
+    <h2 class="section-title">
+        Bunu Ne Zaman Açmalısın? 💌
+    </h2>
+
+    <p class="section-subtitle">
+        Her kartın içinde sana özel küçük bir mesaj var.
+    </p>
+
+    <div class="open-cards">
+
+        <button
+            class="open-card"
+            onclick="openWhen(
+                'Mutlu olduğunda aç ❤️',
+                'Mutluluğunu paylaşabileceğin ilk insan ben olmak isterim. Gülüşün hiç eksilmesin. Seni çok seviyorum.'
+            )"
+        >
+            <span class="open-card-icon">😊</span>
+            <strong>Mutlu olduğunda</strong>
+            aç ❤️
+        </button>
+
+
+        <button
+            class="open-card"
+            onclick="openWhen(
+                'Canın sıkıldığında aç 🥺',
+                'Bugün kötü geçebilir. Ama unutma, her kötü gün geçer. Ben her zaman senin yanında olmak istiyorum.'
+            )"
+        >
+            <span class="open-card-icon">🥺</span>
+            <strong>Canın sıkıldığında</strong>
+            aç ❤️
+        </button>
+
+
+        <button
+            class="open-card"
+            onclick="openWhen(
+                'Beni özlediğinde aç 💋',
+                'Ben de seni özlüyorum. Aramızda mesafe olsa bile kalbimin en güzel yerinde hep sen varsın.'
+            )"
+        >
+            <span class="open-card-icon">💋</span>
+            <strong>Beni özlediğinde</strong>
+            aç ❤️
+        </button>
+
+
+        <button
+            class="open-card"
+            onclick="openWhen(
+                'Bana kızdığında aç 😠',
+                'Kızgın olabilirsin. Ama seni üzmek hiçbir zaman isteyeceğim bir şey değil. Seni seviyorum.'
+            )"
+        >
+            <span class="open-card-icon">😠</span>
+            <strong>Bana kızdığında</strong>
+            aç ❤️
+        </button>
+
+
+        <button
+            class="open-card"
+            onclick="openWhen(
+                'Uyuyamadığında aç 🌙',
+                'Gözlerini kapat ve güzel bir günümüzü düşün. Sonra şunu bil: yarın yine seni seveceğim.'
+            )"
+        >
+            <span class="open-card-icon">🌙</span>
+            <strong>Uyuyamadığında</strong>
+            aç ❤️
+        </button>
+
+
+        <button
+            class="open-card"
+            onclick="openWhen(
+                'Beni sevdiğini düşündüğünde aç ❤️',
+                'Yanılmıyorsun. Seni gerçekten çok seviyorum. Kelimelerin anlatabileceğinden çok daha fazla.'
+            )"
+        >
+            <span class="open-card-icon">❤️</span>
+            <strong>Beni sevdiğini düşündüğünde</strong>
+            aç ❤️
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ANILAR HARİTASI
+========================================================= -->
+
+<section class="reveal">
+
+    <h2 class="section-title">
+        Anılarımızın Haritası 🗺️
+    </h2>
+
+    <p class="section-subtitle">
+        Bu haritadaki yerler birlikte yaşadığımız
+        güzel anları temsil ediyor.
+    </p>
+
+    <div class="memory-map">
+
+        <div class="map-line one"></div>
+        <div class="map-line two"></div>
+
+        <div
+            class="map-pin"
+            style="left:15%;top:23%;"
+        >
+            <span>❤️</span>
+        </div>
+
+        <div
+            class="map-label"
+            style="left:8%;top:41%;"
+        >
+            İlk güzel anılarımız
+        </div>
+
+
+        <div
+            class="map-pin"
+            style="left:47%;top:48%;"
+        >
+            <span>☕</span>
+        </div>
+
+        <div
+            class="map-label"
+            style="left:42%;top:66%;"
+        >
+            Birlikte kahve
+        </div>
+
+
+        <div
+            class="map-pin"
+            style="right:15%;top:24%;"
+        >
+            <span>📸</span>
+        </div>
+
+        <div
+            class="map-label"
+            style="right:8%;top:42%;"
+        >
+            Güzel fotoğraflar
+        </div>
+
+
+        <div
+            class="map-pin"
+            style="right:28%;bottom:12%;"
+        >
+            <span>💍</span>
+        </div>
+
+        <div
+            class="map-label"
+            style="right:21%;bottom:4%;"
+        >
+            Bizim hikâyemiz
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUIZ
+========================================================= -->
+
+<section id="quiz" class="reveal">
+
+    <h2 class="section-title">
+        Aşkımızı Ne Kadar Biliyorsun? 🎮❤️
+    </h2>
+
+    <p class="section-subtitle">
+        Bakalım kalbimi kaç soruda okuyabileceksin...
+    </p>
+
+    <div class="quiz">
+
+        <div id="quizProgress" class="quiz-progress">
+            Soru 1 / 5
+        </div>
+
+
+        <div
+            class="question active"
+            data-answer="0"
+        >
+
+            <h3>
+                Hikâyemizin başlangıç tarihi hangisi? ❤️
+            </h3>
+
+            <div class="answers">
+
+                <button class="answer" onclick="answerQuiz(0)">
+                    16.10.2024
+                </button>
+
+                <button class="answer" onclick="answerQuiz(1)">
+                    14.02.2024
+                </button>
+
+                <button class="answer" onclick="answerQuiz(2)">
+                    01.01.2025
+                </button>
+
+                <button class="answer" onclick="answerQuiz(3)">
+                    29.10.2024
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="question"
+            data-answer="2"
+        >
+
+            <h3>
+                Bu sitede en çok ne var? 😊
+            </h3>
+
+            <div class="answers">
+
+                <button class="answer" onclick="answerQuiz(0)">
+                    Kediler
+                </button>
+
+                <button class="answer" onclick="answerQuiz(1)">
+                    Arabalar
+                </button>
+
+                <button class="answer" onclick="answerQuiz(2)">
+                    Aşkımız
+                </button>
+
+                <button class="answer" onclick="answerQuiz(3)">
+                    Yemek tarifleri
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="question"
+            data-answer="1"
+        >
+
+            <h3>
+                Fotoğraflarımız neden burada? 📸
+            </h3>
+
+            <div class="answers">
+
+                <button class="answer" onclick="answerQuiz(0)">
+                    Çünkü yer yoktu
+                </button>
+
+                <button class="answer" onclick="answerQuiz(1)">
+                    Güzel anılarımızı saklamak için
+                </button>
+
+                <button class="answer" onclick="answerQuiz(2)">
+                    Tesadüfen
+                </button>
+
+                <button class="answer" onclick="answerQuiz(3)">
+                    Dekorasyon
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="question"
+            data-answer="3"
+        >
+
+            <h3>
+                Bu hikâyede gelecekte ne olmasını istiyorum? ❤️
+            </h3>
+
+            <div class="answers">
+
+                <button class="answer" onclick="answerQuiz(0)">
+                    Bitmesini
+                </button>
+
+                <button class="answer" onclick="answerQuiz(1)">
+                    Unutulmasını
+                </button>
+
+                <button class="answer" onclick="answerQuiz(2)">
+                    Sadece fotoğraf olarak kalmasını
+                </button>
+
+                <button class="answer" onclick="answerQuiz(3)">
+                    Daha nice yıllar devam etmesini
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="question"
+            data-answer="0"
+        >
+
+            <h3>
+                Son soru... Ben seni seviyor muyum? ❤️
+            </h3>
+
+            <div class="answers">
+
+                <button class="answer" onclick="answerQuiz(0)">
+                    Hem de çok ❤️
+                </button>
+
+                <button class="answer" onclick="answerQuiz(1)">
+                    Hayır
+                </button>
+
+                <button class="answer" onclick="answerQuiz(2)">
+                    Biraz
+                </button>
+
+                <button class="answer" onclick="answerQuiz(3)">
+                    Bilmiyorum
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="quizResult"
+            class="quiz-result"
+        >
+
+            <div style="font-size:70px;">
+                ❤️
+            </div>
+
+            <h3 style="color:#711b38;margin:15px 0;">
+                Quiz tamamlandı!
+            </h3>
+
+            <p id="quizScore"></p>
+
+            <br>
+
+            <button
+                class="btn"
+                onclick="restartQuiz()"
+            >
+                Tekrar Oyna
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     HEDİYE
+========================================================= -->
+
+<section class="reveal">
+
+    <h2 class="section-title">
+        Sana Bir Sürprizim Var 🎁
+    </h2>
+
+    <p class="section-subtitle">
+        Kutuyu açmak için dokun...
+    </p>
+
+    <div class="gift-box">
+
+        <div
+            class="gift"
+            onclick="openGift()"
+        >
+
+            <div class="gift-bow">
+                🎀
+            </div>
+
+            <div class="gift-lid"></div>
+            <div class="gift-body"></div>
+            <div class="gift-ribbon"></div>
+
+        </div>
+
+
+        <div
+            id="giftMessage"
+            class="gift-message"
+        >
+
+            <div style="font-size:55px;">
+                ❤️
+            </div>
+
+            <h2 style="color:#711b38;margin:10px 0;">
+                Asıl sürpriz sensin.
+            </h2>
+
+            <p>
+                Çünkü hayatımda olduğun sürece
+                başka hiçbir hediyenin senin kadar
+                değerli olması mümkün değil.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GİZLİ BÖLÜM
+========================================================= -->
+
+<section id="gizli" class="secret-section reveal">
+
+    <h2 class="section-title">
+        Gizli Bir Şey Var 🔐❤️
+    </h2>
+
+    <p class="section-subtitle">
+        Buraya herkes giremez...
+        İçinde sadece sana ait bir mesaj var.
+    </p>
+
+
+    <div id="pinArea" class="pin-area">
+
+        <input
+            id="pinInput"
+            class="pin-input"
+            type="password"
+            inputmode="numeric"
+            maxlength="8"
+            placeholder="PIN"
+        >
+
+        <button
+            class="btn"
+            onclick="unlockSecret()"
+        >
+            🔓 Sürprizi Aç
+        </button>
+
+        <div
+            id="pinError"
+            class="pin-error"
+        ></div>
+
+    </div>
+
+
+    <div
+        id="secretContent"
+        class="secret-content"
+    >
+
+        <div class="secret-heart">
+            ❤️
+        </div>
+
+        <h2>
+            Sürpriz!
+        </h2>
+
+        <p
+            style="
+                font-size:20px;
+                line-height:1.9;
+                margin-top:20px;
+            "
+        >
+
+            Eğer buraya kadar geldiysen,
+            gerçekten merak ettin. 😊
+
+            <br><br>
+
+            <strong>
+                İyi ki hayatımdasın.
+            </strong>
+
+            <br><br>
+
+            İyi ki 16.10.2024'te başlayan
+            bu hikâyenin içindeyiz.
+
+            <br><br>
+
+            Ve ben bu hikâyenin daha çok
+            uzun yıllar devam etmesini istiyorum.
+
+            <br><br>
+
+            Seni seviyorum. ❤️
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GELECEK
+========================================================= -->
+
+<section class="reveal">
+
+    <div class="future-box">
+
+        <h2 class="section-title">
+            Daha Yazılmamış Sayfalarımız ✨
+        </h2>
+
+        <p class="section-subtitle">
+            Çünkü bizim hikâyemiz burada bitmiyor.
+        </p>
+
+        <div class="future-list">
+
+            <div class="future-item">
+                ❤️ Daha çok kahkaha
+            </div>
+
+            <div class="future-item">
+                🌍 Birlikte göreceğimiz yeni yerler
+            </div>
+
+            <div class="future-item">
+                📸 Çekeceğimiz yüzlerce yeni fotoğraf
+            </div>
+
+            <div class="future-item">
+                ☕ Birlikte içeceğimiz daha çok kahve
+            </div>
+
+            <div class="future-item">
+                🌙 Gece gece yapacağımız uzun sohbetler
+            </div>
+
+            <div class="future-item">
+                🏡 Birlikte kuracağımız daha nice güzel anılar
+            </div>
+
+            <div class="future-item">
+                ❤️ Ve en önemlisi...
+                birlikte yaşlanmak.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SÖZLER
+========================================================= -->
+
 <section id="sozler" class="reveal">
 
-<h2 class="section-title">Güzel Sözler ✨</h2>
+    <h2 class="section-title">
+        Güzel Sözler ✨
+    </h2>
 
-<div class="quote-grid">
+    <p class="section-subtitle">
+        Kalpten gelen birkaç güzel cümle...
+    </p>
 
-<div class="quote">
-<p>“Yurtta sulh, cihanda sulh.”</p>
-<cite>— Mustafa Kemal Atatürk</cite>
-</div>
+    <div class="quotes">
 
-<div class="quote">
-<p>“Hayatta en hakiki mürşit ilimdir.”</p>
-<cite>— Mustafa Kemal Atatürk</cite>
-</div>
+        <div class="quote">
+            “Yurtta sulh, cihanda sulh.”
+            <span class="quote-author">
+                — Mustafa Kemal Atatürk
+            </span>
+        </div>
 
-<div class="quote">
-<p>
-“Beni görmek demek mutlaka yüzümü görmek demek değildir. Benim fikirlerimi, benim duygularımı anlıyorsanız ve hissediyorsanız bu yeterlidir.”
-</p>
-<cite>— Mustafa Kemal Atatürk</cite>
-</div>
 
-<div class="quote">
-<p>“Ne olursan ol, yine gel.”</p>
-<cite>— Mevlânâ</cite>
-</div>
+        <div class="quote">
+            “Hayatta en hakiki mürşit ilimdir.”
+            <span class="quote-author">
+                — Mustafa Kemal Atatürk
+            </span>
+        </div>
 
-<div class="quote">
-<p>“Kendin ol; diğer herkes zaten alınmış.”</p>
-<cite>— Oscar Wilde</cite>
-</div>
 
-<div class="quote">
-<p>
-“Sevgi, iki insanın birbirine bakması değil; birlikte aynı yöne bakmasıdır.”
-</p>
-<cite>— Antoine de Saint-Exupéry</cite>
-</div>
+        <div class="quote">
+            “Beni görmek demek mutlaka yüzümü görmek demek değildir.
+            Benim fikirlerimi, benim duygularımı anlıyorsanız
+            ve hissediyorsanız bu yeterlidir.”
+            <span class="quote-author">
+                — Mustafa Kemal Atatürk
+            </span>
+        </div>
 
-</div>
+
+        <div class="quote">
+            “Ne olursan ol, yine gel.”
+            <span class="quote-author">
+                — Mevlânâ
+            </span>
+        </div>
+
+
+        <div class="quote">
+            “Kendin ol; diğer herkes zaten alınmış.”
+            <span class="quote-author">
+                — Oscar Wilde
+            </span>
+        </div>
+
+
+        <div class="quote">
+            “Sevgi, iki insanın birbirine bakması değil;
+            birlikte aynı yöne bakmasıdır.”
+            <span class="quote-author">
+                — Antoine de Saint-Exupéry
+            </span>
+        </div>
+
+    </div>
+
 </section>
 
-<!-- İMZA -->
-<section class="signature reveal">
 
-<div class="signature-name">Fatmasoylu</div>
-<div class="signature-line"></div>
-<p>❤️ Sevgiyle yazılmış bir hikâyenin imzası...</p>
+<!-- =========================================================
+     MEKTUP
+========================================================= -->
+
+<section class="reveal">
+
+    <div class="letter">
+
+        <h2 class="section-title">
+            💌 Mektubumuz
+        </h2>
+
+        <p>
+            Sevgilim,
+        </p>
+
+        <p>
+            Bazı insanlar hayatımıza girer
+            ve hayatımızın yönünü değiştirir.
+        </p>
+
+        <p>
+            Sen benim hayatımda sadece bir insan olmadın;
+            en güzel anılarımın, en güzel gülüşlerimin
+            ve en değerli günlerimin bir parçası oldun.
+        </p>
+
+        <p>
+            16.10.2024 tarihinden beri geçen her gün,
+            hikâyemize yeni bir cümle ekledi.
+        </p>
+
+        <p>
+            Bazen güldük, bazen yorulduk,
+            ama en önemlisi hep birlikte olduk.
+        </p>
+
+        <p>
+            Daha yazılacak çok sayfamız,
+            yaşanacak çok güzel günümüz var.
+        </p>
+
+        <p>
+            Seni seviyorum. ❤️
+        </p>
+
+        <div class="signature">
+            Fatmasoylu ❤️
+        </div>
+
+    </div>
 
 </section>
+
+
+<!-- =========================================================
+     FİNAL
+========================================================= -->
+
+<section class="final reveal">
+
+    <div class="final-heart">
+        ❤️
+    </div>
+
+    <h2>
+        Bir sorum var...
+    </h2>
+
+    <p>
+        Bu hikâyenin bundan sonraki bütün
+        sayfalarında da benimle olur musun?
+    </p>
+
+    <button
+        class="btn"
+        onclick="finalYes()"
+    >
+        ❤️ Her zaman
+    </button>
+
+</section>
+
 
 </main>
 
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
 <footer>
-❤️ Fatmasoylu — Aşk, Anılar ve Güzel Anlar<br>
-<small>16.10.2024 ∞</small>
+
+    <strong>
+        Fatmasoylu ❤️
+    </strong>
+
+    <br>
+
+    Aşk, Anılar ve Güzel Anlar
+
+    <br><br>
+
+    16.10.2024 ∞
+
+    <br><br>
+
+    ❤️ Sevgiyle yazılmış bir hikâyenin imzası...
+
 </footer>
 
-<!-- MEKTUP -->
-<div class="modal" id="letterModal" onclick="closeLetterOutside(event)">
 
-<div class="modal-box">
+<!-- =========================================================
+     MODAL
+========================================================= -->
 
-<button class="close" onclick="closeLetter()">×</button>
+<div
+    id="modal"
+    class="modal"
+>
 
-<h2 class="section-title" style="font-size:38px">
-💌 Mektubumuz
-</h2>
+    <div class="modal-box">
 
-<p>Sevgilim,</p>
+        <button
+            class="modal-close"
+            onclick="closeModal()"
+        >
+            ×
+        </button>
 
-<br>
+        <div id="modalContent"></div>
 
-<p>
-Bazı insanlar hayatımıza girer ve hayatımızın yönünü değiştirir.
-Sen benim hayatımda sadece bir insan olmadın;
-en güzel anılarımın, en güzel gülüşlerimin
-ve en değerli günlerimin bir parçası oldun.
-</p>
-
-<br>
-
-<p>
-16.10.2024 tarihinden beri geçen her gün,
-hikâyemize yeni bir cümle ekledi.
-Bazen güldük, bazen yorulduk,
-ama en önemlisi hep birlikte olduk.
-</p>
-
-<br>
-
-<p>
-Daha yazılacak çok sayfamız,
-yaşanacak çok güzel günümüz var.
-</p>
-
-<br>
-
-<p style="text-align:center;font-size:25px">
-Seni seviyorum. ❤️
-</p>
+    </div>
 
 </div>
+
+
+<!-- =========================================================
+     LIGHTBOX
+========================================================= -->
+
+<div
+    id="lightbox"
+    class="modal"
+    onclick="closePhoto()"
+>
+
+    <img
+        id="lightboxImg"
+        src=""
+        alt="Büyütülmüş fotoğraf"
+    >
+
 </div>
 
-<!-- FOTOĞRAF -->
-<div class="modal lightbox" id="imageModal" onclick="closeImage()">
-<img id="lightboxImage" src="" alt="Fotoğraf">
-</div>
 
-<!-- MÜZİK PLAYER -->
+<!-- =========================================================
+     MÜZİK ÇALAR
+========================================================= -->
+
 <div class="music-player">
 
-<div class="music-progress" id="musicProgress">
-<div class="music-progress-bar" id="musicProgressBar"></div>
+    <div class="music-row">
+
+        <div class="music-symbol">
+            🎵
+        </div>
+
+        <div
+            id="songTitle"
+            class="song-title"
+        >
+            Şarkılar yükleniyor...
+        </div>
+
+        <div class="music-buttons">
+
+            <button
+                onclick="previousSong()"
+                title="Önceki"
+            >
+                ⏮
+            </button>
+
+            <button
+                id="playButton"
+                onclick="toggleMusic()"
+                title="Oynat / Duraklat"
+            >
+                ▶
+            </button>
+
+            <button
+                onclick="nextSong()"
+                title="Sonraki"
+            >
+                ⏭
+            </button>
+
+            <button
+                onclick="togglePlaylist()"
+                title="Playlist"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <input
+        id="progress"
+        class="progress"
+        type="range"
+        min="0"
+        max="100"
+        value="0"
+    >
+
+
+    <div
+        id="songCount"
+        class="song-count"
+    >
+        Şarkılar yükleniyor...
+    </div>
+
+
+    <div
+        id="playlist"
+        class="playlist"
+    ></div>
+
 </div>
 
-<div class="music-main">
 
-<div class="music-cover">🎵</div>
+<!-- =========================================================
+     YUKARI
+========================================================= -->
 
-<div class="music-info">
-<div class="music-title" id="musicTitle">Şarkılarımız</div>
-<div class="music-sub" id="musicStatus">▶ Oynat'a dokunarak müziği başlat</div>
-</div>
-
-<div class="music-extra">
-
-<div class="music-buttons">
-
-<button onclick="previousSong()">⏮</button>
-
-<button class="play" id="playButton" onclick="toggleMusic()">▶</button>
-
-<button onclick="nextSong()">⏭</button>
-
-<button onclick="togglePlaylist()">☰</button>
-
-</div>
-
-<input
-class="volume"
-id="volume"
-type="range"
-min="0"
-max="1"
-step="0.01"
-value="0.8">
-
-</div>
-</div>
-
-<div class="playlist" id="playlist">
-
-<div class="playlist-head">
-<strong>🎵 Şarkılarımız</strong>
-<span class="playlist-count" id="playlistCount">0 şarkı</span>
-</div>
-
-<div class="song-list" id="songList">
-<div style="padding:20px;text-align:center">
-Şarkılar yükleniyor...
-</div>
-</div>
-
-</div>
-
-</div>
-
-<audio id="musicAudio" preload="metadata" playsinline></audio>
-
-<button class="top-button" id="topButton"
-onclick="window.scrollTo({top:0,behavior:'smooth'})">
-↑
+<button
+    class="top-button"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})"
+>
+    ↑
 </button>
+
+
+<audio id="audio"></audio>
+
 
 <script>
 
-/* AÇILIŞ */
+/* =========================================================
+   AÇILIŞ
+========================================================= */
 
-const opening=document.getElementById("opening");
+setTimeout(function(){
 
-function createHeart(){
+    const opening =
+        document.getElementById("opening");
 
-const heart=document.createElement("div");
+    if(opening){
+        opening.classList.add("hide");
+    }
 
-heart.className="open-heart";
-heart.innerHTML=Math.random()>.25?"❤️":"💗";
-heart.style.left=Math.random()*100+"%";
-heart.style.animationDuration=(3.5+Math.random()*2)+"s";
-heart.style.fontSize=(15+Math.random()*25)+"px";
-
-opening.appendChild(heart);
-
-setTimeout(()=>heart.remove(),6000);
-
-}
-
-for(let i=0;i<18;i++){
-setTimeout(createHeart,i*180);
-}
-
-setTimeout(()=>{
-opening.classList.add("hide");
 },5000);
 
 
-/* SAYAÇ */
+/* =========================================================
+   TARİH SAYACI
+========================================================= */
 
-const weddingDate=new Date("2024-10-16T00:00:00");
+const startDate =
+    new Date("2024-10-16T00:00:00");
+
 
 function updateCounter(){
 
-const now=new Date();
+    const now = new Date();
 
-let years=now.getFullYear()-weddingDate.getFullYear();
+    let years =
+        now.getFullYear() -
+        startDate.getFullYear();
 
-let anniversary=new Date(
-weddingDate.getFullYear()+years,
-weddingDate.getMonth(),
-weddingDate.getDate()
-);
+    let anniversary =
+        new Date(
+            startDate.getFullYear() + years,
+            startDate.getMonth(),
+            startDate.getDate()
+        );
 
-if(now<anniversary){
+    if(now < anniversary){
 
-years--;
+        years--;
 
-anniversary=new Date(
-weddingDate.getFullYear()+years,
-weddingDate.getMonth(),
-weddingDate.getDate()
-);
+        anniversary =
+            new Date(
+                startDate.getFullYear() + years,
+                startDate.getMonth(),
+                startDate.getDate()
+            );
 
-}
+    }
 
-let months=now.getMonth()-weddingDate.getMonth();
+    let difference =
+        now.getTime() -
+        anniversary.getTime();
 
-if(months<0)months+=12;
+    let days =
+        Math.floor(
+            difference / 86400000
+        );
 
-const anniversaryThisYear=new Date(
-now.getFullYear(),
-weddingDate.getMonth(),
-weddingDate.getDate()
-);
+    difference %= 86400000;
 
-if(now<anniversaryThisYear){
-months--;
-}
+    let hours =
+        Math.floor(
+            difference / 3600000
+        );
 
-if(months<0)months=11;
+    difference %= 3600000;
 
-let lastAnniversary=new Date(
-now.getFullYear(),
-weddingDate.getMonth(),
-weddingDate.getDate()
-);
+    let minutes =
+        Math.floor(
+            difference / 60000
+        );
 
-if(now<lastAnniversary){
-lastAnniversary.setFullYear(lastAnniversary.getFullYear()-1);
-}
+    difference %= 60000;
 
-const days=Math.floor(
-(now-lastAnniversary)/(1000*60*60*24)
-);
+    let seconds =
+        Math.floor(
+            difference / 1000
+        );
 
-const totalSeconds=Math.floor(
-(now-lastAnniversary)/(1000)
-);
 
-const hours=Math.floor(
-(totalSeconds%(24*60*60))/3600
-);
+    document.getElementById("years").textContent =
+        years;
 
-const minutes=Math.floor(
-(totalSeconds%3600)/60
-);
+    document.getElementById("months").textContent =
+        years * 12;
 
-const seconds=totalSeconds%60;
+    document.getElementById("days").textContent =
+        days;
 
-document.getElementById("years").textContent=years;
-document.getElementById("months").textContent=months;
-document.getElementById("days").textContent=days;
-document.getElementById("hours").textContent=String(hours).padStart(2,"0");
-document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");
-document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2,"0");
+
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2,"0");
 
 }
 
 updateCounter();
+
 setInterval(updateCounter,1000);
 
 
-/* MEKTUP */
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal(html){
+
+    document.getElementById(
+        "modalContent"
+    ).innerHTML = html;
+
+    document.getElementById(
+        "modal"
+    ).classList.add("show");
+
+}
+
+
+function closeModal(){
+
+    document.getElementById(
+        "modal"
+    ).classList.remove("show");
+
+}
+
+
+document.getElementById("modal")
+.addEventListener("click",function(event){
+
+    if(event.target === this){
+        closeModal();
+    }
+
+});
+
+
+/* =========================================================
+   MEKTUP
+========================================================= */
 
 function openLetter(){
-document.getElementById("letterModal").classList.add("show");
-}
 
-function closeLetter(){
-document.getElementById("letterModal").classList.remove("show");
-}
+    openModal(`
 
-function closeLetterOutside(e){
+        <div style="font-size:60px;">
+            💌
+        </div>
 
-if(e.target.id==="letterModal"){
-closeLetter();
-}
+        <h2 style="color:#711b38;margin-bottom:18px;">
+            Sevgilim...
+        </h2>
 
-}
+        <p class="modal-content-text">
 
+            Eğer bu mektubu okuyorsan,
+            sana söylemek istediğim çok şey var.
 
-/* FOTOĞRAF */
+            <br><br>
 
-function openImage(src){
+            Hayatımda olduğun,
+            yanımda olduğun,
+            benimle güldüğün
+            ve benimle bir hayat kurduğun için
+            teşekkür ederim.
 
-document.getElementById("lightboxImage").src=src;
-document.getElementById("imageModal").classList.add("show");
+            <br><br>
 
-}
+            16.10.2024'ten beri geçen her gün
+            bizim hikâyemize yeni bir cümle ekliyor.
 
-function closeImage(){
+            <br><br>
 
-document.getElementById("imageModal").classList.remove("show");
+            Bazen bir gülüş,
+            bazen bir kahve,
+            bazen bir fotoğraf...
 
-}
+            <br><br>
 
+            Hepsi benim için çok değerli.
 
-/* ANİMASYON */
+            <br><br>
 
-const observer=new IntersectionObserver(entries=>{
+            <strong>
+                İyi ki biz olmuşuz. ❤️
+            </strong>
 
-entries.forEach(entry=>{
+        </p>
 
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
-}
-
-});
-
-},{threshold:.08});
-
-document.querySelectorAll(".reveal").forEach(el=>{
-observer.observe(el);
-});
-
-
-/* YUKARI */
-
-window.addEventListener("scroll",()=>{
-
-const btn=document.getElementById("topButton");
-
-if(window.scrollY>500){
-btn.classList.add("show");
-}else{
-btn.classList.remove("show");
-}
-
-});
-
-
-/* MÜZİK */
-
-const audio=document.getElementById("musicAudio");
-const title=document.getElementById("musicTitle");
-const status=document.getElementById("musicStatus");
-const playButton=document.getElementById("playButton");
-const progress=document.getElementById("musicProgress");
-const progressBar=document.getElementById("musicProgressBar");
-const playlist=document.getElementById("playlist");
-const songList=document.getElementById("songList");
-const playlistCount=document.getElementById("playlistCount");
-const volume=document.getElementById("volume");
-
-let songs=[];
-let currentSong=0;
-
-async function loadSongs(){
-
-try{
-
-const response=await fetch(
-"https://api.github.com/repos/fatmasoylu/fatmasoylu/contents/",
-{
-headers:{
-"Accept":"application/vnd.github+json"
-}
-});
-
-if(!response.ok)throw new Error();
-
-const files=await response.json();
-
-songs=files
-.filter(file=>
-file.type==="file" &&
-file.name.toLowerCase().endsWith(".mp3")
-)
-.map(file=>({
-name:file.name,
-url:file.download_url
-}))
-.sort((a,b)=>a.name.localeCompare(b.name,"tr"));
-
-playlistCount.textContent=songs.length+" şarkı";
-
-renderPlaylist();
-
-if(songs.length){
-loadSong(false);
-}else{
-title.textContent="Şarkı bulunamadı";
-}
-
-}catch(error){
-
-title.textContent="Müzik yüklenemedi";
-status.textContent="Sayfayı yenileyin";
+    `);
 
 }
 
+
+/* =========================================================
+   AÇILABİLİR KARTLAR
+========================================================= */
+
+function openWhen(title,message){
+
+    openModal(`
+
+        <div style="font-size:58px;">
+            💌
+        </div>
+
+        <h2
+            style="
+                color:#711b38;
+                margin-bottom:18px;
+            "
+        >
+            ${title}
+        </h2>
+
+        <p class="modal-content-text">
+            ${message}
+        </p>
+
+        <div
+            style="
+                font-size:45px;
+                margin-top:20px;
+            "
+        >
+            ❤️
+        </div>
+
+    `);
+
 }
 
-function cleanSongName(name){
 
-return name
-.replace(/\.mp3$/i,"")
-.replace(/\[Official Audio\]/gi,"")
-.replace(/\[Official Music Video\]/gi,"")
-.replace(/Official Audio/gi,"")
-.replace(/Official Music Video/gi,"")
-.replace(/-/g," ")
-.replace(/_/g," ")
-.replace(/\s+/g," ")
-.trim();
+/* =========================================================
+   BURÇ
+========================================================= */
+
+function zodiac(name,date){
+
+    openModal(`
+
+        <div style="font-size:55px;">
+            ✨
+        </div>
+
+        <h2 style="color:#711b38;">
+            ${name}
+        </h2>
+
+        <p>
+            ${date}
+        </p>
+
+        <br>
+
+        <p class="modal-content-text">
+
+            Gökyüzündeki her burcun
+            kendine ait güzel bir hikâyesi var.
+
+            <br><br>
+
+            Ama benim için en güzel hikâye
+            <strong>
+                bizim hikâyemiz. ❤️
+            </strong>
+
+        </p>
+
+    `);
 
 }
+
+
+/* =========================================================
+   FOTOĞRAF LIGHTBOX
+========================================================= */
+
+function openPhoto(src){
+
+    document.getElementById(
+        "lightboxImg"
+    ).src = src;
+
+    document.getElementById(
+        "lightbox"
+    ).classList.add("show");
+
+}
+
+
+function closePhoto(){
+
+    document.getElementById(
+        "lightbox"
+    ).classList.remove("show");
+
+}
+
+
+/* =========================================================
+   QUIZ
+========================================================= */
+
+let quizIndex = 0;
+let quizScore = 0;
+
+const questions =
+    document.querySelectorAll(".question");
+
+
+function answerQuiz(answer){
+
+    const current =
+        questions[quizIndex];
+
+    const correct =
+        Number(
+            current.dataset.answer
+        );
+
+    if(answer === correct){
+        quizScore++;
+    }
+
+
+    current.classList.remove("active");
+
+    quizIndex++;
+
+
+    if(quizIndex >= questions.length){
+
+        document.getElementById(
+            "quizProgress"
+        ).style.display = "none";
+
+
+        document.getElementById(
+            "quizResult"
+        ).style.display = "block";
+
+
+        document.getElementById(
+            "quizScore"
+        ).innerHTML = `
+
+            5 sorudan
+            <strong>${quizScore}</strong>
+            tanesini bildin. ❤️
+
+            <br><br>
+
+            Ama bu testin en güzel cevabı:
+
+            <strong>
+                SEN ❤️
+            </strong>
+
+        `;
+
+        hearts();
+
+        return;
+    }
+
+
+    questions[quizIndex]
+        .classList.add("active");
+
+
+    document.getElementById(
+        "quizProgress"
+    ).textContent =
+        `Soru ${quizIndex + 1} / 5`;
+
+}
+
+
+function restartQuiz(){
+
+    quizIndex = 0;
+    quizScore = 0;
+
+
+    questions.forEach(function(question){
+
+        question.classList.remove("active");
+
+    });
+
+
+    questions[0]
+        .classList.add("active");
+
+
+    document.getElementById(
+        "quizResult"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "quizProgress"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "quizProgress"
+    ).textContent = "Soru 1 / 5";
+
+}
+
+
+/* =========================================================
+   HEDİYE
+========================================================= */
+
+function openGift(){
+
+    const message =
+        document.getElementById(
+            "giftMessage"
+        );
+
+    message.classList.toggle("show");
+
+
+    if(message.classList.contains("show")){
+
+        hearts();
+
+    }
+
+}
+
+
+/* =========================================================
+   GİZLİ PIN
+========================================================= */
+
+function unlockSecret(){
+
+    const input =
+        document.getElementById(
+            "pinInput"
+        );
+
+    const error =
+        document.getElementById(
+            "pinError"
+        );
+
+
+    if(input.value === "16102024"){
+
+        document.getElementById(
+            "pinArea"
+        ).style.display = "none";
+
+
+        document.getElementById(
+            "secretContent"
+        ).classList.add("show");
+
+
+        localStorage.setItem(
+            "secretUnlocked",
+            "1"
+        );
+
+
+        hearts();
+
+
+    }else{
+
+        error.textContent =
+            "Yanlış PIN ❤️ Biraz daha düşün...";
+
+        input.value = "";
+
+    }
+
+}
+
+
+/* =========================================================
+   PIN DAHA ÖNCE AÇILMIŞSA
+========================================================= */
+
+if(
+    localStorage.getItem("secretUnlocked")
+    === "1"
+){
+
+    document.getElementById(
+        "pinArea"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "secretContent"
+    ).classList.add("show");
+
+}
+
+
+/* =========================================================
+   FİNAL
+========================================================= */
+
+function finalYes(){
+
+    hearts();
+
+    openModal(`
+
+        <div style="font-size:80px;">
+            ❤️
+        </div>
+
+        <h2
+            style="
+                color:#711b38;
+                margin-bottom:18px;
+            "
+        >
+            O zaman söz...
+        </h2>
+
+        <p class="modal-content-text">
+
+            Bundan sonra yazacağımız
+            her sayfada güzel anılar olsun.
+
+            <br><br>
+
+            Daha çok gülelim,
+            daha çok gezelim,
+            daha çok fotoğraf çekelim
+            ve birbirimizi daha çok sevelim.
+
+            <br><br>
+
+            <strong>
+                Hikâyemizin en güzel kısmı
+                henüz yazılmadı. ❤️
+            </strong>
+
+        </p>
+
+    `);
+
+}
+
+
+/* =========================================================
+   KALP KONFETİ
+========================================================= */
+
+function hearts(){
+
+    const symbols = [
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💘",
+        "🌹",
+        "✨"
+    ];
+
+
+    for(let i = 0; i < 45; i++){
+
+        const heart =
+            document.createElement("div");
+
+
+        heart.className =
+            "confetti-heart";
+
+
+        heart.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+
+        heart.style.left =
+            Math.random() * 100 + "%";
+
+
+        heart.style.fontSize =
+            14 +
+            Math.random() * 25 +
+            "px";
+
+
+        heart.style.animationDuration =
+            3 +
+            Math.random() * 4 +
+            "s";
+
+
+        document.body.appendChild(
+            heart
+        );
+
+
+        setTimeout(function(){
+
+            heart.remove();
+
+        },7500);
+
+    }
+
+}
+
+
+/* =========================================================
+   MÜZİK SİSTEMİ
+========================================================= */
+
+const audio =
+    document.getElementById("audio");
+
+const playButton =
+    document.getElementById("playButton");
+
+const songTitle =
+    document.getElementById("songTitle");
+
+const progress =
+    document.getElementById("progress");
+
+const playlist =
+    document.getElementById("playlist");
+
+const songCount =
+    document.getElementById("songCount");
+
+
+let songs = [];
+let currentSong = 0;
+
+
+/* =========================================================
+   GITHUB MP3 LİSTESİ
+========================================================= */
+
+async function loadMusic(){
+
+    try{
+
+        const response =
+            await fetch(
+                "https://api.github.com/repos/fatmasoylu/fatmasoylu/contents/?ref=main"
+            );
+
+
+        if(!response.ok){
+            throw new Error(
+                "GitHub bağlantısı başarısız"
+            );
+        }
+
+
+        const files =
+            await response.json();
+
+
+        songs =
+            files
+            .filter(function(file){
+
+                return (
+                    file.type === "file" &&
+                    file.name
+                        .toLowerCase()
+                        .endsWith(".mp3")
+                );
+
+            })
+            .map(function(file){
+
+                return {
+
+                    name:file.name,
+
+                    url:file.download_url
+
+                };
+
+            });
+
+
+        songs.sort(function(a,b){
+
+            return a.name.localeCompare(
+                b.name,
+                "tr"
+            );
+
+        });
+
+
+        songCount.textContent =
+            songs.length +
+            " şarkı";
+
+
+        renderPlaylist();
+
+
+        if(songs.length > 0){
+
+            loadSong(0,false);
+
+        }else{
+
+            songTitle.textContent =
+                "MP3 bulunamadı";
+
+        }
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        songTitle.textContent =
+            "Şarkılar yüklenemedi";
+
+
+        songCount.textContent =
+            "Müzik bağlantısı bekleniyor";
+
+    }
+
+}
+
+
+/* =========================================================
+   PLAYLIST
+========================================================= */
 
 function renderPlaylist(){
 
-songList.innerHTML="";
+    playlist.innerHTML = "";
 
-songs.forEach((song,index)=>{
 
-const item=document.createElement("div");
+    songs.forEach(function(song,index){
 
-item.className="song";
+        const item =
+            document.createElement("div");
 
-if(index===currentSong){
-item.classList.add("active");
-}
 
-item.innerHTML=`
-<div class="song-number">${index+1}</div>
-<div class="song-name">${cleanSongName(song.name)}</div>
-`;
+        item.className =
+            "playlist-item";
 
-item.onclick=()=>{
 
-currentSong=index;
-loadSong(true);
-togglePlaylist(false);
+        item.textContent =
+            (index + 1) +
+            ". " +
+            song.name;
 
-};
 
-songList.appendChild(item);
+        item.addEventListener(
+            "click",
+            function(){
 
-});
+                loadSong(index,true);
 
-}
+            }
+        );
 
-function loadSong(autoplay){
 
-if(!songs.length)return;
+        playlist.appendChild(item);
 
-const song=songs[currentSong];
+    });
 
-audio.src=song.url;
-audio.load();
 
-title.textContent=cleanSongName(song.name);
-status.textContent="▶ Oynat'a dokunarak müziği başlat";
-playButton.textContent="▶";
-
-renderPlaylist();
-
-if(autoplay){
-
-audio.play().then(()=>{
-
-playButton.textContent="❚❚";
-status.textContent="♪ Çalıyor";
-
-}).catch(()=>{});
+    updatePlaylist();
 
 }
 
+
+/* =========================================================
+   AKTİF ŞARKI
+========================================================= */
+
+function updatePlaylist(){
+
+    const items =
+        document.querySelectorAll(
+            ".playlist-item"
+        );
+
+
+    items.forEach(function(item,index){
+
+        item.classList.toggle(
+            "active",
+            index === currentSong
+        );
+
+    });
+
 }
+
+
+/* =========================================================
+   ŞARKI YÜKLE
+========================================================= */
+
+function loadSong(index,play){
+
+    if(!songs.length){
+        return;
+    }
+
+
+    currentSong =
+        (index + songs.length) %
+        songs.length;
+
+
+    audio.src =
+        songs[currentSong].url;
+
+
+    songTitle.textContent =
+        songs[currentSong].name;
+
+
+    progress.value = 0;
+
+
+    updatePlaylist();
+
+
+    if(play){
+
+        audio
+            .play()
+            .catch(function(){
+
+                console.log(
+                    "Tarayıcı otomatik oynatmayı engelledi."
+                );
+
+            });
+
+    }
+
+}
+
+
+/* =========================================================
+   MÜZİK OYNAT / DURAKLAT
+========================================================= */
 
 function toggleMusic(){
 
-if(!songs.length){
-loadSongs();
-return;
-}
+    if(!audio.src){
+        return;
+    }
 
-if(audio.paused){
 
-audio.play().then(()=>{
+    if(audio.paused){
 
-playButton.textContent="❚❚";
-status.textContent="♪ Çalıyor";
+        audio
+            .play()
+            .catch(function(){});
 
-}).catch(()=>{
+    }else{
 
-status.textContent="▶ Tekrar dokunarak başlat";
+        audio.pause();
 
-});
-
-}else{
-
-audio.pause();
-
-playButton.textContent="▶";
-status.textContent="Duraklatıldı";
+    }
 
 }
 
-}
 
-function previousSong(){
-
-if(!songs.length)return;
-
-currentSong--;
-
-if(currentSong<0){
-currentSong=songs.length-1;
-}
-
-loadSong(true);
-
-}
+/* =========================================================
+   SONRAKİ
+========================================================= */
 
 function nextSong(){
 
-if(!songs.length)return;
-
-currentSong++;
-
-if(currentSong>=songs.length){
-currentSong=0;
-}
-
-loadSong(true);
+    loadSong(
+        currentSong + 1,
+        true
+    );
 
 }
 
-audio.addEventListener("ended",()=>{
-nextSong();
-});
 
-audio.addEventListener("play",()=>{
+/* =========================================================
+   ÖNCEKİ
+========================================================= */
 
-playButton.textContent="❚❚";
-status.textContent="♪ Çalıyor";
+function previousSong(){
 
-});
-
-audio.addEventListener("pause",()=>{
-
-playButton.textContent="▶";
-
-if(audio.currentTime>0){
-status.textContent="Duraklatıldı";
-}
-
-});
-
-audio.addEventListener("timeupdate",()=>{
-
-if(audio.duration){
-
-progressBar.style.width=
-(audio.currentTime/audio.duration)*100+"%";
+    loadSong(
+        currentSong - 1,
+        true
+    );
 
 }
 
-});
 
-progress.addEventListener("click",(e)=>{
+/* =========================================================
+   PLAYLIST GÖSTER / GİZLE
+========================================================= */
 
-if(!audio.duration)return;
+function togglePlaylist(){
 
-const rect=progress.getBoundingClientRect();
-
-const percent=
-(e.clientX-rect.left)/rect.width;
-
-audio.currentTime=
-percent*audio.duration;
-
-});
-
-volume.addEventListener("input",()=>{
-
-audio.volume=Number(volume.value);
-
-});
-
-audio.volume=.8;
-
-function togglePlaylist(force){
-
-if(typeof force==="boolean"){
-playlist.classList.toggle("show",force);
-}else{
-playlist.classList.toggle("show");
-}
+    playlist.classList.toggle(
+        "show"
+    );
 
 }
 
-document.addEventListener("click",(e)=>{
 
-if(
-playlist.classList.contains("show") &&
-!playlist.contains(e.target) &&
-!e.target.closest(".music-buttons")
-){
+/* =========================================================
+   SES DURUMU
+========================================================= */
 
-playlist.classList.remove("show");
+audio.addEventListener(
+    "play",
+    function(){
 
-}
+        playButton.textContent =
+            "⏸";
 
-});
+    }
+);
 
-loadSongs();
+
+audio.addEventListener(
+    "pause",
+    function(){
+
+        playButton.textContent =
+            "▶";
+
+    }
+);
+
+
+/* =========================================================
+   ŞARKI BİTİNCE
+========================================================= */
+
+audio.addEventListener(
+    "ended",
+    function(){
+
+        nextSong();
+
+    }
+);
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+audio.addEventListener(
+    "timeupdate",
+    function(){
+
+        if(
+            audio.duration &&
+            !isNaN(audio.duration)
+        ){
+
+            progress.value =
+                (
+                    audio.currentTime /
+                    audio.duration
+                ) * 100;
+
+        }
+
+    }
+);
+
+
+progress.addEventListener(
+    "input",
+    function(){
+
+        if(
+            audio.duration &&
+            !isNaN(audio.duration)
+        ){
+
+            audio.currentTime =
+                (
+                    progress.value /
+                    100
+                ) *
+                audio.duration;
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   VİDEO OYNARSA MÜZİĞİ DURDUR
+========================================================= */
+
+document
+    .getElementById("loveVideo")
+    .addEventListener(
+        "play",
+        function(){
+
+            audio.pause();
+
+        }
+    );
+
+
+/* =========================================================
+   ESC TUŞU
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closeModal();
+            closePhoto();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   PIN ENTER
+========================================================= */
+
+document
+    .getElementById("pinInput")
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                unlockSecret();
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
+
+
+const revealObserver =
+    new IntersectionObserver(
+        function(entries){
+
+            entries.forEach(
+                function(entry){
+
+                    if(entry.isIntersecting){
+
+                        entry.target
+                            .classList
+                            .add("visible");
+
+                        revealObserver
+                            .unobserve(
+                                entry.target
+                            );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.08
+        }
+    );
+
+
+revealElements.forEach(
+    function(element){
+
+        revealObserver.observe(
+            element
+        );
+
+    }
+);
+
+
+/* =========================================================
+   MÜZİĞİ BAŞLAT
+========================================================= */
+
+loadMusic();
 
 </script>
 
 </body>
-</html>
+  </html>
