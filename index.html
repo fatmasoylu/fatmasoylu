@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fatmasoylu — Blog</title>
+<meta name="description" content="Fatmasoylu kişisel blog">
+<style>
+:root{--bg:#fafafa;--card:#fff;--text:#171717;--muted:#666;--line:#e8e8e8;--accent:#111}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+.container{max-width:1050px;margin:auto;padding:0 22px}header{border-bottom:1px solid var(--line);background:rgba(250,250,250,.92);position:sticky;top:0;backdrop-filter:blur(10px);z-index:5}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:22px;font-weight:800;letter-spacing:-.5px}.links{display:flex;gap:24px}.links a{color:var(--text);text-decoration:none;font-size:14px}
+.hero{padding:85px 0 60px}.eyebrow{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:2px}.hero h1{font-size:clamp(42px,7vw,76px);line-height:1.02;letter-spacing:-3px;margin:14px 0}.hero p{max-width:650px;color:var(--muted);font-size:18px}
+.section-title{display:flex;justify-content:space-between;align-items:end;margin:20px 0}.section-title h2{font-size:28px;margin:0}.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:80px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:25px;min-height:230px;display:flex;flex-direction:column}.tag{font-size:12px;color:var(--muted);margin-bottom:20px}.card h3{font-size:22px;line-height:1.25;margin:0 0 12px}.card p{color:var(--muted);margin:0 0 20px}.read{margin-top:auto;color:var(--text);text-decoration:none;font-weight:700;font-size:14px}
+.about{border-top:1px solid var(--line);padding:65px 0 90px}.about p{max-width:680px;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px}
+@media(max-width:750px){.links{gap:12px}.links a:nth-child(2){display:none}.posts{grid-template-columns:1fr}.hero{padding-top:60px}.hero h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<header><div class="container nav"><div class="logo">Fatmasoylu</div><nav class="links"><a href="#yazilar">Yazılar</a><a href="#hakkimda">Hakkımda</a><a href="#iletisim">İletişim</a></nav></div></header>
+<main>
+<section class="container hero"><div class="eyebrow">Fatmasoylu Blog</div><h1>Düşünceler,<br>hikâyeler ve notlar.</h1><p>Günlük hayattan fikirler, deneyimler ve keşifler. Yeni yazılar burada.</p></section>
+<section class="container" id="yazilar"><div class="section-title"><h2>Son Yazılar</h2></div>
+<div class="posts">
+<article class="card"><div class="tag">01 · YAŞAM</div><h3>Yeni bir başlangıç</h3><p>Burada ilk blog yazımız yer alacak. Zamanla içeriklerimizi birlikte çoğaltacağız.</p><a class="read" href="#">Devamını oku →</a></article>
+<article class="card"><div class="tag">02 · GÜNLÜK</div><h3>Bugünden bir not</h3><p>Günlük hayattan küçük notlar, düşünceler ve paylaşımlar.</p><a class="read" href="#">Devamını oku →</a></article>
+<article class="card"><div class="tag">03 · KEŞİF</div><h3>Yeni şeyler keşfetmek</h3><p>Geziler, deneyimler ve ilham veren keşifler için yeni bir bölüm.</p><a class="read" href="#">Devamını oku →</a></article>
+</div></section>
+<section class="about" id="hakkimda"><div class="container"><div class="eyebrow">Hakkımda</div><h2>Fatmasoylu</h2><p>Bu alanı kendimizi tanıtmak, ilgi alanlarımızı paylaşmak ve blogun hikâyesini anlatmak için kullanacağız.</p></div></section>
+</main>
+<footer id="iletisim"><div class="container">© 2026 Fatmasoylu · Tüm hakları saklıdır.</div></footer>
+</body></html>
