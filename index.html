@@ -421,6 +421,21 @@ footer{text-align:center;color:#82747d;padding:65px 18px 145px}
 @media(prefers-reduced-motion:reduce){
   *,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
 }
+
+/* MUSIC ATMOSPHERE */
+#musicAtmosphere{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .6s;background:radial-gradient(circle at 50% 30%,rgba(240,138,181,.18),transparent 42%)}
+body.music-active #musicAtmosphere{opacity:1}
+#musicVisualizer{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);width:min(520px,92vw);height:34px;z-index:7999;pointer-events:none;display:flex;align-items:flex-end;justify-content:center;gap:3px;opacity:.7}
+.music-bar{width:5px;height:5px;border-radius:5px;background:var(--pink);box-shadow:0 0 12px currentColor;transform-origin:bottom;transition:height .08s linear,opacity .2s}
+body[data-music-theme="firuze"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(117,91,190,.22),transparent 45%)}
+body[data-music-theme="baha"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(255,110,160,.20),transparent 45%)}
+body[data-music-theme="duman"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(90,90,120,.16),transparent 48%)}
+body[data-music-theme="blok3"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(255,80,90,.22),transparent 44%)}
+body[data-music-theme="murat"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(90,110,220,.18),transparent 45%)}
+body[data-music-theme="nilufer"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(230,120,170,.16),transparent 45%)}
+body[data-music-theme="sezen"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(150,80,180,.20),transparent 45%)}
+body[data-music-theme="ta-ki"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(80,170,180,.16),transparent 45%)}
+@media(max-width:600px){#musicVisualizer{bottom:88px;height:27px}.music-bar{width:4px}}
 </style>
 </head>
 <body>
@@ -435,6 +450,9 @@ footer{text-align:center;color:#82747d;padding:65px 18px 145px}
 </div>
 
 <div id="hearts"></div>
+<div id="musicAtmosphere"></div>
+<div id="musicVisualizer" aria-hidden="true"></div>
+
 
 <header>
   <nav class="nav">
@@ -990,10 +1008,11 @@ function loadSong(index,autoplay=false){
   audio.src=songs[songIndex];
   titleEl.textContent=displayName(songs[songIndex]);
   countEl.textContent='Şarkı '+(songIndex+1)+' / '+songs.length;
+  setMusicTheme();
   progress.value=0;
   timeEl.textContent='0:00 / 0:00';
   document.querySelectorAll('.song').forEach((x,i)=>x.classList.toggle('active',i===songIndex));
-  if(autoplay) audio.play().catch(()=>{});
+  if(autoplay){ initAudioReactive(); if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume().catch(()=>{}); audio.play().then(startMusicVisuals).catch(()=>{}); }
 }
 function renderPlaylist(){
   playlist.innerHTML='';
@@ -1006,13 +1025,13 @@ function renderPlaylist(){
   });
 }
 function togglePlay(){
-  if(audio.paused) audio.play().catch(()=>{}); else audio.pause();
+  if(audio.paused){ initAudioReactive(); if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume().catch(()=>{}); audio.play().then(startMusicVisuals).catch(()=>{}); } else { audio.pause(); stopMusicVisuals(); }
 }
 function prevSong(){loadSong(songIndex-1,true)}
 function nextSong(){loadSong(songIndex+1,true)}
 function togglePlaylist(){playlist.classList.toggle('show')}
-audio.addEventListener('play',()=>playBtn.textContent='❚❚');
-audio.addEventListener('pause',()=>playBtn.textContent='▶');
+audio.addEventListener('play',()=>{playBtn.textContent='❚❚';startMusicVisuals()});
+audio.addEventListener('pause',()=>{playBtn.textContent='▶';stopMusicVisuals()});
 audio.addEventListener('ended',()=>nextSong());
 audio.addEventListener('loadedmetadata',()=>{timeEl.textContent='0:00 / '+formatTime(audio.duration)});
 audio.addEventListener('timeupdate',()=>{
