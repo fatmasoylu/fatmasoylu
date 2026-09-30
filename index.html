@@ -421,21 +421,6 @@ footer{text-align:center;color:#82747d;padding:65px 18px 145px}
 @media(prefers-reduced-motion:reduce){
   *,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
 }
-
-/* MUSIC ATMOSPHERE */
-#musicAtmosphere{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .6s;background:radial-gradient(circle at 50% 30%,rgba(240,138,181,.18),transparent 42%)}
-body.music-active #musicAtmosphere{opacity:1}
-#musicVisualizer{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);width:min(520px,92vw);height:34px;z-index:7999;pointer-events:none;display:flex;align-items:flex-end;justify-content:center;gap:3px;opacity:.7}
-.music-bar{width:5px;height:5px;border-radius:5px;background:var(--pink);box-shadow:0 0 12px currentColor;transform-origin:bottom;transition:height .08s linear,opacity .2s}
-body[data-music-theme="firuze"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(117,91,190,.22),transparent 45%)}
-body[data-music-theme="baha"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(255,110,160,.20),transparent 45%)}
-body[data-music-theme="duman"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(90,90,120,.16),transparent 48%)}
-body[data-music-theme="blok3"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(255,80,90,.22),transparent 44%)}
-body[data-music-theme="murat"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(90,110,220,.18),transparent 45%)}
-body[data-music-theme="nilufer"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(230,120,170,.16),transparent 45%)}
-body[data-music-theme="sezen"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(150,80,180,.20),transparent 45%)}
-body[data-music-theme="ta-ki"] #musicAtmosphere{background:radial-gradient(circle at 50% 25%,rgba(80,170,180,.16),transparent 45%)}
-@media(max-width:600px){#musicVisualizer{bottom:88px;height:27px}.music-bar{width:4px}}
 </style>
 </head>
 <body>
@@ -450,9 +435,6 @@ body[data-music-theme="ta-ki"] #musicAtmosphere{background:radial-gradient(circl
 </div>
 
 <div id="hearts"></div>
-<div id="musicAtmosphere"></div>
-<div id="musicVisualizer" aria-hidden="true"></div>
-
 
 <header>
   <nav class="nav">
@@ -469,31 +451,6 @@ body[data-music-theme="ta-ki"] #musicAtmosphere{background:radial-gradient(circl
     <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Gece gündüz modu" title="Gece / gündüz modu"><span class="theme-moon">🌙</span><span class="theme-sun">☀️</span></button>
   </nav>
 </header>
-
-<!-- HAREKETLİ PİYASA ŞERİDİ -->
-<div id="piyasalar" class="market-strip" aria-label="Piyasa takip şeridi">
-  <div class="market-strip-label">📈 PİYASA</div>
-  <div class="market-strip-window">
-    <div class="tradingview-widget-container market-strip-widget">
-      <div class="tradingview-widget-container__widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-      {
-        "symbols": [
-          {"proName":"BIST:XU100","title":"BIST 100"},
-          {"proName":"FX_IDC:USDTRY","title":"Dolar/TL"},
-          {"proName":"OANDA:XAUUSD","title":"Altın / Ons"},
-          {"proName":"OANDA:XAGUSD","title":"Gümüş / Ons"}
-        ],
-        "showSymbolLogo": true,
-        "isTransparent": true,
-        "displayMode": "adaptive",
-        "colorTheme": "dark",
-        "locale": "tr"
-      }
-      </script>
-    </div>
-  </div>
-</div>
 
 <main id="top">
 
@@ -1005,14 +962,13 @@ function displayName(name){
 }
 function loadSong(index,autoplay=false){
   songIndex=(index+songs.length)%songs.length;
-  audio.src=songs[songIndex];
+  audio.src=encodeURI(songs[songIndex]);
   titleEl.textContent=displayName(songs[songIndex]);
   countEl.textContent='Şarkı '+(songIndex+1)+' / '+songs.length;
-  setMusicTheme();
   progress.value=0;
   timeEl.textContent='0:00 / 0:00';
   document.querySelectorAll('.song').forEach((x,i)=>x.classList.toggle('active',i===songIndex));
-  if(autoplay){ initAudioReactive(); if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume().catch(()=>{}); audio.play().then(startMusicVisuals).catch(()=>{}); }
+  if(autoplay) audio.play().catch(()=>{});
 }
 function renderPlaylist(){
   playlist.innerHTML='';
@@ -1025,14 +981,18 @@ function renderPlaylist(){
   });
 }
 function togglePlay(){
-  if(audio.paused){ initAudioReactive(); if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume().catch(()=>{}); audio.play().then(startMusicVisuals).catch(()=>{}); } else { audio.pause(); stopMusicVisuals(); }
+  if(audio.paused){
+    const p=audio.play();
+    if(p&&p.catch)p.catch(()=>{titleEl.textContent='Şarkı yüklenemedi';});
+  }else audio.pause();
 }
 function prevSong(){loadSong(songIndex-1,true)}
 function nextSong(){loadSong(songIndex+1,true)}
 function togglePlaylist(){playlist.classList.toggle('show')}
-audio.addEventListener('play',()=>{playBtn.textContent='❚❚';startMusicVisuals()});
-audio.addEventListener('pause',()=>{playBtn.textContent='▶';stopMusicVisuals()});
+audio.addEventListener('play',()=>playBtn.textContent='❚❚');
+audio.addEventListener('pause',()=>playBtn.textContent='▶');
 audio.addEventListener('ended',()=>nextSong());
+audio.addEventListener('error',()=>{ if(audio.src) titleEl.textContent='Şarkı dosyası bulunamadı'; });
 audio.addEventListener('loadedmetadata',()=>{timeEl.textContent='0:00 / '+formatTime(audio.duration)});
 audio.addEventListener('timeupdate',()=>{
   if(audio.duration){
@@ -1067,30 +1027,6 @@ function toggleTheme(){
 </script>
 
 <style>
-
-/* HAREKETLİ PİYASA ŞERİDİ */
-.market-strip{
-  position:relative;z-index:4000;width:100%;height:72px;
-  display:flex;align-items:center;border-bottom:1px solid var(--line);
-  background:rgba(14,10,14,.92);backdrop-filter:blur(14px);overflow:hidden;
-}
-.market-strip-label{
-  flex:0 0 auto;height:100%;display:flex;align-items:center;padding:0 13px;
-  font-size:10px;font-weight:800;letter-spacing:1.3px;color:var(--soft);
-  border-right:1px solid var(--line);
-  background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
-}
-.market-strip-window{flex:1;min-width:0;overflow:hidden;height:72px}
-.market-strip-widget{width:100%;height:72px;overflow:hidden}
-.market-strip-widget .tradingview-widget-container__widget{height:72px;min-height:72px}
-.market-strip-widget iframe{height:72px !important;min-height:72px !important;width:100% !important;display:block}
-@media(max-width:600px){
-  .market-strip{height:68px}
-  .market-strip-label{padding:0 9px;font-size:9px}
-  .market-strip-window,.market-strip-widget,.market-strip-widget .tradingview-widget-container__widget{height:68px;min-height:68px}
-  .market-strip-widget iframe{height:68px !important;min-height:68px !important}
-}
-
 /* MARKET */
 .market-card{
   border:1px solid var(--line);background:var(--card);border-radius:var(--radius);
