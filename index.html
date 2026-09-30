@@ -1,33 +1,16 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1.0"
->
-
-<meta
-  name="theme-color"
-  content="#120b18"
->
-
-<meta
-  name="description"
-  content="Bizim Hikâyemiz ❤️"
->
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#100914">
+<meta name="description" content="Bizim Hikâyemiz ❤️">
 <title>Bizim Hikâyemiz ❤️</title>
 
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-
-/* =========================================================
-   TEMEL
-========================================================= */
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -39,26 +22,14 @@ html{
 }
 
 body{
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
+  font-family:Georgia,"Times New Roman",serif;
   background:
-    radial-gradient(
-      circle at top,
-      #35162e 0%,
-      #160c19 42%,
-      #09060d 100%
-    );
-
+    radial-gradient(circle at 20% 0%,#4b183f 0%,transparent 35%),
+    radial-gradient(circle at 90% 20%,#321348 0%,transparent 30%),
+    linear-gradient(180deg,#110914,#08050c);
   color:#fff;
   overflow-x:hidden;
   line-height:1.7;
-}
-
-body.modal-open{
-  overflow:hidden;
 }
 
 button,
@@ -77,38 +48,25 @@ a{
   text-decoration:none;
 }
 
-img{
-  max-width:100%;
+.hidden{
+  display:none!important;
 }
 
-/* =========================================================
-   AÇILIŞ
-========================================================= */
+/* =========================
+   OPENING
+========================= */
 
 #opening{
-
   position:fixed;
   inset:0;
-
   z-index:99999;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   text-align:center;
-
   background:
-    radial-gradient(
-      circle at center,
-      #571f4d 0%,
-      #190c1c 50%,
-      #07050a 100%
-    );
-
-  transition:
-    opacity .9s ease,
-    visibility .9s ease;
+    radial-gradient(circle at center,#64204f 0%,#1c0b20 48%,#07050a 100%);
+  transition:.9s ease;
 }
 
 #opening.hide{
@@ -118,161 +76,102 @@ img{
 }
 
 .opening-inner{
-  width:min(92%,650px);
-  padding:30px;
+  width:min(94%,700px);
+  padding:25px;
 }
 
 .opening-heart{
-  font-size:72px;
-  animation:
-    heartPulse 1.6s infinite ease-in-out;
-  margin-bottom:10px;
+  font-size:75px;
+  animation:pulse 1.5s infinite;
 }
 
 .opening-date{
-  font-size:
-    clamp(42px,10vw,82px);
-
+  font-size:clamp(40px,11vw,85px);
   font-weight:bold;
-
   letter-spacing:4px;
-
-  text-shadow:
-    0 0 30px
-    rgba(255,90,170,.7);
+  color:#ffd0e6;
+  text-shadow:0 0 35px rgba(255,100,180,.8);
 }
 
 .opening-text{
-  margin-top:15px;
-  font-size:
-    clamp(18px,4vw,25px);
-
-  opacity:.9;
+  font-size:clamp(18px,4vw,26px);
+  margin-top:12px;
 }
 
 .opening-small{
-  margin-top:30px;
-  font-size:14px;
-  opacity:.65;
+  margin-top:28px;
+  opacity:.6;
+  font-size:13px;
 }
 
-@keyframes heartPulse{
-
-  0%,100%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.12);
-  }
-
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.12)}
 }
 
-/* =========================================================
-   ARKA PLAN KALPLERİ
-========================================================= */
+/* =========================
+   FLOATING HEARTS
+========================= */
 
 .hearts{
-
   position:fixed;
   inset:0;
-
-  pointer-events:none;
-
-  z-index:0;
-
   overflow:hidden;
+  pointer-events:none;
+  z-index:0;
 }
 
 .heart{
-
   position:absolute;
-
   bottom:-50px;
-
-  opacity:.12;
-
-  animation:
-    floatHeart linear infinite;
+  opacity:.13;
+  animation:floatHeart linear infinite;
 }
 
 @keyframes floatHeart{
-
   from{
-    transform:
-      translateY(0)
-      rotate(0);
+    transform:translateY(0) rotate(0);
   }
-
   to{
-    transform:
-      translateY(-115vh)
-      rotate(360deg);
+    transform:translateY(-115vh) rotate(360deg);
   }
-
 }
 
-/* =========================================================
+/* =========================
    HEADER
-========================================================= */
+========================= */
 
 header{
-
   position:sticky;
   top:0;
-
   z-index:5000;
-
-  background:
-    rgba(10,6,13,.88);
-
-  backdrop-filter:
-    blur(14px);
-
-  border-bottom:
-    1px solid
-    rgba(255,255,255,.08);
+  background:rgba(8,5,12,.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .nav{
-
   max-width:1200px;
-
+  min-height:65px;
   margin:auto;
-
-  min-height:64px;
-
-  padding:
-    8px 15px;
-
+  padding:8px 14px;
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
-
   gap:10px;
 }
 
 .logo{
-
-  font-size:20px;
-
+  color:#ffb7d7;
   font-weight:bold;
-
-  color:#ffb4d8;
-
+  font-size:19px;
   white-space:nowrap;
 }
 
 .nav-links{
-
   display:flex;
-
-  gap:7px;
-
+  gap:5px;
   overflow-x:auto;
-
   scrollbar-width:none;
 }
 
@@ -281,305 +180,186 @@ header{
 }
 
 .nav-links a{
-
-  padding:
-    7px 10px;
-
+  padding:7px 10px;
   border-radius:20px;
-
   font-size:12px;
-
-  color:#eee;
-
   white-space:nowrap;
 }
 
 .nav-links a:hover{
-  background:
-    rgba(255,255,255,.08);
+  background:rgba(255,255,255,.08);
 }
 
-/* PROFİL */
-
 .profile-button{
-
-  border:
-    1px solid
-    rgba(255,255,255,.15);
-
-  background:
-    rgba(255,255,255,.08);
-
-  color:#fff;
-
-  border-radius:22px;
-
-  padding:
-    7px 12px;
-
   display:flex;
-
   align-items:center;
-
   gap:7px;
-
-  white-space:nowrap;
-
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  border-radius:22px;
+  padding:7px 12px;
   flex-shrink:0;
 }
 
-.profile-button img,
-.profile-button .avatar-letter{
+.profile-button:disabled{
+  opacity:.45;
+  cursor:wait;
+}
 
+.profile-avatar{
   width:28px;
   height:28px;
-
   border-radius:50%;
-
   object-fit:cover;
 }
 
-.profile-button .avatar-letter{
-
+.avatar-letter{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#db428d,#792050);
   display:flex;
-
   align-items:center;
   justify-content:center;
-
-  background:#a52e6e;
-
   font-weight:bold;
 }
 
-/* =========================================================
-   GENEL
-========================================================= */
+/* =========================
+   GENERAL
+========================= */
 
 main{
-
   position:relative;
-
   z-index:1;
 }
 
 section{
-
   max-width:1100px;
-
   margin:auto;
-
-  padding:
-    85px 18px;
+  padding:85px 18px;
 }
 
 .section-title{
-
   text-align:center;
-
-  font-size:
-    clamp(28px,6vw,46px);
-
-  margin-bottom:14px;
-
-  color:#ffc1dd;
+  color:#ffc4df;
+  font-size:clamp(28px,6vw,46px);
+  margin-bottom:12px;
 }
 
 .section-subtitle{
-
+  max-width:720px;
+  margin:0 auto 38px;
   text-align:center;
-
-  opacity:.7;
-
-  max-width:700px;
-
-  margin:
-    0 auto 40px;
+  opacity:.72;
 }
 
 .card{
-
-  background:
-    rgba(255,255,255,.055);
-
-  border:
-    1px solid
-    rgba(255,255,255,.09);
-
-  border-radius:25px;
-
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:26px;
   padding:25px;
-
-  box-shadow:
-    0 15px 50px
-    rgba(0,0,0,.2);
+  box-shadow:0 20px 70px rgba(0,0,0,.25);
 }
 
 .reveal{
-
   opacity:0;
-
-  transform:
-    translateY(35px);
-
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
+  transform:translateY(30px);
+  transition:.8s;
 }
 
 .reveal.show{
-
   opacity:1;
-
   transform:none;
 }
 
-.main-btn{
-
-  border:0;
-
-  border-radius:22px;
-
-  padding:
-    13px 22px;
-
-  color:#fff;
-
-  background:
-    linear-gradient(
-      135deg,
-      #e64991,
-      #9c2868
-    );
-
-  box-shadow:
-    0 10px 30px
-    rgba(220,50,130,.25);
-
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease;
-}
-
-.main-btn:hover{
-
-  transform:
-    translateY(-2px);
-
-  box-shadow:
-    0 15px 35px
-    rgba(220,50,130,.4);
-}
-
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero{
-
-  min-height:
-    calc(100vh - 64px);
-
+  min-height:calc(100vh - 65px);
   display:flex;
-
   flex-direction:column;
-
   justify-content:center;
-
   align-items:center;
-
   text-align:center;
-
-  padding-top:70px;
 }
 
 .hero h1{
-
-  font-size:
-    clamp(45px,10vw,90px);
-
+  font-size:clamp(45px,10vw,90px);
   line-height:1.05;
-
   color:#ffd0e5;
-
-  text-shadow:
-    0 0 35px
-    rgba(255,100,180,.35);
+  text-shadow:0 0 35px rgba(255,100,180,.35);
 }
 
 .hero p{
-
-  max-width:700px;
-
-  font-size:
-    clamp(17px,4vw,23px);
-
+  max-width:750px;
   margin-top:22px;
-
+  font-size:clamp(17px,4vw,23px);
   opacity:.85;
 }
 
-/* =========================================================
-   COUNTER
-========================================================= */
-
 .counter{
-
-  margin-top:35px;
-
   display:flex;
-
-  gap:10px;
-
   flex-wrap:wrap;
-
   justify-content:center;
+  gap:10px;
+  margin-top:35px;
 }
 
 .counter-box{
-
   min-width:90px;
-
-  padding:
-    15px 12px;
-
+  padding:14px 12px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
   border-radius:18px;
-
-  background:
-    rgba(255,255,255,.07);
-
-  border:
-    1px solid
-    rgba(255,255,255,.1);
 }
 
 .counter-box strong{
-
   display:block;
-
-  font-size:28px;
-
-  color:#ffb1d4;
+  font-size:27px;
+  color:#ffafd2;
 }
 
 .counter-box span{
-
-  font-size:12px;
-
-  opacity:.65;
+  font-size:11px;
+  opacity:.6;
 }
 
-/* =========================================================
+/* =========================
+   BUTTON
+========================= */
+
+.main-btn{
+  border:0;
+  color:#fff;
+  background:linear-gradient(135deg,#e64991,#92265f);
+  padding:12px 21px;
+  border-radius:22px;
+  box-shadow:0 10px 30px rgba(230,73,145,.2);
+}
+
+.main-btn:hover{
+  transform:translateY(-1px);
+}
+
+.secondary-btn{
+  border:1px solid rgba(255,255,255,.15);
+  color:#fff;
+  background:rgba(255,255,255,.07);
+  padding:11px 18px;
+  border-radius:20px;
+}
+
+/* =========================
    STORY
-========================================================= */
+========================= */
 
 .story{
-
   max-width:850px;
-
   margin:auto;
-
   text-align:center;
-
   font-size:18px;
 }
 
@@ -587,565 +367,529 @@ section{
   margin-top:18px;
 }
 
-/* =========================================================
+/* =========================
    VIDEO
-========================================================= */
+========================= */
 
 .video-wrap{
-
   max-width:850px;
-
   margin:auto;
 }
 
 .video-wrap video{
-
   display:block;
-
   width:100%;
-
   max-height:650px;
-
   border-radius:25px;
-
   background:#000;
-
-  box-shadow:
-    0 20px 70px
-    rgba(0,0,0,.4);
+  box-shadow:0 20px 70px rgba(0,0,0,.45);
 }
 
-/* =========================================================
-   GALERİ
-========================================================= */
+/* =========================
+   GALLERY
+========================= */
 
 .gallery{
-
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:18px;
 }
 
 .gallery-item{
-
   overflow:hidden;
-
   border-radius:22px;
-
   background:#111;
-
   cursor:pointer;
 }
 
 .gallery-item img{
-
   display:block;
-
   width:100%;
-
   aspect-ratio:4/5;
-
   object-fit:cover;
-
-  transition:
-    transform .45s ease;
+  transition:.5s;
 }
 
 .gallery-item:hover img{
-  transform:scale(1.04);
+  transform:scale(1.05);
 }
 
-/* =========================================================
+/* =========================
    TIMELINE
-========================================================= */
+========================= */
 
 .timeline{
-
   position:relative;
-
   max-width:850px;
-
   margin:auto;
 }
 
 .timeline:before{
-
   content:"";
-
   position:absolute;
-
   left:50%;
-
   top:0;
-
   bottom:0;
-
   width:2px;
-
-  background:
-    rgba(255,255,255,.15);
-
-  transform:
-    translateX(-50%);
+  background:rgba(255,255,255,.15);
+  transform:translateX(-50%);
 }
 
 .timeline-item{
-
-  width:50%;
-
-  padding:
-    15px 35px;
-
   position:relative;
+  width:50%;
+  padding:15px 35px;
+}
+
+.timeline-item:nth-child(even){
+  margin-left:50%;
 }
 
 .timeline-item:nth-child(odd){
   text-align:right;
 }
 
-.timeline-item:nth-child(even){
-
-  margin-left:50%;
-}
-
 .timeline-dot{
-
   position:absolute;
-
+  top:30px;
   width:15px;
   height:15px;
-
   border-radius:50%;
-
   background:#ff75b4;
-
-  top:30px;
-
-  box-shadow:
-    0 0 20px
-    rgba(255,100,180,.8);
+  box-shadow:0 0 20px rgba(255,100,180,.8);
 }
 
-.timeline-item:nth-child(odd)
-.timeline-dot{
-
+.timeline-item:nth-child(odd) .timeline-dot{
   right:-8px;
 }
 
-.timeline-item:nth-child(even)
-.timeline-dot{
-
+.timeline-item:nth-child(even) .timeline-dot{
   left:-7px;
 }
 
 .timeline-date{
-
   color:#ff9bc7;
-
   font-weight:bold;
-
-  margin-bottom:5px;
 }
 
-/* =========================================================
+/* =========================
    REASONS
-========================================================= */
+========================= */
 
 .reasons{
-
   display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
+  grid-template-columns:repeat(2,1fr);
   gap:15px;
 }
 
 .reason{
-
   padding:20px;
-
   border-radius:20px;
-
-  background:
-    rgba(255,255,255,.055);
-
-  border:
-    1px solid
-    rgba(255,255,255,.08);
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.08);
 }
 
 .reason b{
   color:#ffafd1;
 }
 
-/* =========================================================
-   ZODIAC
-========================================================= */
-
-.zodiac{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  gap:12px;
-}
-
-.zodiac button{
-
-  padding:16px 8px;
-
-  border-radius:18px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.08);
-
-  background:
-    rgba(255,255,255,.055);
-
-  color:#fff;
-}
-
-.zodiac button:hover{
-
-  background:
-    rgba(255,100,170,.14);
-}
-
-/* =========================================================
+/* =========================
    OPEN WHEN
-========================================================= */
+========================= */
 
 .open-grid{
-
   display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
+  grid-template-columns:repeat(2,1fr);
   gap:15px;
 }
 
 .open-card{
-
-  padding:25px;
-
+  padding:24px;
   border-radius:22px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.08),
-      rgba(255,255,255,.03)
-    );
-
-  border:
-    1px solid
-    rgba(255,255,255,.1);
-
+  background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.1);
   cursor:pointer;
+  transition:.25s;
+}
+
+.open-card:hover{
+  transform:translateY(-3px);
 }
 
 .open-card h3{
-
   color:#ffc1dd;
-
-  margin-bottom:7px;
 }
 
-/* =========================================================
-   MEMORY MAP
-========================================================= */
+/* =========================
+   PLACES
+========================= */
 
 .memory-map{
-
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:15px;
 }
 
 .memory-place{
-
-  padding:25px;
-
-  border-radius:22px;
-
+  padding:22px;
   text-align:center;
-
-  background:
-    rgba(255,255,255,.055);
-
-  border:
-    1px solid
-    rgba(255,255,255,.09);
+  border-radius:22px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
 }
 
-.memory-place .icon{
-
-  font-size:40px;
-
-  margin-bottom:8px;
+.memory-place .pin{
+  font-size:36px;
 }
 
-/* =========================================================
+/* =========================
    QUIZ
-========================================================= */
-
-.quiz-grid{
-
-  display:grid;
-
-  gap:15px;
-
-  max-width:800px;
-
-  margin:auto;
-}
+========================= */
 
 .quiz-question{
-
-  padding:22px;
-
-  border-radius:20px;
-
-  background:
-    rgba(255,255,255,.055);
-
-  border:
-    1px solid
-    rgba(255,255,255,.08);
+  display:none;
 }
 
-.quiz-question h3{
-
-  margin-bottom:12px;
-
-  color:#ffc1dd;
+.quiz-question.active{
+  display:block;
 }
 
 .quiz-options{
-
-  display:flex;
-
-  gap:8px;
-
-  flex-wrap:wrap;
+  display:grid;
+  gap:10px;
+  margin-top:20px;
 }
 
 .quiz-options button{
-
-  padding:
-    9px 14px;
-
-  border-radius:15px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.12);
-
-  background:
-    rgba(255,255,255,.06);
-
+  padding:14px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.06);
   color:#fff;
+  text-align:left;
 }
 
-/* =========================================================
-   MUSIC PLAYER
-========================================================= */
+.quiz-options button:hover{
+  background:rgba(255,100,170,.15);
+}
+
+.quiz-result{
+  margin-top:25px;
+  text-align:center;
+  font-size:20px;
+  color:#ffc0dc;
+}
+
+/* =========================
+   GIFT
+========================= */
+
+.gift-area{
+  text-align:center;
+}
+
+.gift{
+  display:inline-block;
+  font-size:100px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.gift:hover{
+  transform:scale(1.08);
+}
+
+.gift-message{
+  display:none;
+  max-width:700px;
+  margin:25px auto;
+}
+
+.gift-message.show{
+  display:block;
+}
+
+/* =========================
+   SECRET
+========================= */
+
+.secret-box{
+  max-width:520px;
+  margin:auto;
+  text-align:center;
+}
+
+.pin-input{
+  width:100%;
+  margin:18px 0 12px;
+  padding:15px;
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(0,0,0,.25);
+  color:#fff;
+  text-align:center;
+  letter-spacing:6px;
+  outline:none;
+}
+
+.secret-result{
+  margin-top:18px;
+  color:#ffc1dc;
+}
+
+/* =========================
+   SKY
+========================= */
+
+.sky{
+  position:relative;
+  min-height:360px;
+  overflow:hidden;
+  border-radius:28px;
+  background:
+    radial-gradient(circle at 50% 100%,#32104b,#0b0714 70%);
+}
+
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#fff;
+  animation:twinkle 2s infinite alternate;
+}
+
+.moon{
+  position:absolute;
+  top:35px;
+  right:12%;
+  width:85px;
+  height:85px;
+  border-radius:50%;
+  background:#fff4ca;
+  box-shadow:0 0 40px rgba(255,244,202,.5);
+}
+
+@keyframes twinkle{
+  from{opacity:.2}
+  to{opacity:1}
+}
+
+/* =========================
+   PUZZLE
+========================= */
+
+.puzzle{
+  max-width:420px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:4px;
+  background:#000;
+  padding:4px;
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.puzzle-piece{
+  aspect-ratio:1;
+  background-size:300% 300%;
+  border:0;
+  opacity:.9;
+}
+
+.puzzle-piece:hover{
+  opacity:1;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final{
+  text-align:center;
+}
+
+.final h2{
+  font-size:clamp(32px,7vw,55px);
+  color:#ffc3dd;
+}
+
+.final-buttons{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+/* =========================
+   POSTS
+========================= */
+
+.posts-list{
+  display:grid;
+  gap:15px;
+  max-width:850px;
+  margin:auto;
+}
+
+.post{
+  padding:20px;
+  border-radius:22px;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.09);
+}
+
+.post-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.post-avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#92265f;
+}
+
+.post-name{
+  font-weight:bold;
+  color:#ffc0dd;
+}
+
+.post-date{
+  font-size:11px;
+  opacity:.5;
+}
+
+.post-photo{
+  display:block;
+  width:100%;
+  max-height:600px;
+  object-fit:cover;
+  border-radius:18px;
+  margin-top:15px;
+}
+
+.post-type{
+  display:inline-block;
+  padding:4px 9px;
+  border-radius:12px;
+  background:rgba(255,100,170,.12);
+  color:#ffb3d4;
+  font-size:11px;
+  margin-bottom:8px;
+}
+
+/* =========================
+   MUSIC
+========================= */
 
 #musicPlayer{
-
   position:fixed;
-
-  z-index:7000;
-
-  left:18px;
-  right:18px;
-  bottom:14px;
-
-  background:
-    rgba(17,9,20,.96);
-
-  border:
-    1px solid
-    rgba(255,255,255,.12);
-
+  left:12px;
+  right:12px;
+  bottom:12px;
+  z-index:9000;
+  max-width:720px;
+  margin:auto;
+  padding:10px 12px;
+  background:rgba(17,10,21,.97);
+  border:1px solid rgba(255,255,255,.12);
   border-radius:22px;
-
-  padding:13px;
-
-  box-shadow:
-    0 15px 60px
-    rgba(0,0,0,.5);
-
-  backdrop-filter:
-    blur(15px);
-
-  transform:none !important;
-
-  animation:none !important;
+  box-shadow:0 15px 50px rgba(0,0,0,.5);
+  transform:none!important;
+  animation:none!important;
 }
 
 .music-top{
-
   display:flex;
-
   align-items:center;
-
-  gap:12px;
+  gap:10px;
 }
 
-.music-icon{
-
-  width:50px;
-  height:50px;
-
-  border-radius:16px;
-
+.music-cover{
+  width:42px;
+  height:42px;
+  flex:0 0 42px;
   display:flex;
-
   align-items:center;
   justify-content:center;
-
-  background:
-    linear-gradient(
-      135deg,
-      #e64991,
-      #6c2355
-    );
-
-  font-size:24px;
-
-  flex-shrink:0;
+  border-radius:13px;
+  background:linear-gradient(135deg,#e64991,#6d1f54);
+  font-size:20px;
 }
 
 .music-info{
-
   min-width:0;
-
   flex:1;
 }
 
 .music-title{
-
-  font-size:15px;
-
-  font-weight:bold;
-
-  color:#ffc1dc;
-
-  overflow:hidden;
-
-  text-overflow:ellipsis;
-
+  font-size:13px;
   white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
 .music-status{
-
-  font-size:11px;
-
-  opacity:.55;
+  font-size:10px;
+  color:#aaa;
 }
 
 .music-controls{
-
   display:flex;
-
-  align-items:center;
-
-  gap:6px;
+  gap:4px;
 }
 
 .music-controls button{
-
-  width:38px;
-  height:38px;
-
+  width:37px;
+  height:37px;
+  border:0;
   border-radius:50%;
-
-  border:
-    1px solid
-    rgba(255,255,255,.1);
-
-  background:
-    rgba(255,255,255,.06);
-
+  background:rgba(255,255,255,.08);
   color:#fff;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
 }
 
-.music-controls button:nth-child(2){
-
-  background:#d83c87;
+#playMusic{
+  background:#b73578;
 }
 
 .music-progress{
-
   width:100%;
-
   margin-top:8px;
-}
-
-#musicProgress{
-
-  width:100%;
-
-  accent-color:#e64991;
+  accent-color:#e95698;
 }
 
 .music-bottom{
-
   display:flex;
-
   justify-content:space-between;
-
   align-items:center;
+}
 
-  font-size:11px;
-
-  opacity:.6;
-
-  margin-top:3px;
+.music-time{
+  font-size:10px;
+  color:#888;
 }
 
 .playlist-button{
-
   border:0;
-
   background:transparent;
-
-  color:#ccc;
+  color:#bbb;
+  font-size:11px;
 }
 
 .playlist{
-
   display:none;
-
-  max-height:230px;
-
-  overflow:auto;
-
-  margin-top:10px;
-
-  border-top:
-    1px solid
-    rgba(255,255,255,.08);
-
-  padding-top:7px;
+  max-height:220px;
+  overflow-y:auto;
+  margin-top:8px;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:6px;
 }
 
 .playlist.show{
@@ -1153,73 +897,36 @@ section{
 }
 
 .song-item{
-
-  width:100%;
-
   display:flex;
-
-  gap:10px;
-
-  align-items:center;
-
-  text-align:left;
-
+  gap:9px;
+  width:100%;
   border:0;
-
-  padding:9px;
-
-  border-radius:12px;
-
   background:transparent;
-
   color:#ddd;
-}
-
-.song-item:hover{
-
-  background:
-    rgba(255,255,255,.05);
+  text-align:left;
+  padding:9px;
+  border-radius:12px;
+  font-size:12px;
 }
 
 .song-item.active{
-
-  background:
-    rgba(220,65,135,.15);
-
+  background:rgba(220,65,135,.15);
   color:#ffafd1;
 }
 
-.song-number{
-
-  width:24px;
-
-  text-align:center;
-
-  opacity:.5;
-}
-
-/* =========================================================
+/* =========================
    MODAL
-========================================================= */
+========================= */
 
 .modal{
-
   position:fixed;
-
   inset:0;
-
   z-index:20000;
-
-  background:
-    rgba(0,0,0,.78);
-
   display:none;
-
   align-items:center;
-
   justify-content:center;
-
-  padding:18px;
+  padding:16px;
+  background:rgba(0,0,0,.82);
 }
 
 .modal.show{
@@ -1227,53 +934,30 @@ section{
 }
 
 .modal-box{
-
   width:min(100%,560px);
-
-  max-height:90vh;
-
+  max-height:92vh;
   overflow:auto;
-
-  background:#1a0d1c;
-
-  border:
-    1px solid
-    rgba(255,255,255,.12);
-
-  border-radius:25px;
-
-  padding:25px;
-
   position:relative;
-
-  box-shadow:
-    0 30px 100px
-    rgba(0,0,0,.55);
+  padding:25px;
+  border-radius:25px;
+  background:#1a0d1c;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 30px 100px rgba(0,0,0,.6);
 }
 
 .modal-close{
-
   position:absolute;
-
-  right:15px;
-
-  top:12px;
-
+  right:14px;
+  top:10px;
   border:0;
-
   background:transparent;
-
   color:#fff;
-
-  font-size:25px;
+  font-size:27px;
 }
 
 .modal-title{
-
   color:#ffc1dc;
-
   margin-bottom:18px;
-
   font-size:25px;
 }
 
@@ -1282,404 +966,65 @@ section{
 }
 
 .form-group label{
-
   display:block;
-
   margin-bottom:6px;
-
   font-size:13px;
-
   color:#bbb;
 }
 
 .form-group input,
-.form-group textarea{
-
+.form-group textarea,
+.form-group select{
   width:100%;
-
   padding:13px;
-
   border-radius:13px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.12);
-
-  background:
-    rgba(0,0,0,.25);
-
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.25);
   color:#fff;
-
   outline:none;
 }
 
 .form-group textarea{
-
   min-height:130px;
-
   resize:vertical;
 }
 
-.photo-preview{
-
-  width:100px;
-  height:100px;
-
-  border-radius:50%;
-
-  object-fit:cover;
-
-  display:none;
-
+.profile-preview{
+  display:block;
+  width:95px;
+  height:95px;
   margin:10px auto;
-
-  border:
-    2px solid
-    rgba(255,255,255,.15);
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,.15);
 }
 
 .profile-current{
-
   text-align:center;
-
   margin-bottom:20px;
 }
 
 .profile-current img{
-
-  width:105px;
-  height:105px;
-
-  border-radius:50%;
-
-  object-fit:cover;
-
   display:block;
-
-  margin:0 auto 12px;
-}
-
-.big-avatar{
-
-  width:105px;
-  height:105px;
-
-  margin:0 auto 12px;
-
+  width:90px;
+  height:90px;
+  margin:0 auto 10px;
+  object-fit:cover;
   border-radius:50%;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  background:#a52e6e;
-
-  font-size:40px;
 }
 
-/* =========================================================
-   PAYLAŞIMLAR
-========================================================= */
-
-#sharedPostsSection{
-
-  max-width:1100px;
-
-  margin:auto;
-
-  padding:
-    85px 18px;
-}
-
-.shared-tabs{
-
-  display:flex;
-
-  gap:8px;
-
-  flex-wrap:wrap;
-
-  justify-content:center;
-
-  margin-bottom:20px;
-}
-
-.shared-tab{
-
-  border:
-    1px solid
-    rgba(255,255,255,.12);
-
-  background:
-    rgba(255,255,255,.06);
-
-  color:#fff;
-
-  padding:
-    10px 15px;
-
-  border-radius:18px;
-
-  cursor:pointer;
-}
-
-.shared-tab.active{
-
-  background:
-    linear-gradient(
-      135deg,
-      #e64991,
-      #9c2868
-    );
-}
-
-.shared-form{
-
-  max-width:720px;
-
-  margin:auto;
-}
-
-.shared-input,
-.shared-textarea,
-.shared-file{
-
-  width:100%;
-
-  border:
-    1px solid
-    rgba(255,255,255,.12);
-
-  background:
-    rgba(0,0,0,.25);
-
-  color:#fff;
-
-  border-radius:15px;
-
-  padding:13px;
-
-  margin-bottom:12px;
-
-  outline:none;
-}
-
-.shared-textarea{
-
-  min-height:130px;
-
-  resize:vertical;
-}
-
-.shared-file{
-  padding:11px;
-}
-
-.shared-posts{
-
-  max-width:850px;
-
-  margin:35px auto 0;
-
-  display:grid;
-
-  gap:15px;
-}
-
-.shared-post{
-
-  background:
-    rgba(255,255,255,.055);
-
-  border:
-    1px solid
-    rgba(255,255,255,.09);
-
-  border-radius:22px;
-
-  padding:20px;
-
-  box-shadow:
-    0 12px 40px
-    rgba(0,0,0,.18);
-}
-
-.shared-post-head{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  margin-bottom:13px;
-}
-
-.shared-avatar{
-
-  width:45px;
-  height:45px;
-
-  border-radius:50%;
-
-  object-fit:cover;
-
-  background:#a52e6e;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  font-weight:bold;
-
-  color:#fff;
-
-  flex-shrink:0;
-}
-
-.shared-post-name{
-
-  font-weight:bold;
-
-  color:#ffc1dd;
-}
-
-.shared-post-date{
-
-  font-size:11px;
-
-  color:#888;
-}
-
-.shared-post-title{
-
-  font-size:20px;
-
-  color:#ffd0e5;
-
-  margin-bottom:8px;
-}
-
-.shared-post-content{
-
-  white-space:pre-wrap;
-
-  color:#eee;
-
-  font-size:16px;
-}
-
-.shared-post-photo{
-
-  display:block;
-
-  width:100%;
-
-  max-height:600px;
-
-  object-fit:cover;
-
-  border-radius:18px;
-
-  margin-top:14px;
-
-  cursor:pointer;
-}
-
-.shared-delete{
-
-  margin-top:15px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.1);
-
-  background:
-    rgba(255,255,255,.05);
-
-  color:#bbb;
-
-  padding:
-    8px 12px;
-
-  border-radius:13px;
-}
-
-.shared-status{
-
-  text-align:center;
-
-  color:#aaa;
-
-  margin-top:15px;
-
-  font-size:13px;
-}
-
-.shared-empty{
-
-  text-align:center;
-
-  padding:35px 15px;
-
-  color:#999;
-}
-
-.shared-profile-photo{
-
-  width:105px;
-  height:105px;
-
-  border-radius:50%;
-
-  object-fit:cover;
-
-  display:block;
-
-  margin:10px auto 15px;
-
-  border:
-    2px solid
-    rgba(255,255,255,.15);
-}
-
-.shared-preview{
-
-  max-width:180px;
-  max-height:180px;
-
-  border-radius:18px;
-
-  display:none;
-
-  margin:10px auto;
-
-  object-fit:cover;
-}
-
-/* =========================================================
+/* =========================
    LIGHTBOX
-========================================================= */
+========================= */
 
 .lightbox{
-
   position:fixed;
-
   inset:0;
-
   z-index:30000;
-
   display:none;
-
   align-items:center;
-
   justify-content:center;
-
-  background:
-    rgba(0,0,0,.9);
-
+  background:rgba(0,0,0,.92);
   padding:20px;
 }
 
@@ -1688,48 +1033,59 @@ section{
 }
 
 .lightbox img{
-
   max-width:95%;
-
   max-height:90vh;
-
   border-radius:15px;
 }
 
 .lightbox button{
-
   position:absolute;
-
   top:15px;
-
   right:20px;
-
   border:0;
-
   background:transparent;
-
   color:#fff;
-
   font-size:35px;
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/* =========================
+   STATUS
+========================= */
 
-footer{
-
-  padding:
-    80px 20px 150px;
-
+#systemStatus{
+  position:fixed;
+  left:50%;
+  bottom:90px;
+  transform:translateX(-50%);
+  z-index:9500;
+  max-width:90%;
+  padding:10px 15px;
+  border-radius:20px;
+  background:rgba(15,8,18,.95);
+  border:1px solid rgba(255,255,255,.12);
+  color:#ddd;
+  font-size:12px;
+  display:none;
   text-align:center;
-
-  opacity:.65;
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+#systemStatus.show{
+  display:block;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  text-align:center;
+  padding:60px 20px 150px;
+  color:#aaa;
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:800px){
 
@@ -1738,7 +1094,7 @@ footer{
   }
 
   .logo{
-    font-size:17px;
+    font-size:16px;
   }
 
   .nav-links{
@@ -1746,8 +1102,7 @@ footer{
   }
 
   section{
-    padding:
-      65px 14px;
+    padding:65px 14px;
   }
 
   .gallery{
@@ -1764,37 +1119,20 @@ footer{
 
   .timeline-item,
   .timeline-item:nth-child(even){
-
     width:100%;
-
     margin-left:0;
-
     padding-left:35px;
-
     padding-right:0;
-
     text-align:left;
   }
 
-  .timeline-item:nth-child(odd)
-  .timeline-dot,
-  .timeline-item:nth-child(even)
-  .timeline-dot{
-
+  .timeline-item:nth-child(odd) .timeline-dot,
+  .timeline-item:nth-child(even) .timeline-dot{
     left:3px;
-
     right:auto;
   }
 
-  .reasons{
-    grid-template-columns:1fr;
-  }
-
-  .zodiac{
-    grid-template-columns:
-      repeat(3,1fr);
-  }
-
+  .reasons,
   .open-grid{
     grid-template-columns:1fr;
   }
@@ -1803,285 +1141,179 @@ footer{
     grid-template-columns:1fr;
   }
 
-  #musicPlayer{
+  .counter-box{
+    min-width:75px;
+  }
 
-    left:8px;
-    right:8px;
-    bottom:8px;
-
-    border-radius:18px;
+  .counter-box strong{
+    font-size:23px;
   }
 
   .music-controls button{
-
     width:34px;
     height:34px;
   }
-
 }
-
-@media(max-width:420px){
-
-  .profile-button{
-
-    padding:
-      6px 9px;
-
-    font-size:11px;
-  }
-
-  .profile-button img,
-  .profile-button .avatar-letter{
-
-    width:25px;
-    height:25px;
-  }
-
-  .zodiac{
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
-  .music-title{
-    max-width:120px;
-  }
-
-  .music-controls{
-    gap:2px;
-  }
-
-  .music-controls button{
-
-    width:32px;
-    height:32px;
-  }
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-<!-- =========================================================
+<!-- =========================
      AÇILIŞ
-========================================================= -->
+========================= -->
 
 <div id="opening">
-
   <div class="opening-inner">
-
-    <div class="opening-heart">
-      ❤️
-    </div>
-
-    <div class="opening-date">
-      16.10.2024
-    </div>
-
+    <div class="opening-heart">❤️</div>
+    <div class="opening-date">16.10.2024</div>
     <div class="opening-text">
-      Birlikte başlayan en güzel hikâyemiz...
+      Bizim hikâyemizin başladığı gün...
     </div>
-
     <div class="opening-small">
-      Birazdan anılarımıza gidiyoruz ❤️
+      Birkaç saniye sonra hikâyemiz açılacak...
     </div>
-
   </div>
-
 </div>
 
-<!-- =========================================================
-     KALPLER
-========================================================= -->
+<div class="hearts" id="hearts"></div>
 
-<div
-  class="hearts"
-  id="hearts">
-</div>
-
-<!-- =========================================================
+<!-- =========================
      HEADER
-========================================================= -->
+========================= -->
 
 <header>
-
   <div class="nav">
 
-    <a
-      href="#home"
-      class="logo">
+    <div class="logo">
       ❤️ Bizim Hikâyemiz
-    </a>
+    </div>
 
     <nav class="nav-links">
-
-      <a href="#home">
-        Ana Sayfa
-      </a>
-
-      <a href="#story">
-        Hikâyemiz
-      </a>
-
-      <a href="#gallery">
-        Fotoğraflar
-      </a>
-
-      <a href="#timeline">
-        Anılar
-      </a>
-
-      <a href="#sharedPostsSection">
-        Paylaşımlar
-      </a>
-
-      <a href="#quiz">
-        Aşk Testi
-      </a>
-
+      <a href="#hikaye">Hikâyemiz</a>
+      <a href="#video">Video</a>
+      <a href="#galeri">Fotoğraflar</a>
+      <a href="#timeline">Anılar</a>
+      <a href="#ziyaretciler">Ziyaretçiler</a>
     </nav>
 
     <button
+      id="profileButton"
       class="profile-button"
-      id="profileButton">
-
-      <span
-        class="avatar-letter"
-        id="profileAvatarLetter">
-        👤
+      type="button"
+      disabled>
+      <span id="profileAvatarContainer">
+        <span class="avatar-letter">♥</span>
       </span>
-
-      <span id="profileButtonText">
-        Profil
-      </span>
-
+      <span id="profileButtonText">Hazırlanıyor...</span>
     </button>
 
   </div>
-
 </header>
 
-<!-- =========================================================
-     ANA
-========================================================= -->
+<main>
 
-<main id="home">
-
-<!-- =========================================================
+<!-- =========================
      HERO
-========================================================= -->
+========================= -->
 
-<section class="hero reveal">
+<section class="hero">
 
-  <h1>
-    Bizim Hikâyemiz ❤️
-  </h1>
+  <h1>Bizim Hikâyemiz ❤️</h1>
 
   <p>
-    Birlikte geçen zamanımızdan küçük bir bölüm...
-    Ama en güzel tarafı şu:
-    Hikâyemiz hâlâ devam ediyor. 💕
+    Bazı hikâyeler anlatılmaz...
+    yaşanır.
+    Bizimki de tam olarak böyle başladı.
   </p>
 
   <div class="counter">
 
     <div class="counter-box">
-      <strong id="years">0</strong>
-      <span>Yıl</span>
-    </div>
-
-    <div class="counter-box">
-      <strong id="months">0</strong>
-      <span>Ay</span>
-    </div>
-
-    <div class="counter-box">
       <strong id="days">0</strong>
-      <span>Gün</span>
+      <span>GÜN</span>
     </div>
 
     <div class="counter-box">
       <strong id="hours">0</strong>
-      <span>Saat</span>
+      <span>SAAT</span>
     </div>
 
     <div class="counter-box">
       <strong id="minutes">0</strong>
-      <span>Dakika</span>
+      <span>DAKİKA</span>
+    </div>
+
+    <div class="counter-box">
+      <strong id="seconds">0</strong>
+      <span>SANİYE</span>
     </div>
 
   </div>
 
-</section>
-
-<!-- =========================================================
-     HİKÂYEMİZ
-========================================================= -->
-
-<section
-  id="story"
-  class="reveal">
-
-  <h2 class="section-title">
-    Hikâyemiz ❤️
-  </h2>
-
-  <p class="section-subtitle">
-    Bazı hikâyeler anlatılmaz...
-    yaşanır.
+  <p style="margin-top:30px;color:#ffafd1">
+    16 Ekim 2024'ten beri... ❤️
   </p>
 
-  <div class="card story">
+</section>
+
+<!-- =========================
+     HİKÂYEMİZ
+========================= -->
+
+<section id="hikaye">
+
+  <h2 class="section-title">Hikâyemiz</h2>
+
+  <p class="section-subtitle">
+    Bir gün başlayan ve her gün biraz daha güzelleşen hikâyemiz...
+  </p>
+
+  <div class="card story reveal">
 
     <p>
-      16 Ekim 2024...
+      Hayatta bazı insanlar vardır.
+      Onlarla karşılaştığımızda zamanın yönü değişir.
     </p>
 
     <p>
-      O gün sadece bir tarih olmadı.
-      Hayatımızda yeni bir sayfa açıldı.
+      Sen benim için sadece hayatıma giren biri olmadın.
+      Hayatımın en güzel taraflarından biri oldun.
     </p>
 
     <p>
-      Birlikte güldüğümüz,
-      birlikte yorulduğumuz,
-      birlikte hayal kurduğumuz
-      nice güzel günlerin başlangıcı oldu.
+      Birlikte güldüğümüz, birlikte sustuğumuz,
+      birlikte hayal kurduğumuz her an benim için çok değerli.
     </p>
 
     <p>
-      Ve bugün geriye dönüp baktığımızda
-      en güzel şeyin,
-      bütün bu anıları birlikte biriktirmek
-      olduğunu görüyoruz. ❤️
+      Ve biliyorum ki bizim hikâyemizin
+      daha yazılacak çok güzel sayfaları var.
+    </p>
+
+    <p style="color:#ffafd1;font-size:22px">
+      Seni seviyorum. ❤️
     </p>
 
   </div>
 
 </section>
 
-<!-- =========================================================
+<!-- =========================
      VIDEO
-========================================================= -->
+========================= -->
 
-<section
-  id="video"
-  class="reveal">
+<section id="video">
 
-  <h2 class="section-title">
-    Bizden Bir An 🎬
-  </h2>
+  <h2 class="section-title">Bizden Birkaç Saniye 🎬</h2>
 
   <p class="section-subtitle">
-    Birkaç saniyeye sığan kocaman anılar...
+    Birlikte biriktirdiğimiz güzel anlardan biri...
   </p>
 
-  <div class="video-wrap">
+  <div class="video-wrap reveal">
 
     <video
-      id="loveVideo"
       controls
       playsinline
       preload="metadata"
@@ -2091,183 +1323,60 @@ footer{
         src="7_fotografli_reels_muzikli_5inci_daha_kucuk.mp4"
         type="video/mp4">
 
-      Tarayıcınız video etiketini desteklemiyor.
-
+      Tarayıcınız videoyu desteklemiyor.
     </video>
 
   </div>
 
 </section>
 
-<!-- =========================================================
+<!-- =========================
      GALERİ
-========================================================= -->
+========================= -->
 
-<section
-  id="gallery"
-  class="reveal">
+<section id="galeri">
 
-  <h2 class="section-title">
-    Fotoğraflarımız 📸
-  </h2>
+  <h2 class="section-title">Fotoğraflarımız 📸</h2>
 
   <p class="section-subtitle">
-    Her fotoğrafta ayrı bir anı...
+    Her fotoğrafın arkasında başka bir anı var.
   </p>
 
-  <div class="gallery">
+  <div class="gallery reveal">
 
     <div class="gallery-item">
-      <img
-        src="cicekler.jpg"
-        alt="Çiçekler">
+      <img src="cicekler.jpg" alt="Çiçekler">
     </div>
 
     <div class="gallery-item">
-      <img
-        src="gezi.jpg"
-        alt="Gezi">
+      <img src="gezi.jpg" alt="Gezi">
     </div>
 
     <div class="gallery-item">
-      <img
-        src="kafe.jpg"
-        alt="Kafe">
+      <img src="kafe.jpg" alt="Kafe">
     </div>
 
     <div class="gallery-item">
-      <img
-        src="20260414_002840-IMG_STYLE.jpg"
-        alt="Anımız">
+      <img src="20260414_002840-IMG_STYLE.jpg" alt="Bizden bir kare">
     </div>
 
   </div>
 
 </section>
 
-<!-- =========================================================
-     PAYLAŞIMLAR
-========================================================= -->
-
-<section
-  id="sharedPostsSection"
-  class="reveal">
-
-  <h2 class="section-title">
-    Bizden Paylaşımlar ❤️
-  </h2>
-
-  <p class="section-subtitle">
-
-    Adını bırak,
-    kalbinden geçenleri paylaş.
-    Mesaj, şiir, alıntı veya fotoğraf...
-
-  </p>
-
-  <div class="card">
-
-    <div class="shared-tabs">
-
-      <button
-        class="shared-tab active"
-        data-type="message">
-        💬 Mesaj
-      </button>
-
-      <button
-        class="shared-tab"
-        data-type="poem">
-        📝 Şiir
-      </button>
-
-      <button
-        class="shared-tab"
-        data-type="quote">
-        💭 Alıntı
-      </button>
-
-      <button
-        class="shared-tab"
-        data-type="photo">
-        📸 Fotoğraf
-      </button>
-
-    </div>
-
-    <div class="shared-form">
-
-      <input
-        id="sharedTitle"
-        class="shared-input"
-        maxlength="100"
-        placeholder="Başlık (isteğe bağlı)">
-
-      <textarea
-        id="sharedContent"
-        class="shared-textarea"
-        maxlength="3000"
-        placeholder="Kalbinden geçenleri yaz..."></textarea>
-
-      <input
-        id="sharedPhoto"
-        class="shared-file"
-        type="file"
-        accept="image/*"
-        style="display:none;">
-
-      <img
-        id="sharedPhotoPreview"
-        class="shared-preview"
-        alt="Önizleme">
-
-      <button
-        id="sharedPublish"
-        class="main-btn"
-        style="width:100%;">
-
-        ❤️ Paylaş
-
-      </button>
-
-      <div
-        id="sharedPublishStatus"
-        class="shared-status">
-      </div>
-
-    </div>
-
-  </div>
-
-  <div
-    id="sharedPosts"
-    class="shared-posts">
-
-    <div class="shared-empty">
-      Paylaşımlar yükleniyor... ❤️
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =========================================================
+<!-- =========================
      TIMELINE
-========================================================= -->
+========================= -->
 
-<section
-  id="timeline"
-  class="reveal">
+<section id="timeline">
 
-  <h2 class="section-title">
-    Anılarımız ⏳
-  </h2>
+  <h2 class="section-title">Anılarımız 🕰️</h2>
 
   <p class="section-subtitle">
-    Hikâyemizin küçük durakları...
+    Hikâyemizin küçük ama güzel durakları...
   </p>
 
-  <div class="timeline">
+  <div class="timeline reveal">
 
     <div class="timeline-item">
 
@@ -2277,12 +1386,10 @@ footer{
         16.10.2024
       </div>
 
-      <h3>
-        Hikâyemizin Başlangıcı ❤️
-      </h3>
+      <h3>Başlangıç ❤️</h3>
 
       <p>
-        Her şeyin başladığı o özel gün.
+        Bizim için yeni bir sayfanın açıldığı gün.
       </p>
 
     </div>
@@ -2292,36 +1399,13 @@ footer{
       <div class="timeline-dot"></div>
 
       <div class="timeline-date">
-        İlk Günler
+        İlk Anılarımız
       </div>
 
-      <h3>
-        Birbirimizi Tanımaya Başladık
-      </h3>
+      <h3>Birlikte geçirilen zaman</h3>
 
       <p>
-        Küçük sohbetler,
-        uzun konuşmalar ve
-        güzel başlangıçlar...
-      </p>
-
-    </div>
-
-    <div class="timeline-item">
-
-      <div class="timeline-dot"></div>
-
-      <div class="timeline-date">
-        Güzel Anılar
-      </div>
-
-      <h3>
-        Birlikte Gezdiğimiz Günler
-      </h3>
-
-      <p>
-        Her yolculuk başka bir anı,
-        her anı başka bir gülümseme...
+        Küçük anların büyük mutluluklara dönüştüğü zamanlar.
       </p>
 
     </div>
@@ -2334,12 +1418,10 @@ footer{
         Bugün
       </div>
 
-      <h3>
-        Hikâyemiz Devam Ediyor 💕
-      </h3>
+      <h3>Hâlâ birlikte ❤️</h3>
 
       <p>
-        En güzel bölüm henüz yazılmadı.
+        Ve hikâyemiz devam ediyor.
       </p>
 
     </div>
@@ -2348,226 +1430,86 @@ footer{
 
 </section>
 
-<!-- =========================================================
+<!-- =========================
      10 NEDEN
-========================================================= -->
+========================= -->
 
-<section
-  id="reasons"
-  class="reveal">
+<section>
 
-  <h2 class="section-title">
-    Seni Sevmemin 10 Nedeni 🌹
-  </h2>
+  <h2 class="section-title">Seni Sevmemin 10 Nedeni 🌹</h2>
 
-  <div class="reasons">
+  <div class="reasons reveal">
 
-    <div class="reason">
-      <b>01.</b>
-      Gülüşün.
-    </div>
-
-    <div class="reason">
-      <b>02.</b>
-      Yanımdayken verdiğin huzur.
-    </div>
-
-    <div class="reason">
-      <b>03.</b>
-      Bana bakışın.
-    </div>
-
-    <div class="reason">
-      <b>04.</b>
-      En zor günlerde bile yanımda olman.
-    </div>
-
-    <div class="reason">
-      <b>05.</b>
-      Birlikte gülebilmemiz.
-    </div>
-
-    <div class="reason">
-      <b>06.</b>
-      Küçük şeyleri bile güzelleştirmen.
-    </div>
-
-    <div class="reason">
-      <b>07.</b>
-      Bana kendim olma özgürlüğü vermen.
-    </div>
-
-    <div class="reason">
-      <b>08.</b>
-      Hayallerimizi birlikte kurmamız.
-    </div>
-
-    <div class="reason">
-      <b>09.</b>
-      Kalbin.
-    </div>
-
-    <div class="reason">
-      <b>10.</b>
-      Çünkü sensin. ❤️
-    </div>
+    <div class="reason"><b>01.</b> Gülüşün</div>
+    <div class="reason"><b>02.</b> Bana bakışın</div>
+    <div class="reason"><b>03.</b> Yanımdayken hissettirdiğin huzur</div>
+    <div class="reason"><b>04.</b> Kalbin</div>
+    <div class="reason"><b>05.</b> Beni olduğum gibi kabul etmen</div>
+    <div class="reason"><b>06.</b> Birlikte gülebilmemiz</div>
+    <div class="reason"><b>07.</b> Zor zamanlarda yanımda olman</div>
+    <div class="reason"><b>08.</b> Küçük şeyleri güzelleştirmen</div>
+    <div class="reason"><b>09.</b> Sen olduğun için</div>
+    <div class="reason"><b>10.</b> Çünkü seni seviyorum ❤️</div>
 
   </div>
 
 </section>
 
-<!-- =========================================================
-     ZODYAK
-========================================================= -->
-
-<section
-  id="zodiac"
-  class="reveal">
-
-  <h2 class="section-title">
-    Yıldızlardan Bir Mesaj ✨
-  </h2>
-
-  <p class="section-subtitle">
-    Bir burç seç...
-  </p>
-
-  <div class="zodiac">
-
-    <button onclick="zodiac('Koç','Cesaretin ve enerjin her zaman hayatıma ışık katıyor. ❤️')">
-      ♈ Koç
-    </button>
-
-    <button onclick="zodiac('Boğa','Huzurun ve sadakatin çok özel. ❤️')">
-      ♉ Boğa
-    </button>
-
-    <button onclick="zodiac('İkizler','Seninle konuşmak hiç bitmeyen bir hikâye gibi. ❤️')">
-      ♊ İkizler
-    </button>
-
-    <button onclick="zodiac('Yengeç','Kalbinin sıcaklığı bana yuva gibi geliyor. ❤️')">
-      ♋ Yengeç
-    </button>
-
-    <button onclick="zodiac('Aslan','Işığın girdiği her yeri güzelleştiriyor. ❤️')">
-      ♌ Aslan
-    </button>
-
-    <button onclick="zodiac('Başak','Detaylara verdiğin değer beni hep etkiliyor. ❤️')">
-      ♍ Başak
-    </button>
-
-    <button onclick="zodiac('Terazi','Seninle hayat daha dengeli. ❤️')">
-      ♎ Terazi
-    </button>
-
-    <button onclick="zodiac('Akrep','Derinliğin ve tutkuların çok özel. ❤️')">
-      ♏ Akrep
-    </button>
-
-    <button onclick="zodiac('Yay','Seninle hayat küçük bir macera. ❤️')">
-      ♐ Yay
-    </button>
-
-    <button onclick="zodiac('Oğlak','Gücün ve kararlılığın hayranlık verici. ❤️')">
-      ♑ Oğlak
-    </button>
-
-    <button onclick="zodiac('Kova','Farklılığın seni sen yapan güzellik. ❤️')">
-      ♒ Kova
-    </button>
-
-    <button onclick="zodiac('Balık','Kalbinin güzelliği her şeyden daha değerli. ❤️')">
-      ♓ Balık
-    </button>
-
-  </div>
-
-</section>
-
-<!-- =========================================================
+<!-- =========================
      OPEN WHEN
-========================================================= -->
+========================= -->
 
-<section
-  id="openwhen"
-  class="reveal">
+<section>
 
-  <h2 class="section-title">
-    Şunu Aç... 💌
-  </h2>
+  <h2 class="section-title">Bunu Ne Zaman Açmalısın? 💌</h2>
 
-  <p class="section-subtitle">
-    Ne zaman ihtiyacın olursa...
-  </p>
-
-  <div class="open-grid">
+  <div class="open-grid reveal">
 
     <div
       class="open-card"
-      onclick="openWhen(
-        'Beni Özlediğinde ❤️',
-        'Gözlerini kapat ve birlikte güldüğümüz güzel bir anı düşün. Ben de aynı anda seni düşünüyor olacağım.'
-      )">
+      onclick="openWhen('mutlu')">
 
-      <h3>
-        ❤️ Beni özlediğinde
-      </h3>
+      <h3>😊 Mutlu olduğunda</h3>
 
       <p>
-        Sana küçük bir mesajım var.
+        Mutluluğuna biraz daha mutluluk eklemek için.
       </p>
 
     </div>
 
     <div
       class="open-card"
-      onclick="openWhen(
-        'Üzgün Olduğunda 🌹',
-        'Her şeyin geçeceğini hatırla. Ve unutma: yalnız değilsin.'
-      )">
+      onclick="openWhen('uzgun')">
 
-      <h3>
-        🌹 Üzgün olduğunda
-      </h3>
+      <h3>🥺 Üzgün olduğunda</h3>
 
       <p>
-        Biraz moral için...
+        Yanında olamasam bile birkaç kelimeyle yanında olmak için.
       </p>
 
     </div>
 
     <div
       class="open-card"
-      onclick="openWhen(
-        'Güldüğünde 😊',
-        'O güzel gülüşünü kaybetme. Çünkü seni en çok öyle görmek istiyorum.'
-      )">
+      onclick="openWhen('ozledin')">
 
-      <h3>
-        😊 Güldüğünde
-      </h3>
+      <h3>❤️ Beni özlediğinde</h3>
 
       <p>
-        Gülüşüne bir not.
+        Aramızdaki mesafeyi birkaç saniyeliğine kapatmak için.
       </p>
 
     </div>
 
     <div
       class="open-card"
-      onclick="openWhen(
-        'Beni Kızdırdığında 😄',
-        'Tamam tamam... biraz kızabilirsin. Ama sonra gel sarıl.'
-      )">
+      onclick="openWhen('kizgin')">
 
-      <h3>
-        😄 Beni kızdırdığında
-      </h3>
+      <h3>😌 Bana kızdığında</h3>
 
       <p>
-        Barışma mesajı burada.
+        Önce derin bir nefes al.
+        Sonra bunu aç.
       </p>
 
     </div>
@@ -2576,113 +1518,74 @@ footer{
 
 </section>
 
-<!-- =========================================================
-     ANILAR
-========================================================= -->
+<!-- =========================
+     PLACES
+========================= -->
 
-<section
-  id="places"
-  class="reveal">
+<section>
 
-  <h2 class="section-title">
-    Bizim Yerlerimiz 🗺️
-  </h2>
+  <h2 class="section-title">Bizim Yerlerimiz 🗺️</h2>
 
   <p class="section-subtitle">
-    Bazı yerler haritada değil,
-    kalpte saklanır.
+    Bazı yerlerin adresi yoktur.
+    Hatırası vardır.
   </p>
 
-  <div class="memory-map">
+  <div class="memory-map reveal">
 
     <div class="memory-place">
-
-      <div class="icon">
-        ❤️
-      </div>
-
-      <h3>
-        İlk Buluşma
-      </h3>
-
-      <p>
-        Hikâyemizin başladığı yer.
-      </p>
-
+      <div class="pin">📍</div>
+      <h3>İlk Buluşma</h3>
+      <p>Her şeyin başladığı yer.</p>
     </div>
 
     <div class="memory-place">
-
-      <div class="icon">
-        ☕
-      </div>
-
-      <h3>
-        Kafemiz
-      </h3>
-
-      <p>
-        Uzun sohbetlerin adresi.
-      </p>
-
+      <div class="pin">☕</div>
+      <h3>Favori Kafemiz</h3>
+      <p>Uzun sohbetlerin adresi.</p>
     </div>
 
     <div class="memory-place">
-
-      <div class="icon">
-        🚗
-      </div>
-
-      <h3>
-        Gezilerimiz
-      </h3>
-
-      <p>
-        Yol nereye giderse gitsin,
-        birlikteysek güzel.
-      </p>
-
+      <div class="pin">🌹</div>
+      <h3>Güzel Bir Gün</h3>
+      <p>Hatırladıkça gülümsediğimiz yer.</p>
     </div>
 
   </div>
 
 </section>
 
-<!-- =========================================================
+<!-- =========================
      QUIZ
-========================================================= -->
+========================= -->
 
-<section
-  id="quiz"
-  class="reveal">
+<section>
 
-  <h2 class="section-title">
-    Aşk Testi 🎮
-  </h2>
+  <h2 class="section-title">Aşk Testimiz 🎮</h2>
 
   <p class="section-subtitle">
-    Bakalım beni ne kadar iyi tanıyorsun? 😄
+    Bakalım beni ne kadar iyi tanıyorsun? ❤️
   </p>
 
-  <div class="quiz-grid">
+  <div class="card reveal">
 
-    <div class="quiz-question">
+    <div
+      class="quiz-question active"
+      data-question="0">
 
-      <h3>
-        1. Hikâyemizin tarihi hangisi?
-      </h3>
+      <h3>1. Bizim için en önemli tarih hangisi?</h3>
 
       <div class="quiz-options">
 
-        <button onclick="answerQuiz(true)">
-          16.10.2024
-        </button>
-
-        <button onclick="answerQuiz(false)">
+        <button onclick="quizAnswer(0,false)">
           14.02.2024
         </button>
 
-        <button onclick="answerQuiz(false)">
+        <button onclick="quizAnswer(0,true)">
+          16.10.2024 ❤️
+        </button>
+
+        <button onclick="quizAnswer(0,false)">
           01.01.2025
         </button>
 
@@ -2690,346 +1593,289 @@ footer{
 
     </div>
 
-    <div class="quiz-question">
+    <div
+      class="quiz-question"
+      data-question="1">
 
-      <h3>
-        2. En önemli şey nedir?
-      </h3>
+      <h3>2. Bu sitedeki en önemli kelime?</h3>
 
       <div class="quiz-options">
 
-        <button onclick="answerQuiz(true)">
-          Birlikte olmak ❤️
+        <button onclick="quizAnswer(1,false)">
+          Tesadüf
         </button>
 
-        <button onclick="answerQuiz(false)">
-          Para
+        <button onclick="quizAnswer(1,true)">
+          Sevgi ❤️
         </button>
 
-        <button onclick="answerQuiz(false)">
-          Şans
+        <button onclick="quizAnswer(1,false)">
+          Kahve
         </button>
 
       </div>
 
     </div>
-
-    <div class="quiz-question">
-
-      <h3>
-        3. Hikâyemizin en güzel bölümü hangisi?
-      </h3>
-
-      <div class="quiz-options">
-
-        <button onclick="answerQuiz(true)">
-          Henüz yazılmayan bölüm
-        </button>
-
-        <button onclick="answerQuiz(false)">
-          Geçmiş
-        </button>
-
-        <button onclick="answerQuiz(false)">
-          İlk gün
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <div
-    id="quizResult"
-    style="
-      text-align:center;
-      margin-top:25px;
-      font-size:20px;
-      color:#ffc1dd;
-    ">
-  </div>
-
-</section>
-
-<!-- =========================================================
-     SÜRPRİZ
-========================================================= -->
-
-<section
-  id="gift"
-  class="reveal">
-
-  <h2 class="section-title">
-    Bir Sürprizin Var 🎁
-  </h2>
-
-  <p class="section-subtitle">
-    Kutuyu açmaya hazır mısın?
-  </p>
-
-  <div
-    class="card"
-    style="
-      text-align:center;
-      max-width:600px;
-      margin:auto;
-    ">
 
     <div
-      id="giftBox"
-      style="
-        font-size:100px;
-        cursor:pointer;
-        transition:transform .4s;
-      "
-      onclick="openGift()">
+      class="quiz-question"
+      data-question="2">
 
-      🎁
+      <h3>3. Hikâyemiz ne zaman bitecek?</h3>
+
+      <div class="quiz-options">
+
+        <button onclick="quizAnswer(2,true)">
+          Hiçbir zaman ❤️
+        </button>
+
+        <button onclick="quizAnswer(2,false)">
+          Bir gün
+        </button>
+
+        <button onclick="quizAnswer(2,false)">
+          Bilmiyorum
+        </button>
+
+      </div>
 
     </div>
 
-    <p id="giftText">
-      Dokun ve aç ❤️
-    </p>
+    <div id="quizResult" class="quiz-result"></div>
 
   </div>
 
 </section>
 
-<!-- =========================================================
-     GİZLİ BÖLÜM
-========================================================= -->
+<!-- =========================
+     GIFT
+========================= -->
 
-<section
-  id="secret"
-  class="reveal">
+<section>
 
-  <h2 class="section-title">
-    Gizli Bir Şey Var 🔐
-  </h2>
+  <h2 class="section-title">Sana Bir Hediyem Var 🎁</h2>
 
-  <p class="section-subtitle">
-    Sadece bizim bildiğimiz şifre...
+  <div class="gift-area">
+
+    <div
+      class="gift"
+      onclick="openGift()">
+      🎁
+    </div>
+
+    <div
+      id="giftMessage"
+      class="gift-message card">
+
+      <h3 style="color:#ffc1dc">
+        Hediyenin içinden çıkan şey...
+      </h3>
+
+      <p style="margin-top:15px">
+        Sana verebileceğim en güzel şeylerden biri
+        hayatımda sana yer açmak değil,
+        hayatımın içinde sana kocaman bir yer vermek.
+      </p>
+
+      <p style="margin-top:15px;color:#ffafd1">
+        İyi ki varsın. ❤️
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================
+     SKY
+========================= -->
+
+<section>
+
+  <h2 class="section-title">Bizim Gökyüzümüz 🌌</h2>
+
+  <div class="sky reveal" id="sky">
+
+    <div class="moon"></div>
+
+  </div>
+
+  <p style="text-align:center;margin-top:18px;color:#ffafd1">
+    Aynı gökyüzüne baktığımız sürece,
+    hiçbir mesafe uzak değildir.
   </p>
 
-  <div
-    class="card"
-    style="
-      max-width:500px;
-      margin:auto;
-      text-align:center;
-    ">
+</section>
+
+<!-- =========================
+     PHOTO PUZZLE
+========================= -->
+
+<section>
+
+  <h2 class="section-title">Birlikte Tamamlanıyoruz 🧩</h2>
+
+  <p class="section-subtitle">
+    Parçaları karıştırılmış bir fotoğraf.
+    Dokunarak parçaları yer değiştirebilirsin.
+  </p>
+
+  <div class="puzzle reveal" id="puzzle"></div>
+
+  <div style="text-align:center;margin-top:18px">
+    <button
+      class="main-btn"
+      onclick="shufflePuzzle()">
+      🔀 Karıştır
+    </button>
+  </div>
+
+</section>
+
+<!-- =========================
+     SECRET
+========================= -->
+
+<section>
+
+  <h2 class="section-title">Gizli Sürpriz 🔐</h2>
+
+  <div class="card secret-box reveal">
+
+    <p>
+      Burada sadece bizim bildiğimiz
+      bir şey saklı...
+    </p>
 
     <input
       id="pinInput"
-      type="password"
-      inputmode="numeric"
+      class="pin-input"
       maxlength="8"
-      placeholder="Şifreyi gir"
-      style="
-        width:100%;
-        padding:14px;
-        border-radius:15px;
-        border:1px solid rgba(255,255,255,.12);
-        background:rgba(0,0,0,.25);
-        color:#fff;
-        text-align:center;
-        margin-bottom:15px;
-        outline:none;
-      "
-    >
+      inputmode="numeric"
+      placeholder="PIN">
 
     <button
       class="main-btn"
-      onclick="unlockSecret()">
-
+      onclick="checkPin()">
       🔓 Aç
-
     </button>
 
     <div
       id="secretResult"
-      style="
-        margin-top:20px;
-        color:#ffc1dd;
-      ">
+      class="secret-result">
     </div>
 
   </div>
 
 </section>
 
-<!-- =========================================================
-     GELECEK
-========================================================= -->
+<!-- =========================
+     VISITOR POSTS
+========================= -->
 
-<section
-  id="future"
-  class="reveal">
+<section id="ziyaretciler">
 
-  <h2 class="section-title">
-    Daha Yazılacak Çok Şey Var ✨
-  </h2>
+  <h2 class="section-title">Bizim Ziyaretçi Defterimiz 💌</h2>
 
-  <div class="card">
+  <p class="section-subtitle">
+    Buraya gelenler adlarını bırakabilir,
+    bir söz yazabilir veya fotoğraf paylaşabilir.
+  </p>
 
-    <div class="reasons">
+  <div style="text-align:center;margin-bottom:30px">
 
-      <div class="reason">
-        ✈️ Birlikte yeni yerler görmek
-      </div>
+    <button
+      class="main-btn"
+      id="writePostButton"
+      type="button">
+      ✍️ Deftere Bir Şey Yaz
+    </button>
 
-      <div class="reason">
-        🌅 Daha çok gün batımı izlemek
-      </div>
+  </div>
 
-      <div class="reason">
-        ☕ Daha çok kahve sohbeti
-      </div>
+  <div
+    id="postsList"
+    class="posts-list">
 
-      <div class="reason">
-        📸 Daha çok fotoğraf
-      </div>
-
-      <div class="reason">
-        😂 Daha çok kahkaha
-      </div>
-
-      <div class="reason">
-        ❤️ Daha çok anı
-      </div>
-
+    <div class="card" style="text-align:center">
+      Paylaşımlar yükleniyor... ❤️
     </div>
 
   </div>
 
 </section>
 
-<!-- =========================================================
-     MEKTUP
-========================================================= -->
+<!-- =========================
+     FINAL LETTER
+========================= -->
 
-<section
-  id="letter"
-  class="reveal">
+<section>
 
-  <h2 class="section-title">
-    Sana Bir Mektup 💌
-  </h2>
+  <h2 class="section-title">Sana Son Birkaç Kelime ❤️</h2>
 
-  <div
-    class="card"
-    style="
-      max-width:800px;
-      margin:auto;
-      text-align:center;
-      font-size:19px;
-    ">
+  <div class="card story reveal">
 
     <p>
-      Hayatın bana verdiği en güzel
-      hediyelerden biri sensin.
+      Belki bu site bir internet sayfasından ibaret gibi görünüyor.
     </p>
 
-    <br>
-
     <p>
-      Bazen kelimeler yetmiyor.
-      Çünkü sana karşı hissettiğim şeyleri
-      birkaç cümleye sığdırmak mümkün değil.
+      Ama benim için buradaki her fotoğraf,
+      her kelime ve her tarih bir anı.
     </p>
 
-    <br>
-
     <p>
-      İyi ki yollarımız kesişti.
-      İyi ki birlikte bu hikâyeyi yazıyoruz.
+      Çünkü hepsinin içinde sen varsın.
     </p>
 
-    <br>
-
     <p>
-      Ve en önemlisi...
-      <strong>
-        İyi ki sen. ❤️
-      </strong>
+      Geçmişte yaşadığımız güzel günler,
+      bugünümüz ve henüz yaşamadığımız
+      bütün güzel günler...
+    </p>
+
+    <p style="font-size:24px;color:#ffafd1">
+      Hepsini seninle yaşamak istiyorum. ❤️
     </p>
 
   </div>
 
 </section>
 
-<!-- =========================================================
-     FINAL
-========================================================= -->
+<!-- =========================
+     FINAL QUESTION
+========================= -->
 
-<section
-  id="final"
-  class="reveal">
+<section>
 
-  <h2 class="section-title">
-    Bir Sorum Var... ❤️
-  </h2>
+  <div class="final reveal">
 
-  <div
-    class="card"
-    style="
-      max-width:700px;
-      margin:auto;
-      text-align:center;
-    ">
+    <h2>
+      Benimle bu hikâyeyi<br>
+      devam ettirir misin? ❤️
+    </h2>
 
-    <h3
-      style="
-        font-size:30px;
-        color:#ffc1dd;
-        margin-bottom:25px;
-      ">
-
-      Hikâyemizin devamını
-      benimle yazmaya devam eder misin?
-
-    </h3>
-
-    <div
-      style="
-        display:flex;
-        justify-content:center;
-        gap:12px;
-        flex-wrap:wrap;
-      ">
+    <div class="final-buttons">
 
       <button
         class="main-btn"
         onclick="finalYes()">
-
-        ❤️ EVET
-
+        ❤️ Evet
       </button>
 
       <button
-        class="main-btn"
+        class="secondary-btn"
         id="noButton"
-        onclick="moveNoButton()"
-        style="
-          background:
-            rgba(255,255,255,.08);
-        ">
-
-        Hayır 😄
-
+        onclick="moveNoButton()">
+        Hayır 🙈
       </button>
 
     </div>
 
     <div
       id="finalResult"
-      style="
-        margin-top:25px;
-        color:#ffc1dd;
-        font-size:20px;
-      ">
+      style="margin-top:25px;color:#ffafd1;font-size:20px">
     </div>
 
   </div>
@@ -3038,89 +1884,34 @@ footer{
 
 </main>
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
 <footer>
-
   <p>
-    16.10.2024 → Sonsuza kadar ❤️
+    16.10.2024 ❤️ Sonsuza kadar...
   </p>
-
-  <p>
-    Bizim Hikâyemiz
-  </p>
-
 </footer>
 
-<!-- =========================================================
-     MODAL
-========================================================= -->
-
-<div
-  class="modal"
-  id="generalModal">
-
-  <div class="modal-box">
-
-    <button
-      class="modal-close"
-      onclick="closeModal()">
-      ×
-    </button>
-
-    <div id="modalContent">
-    </div>
-
-  </div>
-
-</div>
-
-<!-- =========================================================
-     LIGHTBOX
-========================================================= -->
-
-<div
-  class="lightbox"
-  id="lightbox">
-
-  <button
-    onclick="closeLightbox()">
-    ×
-  </button>
-
-  <img
-    id="lightboxImage"
-    src=""
-    alt="Büyük fotoğraf">
-
-</div>
-
-<!-- =========================================================
-     MÜZİK PLAYER
-========================================================= -->
+<!-- =========================
+     MUSIC PLAYER
+========================= -->
 
 <div id="musicPlayer">
 
   <div class="music-top">
 
-    <div class="music-icon">
-      🎵
-    </div>
+    <div class="music-cover">🎵</div>
 
     <div class="music-info">
 
       <div
-        class="music-title"
-        id="musicTitle">
-        Şarkılar yükleniyor...
+        id="musicTitle"
+        class="music-title">
+        Müzik hazırlanıyor...
       </div>
 
       <div
-        class="music-status"
-        id="musicStatus">
-        0 şarkı
+        id="musicStatus"
+        class="music-status">
+        Hazırlanıyor...
       </div>
 
     </div>
@@ -3129,19 +1920,19 @@ footer{
 
       <button
         id="prevMusic"
-        title="Önceki">
+        type="button">
         ⏮
       </button>
 
       <button
         id="playMusic"
-        title="Oynat">
+        type="button">
         ▶
       </button>
 
       <button
         id="nextMusic"
-        title="Sonraki">
+        type="button">
         ⏭
       </button>
 
@@ -3149,583 +1940,269 @@ footer{
 
   </div>
 
-  <div class="music-progress">
-
-    <input
-      type="range"
-      id="musicProgress"
-      min="0"
-      max="100"
-      value="0">
-
-  </div>
-
-  <div class="music-bottom">
-
-    <span id="musicTime">
-      0:00 / 0:00
-    </span>
-
-    <button
-      class="playlist-button"
-      id="playlistButton">
-
-      ☰ Şarkılar
-
-    </button>
-
-  </div>
-
-  <div
-    class="playlist"
-    id="playlist">
-  </div>
-
   <audio
     id="audio"
     preload="metadata">
   </audio>
 
+  <input
+    id="musicProgress"
+    class="music-progress"
+    type="range"
+    min="0"
+    max="100"
+    value="0">
+
+  <div class="music-bottom">
+
+    <span
+      id="musicTime"
+      class="music-time">
+      0:00 / 0:00
+    </span>
+
+    <button
+      id="playlistButton"
+      class="playlist-button"
+      type="button">
+      ☰ Şarkılar
+    </button>
+
+  </div>
+
+  <div
+    id="playlist"
+    class="playlist">
+  </div>
+
 </div>
 
-<!-- =========================================================
-     SUPABASE
-========================================================= -->
+<div id="systemStatus"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!-- =========================
+     PROFILE MODAL
+========================= -->
+
+<div
+  id="profileModal"
+  class="modal">
+
+  <div class="modal-box">
+
+    <button
+      class="modal-close"
+      onclick="closeModal('profileModal')">
+      ×
+    </button>
+
+    <h2 class="modal-title">
+      Profilin ❤️
+    </h2>
+
+    <div id="profileCurrent"></div>
+
+    <div class="form-group">
+
+      <label>Adın</label>
+
+      <input
+        id="profileName"
+        type="text"
+        maxlength="40"
+        placeholder="Adın">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Soyadın</label>
+
+      <input
+        id="profileSurname"
+        type="text"
+        maxlength="40"
+        placeholder="Soyadın">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Profil fotoğrafın</label>
+
+      <input
+        id="profilePhoto"
+        type="file"
+        accept="image/*">
+
+      <img
+        id="profilePreview"
+        class="profile-preview hidden"
+        alt="Profil önizleme">
+
+    </div>
+
+    <button
+      class="main-btn"
+      id="saveProfileButton"
+      type="button">
+      💾 Profili Kaydet
+    </button>
+
+    <div
+      id="profileStatus"
+      style="margin-top:15px;color:#ffafd1">
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================
+     POST MODAL
+========================= -->
+
+<div
+  id="postModal"
+  class="modal">
+
+  <div class="modal-box">
+
+    <button
+      class="modal-close"
+      onclick="closeModal('postModal')">
+      ×
+    </button>
+
+    <h2 class="modal-title">
+      Ziyaretçi Defterine Yaz 💌
+    </h2>
+
+    <div class="form-group">
+
+      <label>Paylaşım türü</label>
+
+      <select id="postType">
+
+        <option value="mesaj">
+          💌 Mesaj
+        </option>
+
+        <option value="soz">
+          💭 Güzel Söz
+        </option>
+
+        <option value="siir">
+          📖 Şiir
+        </option>
+
+        <option value="fotograf">
+          📸 Fotoğraf
+        </option>
+
+      </select>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Başlık</label>
+
+      <input
+        id="postTitle"
+        type="text"
+        maxlength="100"
+        placeholder="Başlık">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Mesajın</label>
+
+      <textarea
+        id="postContent"
+        maxlength="3000"
+        placeholder="Buraya yaz..."></textarea>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Fotoğraf</label>
+
+      <input
+        id="postPhoto"
+        type="file"
+        accept="image/*">
+
+    </div>
+
+    <button
+      class="main-btn"
+      id="publishPostButton"
+      type="button">
+      🚀 Paylaş
+    </button>
+
+    <div
+      id="postStatus"
+      style="margin-top:15px;color:#ffafd1">
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================
+     OPEN WHEN MODAL
+========================= -->
+
+<div
+  id="openWhenModal"
+  class="modal">
+
+  <div class="modal-box">
+
+    <button
+      class="modal-close"
+      onclick="closeModal('openWhenModal')">
+      ×
+    </button>
+
+    <h2
+      id="openWhenTitle"
+      class="modal-title">
+    </h2>
+
+    <p
+      id="openWhenContent"
+      style="font-size:18px">
+    </p>
+
+  </div>
+
+</div>
+
+<!-- =========================
+     LIGHTBOX
+========================= -->
+
+<div
+  id="lightbox"
+  class="lightbox">
+
+  <button onclick="closeLightbox()">×</button>
+
+  <img
+    id="lightboxImage"
+    alt="Fotoğraf">
+
+</div>
 
 <script>
-
-/* =========================================================
-   GENEL
-========================================================= */
-
-const $ =
-  id =>
-  document.getElementById(id);
-
-/* =========================================================
-   AÇILIŞ
-========================================================= */
-
-setTimeout(
-  () => {
-
-    $("opening")
-      .classList
-      .add("hide");
-
-  },
-  3000
-);
-
-/* =========================================================
-   KALPLER
-========================================================= */
-
-function createBackgroundHearts(){
-
-  const container =
-    $("hearts");
-
-  for(
-    let i=0;
-    i<18;
-    i++
-  ){
-
-    const heart =
-      document.createElement(
-        "div"
-      );
-
-    heart.className =
-      "heart";
-
-    heart.textContent =
-      Math.random()>.5
-      ? "❤️"
-      : "💕";
-
-    heart.style.left =
-      Math.random()*100 + "%";
-
-    heart.style.fontSize =
-      (
-        12 +
-        Math.random()*22
-      ) + "px";
-
-    heart.style.animationDuration =
-      (
-        10 +
-        Math.random()*14
-      ) + "s";
-
-    heart.style.animationDelay =
-      (
-        -Math.random()*15
-      ) + "s";
-
-    container.appendChild(
-      heart
-    );
-
-  }
-
-}
-
-createBackgroundHearts();
-
-/* =========================================================
-   SAYIÇ
-========================================================= */
-
-const startDate =
-  new Date(
-    "2024-10-16T00:00:00"
-  );
-
-function updateCounter(){
-
-  const now =
-    new Date();
-
-  let years =
-    now.getFullYear()
-    -
-    startDate.getFullYear();
-
-  const anniversary =
-    new Date(
-      now.getFullYear(),
-      startDate.getMonth(),
-      startDate.getDate()
-    );
-
-  if(now < anniversary){
-    years--;
-  }
-
-  const diff =
-    now - startDate;
-
-  const totalDays =
-    Math.floor(
-      diff / 86400000
-    );
-
-  const totalHours =
-    Math.floor(
-      diff / 3600000
-    );
-
-  const totalMinutes =
-    Math.floor(
-      diff / 60000
-    );
-
-  $("years").textContent =
-    Math.max(0,years);
-
-  $("months").textContent =
-    Math.max(
-      0,
-      years*12
-    );
-
-  $("days").textContent =
-    Math.max(
-      0,
-      totalDays
-    );
-
-  $("hours").textContent =
-    Math.max(
-      0,
-      totalHours
-    );
-
-  $("minutes").textContent =
-    Math.max(
-      0,
-      totalMinutes
-    );
-
-}
-
-updateCounter();
-
-setInterval(
-  updateCounter,
-  1000
-);
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-const observer =
-  new IntersectionObserver(
-    entries => {
-
-      entries.forEach(
-        entry => {
-
-          if(
-            entry.isIntersecting
-          ){
-
-            entry.target
-              .classList
-              .add("show");
-
-          }
-
-        }
-      );
-
-    },
-    {
-      threshold:.12
-    }
-  );
-
-document
-  .querySelectorAll(
-    ".reveal"
-  )
-  .forEach(
-    el =>
-      observer.observe(el)
-  );
-
-/* =========================================================
-   LIGHTBOX
-========================================================= */
-
-document
-  .querySelectorAll(
-    ".gallery-item img"
-  )
-  .forEach(
-    img => {
-
-      img.addEventListener(
-        "click",
-        () => {
-
-          $("lightboxImage")
-            .src =
-            img.src;
-
-          $("lightbox")
-            .classList
-            .add("show");
-
-        }
-      );
-
-    }
-  );
-
-function closeLightbox(){
-
-  $("lightbox")
-    .classList
-    .remove("show");
-
-  $("lightboxImage")
-    .src = "";
-
-}
-
-$("lightbox")
-  .addEventListener(
-    "click",
-    e => {
-
-      if(
-        e.target ===
-        $("lightbox")
-      ){
-
-        closeLightbox();
-
-      }
-
-    }
-  );
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-function openModal(
-  html
-){
-
-  $("modalContent")
-    .innerHTML =
-    html;
-
-  $("generalModal")
-    .classList
-    .add("show");
-
-  document.body
-    .classList
-    .add("modal-open");
-
-}
-
-function closeModal(){
-
-  $("generalModal")
-    .classList
-    .remove("show");
-
-  document.body
-    .classList
-    .remove("modal-open");
-
-}
-
-$("generalModal")
-  .addEventListener(
-    "click",
-    e => {
-
-      if(
-        e.target ===
-        $("generalModal")
-      ){
-
-        closeModal();
-
-      }
-
-    }
-  );
-
-/* =========================================================
-   ZODYAK
-========================================================= */
-
-function zodiac(
-  name,
-  message
-){
-
-  openModal(`
-
-    <h2 class="modal-title">
-      ${name} ❤️
-    </h2>
-
-    <p
-      style="
-        font-size:20px;
-        text-align:center;
-      ">
-
-      ${message}
-
-    </p>
-
-  `);
-
-}
-
-/* =========================================================
-   OPEN WHEN
-========================================================= */
-
-function openWhen(
-  title,
-  message
-){
-
-  openModal(`
-
-    <h2 class="modal-title">
-      ${title}
-    </h2>
-
-    <p
-      style="
-        font-size:19px;
-      ">
-
-      ${message}
-
-    </p>
-
-  `);
-
-}
-
-/* =========================================================
-   QUIZ
-========================================================= */
-
-let quizScore =
-  0;
-
-let quizCount =
-  0;
-
-function answerQuiz(
-  correct
-){
-
-  quizCount++;
-
-  if(correct){
-
-    quizScore++;
-
-  }
-
-  $("quizResult")
-    .textContent =
-    `Şu ana kadar ${quizScore}/${quizCount} doğru ❤️`;
-
-  if(
-    quizCount >= 3
-  ){
-
-    setTimeout(
-      () => {
-
-        $("quizResult")
-          .textContent =
-          `Test bitti! ${quizScore}/3 ❤️`;
-
-      },
-      400
-    );
-
-  }
-
-}
-
-/* =========================================================
-   GIFT
-========================================================= */
-
-function openGift(){
-
-  const box =
-    $("giftBox");
-
-  box.style.transform =
-    "scale(1.3) rotate(8deg)";
-
-  setTimeout(
-    () => {
-
-      box.textContent =
-        "💖";
-
-      $("giftText")
-        .textContent =
-        "Asıl hediye sensin. ❤️";
-
-    },
-    500
-  );
-
-}
-
-/* =========================================================
-   PIN
-========================================================= */
-
-function unlockSecret(){
-
-  const pin =
-    $("pinInput")
-      .value
-      .trim();
-
-  if(
-    pin ===
-    "16102024"
-  ){
-
-    $("secretResult")
-      .innerHTML = `
-
-        <div
-          style="
-            font-size:55px;
-            margin-bottom:10px;
-          ">
-          ❤️
-        </div>
-
-        <p>
-          Şifre doğru.
-        </p>
-
-        <p>
-          Sen benim için
-          tahmin ettiğinden çok daha
-          değerlisin.
-        </p>
-
-      `;
-
-  }else{
-
-    $("secretResult")
-      .textContent =
-      "Şifre yanlış... ❤️";
-
-  }
-
-}
-
-/* =========================================================
-   FINAL
-========================================================= */
-
-function finalYes(){
-
-  $("finalResult")
-    .innerHTML =
-    "O zaman hikâyemizin en güzel bölümleri henüz yazılmadı. ❤️";
-
-}
-
-function moveNoButton(){
-
-  const button =
-    $("noButton");
-
-  button.style.position =
-    "relative";
-
-  button.style.left =
-    (
-      Math.random()*100
-      -
-      50
-    ) + "px";
-
-  button.style.top =
-    (
-      Math.random()*70
-      -
-      35
-    ) + "px";
-
-}
-
-/* =========================================================
-   SUPABASE AYARLARI
-========================================================= */
+/* =====================================================
+   SUPABASE
+===================================================== */
 
 const SUPABASE_URL =
   "https://oehmlrjaffydigpwbngwe.supabase.co";
@@ -3739,1809 +2216,1143 @@ const supabaseClient =
     SUPABASE_KEY
   );
 
-let currentUser =
-  null;
+let currentUser = null;
+let supabaseReady = false;
+let currentProfile = null;
 
-let currentProfile =
-  null;
 
-let selectedPostType =
-  "message";
+/* =====================================================
+   STATUS
+===================================================== */
 
-/* =========================================================
-   HTML GÜVENLİĞİ
-========================================================= */
+function showStatus(message, duration=3500){
 
-function escapeHtml(
-  value
-){
+  const box =
+    document.getElementById("systemStatus");
 
-  return String(
-    value ?? ""
-  )
-  .replaceAll(
-    "&",
-    "&amp;"
-  )
-  .replaceAll(
-    "<",
-    "&lt;"
-  )
-  .replaceAll(
-    ">",
-    "&gt;"
-  )
-  .replaceAll(
-    '"',
-    "&quot;"
-  )
-  .replaceAll(
-    "'",
-    "&#039;"
-  );
+  box.textContent = message;
+  box.classList.add("show");
 
+  clearTimeout(window.statusTimer);
+
+  window.statusTimer =
+    setTimeout(()=>{
+      box.classList.remove("show");
+    },duration);
 }
 
-/* =========================================================
-   SUPABASE OTURUM
-========================================================= */
 
-async function initializeSupabase(){
+/* =====================================================
+   SUPABASE BAŞLAT
+===================================================== */
+
+async function initSupabase(){
+
+  const profileButton =
+    document.getElementById("profileButton");
+
+  const profileButtonText =
+    document.getElementById("profileButtonText");
 
   try{
 
     let {
-      data,
-      error
+      data:{
+        session
+      },
+      error:sessionError
     } =
-      await supabaseClient
-        .auth
-        .getSession();
+      await supabaseClient.auth.getSession();
 
-    if(error){
-
-      console.error(
-        error
-      );
-
+    if(sessionError){
+      throw sessionError;
     }
-
-    let session =
-      data?.session;
 
     if(!session){
 
-      const result =
-        await supabaseClient
-          .auth
-          .signInAnonymously();
+      const {
+        data,
+        error
+      } =
+        await supabaseClient.auth.signInAnonymously();
 
-      if(
-        result.error
-      ){
-
-        console.error(
-          result.error
-        );
-
-        $("profileButtonText")
-          .textContent =
-          "Profil";
-
-        return false;
-
+      if(error){
+        throw error;
       }
 
-      session =
-        result.data?.session;
+      currentUser =
+        data.user;
+
+    }else{
+
+      currentUser =
+        session.user;
 
     }
-
-    currentUser =
-      session?.user ||
-      null;
 
     if(!currentUser){
-
-      return false;
-
+      throw new Error(
+        "Kullanıcı oluşturulamadı."
+      );
     }
 
-    await loadRemoteProfile();
+    supabaseReady = true;
 
-    return true;
+    profileButton.disabled = false;
+
+    profileButtonText.textContent =
+      "Profil";
+
+    await loadMyProfile();
+
+    await loadPosts();
 
   }catch(error){
 
     console.error(
+      "Supabase başlatma hatası:",
       error
     );
 
-    return false;
+    supabaseReady = false;
 
-  }
+    profileButton.disabled = true;
 
-}
+    profileButtonText.textContent =
+      "Profil kullanılamıyor";
 
-/* =========================================================
-   PROFİLİ GETİR
-========================================================= */
-
-async function loadRemoteProfile(){
-
-  if(!currentUser){
-    return;
-  }
-
-  const result =
-    await supabaseClient
-      .from("profiles")
-      .select("*")
-      .eq(
-        "id",
-        currentUser.id
-      )
-      .maybeSingle();
-
-  if(result.error){
-
-    console.error(
-      result.error
+    showStatus(
+      "Profil sistemi başlatılamadı. Supabase ayarlarını kontrol edin."
     );
 
-    return;
-
   }
-
-  currentProfile =
-    result.data ||
-    null;
-
-  updateProfileButton();
 
 }
 
-/* =========================================================
-   PROFİL BUTONU
-========================================================= */
+
+/* =====================================================
+   PROFİL
+===================================================== */
+
+async function loadMyProfile(){
+
+  if(!supabaseReady || !currentUser){
+    return;
+  }
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .select("*")
+        .eq("id",currentUser.id)
+        .maybeSingle();
+
+    if(error){
+      console.warn(
+        "Profil okunamadı:",
+        error
+      );
+      return;
+    }
+
+    currentProfile = data || null;
+
+    updateProfileButton();
+
+  }catch(error){
+
+    console.error(error);
+
+  }
+
+}
+
 
 function updateProfileButton(){
 
-  const button =
-    $("profileButton");
+  const container =
+    document.getElementById(
+      "profileAvatarContainer"
+    );
 
   const text =
-    $("profileButtonText");
-
-  const avatar =
-    $("profileAvatarLetter");
+    document.getElementById(
+      "profileButtonText"
+    );
 
   if(
-    !button ||
-    !text ||
-    !avatar
+    currentProfile &&
+    currentProfile.name
   ){
-    return;
-  }
 
-  if(!currentProfile){
+    const fullName =
+      `${currentProfile.name} ${
+        currentProfile.surname || ""
+      }`.trim();
+
+    text.textContent =
+      fullName;
+
+    if(currentProfile.photo_url){
+
+      container.innerHTML =
+        `<img
+          class="profile-avatar"
+          src="${escapeHtml(currentProfile.photo_url)}"
+          alt="Profil">`;
+
+    }else{
+
+      container.innerHTML =
+        `<span class="avatar-letter">
+          ${escapeHtml(
+            currentProfile.name
+              .charAt(0)
+              .toUpperCase()
+          )}
+        </span>`;
+
+    }
+
+  }else{
 
     text.textContent =
       "Profil";
 
-    avatar.outerHTML = `
-
-      <span
-        class="avatar-letter"
-        id="profileAvatarLetter">
-
-        👤
-
-      </span>
-
-    `;
-
-    return;
+    container.innerHTML =
+      `<span class="avatar-letter">♥</span>`;
 
   }
 
-  text.textContent =
-    currentProfile.name;
+}
 
-  if(
-    currentProfile.photo_url
-  ){
 
-    avatar.outerHTML = `
+/* =====================================================
+   PROFİL MODAL
+===================================================== */
 
-      <img
-        id="profileAvatarLetter"
-        src="${escapeHtml(
-          currentProfile.photo_url
-        )}"
-        alt="Profil">
+document
+  .getElementById("profileButton")
+  .addEventListener(
+    "click",
+    openProfileModal
+  );
 
-    `;
+
+async function openProfileModal(){
+
+  if(!supabaseReady || !currentUser){
+
+    showStatus(
+      "Profil sistemi henüz hazır değil."
+    );
+
+    return;
+  }
+
+  const modal =
+    document.getElementById(
+      "profileModal"
+    );
+
+  const name =
+    document.getElementById(
+      "profileName"
+    );
+
+  const surname =
+    document.getElementById(
+      "profileSurname"
+    );
+
+  const current =
+    document.getElementById(
+      "profileCurrent"
+    );
+
+  name.value =
+    currentProfile?.name || "";
+
+  surname.value =
+    currentProfile?.surname || "";
+
+  if(currentProfile?.photo_url){
+
+    current.innerHTML =
+      `<img
+        src="${escapeHtml(currentProfile.photo_url)}"
+        alt="Profil">`;
 
   }else{
 
-    avatar.outerHTML = `
-
-      <span
-        class="avatar-letter"
-        id="profileAvatarLetter">
-
-        ${escapeHtml(
-          currentProfile
-            .name
-            .charAt(0)
-            .toUpperCase()
-        )}
-
-      </span>
-
-    `;
+    current.innerHTML =
+      `<div style="
+        text-align:center;
+        font-size:60px;
+        margin-bottom:15px;
+      ">❤️</div>`;
 
   }
+
+  modal.classList.add("show");
 
 }
 
-/* =========================================================
-   PROFİL PENCERESİ
-========================================================= */
 
-function openRemoteProfile(){
-
-  if(!currentUser){
-
-    alert(
-      "Profil sistemi yükleniyor. Birkaç saniye sonra tekrar deneyin."
-    );
-
-    return;
-
-  }
-
-  if(!currentProfile){
-
-    showProfileForm();
-
-    return;
-
-  }
-
-  openModal(`
-
-    <h2 class="modal-title">
-      Profilim 👤
-    </h2>
-
-    <div class="profile-current">
-
-      ${
-        currentProfile.photo_url
-        ?
-
-        `<img
-          src="${escapeHtml(
-            currentProfile.photo_url
-          )}"
-          alt="Profil">`
-
-        :
-
-        `<div class="big-avatar">
-
-          ${escapeHtml(
-            currentProfile
-              .name
-              .charAt(0)
-              .toUpperCase()
-          )}
-
-        </div>`
-      }
-
-      <h3>
-
-        ${escapeHtml(
-          currentProfile.name
-        )}
-
-        ${escapeHtml(
-          currentProfile.surname
-        )}
-
-      </h3>
-
-    </div>
-
-    <button
-      class="main-btn"
-      style="
-        width:100%;
-        margin-bottom:10px;
-      "
-      onclick="showProfileForm()">
-
-      ✏️ Profili Düzenle
-
-    </button>
-
-    <button
-      style="
-        width:100%;
-        padding:13px;
-        border-radius:18px;
-        border:1px solid rgba(255,255,255,.1);
-        background:rgba(255,255,255,.05);
-        color:#fff;
-      "
-      onclick="deleteRemoteProfile()">
-
-      🗑️ Profilimi Sil
-
-    </button>
-
-  `);
-
-}
-
-/* =========================================================
-   PROFİL FORMU
-========================================================= */
-
-function showProfileForm(){
-
-  const profile =
-    currentProfile || {
-
-      name:"",
-      surname:"",
-      photo_url:""
-
-    };
-
-  openModal(`
-
-    <h2 class="modal-title">
-      ${currentProfile
-        ? "Profilini Düzenle ✏️"
-        : "Profilini Oluştur ❤️"}
-    </h2>
-
-    <div class="form-group">
-
-      <label>
-        Ad *
-      </label>
-
-      <input
-        id="profileName"
-        type="text"
-        maxlength="40"
-        value="${escapeHtml(
-          profile.name
-        )}"
-        placeholder="Adın">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>
-        Soyad *
-      </label>
-
-      <input
-        id="profileSurname"
-        type="text"
-        maxlength="40"
-        value="${escapeHtml(
-          profile.surname
-        )}"
-        placeholder="Soyadın">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>
-        📷 Profil Fotoğrafı
-        <small>
-          (isteğe bağlı)
-        </small>
-      </label>
-
-      <input
-        id="profilePhoto"
-        type="file"
-        accept="image/*">
-
-      <img
-        id="profilePreview"
-        class="photo-preview"
-        ${
-          profile.photo_url
-          ?
-          `src="${escapeHtml(
-            profile.photo_url
-          )}"
-           style="display:block;"`
-          :
-          ""
-        }
-        alt="Önizleme">
-
-    </div>
-
-    <button
-      class="main-btn"
-      style="width:100%;"
-      onclick="saveRemoteProfile()">
-
-      💾 Profili Kaydet
-
-    </button>
-
-    <div
-      id="profileSaveStatus"
-      class="shared-status">
-    </div>
-
-  `);
-
-  const input =
-    $("profilePhoto");
-
-  input.addEventListener(
-    "change",
-    function(){
-
-      const file =
-        this.files[0];
-
-      if(!file){
-        return;
-      }
-
-      if(
-        file.size >
-        5 * 1024 * 1024
-      ){
-
-        alert(
-          "Profil fotoğrafı 5 MB'dan küçük olmalı."
-        );
-
-        this.value =
-          "";
-
-        return;
-
-      }
-
-      const reader =
-        new FileReader();
-
-      reader.onload =
-        event => {
-
-          const preview =
-            $("profilePreview");
-
-          preview.src =
-            event.target.result;
-
-          preview.style.display =
-            "block";
-
-        };
-
-      reader.readAsDataURL(
-        file
-      );
-
-    }
+document
+  .getElementById("saveProfileButton")
+  .addEventListener(
+    "click",
+    saveProfile
   );
 
-}
 
-/* =========================================================
-   PROFİL FOTOĞRAFI YÜKLE
-========================================================= */
+async function saveProfile(){
 
-async function uploadProfilePhoto(
-  file
-){
-
-  const extension =
-    (
-      file.type ||
-      "image/jpeg"
-    )
-    .split("/")
-    .pop()
-    .replace(
-      "jpeg",
-      "jpg"
-    );
-
-  const path =
-    currentUser.id +
-    "/" +
-    crypto.randomUUID() +
-    "." +
-    extension;
-
-  const result =
-    await supabaseClient
-      .storage
-      .from(
-        "profile-photos"
-      )
-      .upload(
-        path,
-        file,
-        {
-          cacheControl:
-            "3600",
-
-          upsert:false,
-
-          contentType:
-            file.type ||
-            "image/jpeg"
-        }
-      );
-
-  if(result.error){
-
-    throw result.error;
-
+  if(!supabaseReady || !currentUser){
+    return;
   }
 
-  return supabaseClient
-    .storage
-    .from(
-      "profile-photos"
-    )
-    .getPublicUrl(
-      path
-    )
-    .data
-    .publicUrl;
-
-}
-
-/* =========================================================
-   PROFİLİ KAYDET
-========================================================= */
-
-async function saveRemoteProfile(){
-
   const name =
-    $("profileName")
+    document
+      .getElementById("profileName")
       .value
       .trim();
 
   const surname =
-    $("profileSurname")
+    document
+      .getElementById("profileSurname")
       .value
       .trim();
 
-  if(
-    !name ||
-    !surname
-  ){
-
-    alert(
-      "Lütfen ad ve soyadını yaz."
-    );
-
-    return;
-
-  }
+  const file =
+    document
+      .getElementById("profilePhoto")
+      .files[0];
 
   const status =
-    $("profileSaveStatus");
+    document.getElementById(
+      "profileStatus"
+    );
+
+  if(!name){
+
+    status.textContent =
+      "Lütfen adını yaz.";
+
+    return;
+  }
 
   status.textContent =
-    "Kaydediliyor... ❤️";
+    "Profil kaydediliyor...";
 
   try{
 
     let photoUrl =
-      currentProfile?.photo_url ||
-      null;
-
-    const file =
-      $("profilePhoto")
-        ?.files[0];
+      currentProfile?.photo_url || null;
 
     if(file){
 
+      const safeName =
+        file.name
+          .replace(/[^a-zA-Z0-9._-]/g,"_");
+
+      const path =
+        `${currentUser.id}/${Date.now()}_${safeName}`;
+
+      const {
+        error:uploadError
+      } =
+        await supabaseClient
+          .storage
+          .from("profile-photos")
+          .upload(
+            path,
+            file,
+            {
+              upsert:true,
+              contentType:file.type
+            }
+          );
+
+      if(uploadError){
+        throw uploadError;
+      }
+
+      const {
+        data:publicData
+      } =
+        supabaseClient
+          .storage
+          .from("profile-photos")
+          .getPublicUrl(path);
+
       photoUrl =
-        await uploadProfilePhoto(
-          file
-        );
+        publicData.publicUrl;
 
     }
 
-    const result =
+    const {
+      data,
+      error
+    } =
       await supabaseClient
         .from("profiles")
         .upsert(
           {
-            id:
-              currentUser.id,
-
-            name:
-              name,
-
-            surname:
-              surname,
-
-            photo_url:
-              photoUrl,
-
-            updated_at:
-              new Date()
-                .toISOString()
+            id:currentUser.id,
+            name:name,
+            surname:surname || null,
+            photo_url:photoUrl,
+            updated_at:new Date().toISOString()
+          },
+          {
+            onConflict:"id"
           }
         )
         .select()
         .single();
 
-    if(result.error){
-
-      throw result.error;
-
+    if(error){
+      throw error;
     }
 
     currentProfile =
-      result.data;
+      data;
 
     updateProfileButton();
 
-    closeModal();
+    status.textContent =
+      "Profil başarıyla kaydedildi ❤️";
 
-    await loadSharedPosts();
-
-    alert(
-      "Profilin başarıyla kaydedildi ❤️"
-    );
+    setTimeout(()=>{
+      closeModal("profileModal");
+    },900);
 
   }catch(error){
 
     console.error(
+      "Profil kaydetme hatası:",
       error
     );
 
     status.textContent =
-      "Hata: " +
-      error.message;
-
-    alert(
-      "Profil kaydedilemedi:\n\n" +
-      error.message
-    );
-
-  }
-
-}
-
-window.showProfileForm =
-  showProfileForm;
-
-window.saveRemoteProfile =
-  saveRemoteProfile;
-
-/* =========================================================
-   PROFİL SİL
-========================================================= */
-
-async function deleteRemoteProfile(){
-
-  const ok =
-    confirm(
-      "Profilini silmek istediğine emin misin?"
-    );
-
-  if(!ok){
-    return;
-  }
-
-  const result =
-    await supabaseClient
-      .from("profiles")
-      .delete()
-      .eq(
-        "id",
-        currentUser.id
+      "Profil kaydedilemedi: " +
+      (
+        error.message ||
+        "Bilinmeyen hata"
       );
 
-  if(result.error){
-
-    alert(
-      "Profil silinemedi:\n\n" +
-      result.error.message
-    );
-
-    return;
-
   }
-
-  currentProfile =
-    null;
-
-  updateProfileButton();
-
-  closeModal();
 
 }
 
-window.deleteRemoteProfile =
-  deleteRemoteProfile;
 
-/* =========================================================
-   PROFİL BUTONU
-========================================================= */
-
-$("profileButton")
-  .addEventListener(
-    "click",
-    openRemoteProfile
-  );
-
-/* =========================================================
-   PAYLAŞIM TÜRÜ
-========================================================= */
+/* =====================================================
+   POST MODAL
+===================================================== */
 
 document
-  .querySelectorAll(
-    ".shared-tab"
-  )
-  .forEach(
-    button => {
-
-      button.addEventListener(
-        "click",
-        function(){
-
-          document
-            .querySelectorAll(
-              ".shared-tab"
-            )
-            .forEach(
-              x =>
-                x.classList
-                 .remove("active")
-            );
-
-          this.classList
-            .add("active");
-
-          selectedPostType =
-            this.dataset.type;
-
-          const photo =
-            $("sharedPhoto");
-
-          if(
-            selectedPostType ===
-            "photo"
-          ){
-
-            photo.style.display =
-              "block";
-
-          }else{
-
-            photo.style.display =
-              "none";
-
-          }
-
-        }
-      );
-
-    }
-  );
-
-/* =========================================================
-   FOTOĞRAF ÖNİZLEME
-========================================================= */
-
-$("sharedPhoto")
-  .addEventListener(
-    "change",
-    function(){
-
-      const file =
-        this.files[0];
-
-      const preview =
-        $("sharedPhotoPreview");
-
-      if(!file){
-
-        preview.style.display =
-          "none";
-
-        return;
-
-      }
-
-      if(
-        file.size >
-        8 * 1024 * 1024
-      ){
-
-        alert(
-          "Fotoğraf 8 MB'dan küçük olmalı."
-        );
-
-        this.value =
-          "";
-
-        return;
-
-      }
-
-      const reader =
-        new FileReader();
-
-      reader.onload =
-        event => {
-
-          preview.src =
-            event.target.result;
-
-          preview.style.display =
-            "block";
-
-        };
-
-      reader.readAsDataURL(
-        file
-      );
-
-    }
-  );
-
-/* =========================================================
-   PAYLAŞIM FOTOĞRAFI
-========================================================= */
-
-async function uploadPostPhoto(
-  file
-){
-
-  const extension =
-    (
-      file.type ||
-      "image/jpeg"
-    )
-    .split("/")
-    .pop()
-    .replace(
-      "jpeg",
-      "jpg"
-    );
-
-  const path =
-    currentUser.id +
-    "/" +
-    crypto.randomUUID() +
-    "." +
-    extension;
-
-  const result =
-    await supabaseClient
-      .storage
-      .from(
-        "post-photos"
-      )
-      .upload(
-        path,
-        file,
-        {
-          cacheControl:
-            "3600",
-
-          upsert:false,
-
-          contentType:
-            file.type ||
-            "image/jpeg"
-        }
-      );
-
-  if(result.error){
-
-    throw result.error;
-
-  }
-
-  return supabaseClient
-    .storage
-    .from(
-      "post-photos"
-    )
-    .getPublicUrl(
-      path
-    )
-    .data
-    .publicUrl;
-
-}
-
-/* =========================================================
-   PAYLAŞIMLARI YÜKLE
-========================================================= */
-
-async function loadSharedPosts(){
-
-  const container =
-    $("sharedPosts");
-
-  if(!container){
-    return;
-  }
-
-  container.innerHTML =
-    `<div class="shared-empty">
-      Paylaşımlar yükleniyor... ❤️
-    </div>`;
-
-  const result =
-    await supabaseClient
-      .from("posts")
-      .select("*")
-      .order(
-        "created_at",
-        {
-          ascending:false
-        }
-      )
-      .limit(100);
-
-  if(result.error){
-
-    console.error(
-      result.error
-    );
-
-    container.innerHTML =
-      `<div class="shared-empty">
-        Paylaşımlar yüklenemedi.<br><br>
-        ${escapeHtml(
-          result.error.message
-        )}
-      </div>`;
-
-    return;
-
-  }
-
-  const posts =
-    result.data || [];
-
-  if(!posts.length){
-
-    container.innerHTML =
-      `<div class="shared-empty">
-        Henüz paylaşım yok.<br>
-        İlk mesajı sen bırak ❤️
-      </div>`;
-
-    return;
-
-  }
-
-  const ids =
-    [
-      ...new Set(
-        posts
-          .map(
-            p =>
-              p.user_id
-          )
-          .filter(Boolean)
-      )
-    ];
-
-  let profiles =
-    [];
-
-  if(ids.length){
-
-    const resultProfiles =
-      await supabaseClient
-        .from("profiles")
-        .select(
-          "id,name,surname,photo_url"
-        )
-        .in(
-          "id",
-          ids
-        );
-
-    if(
-      !resultProfiles.error
-    ){
-
-      profiles =
-        resultProfiles.data ||
-        [];
-
-    }
-
-  }
-
-  const profileMap =
-    new Map(
-      profiles.map(
-        profile =>
-          [
-            profile.id,
-            profile
-          ]
-      )
-    );
-
-  container.innerHTML =
-    "";
-
-  posts.forEach(
-    post => {
-
-      const profile =
-        profileMap.get(
-          post.user_id
-        );
-
-      const name =
-        profile?.name ||
-        "Misafir";
-
-      const surname =
-        profile?.surname ||
-        "";
-
-      const photo =
-        profile?.photo_url ||
-        "";
-
-      let typeText =
-        "💬 Mesaj";
-
-      if(
-        post.post_type ===
-        "poem"
-      ){
-
-        typeText =
-          "📝 Şiir";
-
-      }
-
-      if(
-        post.post_type ===
-        "quote"
-      ){
-
-        typeText =
-          "💭 Alıntı";
-
-      }
-
-      if(
-        post.post_type ===
-        "photo"
-      ){
-
-        typeText =
-          "📸 Fotoğraf";
-
-      }
-
-      const date =
-        post.created_at
-        ?
-        new Date(
-          post.created_at
-        )
-        .toLocaleString(
-          "tr-TR",
-          {
-            day:"2-digit",
-            month:"2-digit",
-            year:"numeric",
-            hour:"2-digit",
-            minute:"2-digit"
-          }
-        )
-        :
-        "";
-
-      const avatar =
-        photo
-        ?
-
-        `<img
-          class="shared-avatar"
-          src="${escapeHtml(
-            photo
-          )}"
-          alt="Profil">`
-
-        :
-
-        `<div class="shared-avatar">
-
-          ${escapeHtml(
-            name
-              .charAt(0)
-              .toUpperCase()
-          )}
-
-        </div>`;
-
-      const article =
-        document.createElement(
-          "article"
-        );
-
-      article.className =
-        "shared-post";
-
-      article.innerHTML = `
-
-        <div
-          class="shared-post-head">
-
-          ${avatar}
-
-          <div>
-
-            <div
-              class="shared-post-name">
-
-              ${escapeHtml(
-                name
-              )}
-
-              ${escapeHtml(
-                surname
-              )}
-
-            </div>
-
-            <div
-              class="shared-post-date">
-
-              ${typeText}
-              •
-              ${escapeHtml(
-                date
-              )}
-
-            </div>
-
-          </div>
-
-        </div>
-
-        ${
-          post.title
-          ?
-
-          `<div
-            class="shared-post-title">
-
-            ${escapeHtml(
-              post.title
-            )}
-
-          </div>`
-
-          :
-
-          ""
-        }
-
-        ${
-          post.content
-          ?
-
-          `<div
-            class="shared-post-content">
-
-            ${escapeHtml(
-              post.content
-            )}
-
-          </div>`
-
-          :
-
-          ""
-        }
-
-        ${
-          post.photo_url
-          ?
-
-          `<img
-            class="shared-post-photo"
-            src="${escapeHtml(
-              post.photo_url
-            )}"
-            alt="Paylaşım fotoğrafı"
-            onclick="openSharedImage(this.src)">`
-
-          :
-
-          ""
-        }
-
-        ${
-          currentUser &&
-          post.user_id ===
-          currentUser.id
-
-          ?
-
-          `<button
-            class="shared-delete"
-            data-delete="${escapeHtml(
-              post.id
-            )}">
-
-            🗑️ Bu paylaşımı sil
-
-          </button>`
-
-          :
-
-          ""
-        }
-
-      `;
-
-      container.appendChild(
-        article
-      );
-
-    }
-  );
-
-  container
-    .querySelectorAll(
-      "[data-delete]"
-    )
-    .forEach(
-      button => {
-
-        button.addEventListener(
-          "click",
-          async function(){
-
-            const id =
-              this.dataset.delete;
-
-            const ok =
-              confirm(
-                "Bu paylaşımı silmek istiyor musun?"
-              );
-
-            if(!ok){
-              return;
-            }
-
-            const result =
-              await supabaseClient
-                .from("posts")
-                .delete()
-                .eq(
-                  "id",
-                  id
-                )
-                .eq(
-                  "user_id",
-                  currentUser.id
-                );
-
-            if(result.error){
-
-              alert(
-                "Silinemedi:\n\n" +
-                result.error.message
-              );
-
-              return;
-
-            }
-
-            await loadSharedPosts();
-
-          }
-        );
-
-      }
-    );
-
-}
-
-window.openSharedImage =
-  function(src){
-
-    $("lightboxImage")
-      .src =
-      src;
-
-    $("lightbox")
-      .classList
-      .add("show");
-
-  };
-
-/* =========================================================
-   PAYLAŞ
-========================================================= */
-
-$("sharedPublish")
+  .getElementById("writePostButton")
   .addEventListener(
     "click",
-    async function(){
-
-      if(!currentUser){
-
-        alert(
-          "Profil sistemi henüz hazır değil."
-        );
-
-        return;
-
-      }
-
-      if(!currentProfile){
-
-        alert(
-          "Önce sağ üstteki Profil bölümünden ad ve soyadını oluştur."
-        );
-
-        openRemoteProfile();
-
-        return;
-
-      }
-
-      const title =
-        $("sharedTitle")
-          .value
-          .trim();
-
-      const content =
-        $("sharedContent")
-          .value
-          .trim();
-
-      const file =
-        $("sharedPhoto")
-          .files[0];
-
-      const status =
-        $("sharedPublishStatus");
-
-      if(
-        selectedPostType !==
-        "photo" &&
-        !content
-      ){
-
-        alert(
-          "Lütfen paylaşmak istediğin yazıyı yaz."
-        );
-
-        return;
-
-      }
-
-      if(
-        selectedPostType ===
-        "photo" &&
-        !file
-      ){
-
-        alert(
-          "Lütfen bir fotoğraf seç."
-        );
-
-        return;
-
-      }
-
-      if(
-        file &&
-        file.size >
-        8 * 1024 * 1024
-      ){
-
-        alert(
-          "Fotoğraf 8 MB'dan küçük olmalı."
-        );
-
-        return;
-
-      }
-
-      this.disabled =
-        true;
-
-      status.textContent =
-        "Paylaşılıyor... ❤️";
-
-      try{
-
-        let photoUrl =
-          null;
-
-        if(file){
-
-          photoUrl =
-            await uploadPostPhoto(
-              file
-            );
-
-        }
-
-        const result =
-          await supabaseClient
-            .from("posts")
-            .insert(
-              {
-                user_id:
-                  currentUser.id,
-
-                post_type:
-                  selectedPostType,
-
-                title:
-                  title ||
-                  null,
-
-                content:
-                  content ||
-                  null,
-
-                photo_url:
-                  photoUrl
-              }
-            );
-
-        if(result.error){
-
-          throw result.error;
-
-        }
-
-        $("sharedTitle")
-          .value =
-          "";
-
-        $("sharedContent")
-          .value =
-          "";
-
-        $("sharedPhoto")
-          .value =
-          "";
-
-        $("sharedPhotoPreview")
-          .style
-          .display =
-          "none";
-
-        status.textContent =
-          "Paylaşım yapıldı ❤️";
-
-        await loadSharedPosts();
-
-      }catch(error){
-
-        console.error(
-          error
-        );
-
-        status.textContent =
-          "Hata oluştu.";
-
-        alert(
-          "Paylaşım yapılamadı:\n\n" +
-          error.message
-        );
-
-      }finally{
-
-        this.disabled =
-          false;
-
-      }
-
-    }
+    openPostModal
   );
 
-/* =========================================================
-   SUPABASE BAŞLAT
-========================================================= */
 
-initializeSupabase()
-  .then(
-    ready => {
+function openPostModal(){
 
-      if(ready){
+  if(!supabaseReady){
 
-        updateProfileButton();
+    showStatus(
+      "Paylaşım sistemi henüz hazır değil."
+    );
 
-        loadSharedPosts();
+    return;
+  }
 
-      }
-
-    }
-  );
-
-/* =========================================================
-   MÜZİK PLAYER
-========================================================= */
-
-const audio =
-  $("audio");
-
-const repoApi =
-  "https://api.github.com/repos/fatmasoylu/fatmasoylu/contents/";
-
-let songs =
-  [];
-
-let currentSong =
-  0;
-
-let musicReady =
-  false;
-
-/* =========================================================
-   ŞARKI ADI
-========================================================= */
-
-function cleanSongName(
-  name
-){
-
-  return name
-    .replace(
-      /\.mp3$/i,
-      ""
-    )
-    .replace(
-      /[_-]+/g,
-      " "
-    )
-    .replace(
-      /\s+/g,
-      " "
-    )
-    .trim();
+  document
+    .getElementById("postModal")
+    .classList.add("show");
 
 }
 
-/* =========================================================
-   MP3'LERİ GITHUB'TAN GETİR
-========================================================= */
 
-async function loadSongs(){
+document
+  .getElementById("publishPostButton")
+  .addEventListener(
+    "click",
+    publishPost
+  );
+
+
+async function publishPost(){
+
+  if(!supabaseReady || !currentUser){
+    return;
+  }
+
+  if(
+    !currentProfile ||
+    !currentProfile.name
+  ){
+
+    document.getElementById(
+      "postStatus"
+    ).textContent =
+      "Önce profilini oluşturmalısın ❤️";
+
+    return;
+  }
+
+  const type =
+    document.getElementById(
+      "postType"
+    ).value;
+
+  const title =
+    document.getElementById(
+      "postTitle"
+    ).value.trim();
+
+  const content =
+    document.getElementById(
+      "postContent"
+    ).value.trim();
+
+  const file =
+    document.getElementById(
+      "postPhoto"
+    ).files[0];
+
+  const status =
+    document.getElementById(
+      "postStatus"
+    );
+
+  if(!content && !file){
+
+    status.textContent =
+      "Bir mesaj veya fotoğraf ekle.";
+
+    return;
+  }
+
+  status.textContent =
+    "Paylaşım hazırlanıyor...";
 
   try{
 
-    const response =
-      await fetch(
-        repoApi +
-        "?t=" +
-        Date.now(),
-        {
-          cache:"no-store"
-        }
-      );
+    let photoUrl = null;
 
-    if(!response.ok){
+    if(file){
 
-      throw new Error(
-        "GitHub müzik listesi alınamadı."
-      );
+      const safeName =
+        file.name
+          .replace(/[^a-zA-Z0-9._-]/g,"_");
 
-    }
+      const path =
+        `${currentUser.id}/${Date.now()}_${safeName}`;
 
-    const files =
-      await response.json();
+      const {
+        error:uploadError
+      } =
+        await supabaseClient
+          .storage
+          .from("post-photos")
+          .upload(
+            path,
+            file,
+            {
+              upsert:false,
+              contentType:file.type
+            }
+          );
 
-    songs =
-      files
-        .filter(
-          file =>
-            file.type ===
-            "file" &&
-            /\.mp3$/i.test(
-              file.name
-            )
-        )
-        .map(
-          file => ({
-            name:
-              file.name,
+      if(uploadError){
+        throw uploadError;
+      }
 
-            url:
-              file.download_url
-          })
-        );
+      const {
+        data:publicData
+      } =
+        supabaseClient
+          .storage
+          .from("post-photos")
+          .getPublicUrl(path);
 
-    if(!songs.length){
-
-      $("musicTitle")
-        .textContent =
-        "Şarkı bulunamadı";
-
-      $("musicStatus")
-        .textContent =
-        "MP3 dosyası yok";
-
-      return;
+      photoUrl =
+        publicData.publicUrl;
 
     }
 
-    songs.sort(
-      (a,b) =>
-        a.name
-          .localeCompare(
-            b.name,
-            "tr"
-          )
-    );
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("posts")
+        .insert({
+          user_id:currentUser.id,
+          post_type:type,
+          title:title || null,
+          content:content || null,
+          photo_url:photoUrl
+        });
 
-    musicReady =
-      true;
+    if(error){
+      throw error;
+    }
 
-    currentSong =
-      0;
+    status.textContent =
+      "Paylaşım yapıldı ❤️";
 
-    renderPlaylist();
+    document.getElementById(
+      "postTitle"
+    ).value = "";
 
-    loadSong(
-      currentSong,
-      false
-    );
+    document.getElementById(
+      "postContent"
+    ).value = "";
+
+    document.getElementById(
+      "postPhoto"
+    ).value = "";
+
+    await loadPosts();
+
+    setTimeout(()=>{
+      closeModal("postModal");
+    },800);
 
   }catch(error){
 
     console.error(
+      "Paylaşım hatası:",
       error
     );
 
-    $("musicTitle")
-      .textContent =
-      "Müzik yüklenemedi";
-
-    $("musicStatus")
-      .textContent =
-      "Sayfayı yenileyin";
+    status.textContent =
+      "Paylaşım yapılamadı: " +
+      (
+        error.message ||
+        "Bilinmeyen hata"
+      );
 
   }
 
 }
 
-/* =========================================================
-   ŞARKI YÜKLE
-========================================================= */
 
-function loadSong(
-  index,
-  autoPlay
-){
+/* =====================================================
+   POSTS YÜKLE
+===================================================== */
 
-  if(
-    !musicReady ||
-    !songs.length
-  ){
+async function loadPosts(){
 
-    return;
-
-  }
-
-  if(index < 0){
-
-    index =
-      songs.length - 1;
-
-  }
-
-  if(
-    index >=
-    songs.length
-  ){
-
-    index = 0;
-
-  }
-
-  currentSong =
-    index;
-
-  const song =
-    songs[
-      currentSong
-    ];
-
-  audio.pause();
-
-  audio.src =
-    song.url;
-
-  audio.load();
-
-  $("musicTitle")
-    .textContent =
-    cleanSongName(
-      song.name
+  const list =
+    document.getElementById(
+      "postsList"
     );
 
-  $("musicStatus")
-    .textContent =
-    `${currentSong + 1} / ${songs.length} • ${songs.length} şarkı`;
+  try{
 
-  $("musicProgress")
-    .value =
-    0;
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("posts")
+        .select(`
+          id,
+          user_id,
+          post_type,
+          title,
+          content,
+          photo_url,
+          created_at,
+          profiles (
+            name,
+            surname,
+            photo_url
+          )
+        `)
+        .order(
+          "created_at",
+          {
+            ascending:false
+          }
+        )
+        .limit(100);
 
-  $("musicTime")
-    .textContent =
-    "0:00 / 0:00";
+    if(error){
+      throw error;
+    }
 
-  renderPlaylist();
+    if(!data || !data.length){
 
-  if(autoPlay){
+      list.innerHTML =
+        `<div class="card" style="text-align:center">
+          Henüz bir paylaşım yok.
+          İlk mesajı sen bırak ❤️
+        </div>`;
 
-    audio
-      .play()
-      .then(
-        updatePlayButton
+      return;
+    }
+
+    list.innerHTML =
+      data.map(
+        renderPost
+      ).join("");
+
+  }catch(error){
+
+    console.error(
+      "Post yükleme hatası:",
+      error
+    );
+
+    list.innerHTML =
+      `<div class="card" style="text-align:center">
+        Paylaşımlar şu anda yüklenemiyor.
+        <br><br>
+        Supabase bağlantısını kontrol ediyoruz. ❤️
+      </div>`;
+
+  }
+
+}
+
+
+function renderPost(post){
+
+  const profile =
+    post.profiles || {};
+
+  const fullName =
+    `${profile.name || "Ziyaretçi"} ${
+      profile.surname || ""
+    }`.trim();
+
+  const initial =
+    (
+      profile.name ||
+      "♥"
+    )
+      .charAt(0)
+      .toUpperCase();
+
+  const typeMap = {
+    mesaj:"💌 Mesaj",
+    soz:"💭 Güzel Söz",
+    siir:"📖 Şiir",
+    fotograf:"📸 Fotoğraf"
+  };
+
+  const date =
+    new Date(
+      post.created_at
+    ).toLocaleString(
+      "tr-TR",
+      {
+        dateStyle:"medium",
+        timeStyle:"short"
+      }
+    );
+
+  const avatar =
+    profile.photo_url
+      ?
+        `<img
+          class="post-avatar"
+          src="${escapeHtml(profile.photo_url)}"
+          alt="">`
+      :
+        `<div
+          class="post-avatar"
+          style="
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:#92265f;
+            font-weight:bold;
+          ">
+          ${escapeHtml(initial)}
+        </div>`;
+
+  const title =
+    post.title
+      ?
+        `<h3 style="margin-bottom:7px">
+          ${escapeHtml(post.title)}
+        </h3>`
+      :
+        "";
+
+  const content =
+    post.content
+      ?
+        `<div style="white-space:pre-wrap">
+          ${escapeHtml(post.content)}
+        </div>`
+      :
+        "";
+
+  const photo =
+    post.photo_url
+      ?
+        `<img
+          class="post-photo"
+          src="${escapeHtml(post.photo_url)}"
+          alt="Paylaşım fotoğrafı"
+          onclick="openLightboxFromUrl(this.src)">`
+      :
+        "";
+
+  return `
+    <article class="post">
+
+      <div class="post-head">
+
+        ${avatar}
+
+        <div>
+
+          <div class="post-name">
+            ${escapeHtml(fullName)}
+          </div>
+
+          <div class="post-date">
+            ${escapeHtml(date)}
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="post-type">
+        ${escapeHtml(
+          typeMap[post.post_type] ||
+          "💌 Paylaşım"
+        )}
+      </div>
+
+      ${title}
+      ${content}
+      ${photo}
+
+    </article>
+  `;
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function closeModal(id){
+
+  document
+    .getElementById(id)
+    .classList.remove("show");
+
+}
+
+
+document
+  .querySelectorAll(".modal")
+  .forEach(modal=>{
+
+    modal.addEventListener(
+      "click",
+      event=>{
+
+        if(
+          event.target === modal
+        ){
+
+          modal.classList.remove(
+            "show"
+          );
+
+        }
+
+      }
+    );
+
+  });
+
+
+/* =====================================================
+   OPEN WHEN
+===================================================== */
+
+function openWhen(type){
+
+  const data = {
+
+    mutlu:{
+      title:"Mutlu olduğunda 😊",
+      text:
+        "Mutluluğun bana da bulaşıyor. " +
+        "Bugün ne kadar mutluysan, " +
+        "benim için o kadar güzel bir gün. " +
+        "Gülümsemeye devam et ❤️"
+    },
+
+    uzgun:{
+      title:"Üzgün olduğunda 🥺",
+      text:
+        "Şu an yanında olamasam bile " +
+        "şunu bilmeni istiyorum: " +
+        "Yalnız değilsin. " +
+        "Ben buradayım. ❤️"
+    },
+
+    ozledin:{
+      title:"Beni özlediğinde ❤️",
+      text:
+        "Gözlerini kapat ve birlikte " +
+        "güldüğümüz bir anı düşün. " +
+        "Ben de aynı şeyi yapıyorum."
+    },
+
+    kizgin:{
+      title:"Bana kızdığında 😌",
+      text:
+        "Tamam... önce kızgınlığını yaşa. 😄 " +
+        "Sonra hatırla: " +
+        "Seni çok seviyorum. ❤️"
+    }
+
+  };
+
+  const item =
+    data[type];
+
+  document.getElementById(
+    "openWhenTitle"
+  ).textContent =
+    item.title;
+
+  document.getElementById(
+    "openWhenContent"
+  ).textContent =
+    item.text;
+
+  document
+    .getElementById(
+      "openWhenModal"
+    )
+    .classList.add("show");
+
+}
+
+
+/* =====================================================
+   GIFT
+===================================================== */
+
+function openGift(){
+
+  document
+    .getElementById(
+      "giftMessage"
+    )
+    .classList.toggle("show");
+
+}
+
+
+/* =====================================================
+   PIN
+===================================================== */
+
+function checkPin(){
+
+  const pin =
+    document
+      .getElementById(
+        "pinInput"
       )
-      .catch(
-        updatePlayButton
-      );
+      .value
+      .trim();
+
+  const result =
+    document.getElementById(
+      "secretResult"
+    );
+
+  if(pin === "16102024"){
+
+    result.innerHTML =
+      `
+      <div class="card">
+
+        <div style="font-size:55px">
+          ❤️
+        </div>
+
+        <h3>
+          Gizli sürprizi buldun!
+        </h3>
+
+        <p style="margin-top:15px">
+          16.10.2024 sadece bir tarih değil.
+          Benim için hayatımın en güzel
+          başlangıçlarından biri.
+        </p>
+
+        <p style="
+          margin-top:15px;
+          color:#ffafd1;
+          font-size:21px;
+        ">
+          Seni her geçen gün
+          biraz daha seviyorum.
+        </p>
+
+      </div>
+      `;
 
   }else{
 
-    updatePlayButton();
+    result.textContent =
+      "Hmm... Bu kapının anahtarı değil. ❤️";
 
   }
 
 }
 
-/* =========================================================
-   PLAYLIST
-========================================================= */
 
-function renderPlaylist(){
+/* =====================================================
+   QUIZ
+===================================================== */
 
-  const playlist =
-    $("playlist");
+let quizScore = 0;
 
-  playlist.innerHTML =
-    "";
 
-  songs.forEach(
-    (song,index) => {
+function quizAnswer(question,correct){
+
+  if(correct){
+    quizScore++;
+  }
+
+  const current =
+    document.querySelector(
+      `.quiz-question[data-question="${question}"]`
+    );
+
+  if(current){
+    current.classList.remove(
+      "active"
+    );
+  }
+
+  const next =
+    document.querySelector(
+      `.quiz-question[data-question="${question+1}"]`
+    );
+
+  if(next){
+
+    next.classList.add(
+      "active"
+    );
+
+  }else{
+
+    document.getElementById(
+      "quizResult"
+    ).innerHTML =
+      `Test bitti ❤️<br>
+       ${quizScore}/3 doğru!
+       <br><br>
+       Ama benim için en doğru cevap:
+       <strong>Sen ❤️</strong>`;
+
+  }
+
+}
+
+
+/* =====================================================
+   SKY STARS
+===================================================== */
+
+function createStars(){
+
+  const sky =
+    document.getElementById(
+      "sky"
+    );
+
+  for(
+    let i=0;
+    i<75;
+    i++
+  ){
+
+    const star =
+      document.createElement(
+        "div"
+      );
+
+    star.className =
+      "star";
+
+    star.style.left =
+      Math.random()*100 + "%";
+
+    star.style.top =
+      Math.random()*100 + "%";
+
+    star.style.animationDelay =
+      Math.random()*2 + "s";
+
+    sky.appendChild(star);
+
+  }
+
+}
+
+
+/* =====================================================
+   PUZZLE
+===================================================== */
+
+const puzzlePositions = [
+  "0% 0%",
+  "50% 0%",
+  "100% 0%",
+  "0% 50%",
+  "50% 50%",
+  "100% 50%",
+  "0% 100%",
+  "50% 100%",
+  "100% 100%"
+];
+
+let puzzleOrder =
+  [...Array(9).keys()];
+
+
+function createPuzzle(){
+
+  const puzzle =
+    document.getElementById(
+      "puzzle"
+    );
+
+  puzzle.innerHTML = "";
+
+  puzzleOrder.forEach(
+    (index,position)=>{
 
       const button =
         document.createElement(
@@ -5549,47 +3360,26 @@ function renderPlaylist(){
         );
 
       button.className =
-        "song-item" +
-        (
-          index ===
-          currentSong
-          ?
-          " active"
-          :
-          ""
-        );
+        "puzzle-piece";
 
-      button.innerHTML = `
+      button.style.backgroundImage =
+        "url('gezi.jpg')";
 
-        <span
-          class="song-number">
+      button.style.backgroundPosition =
+        puzzlePositions[index];
 
-          ${index+1}
+      button.title =
+        "Parça " +
+        (index+1);
 
-        </span>
+      button.onclick =
+        ()=>{
+          movePuzzlePiece(
+            position
+          );
+        };
 
-        <span>
-
-          ${escapeHtml(
-            cleanSongName(
-              song.name
-            )
-          )}
-
-        </span>
-
-      `;
-
-      button.addEventListener(
-        "click",
-        () =>
-          loadSong(
-            index,
-            true
-          )
-      );
-
-      playlist.appendChild(
+      puzzle.appendChild(
         button
       );
 
@@ -5598,303 +3388,847 @@ function renderPlaylist(){
 
 }
 
-/* =========================================================
-   PLAY BUTTON
-========================================================= */
 
-function updatePlayButton(){
+let selectedPuzzle = null;
 
-  $("playMusic")
-    .textContent =
-    audio.paused
-    ?
-    "▶"
-    :
-    "⏸";
+
+function movePuzzlePiece(position){
+
+  if(selectedPuzzle === null){
+
+    selectedPuzzle =
+      position;
+
+    return;
+
+  }
+
+  [
+    puzzleOrder[
+      selectedPuzzle
+    ],
+    puzzleOrder[position]
+  ] =
+  [
+    puzzleOrder[position],
+    puzzleOrder[
+      selectedPuzzle
+    ]
+  ];
+
+  selectedPuzzle = null;
+
+  createPuzzle();
 
 }
 
-$("playMusic")
-  .addEventListener(
-    "click",
-    () => {
 
-      if(!musicReady){
-        return;
+function shufflePuzzle(){
+
+  puzzleOrder.sort(
+    ()=>Math.random()-.5
+  );
+
+  selectedPuzzle = null;
+
+  createPuzzle();
+
+}
+
+
+/* =====================================================
+   FINAL QUESTION
+===================================================== */
+
+function finalYes(){
+
+  document.getElementById(
+    "finalResult"
+  ).innerHTML =
+    "O zaman hikâyemiz devam ediyor... ❤️<br>" +
+    "Ve daha yazılacak çok güzel sayfamız var.";
+
+  createHeartExplosion();
+
+}
+
+
+function moveNoButton(){
+
+  const button =
+    document.getElementById(
+      "noButton"
+    );
+
+  const x =
+    Math.random()*160-80;
+
+  const y =
+    Math.random()*100-50;
+
+  button.style.transform =
+    `translate(${x}px,${y}px)`;
+
+}
+
+
+function createHeartExplosion(){
+
+  for(
+    let i=0;
+    i<25;
+    i++
+  ){
+
+    const heart =
+      document.createElement(
+        "div"
+      );
+
+    heart.textContent =
+      "❤️";
+
+    heart.style.position =
+      "fixed";
+
+    heart.style.left =
+      "50%";
+
+    heart.style.top =
+      "70%";
+
+    heart.style.zIndex =
+      "99999";
+
+    heart.style.fontSize =
+      (15+Math.random()*25)+"px";
+
+    document.body.appendChild(
+      heart
+    );
+
+    const x =
+      (Math.random()-.5)*400;
+
+    const y =
+      -(100+Math.random()*400);
+
+    heart.animate(
+      [
+        {
+          transform:"translate(0,0)",
+          opacity:1
+        },
+        {
+          transform:
+            `translate(${x}px,${y}px)`,
+          opacity:0
+        }
+      ],
+      {
+        duration:
+          1500+Math.random()*1000,
+        easing:"ease-out"
       }
+    ).onfinish =
+      ()=>{
+        heart.remove();
+      };
 
-      if(
-        audio.paused
-      ){
+  }
 
-        audio
-          .play()
-          .catch(
-            () => {}
+}
+
+
+/* =====================================================
+   LIGHTBOX
+===================================================== */
+
+document
+  .querySelectorAll(".gallery-item img")
+  .forEach(img=>{
+
+    img.addEventListener(
+      "click",
+      ()=>{
+        openLightboxFromUrl(
+          img.src
+        );
+      }
+    );
+
+  });
+
+
+function openLightboxFromUrl(url){
+
+  document.getElementById(
+    "lightboxImage"
+  ).src = url;
+
+  document
+    .getElementById(
+      "lightbox"
+    )
+    .classList.add("show");
+
+}
+
+
+function closeLightbox(){
+
+  document
+    .getElementById(
+      "lightbox"
+    )
+    .classList.remove(
+      "show"
+    );
+
+}
+
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+function createFloatingHearts(){
+
+  const container =
+    document.getElementById(
+      "hearts"
+    );
+
+  for(
+    let i=0;
+    i<22;
+    i++
+  ){
+
+    const heart =
+      document.createElement(
+        "div"
+      );
+
+    heart.className =
+      "heart";
+
+    heart.textContent =
+      Math.random()>.5
+        ? "❤️"
+        : "💕";
+
+    heart.style.left =
+      Math.random()*100 + "%";
+
+    heart.style.fontSize =
+      (12+Math.random()*24)+"px";
+
+    heart.style.animationDuration =
+      (10+Math.random()*15)+"s";
+
+    heart.style.animationDelay =
+      (-Math.random()*20)+"s";
+
+    container.appendChild(
+      heart
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   COUNTER
+===================================================== */
+
+const startDate =
+  new Date(
+    "2024-10-16T00:00:00"
+  );
+
+
+function updateCounter(){
+
+  const now =
+    new Date();
+
+  let diff =
+    now.getTime() -
+    startDate.getTime();
+
+  if(diff < 0){
+    diff = 0;
+  }
+
+  const totalSeconds =
+    Math.floor(
+      diff/1000
+    );
+
+  const days =
+    Math.floor(
+      totalSeconds/86400
+    );
+
+  const hours =
+    Math.floor(
+      (totalSeconds%86400)/3600
+    );
+
+  const minutes =
+    Math.floor(
+      (totalSeconds%3600)/60
+    );
+
+  const seconds =
+    totalSeconds%60;
+
+  document.getElementById(
+    "days"
+  ).textContent =
+    days;
+
+  document.getElementById(
+    "hours"
+  ).textContent =
+    hours;
+
+  document.getElementById(
+    "minutes"
+  ).textContent =
+    minutes;
+
+  document.getElementById(
+    "seconds"
+  ).textContent =
+    seconds;
+
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+function setupReveal(){
+
+  const elements =
+    document.querySelectorAll(
+      ".reveal"
+    );
+
+  const observer =
+    new IntersectionObserver(
+      entries=>{
+
+        entries.forEach(
+          entry=>{
+
+            if(entry.isIntersecting){
+
+              entry.target
+                .classList
+                .add("show");
+
+            }
+
+          }
+        );
+
+      },
+      {
+        threshold:.12
+      }
+    );
+
+  elements.forEach(
+    element=>{
+      observer.observe(
+        element
+      );
+    }
+  );
+
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+const songs = [
+
+  "BLOK3 - KUSURA BAKMA (Official Music Video).mp3",
+
+  "Canım Sevgilim (Baha) Official Music Video -canımsevgilim -baha - Esen Müzik.mp3",
+
+  "Duman - Kolay Değildir.mp3",
+
+  "Kutupta Yaz Gibi (Baha) Official Audio -kutuptayazgibi -baha - Esen Müzik.mp3",
+
+  "Murat Boz Üzüleceksin.mp3",
+
+  "Nilüfer - İnkâr Etme (1990).mp3",
+
+  "Sezen Aksu - Ey Aşk [Official Audio].mp3",
+
+  "Sezen Aksu - Firuze (Official Audio - Orijinal Plak Kayıt).mp3",
+
+  "Ta Ki Seni Görene Kadar.mp3"
+
+];
+
+let musicIndex = 0;
+
+const audio =
+  document.getElementById(
+    "audio"
+  );
+
+const musicTitle =
+  document.getElementById(
+    "musicTitle"
+  );
+
+const musicStatus =
+  document.getElementById(
+    "musicStatus"
+  );
+
+const playMusic =
+  document.getElementById(
+    "playMusic"
+  );
+
+const progress =
+  document.getElementById(
+    "musicProgress"
+  );
+
+const musicTime =
+  document.getElementById(
+    "musicTime"
+  );
+
+const playlist =
+  document.getElementById(
+    "playlist"
+  );
+
+
+function songUrl(name){
+
+  return (
+    "https://raw.githubusercontent.com/" +
+    "fatmasoylu/fatmasoylu/main/" +
+    encodeURIComponent(name)
+  );
+
+}
+
+
+function loadSong(index,autoplay=false){
+
+  musicIndex =
+    (index+songs.length)%songs.length;
+
+  const name =
+    songs[musicIndex];
+
+  audio.src =
+    songUrl(name);
+
+  musicTitle.textContent =
+    name
+      .replace(".mp3","");
+
+  musicStatus.textContent =
+    "Şarkı " +
+    (musicIndex+1) +
+    " / " +
+    songs.length;
+
+  progress.value =
+    0;
+
+  updatePlaylist();
+
+  if(autoplay){
+
+    audio.play()
+      .then(()=>{
+        playMusic.textContent =
+          "⏸";
+      })
+      .catch(()=>{
+        playMusic.textContent =
+          "▶";
+      });
+
+  }else{
+
+    playMusic.textContent =
+      "▶";
+
+  }
+
+}
+
+
+function updatePlaylist(){
+
+  playlist.innerHTML =
+    songs.map(
+      (song,index)=>`
+
+        <button
+          class="song-item ${
+            index===musicIndex
+              ? "active"
+              : ""
+          }"
+          onclick="selectSong(${index})">
+
+          <span class="song-number">
+            ${index+1}
+          </span>
+
+          <span>
+            ${escapeHtml(
+              song.replace(".mp3","")
+            )}
+          </span>
+
+        </button>
+
+      `
+    ).join("");
+
+}
+
+
+function selectSong(index){
+
+  loadSong(
+    index,
+    true
+  );
+
+}
+
+
+playMusic.addEventListener(
+  "click",
+  ()=>{
+
+    if(audio.paused){
+
+      audio.play()
+        .then(()=>{
+          playMusic.textContent =
+            "⏸";
+        })
+        .catch(()=>{
+          showStatus(
+            "Müziği başlatmak için ekrana dokun."
           );
+        });
 
-      }else{
+    }else{
 
-        audio.pause();
+      audio.pause();
 
-      }
-
-    }
-  );
-
-/* =========================================================
-   ÖNCEKİ
-========================================================= */
-
-$("prevMusic")
-  .addEventListener(
-    "click",
-    () => {
-
-      if(!musicReady){
-        return;
-      }
-
-      loadSong(
-        currentSong - 1,
-        true
-      );
-
-    }
-  );
-
-/* =========================================================
-   SONRAKİ
-========================================================= */
-
-$("nextMusic")
-  .addEventListener(
-    "click",
-    () => {
-
-      if(!musicReady){
-        return;
-      }
-
-      loadSong(
-        currentSong + 1,
-        true
-      );
-
-    }
-  );
-
-/* =========================================================
-   PLAYLIST AÇ/KAPAT
-========================================================= */
-
-$("playlistButton")
-  .addEventListener(
-    "click",
-    () => {
-
-      $("playlist")
-        .classList
-        .toggle("show");
-
-    }
-  );
-
-/* =========================================================
-   SES
-========================================================= */
-
-audio.addEventListener(
-  "play",
-  updatePlayButton
-);
-
-audio.addEventListener(
-  "pause",
-  updatePlayButton
-);
-
-/* =========================================================
-   ŞARKI BİTİNCE
-========================================================= */
-
-audio.addEventListener(
-  "ended",
-  () => {
-
-    if(songs.length){
-
-      loadSong(
-        currentSong + 1,
-        true
-      );
+      playMusic.textContent =
+        "▶";
 
     }
 
   }
 );
 
-/* =========================================================
-   SÜRE
-========================================================= */
 
-audio.addEventListener(
-  "loadedmetadata",
-  () => {
-
-    if(
-      !isNaN(
-        audio.duration
-      )
-    ){
-
-      $("musicTime")
-        .textContent =
-        `0:00 / ${formatTime(
-          audio.duration
-        )}`;
-
+document
+  .getElementById("prevMusic")
+  .addEventListener(
+    "click",
+    ()=>{
+      loadSong(
+        musicIndex-1,
+        true
+      );
     }
+  );
 
-  }
-);
 
-/* =========================================================
-   ZAMAN
-========================================================= */
+document
+  .getElementById("nextMusic")
+  .addEventListener(
+    "click",
+    ()=>{
+      loadSong(
+        musicIndex+1,
+        true
+      );
+    }
+  );
+
 
 audio.addEventListener(
   "timeupdate",
-  () => {
+  ()=>{
 
     if(
-      !audio.duration ||
-      !isFinite(
+      Number.isFinite(
         audio.duration
       )
     ){
 
-      return;
+      progress.value =
+        (
+          audio.currentTime /
+          audio.duration
+        )*100;
+
+      musicTime.textContent =
+        formatTime(
+          audio.currentTime
+        ) +
+        " / " +
+        formatTime(
+          audio.duration
+        );
 
     }
-
-    const percent =
-      (
-        audio.currentTime /
-        audio.duration
-      ) * 100;
-
-    $("musicProgress")
-      .value =
-      percent;
-
-    $("musicTime")
-      .textContent =
-      `${formatTime(
-        audio.currentTime
-      )} / ${formatTime(
-        audio.duration
-      )}`;
 
   }
 );
 
-/* =========================================================
-   PROGRESS
-========================================================= */
 
-$("musicProgress")
-  .addEventListener(
-    "input",
-    () => {
+progress.addEventListener(
+  "input",
+  ()=>{
 
-      if(
-        !audio.duration ||
-        !isFinite(
-          audio.duration
-        )
-      ){
-
-        return;
-
-      }
+    if(
+      Number.isFinite(
+        audio.duration
+      )
+    ){
 
       audio.currentTime =
         (
           Number(
-            $("musicProgress")
-              .value
-          ) / 100
-        )
-        *
+            progress.value
+          )/100
+        ) *
         audio.duration;
 
     }
+
+  }
+);
+
+
+audio.addEventListener(
+  "ended",
+  ()=>{
+    loadSong(
+      musicIndex+1,
+      true
+    );
+  }
+);
+
+
+audio.addEventListener(
+  "error",
+  ()=>{
+    musicStatus.textContent =
+      "Şarkı yüklenemedi";
+  }
+);
+
+
+document
+  .getElementById("playlistButton")
+  .addEventListener(
+    "click",
+    ()=>{
+      playlist.classList.toggle(
+        "show"
+      );
+    }
   );
 
-/* =========================================================
-   ZAMAN FORMAT
-========================================================= */
 
-function formatTime(
-  seconds
-){
+function formatTime(seconds){
 
-  if(
-    !isFinite(
-      seconds
-    )
-  ){
-
+  if(!Number.isFinite(seconds)){
     return "0:00";
-
   }
 
   const min =
     Math.floor(
-      seconds / 60
+      seconds/60
     );
 
   const sec =
     Math.floor(
-      seconds % 60
+      seconds%60
     )
-    .toString()
-    .padStart(
-      2,
-      "0"
-    );
+      .toString()
+      .padStart(2,"0");
 
   return `${min}:${sec}`;
 
 }
 
-/* =========================================================
-   VİDEO OYNARKEN MÜZİĞİ DURDUR
-========================================================= */
 
-$("loveVideo")
+/* =====================================================
+   ESCAPE
+===================================================== */
+
+function escapeHtml(value){
+
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =====================================================
+   PROFILE PREVIEW
+===================================================== */
+
+document
+  .getElementById("profilePhoto")
   .addEventListener(
-    "play",
-    () => {
+    "change",
+    event=>{
 
-      if(
-        !audio.paused
-      ){
+      const file =
+        event.target.files[0];
 
-        audio.pause();
+      const preview =
+        document.getElementById(
+          "profilePreview"
+        );
 
+      if(!file){
+
+        preview.classList.add(
+          "hidden"
+        );
+
+        return;
       }
+
+      const reader =
+        new FileReader();
+
+      reader.onload =
+        ()=>{
+          preview.src =
+            reader.result;
+
+          preview.classList.remove(
+            "hidden"
+          );
+        };
+
+      reader.readAsDataURL(
+        file
+      );
 
     }
   );
 
-/* =========================================================
-   MÜZİĞİ BAŞLAT
-========================================================= */
 
-loadSongs();
+/* =====================================================
+   OPENING
+===================================================== */
 
+setTimeout(
+  ()=>{
+    document
+      .getElementById(
+        "opening"
+      )
+      .classList.add(
+        "hide"
+      );
+  },
+  3500
+);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  ()=>{
+
+    createFloatingHearts();
+
+    createStars();
+
+    createPuzzle();
+
+    loadSong(
+      0,
+      false
+    );
+
+    updateCounter();
+
+    setInterval(
+      updateCounter,
+      1000
+    );
+
+    setupReveal();
+
+    initSupabase();
+
+  }
+);
+
+
+/* =====================================================
+   ESCAPE KEY
+===================================================== */
+
+document.addEventListener(
+  "keydown",
+  event=>{
+
+    if(event.key === "Escape"){
+
+      document
+        .querySelectorAll(
+          ".modal.show"
+        )
+        .forEach(
+          modal=>{
+            modal.classList.remove(
+              "show"
+            );
+          }
+        );
+
+      closeLightbox();
+
+    }
+
+  }
+);
 </script>
 
 </body>
