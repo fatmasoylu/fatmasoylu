@@ -1051,7 +1051,7 @@ function toggleTheme(){
 
 /* HAREKETLİ PİYASA ŞERİDİ */
 .market-strip{
-  position:relative;z-index:4000;width:100%;height:48px;
+  position:relative;z-index:4000;width:100%;height:72px;
   display:flex;align-items:center;border-bottom:1px solid var(--line);
   background:rgba(14,10,14,.92);backdrop-filter:blur(14px);overflow:hidden;
 }
@@ -1061,13 +1061,15 @@ function toggleTheme(){
   border-right:1px solid var(--line);
   background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
 }
-.market-strip-window{flex:1;min-width:0;overflow:hidden;height:48px}
-.market-strip-widget{width:100%;height:48px;overflow:hidden}
-.market-strip-widget .tradingview-widget-container__widget{height:48px;min-height:48px}
+.market-strip-window{flex:1;min-width:0;overflow:hidden;height:72px}
+.market-strip-widget{width:100%;height:72px;overflow:hidden}
+.market-strip-widget .tradingview-widget-container__widget{height:72px;min-height:72px}
+.market-strip-widget iframe{height:72px !important;min-height:72px !important;width:100% !important;display:block}
 @media(max-width:600px){
-  .market-strip{height:44px}
+  .market-strip{height:68px}
   .market-strip-label{padding:0 9px;font-size:9px}
-  .market-strip-window,.market-strip-widget,.market-strip-widget .tradingview-widget-container__widget{height:44px;min-height:44px}
+  .market-strip-window,.market-strip-widget,.market-strip-widget .tradingview-widget-container__widget{height:68px;min-height:68px}
+  .market-strip-widget iframe{height:68px !important;min-height:68px !important}
 }
 
 /* MARKET */
