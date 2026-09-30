@@ -101,10 +101,16 @@ header{
 }
 .nav-links a:hover{background:rgba(255,255,255,.07);color:#fff}
 .theme-btn{
-  flex:0 0 auto;width:38px;height:38px;border-radius:50%;
-  border:1px solid var(--line);background:rgba(255,255,255,.06);
-  color:#fff;
+  flex:0 0 auto;width:58px;height:38px;border-radius:999px;
+  border:1px solid var(--line);background:rgba(255,255,255,.07);
+  color:#fff;display:flex;align-items:center;justify-content:center;gap:5px;
+  box-shadow:inset 0 0 18px rgba(255,255,255,.04);
 }
+.theme-btn span{font-size:16px;line-height:1;transition:transform .25s,opacity .25s}
+.theme-sun{opacity:.45;transform:scale(.82)}
+.theme-moon{opacity:1;transform:scale(1.05)}
+:root[data-theme="light"] .theme-moon{opacity:.45;transform:scale(.82)}
+:root[data-theme="light"] .theme-sun{opacity:1;transform:scale(1.05)}
 
 /* LAYOUT */
 main{position:relative;z-index:1}
@@ -440,8 +446,9 @@ footer{text-align:center;color:#82747d;padding:65px 18px 145px}
       <a href="#mektuplar">Mektuplar</a>
       <a href="#quiz">Quiz</a>
       <a href="#gizli">Sürpriz</a>
+      <a href="#piyasalar">Piyasalar</a>
     </div>
-    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Tema">☾</button>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Gece gündüz modu" title="Gece / gündüz modu"><span class="theme-moon">🌙</span><span class="theme-sun">☀️</span></button>
   </nav>
 </header>
 
@@ -655,6 +662,52 @@ footer{text-align:center;color:#82747d;padding:65px 18px 145px}
     <input id="pin" class="pin" inputmode="numeric" maxlength="8" placeholder="••••••••" aria-label="Gizli PIN">
     <button class="primary" onclick="checkPin()">Kapıyı Aç ❤️</button>
     <div id="secretResult" class="secret-result"></div>
+  </div>
+</section>
+
+<!-- PİYASALAR BÖLÜMÜ -->
+<section id="piyasalar">
+  <div class="section-head">
+    <div class="section-kicker">Canlı</div>
+    <h2 class="section-title">Piyasalar 📈</h2>
+    <p class="section-subtitle">Döviz, altın ve kripto para birimlerini canlı olarak takip edin.</p>
+  </div>
+  <div class="card market-card reveal">
+    <div class="market-top">
+      <div>
+        <strong>Canlı Piyasa Verileri</strong>
+        <span>Döviz, Altın ve Kripto para birimleri anlık olarak güncellenir.</span>
+      </div>
+      <div class="market-live"><i></i> CANLI</div>
+    </div>
+    <div class="market-ticker">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            {"proName": "FX_IDC:USDTRY", "title": "Dolar"},
+            {"proName": "FX_IDC:EURTRY", "title": "Euro"},
+            {"proName": "TVC:GOLD", "title": "Altın"},
+            {"proName": "BINANCE:BTCUSDT", "title": "Bitcoin"},
+            {"proName": "BINANCE:ETHUSDT", "title": "Ethereum"}
+          ],
+          "showSymbolLogo": true,
+          "isTransparent": true,
+          "displayMode": "adaptive",
+          "colorTheme": "dark",
+          "locale": "tr"
+        }
+        </script>
+      </div>
+    </div>
+    <div class="market-grid">
+      <div class="market-box"><div class="market-icon">💵</div><div><b>Dolar / TL</b><small>USD/TRY</small></div></div>
+      <div class="market-box"><div class="market-icon">💶</div><div><b>Euro / TL</b><small>EUR/TRY</small></div></div>
+      <div class="market-box"><div class="market-icon">🥇</div><div><b>Altın (ons)</b><small>XAU/USD</small></div></div>
+      <div class="market-box"><div class="market-icon">₿</div><div><b>Bitcoin</b><small>BTC/USDT</small></div></div>
+    </div>
+    <div class="market-note">Veriler TradingView altyapısı ile sağlanmaktadır. Yatırım tavsiyesi değildir.</div>
   </div>
 </section>
 
@@ -1007,15 +1060,44 @@ function toggleTheme(){
   const current=root.dataset.theme;
   if(current==='light'){
     delete root.dataset.theme;
-    document.getElementById('themeBtn').textContent='☾';
+    document.getElementById('themeBtn').innerHTML='<span class="theme-moon">🌙</span><span class="theme-sun">☀️</span>';
   }else{
     root.dataset.theme='light';
-    document.getElementById('themeBtn').textContent='☀';
+    document.getElementById('themeBtn').innerHTML='<span class="theme-moon">🌙</span><span class="theme-sun">☀️</span>';
   }
+}
+
+/* =========================
+   FINAL ANSWER
+========================= */
+function finalAnswer(){
+  document.getElementById('finalAnswer').textContent='Evet! ❤️ Sonsuza kadar...';
 }
 </script>
 
 <style>
+/* MARKET */
+.market-card{
+  border:1px solid var(--line);background:var(--card);border-radius:var(--radius);
+  padding:20px;box-shadow:var(--shadow);overflow:hidden;
+}
+.market-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}
+.market-top strong{display:block;color:var(--soft);font-size:20px}
+.market-top span{display:block;color:var(--muted);font-size:12px;margin-top:5px}
+.market-live{display:flex;align-items:center;gap:7px;border:1px solid var(--line);padding:8px 11px;border-radius:999px;font-size:10px;letter-spacing:1.5px;color:var(--muted);white-space:nowrap}
+.market-live i{width:7px;height:7px;border-radius:50%;background:#52d273;box-shadow:0 0 10px #52d273;animation:marketPulse 1.4s infinite}
+@keyframes marketPulse{50%{opacity:.35;transform:scale(.75)}}
+.market-ticker{border:1px solid var(--line);border-radius:18px;overflow:hidden;min-height:46px;background:rgba(0,0,0,.12)}
+.tradingview-widget-container{width:100%;min-height:46px}
+.tradingview-widget-container__widget{min-height:46px}
+.market-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.market-box{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:16px;padding:13px;background:rgba(255,255,255,.025)}
+.market-icon{font-size:23px}.market-box b{display:block;font-size:13px;color:var(--text)}
+.market-box small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.market-note{margin-top:13px;color:#9e8f98;font-size:10px;line-height:1.5}
+@media(max-width:700px){.market-grid{grid-template-columns:repeat(2,1fr)}.market-top{align-items:flex-start}.market-top strong{font-size:17px}.market-top span{max-width:230px}}
+@media(max-width:430px){.market-card{padding:14px}.market-grid{gap:8px}.market-box{padding:10px}.market-icon{font-size:20px}}
+
 /* LIGHT THEME */
 :root[data-theme="light"]{
   --bg:#fbf5f8;--bg2:#fff;
