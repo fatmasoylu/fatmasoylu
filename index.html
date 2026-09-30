@@ -2,139 +2,130 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#100914">
-<meta name="description" content="Bizim Hikâyemiz ❤️">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#120814">
 <title>Bizim Hikâyemiz ❤️</title>
 
-<!-- SUPABASE -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  font-family:Georgia,"Times New Roman",serif;
-  background:
-    radial-gradient(circle at 20% 0%,#4b183f 0%,transparent 35%),
-    radial-gradient(circle at 90% 20%,#321348 0%,transparent 30%),
-    linear-gradient(180deg,#110914,#08050c);
-  color:#fff;
-  overflow-x:hidden;
-  line-height:1.7;
+    font-family:Georgia,"Times New Roman",serif;
+    color:#fff;
+    background:
+        radial-gradient(circle at 20% 10%,#53183f 0%,transparent 35%),
+        radial-gradient(circle at 90% 20%,#3b1550 0%,transparent 30%),
+        linear-gradient(180deg,#130916,#08050c);
+    min-height:100vh;
+    overflow-x:hidden;
 }
 
 button,
 input,
 textarea,
 select{
-  font:inherit;
+    font:inherit;
 }
 
 button{
-  cursor:pointer;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
+    cursor:pointer;
 }
 
 .hidden{
-  display:none!important;
+    display:none!important;
 }
 
 /* =========================
-   OPENING
+   AÇILIŞ
 ========================= */
 
 #opening{
-  position:fixed;
-  inset:0;
-  z-index:99999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background:
-    radial-gradient(circle at center,#64204f 0%,#1c0b20 48%,#07050a 100%);
-  transition:.9s ease;
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:
+        radial-gradient(circle,#651d4f,#1b0a20 50%,#060408);
+    transition:1s ease;
 }
 
 #opening.hide{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
 }
 
-.opening-inner{
-  width:min(94%,700px);
-  padding:25px;
+.opening-content{
+    padding:25px;
 }
 
 .opening-heart{
-  font-size:75px;
-  animation:pulse 1.5s infinite;
+    font-size:75px;
+    animation:pulse 1.5s infinite;
 }
 
 .opening-date{
-  font-size:clamp(40px,11vw,85px);
-  font-weight:bold;
-  letter-spacing:4px;
-  color:#ffd0e6;
-  text-shadow:0 0 35px rgba(255,100,180,.8);
+    font-size:clamp(38px,10vw,80px);
+    color:#ffd0e5;
+    font-weight:bold;
+    text-shadow:0 0 30px rgba(255,100,180,.7);
 }
 
 .opening-text{
-  font-size:clamp(18px,4vw,26px);
-  margin-top:12px;
+    margin-top:15px;
+    font-size:22px;
 }
 
 .opening-small{
-  margin-top:28px;
-  opacity:.6;
-  font-size:13px;
+    margin-top:30px;
+    opacity:.55;
+    font-size:13px;
 }
 
 @keyframes pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.12)}
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.12)}
 }
 
 /* =========================
-   FLOATING HEARTS
+   KALPLER
 ========================= */
 
-.hearts{
-  position:fixed;
-  inset:0;
-  overflow:hidden;
-  pointer-events:none;
-  z-index:0;
+#hearts{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
 }
 
-.heart{
-  position:absolute;
-  bottom:-50px;
-  opacity:.13;
-  animation:floatHeart linear infinite;
+.floating-heart{
+    position:absolute;
+    bottom:-60px;
+    opacity:.15;
+    animation:floatUp linear infinite;
 }
 
-@keyframes floatHeart{
-  from{
-    transform:translateY(0) rotate(0);
-  }
-  to{
-    transform:translateY(-115vh) rotate(360deg);
-  }
+@keyframes floatUp{
+    from{
+        transform:translateY(0) rotate(0);
+    }
+    to{
+        transform:translateY(-115vh) rotate(360deg);
+    }
 }
 
 /* =========================
@@ -142,135 +133,138 @@ a{
 ========================= */
 
 header{
-  position:sticky;
-  top:0;
-  z-index:5000;
-  background:rgba(8,5,12,.92);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.08);
+    position:sticky;
+    top:0;
+    z-index:5000;
+    background:rgba(10,6,13,.94);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .nav{
-  max-width:1200px;
-  min-height:65px;
-  margin:auto;
-  padding:8px 14px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
+    max-width:1200px;
+    min-height:65px;
+    margin:auto;
+    padding:8px 14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
 }
 
 .logo{
-  color:#ffb7d7;
-  font-weight:bold;
-  font-size:19px;
-  white-space:nowrap;
+    color:#ffb9d8;
+    font-weight:bold;
+    font-size:19px;
+    white-space:nowrap;
 }
 
 .nav-links{
-  display:flex;
-  gap:5px;
-  overflow-x:auto;
-  scrollbar-width:none;
+    display:flex;
+    gap:4px;
+    overflow-x:auto;
+    scrollbar-width:none;
 }
 
 .nav-links::-webkit-scrollbar{
-  display:none;
+    display:none;
 }
 
 .nav-links a{
-  padding:7px 10px;
-  border-radius:20px;
-  font-size:12px;
-  white-space:nowrap;
+    color:#ddd;
+    text-decoration:none;
+    padding:8px 10px;
+    border-radius:20px;
+    font-size:12px;
+    white-space:nowrap;
 }
 
 .nav-links a:hover{
-  background:rgba(255,255,255,.08);
+    background:rgba(255,255,255,.08);
 }
 
+/* PROFİL BUTONU */
+
 .profile-button{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  border:1px solid rgba(255,255,255,.15);
-  background:rgba(255,255,255,.08);
-  color:#fff;
-  border-radius:22px;
-  padding:7px 12px;
-  flex-shrink:0;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.07);
+    color:#fff;
+    border-radius:25px;
+    padding:6px 12px;
+    flex-shrink:0;
 }
 
 .profile-button:disabled{
-  opacity:.45;
-  cursor:wait;
+    opacity:.6;
+    cursor:wait;
 }
 
 .profile-avatar{
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  object-fit:cover;
+    width:29px;
+    height:29px;
+    border-radius:50%;
+    object-fit:cover;
 }
 
 .avatar-letter{
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#db428d,#792050);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
+    width:29px;
+    height:29px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#e64b94,#742052);
 }
 
 /* =========================
-   GENERAL
+   GENEL
 ========================= */
 
 main{
-  position:relative;
-  z-index:1;
+    position:relative;
+    z-index:1;
 }
 
 section{
-  max-width:1100px;
-  margin:auto;
-  padding:85px 18px;
+    max-width:1100px;
+    margin:auto;
+    padding:85px 18px;
 }
 
 .section-title{
-  text-align:center;
-  color:#ffc4df;
-  font-size:clamp(28px,6vw,46px);
-  margin-bottom:12px;
+    text-align:center;
+    color:#ffc4df;
+    font-size:clamp(28px,6vw,46px);
+    margin-bottom:12px;
 }
 
 .section-subtitle{
-  max-width:720px;
-  margin:0 auto 38px;
-  text-align:center;
-  opacity:.72;
+    max-width:750px;
+    margin:0 auto 35px;
+    text-align:center;
+    opacity:.7;
 }
 
 .card{
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:26px;
-  padding:25px;
-  box-shadow:0 20px 70px rgba(0,0,0,.25);
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:25px;
+    padding:25px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
 .reveal{
-  opacity:0;
-  transform:translateY(30px);
-  transition:.8s;
+    opacity:0;
+    transform:translateY(25px);
+    transition:.8s;
 }
 
 .reveal.show{
-  opacity:1;
-  transform:none;
+    opacity:1;
+    transform:none;
 }
 
 /* =========================
@@ -278,93 +272,89 @@ section{
 ========================= */
 
 .hero{
-  min-height:calc(100vh - 65px);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
+    min-height:calc(100vh - 65px);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
 .hero h1{
-  font-size:clamp(45px,10vw,90px);
-  line-height:1.05;
-  color:#ffd0e5;
-  text-shadow:0 0 35px rgba(255,100,180,.35);
+    font-size:clamp(45px,10vw,90px);
+    line-height:1.05;
+    color:#ffd1e5;
+    text-shadow:0 0 35px rgba(255,100,180,.4);
 }
 
 .hero p{
-  max-width:750px;
-  margin-top:22px;
-  font-size:clamp(17px,4vw,23px);
-  opacity:.85;
+    max-width:750px;
+    margin-top:22px;
+    font-size:clamp(17px,4vw,23px);
+    opacity:.85;
 }
 
 .counter{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:10px;
-  margin-top:35px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-top:35px;
 }
 
 .counter-box{
-  min-width:90px;
-  padding:14px 12px;
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:18px;
+    min-width:90px;
+    padding:15px 12px;
+    border-radius:18px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.1);
 }
 
 .counter-box strong{
-  display:block;
-  font-size:27px;
-  color:#ffafd2;
+    display:block;
+    font-size:27px;
+    color:#ffafd1;
 }
 
 .counter-box span{
-  font-size:11px;
-  opacity:.6;
+    font-size:11px;
+    opacity:.6;
 }
 
 /* =========================
-   BUTTON
+   BUTONLAR
 ========================= */
 
 .main-btn{
-  border:0;
-  color:#fff;
-  background:linear-gradient(135deg,#e64991,#92265f);
-  padding:12px 21px;
-  border-radius:22px;
-  box-shadow:0 10px 30px rgba(230,73,145,.2);
-}
-
-.main-btn:hover{
-  transform:translateY(-1px);
+    border:0;
+    color:#fff;
+    background:linear-gradient(135deg,#e64991,#8d255c);
+    padding:12px 21px;
+    border-radius:22px;
+    box-shadow:0 10px 30px rgba(230,73,145,.2);
 }
 
 .secondary-btn{
-  border:1px solid rgba(255,255,255,.15);
-  color:#fff;
-  background:rgba(255,255,255,.07);
-  padding:11px 18px;
-  border-radius:20px;
+    border:1px solid rgba(255,255,255,.15);
+    color:#fff;
+    background:rgba(255,255,255,.07);
+    padding:11px 18px;
+    border-radius:20px;
 }
 
 /* =========================
-   STORY
+   HİKAYE
 ========================= */
 
 .story{
-  max-width:850px;
-  margin:auto;
-  text-align:center;
-  font-size:18px;
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+    font-size:18px;
 }
 
 .story p+p{
-  margin-top:18px;
+    margin-top:18px;
 }
 
 /* =========================
@@ -372,46 +362,46 @@ section{
 ========================= */
 
 .video-wrap{
-  max-width:850px;
-  margin:auto;
+    max-width:850px;
+    margin:auto;
 }
 
 .video-wrap video{
-  display:block;
-  width:100%;
-  max-height:650px;
-  border-radius:25px;
-  background:#000;
-  box-shadow:0 20px 70px rgba(0,0,0,.45);
+    width:100%;
+    display:block;
+    max-height:650px;
+    border-radius:25px;
+    background:#000;
+    box-shadow:0 20px 70px rgba(0,0,0,.45);
 }
 
 /* =========================
-   GALLERY
+   GALERİ
 ========================= */
 
 .gallery{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
 .gallery-item{
-  overflow:hidden;
-  border-radius:22px;
-  background:#111;
-  cursor:pointer;
+    overflow:hidden;
+    border-radius:22px;
+    background:#111;
 }
 
 .gallery-item img{
-  display:block;
-  width:100%;
-  aspect-ratio:4/5;
-  object-fit:cover;
-  transition:.5s;
+    display:block;
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    transition:.5s;
+    cursor:pointer;
 }
 
-.gallery-item:hover img{
-  transform:scale(1.05);
+.gallery-item img:hover{
+    transform:scale(1.05);
 }
 
 /* =========================
@@ -419,78 +409,78 @@ section{
 ========================= */
 
 .timeline{
-  position:relative;
-  max-width:850px;
-  margin:auto;
+    position:relative;
+    max-width:850px;
+    margin:auto;
 }
 
 .timeline:before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:0;
-  bottom:0;
-  width:2px;
-  background:rgba(255,255,255,.15);
-  transform:translateX(-50%);
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:rgba(255,255,255,.15);
+    transform:translateX(-50%);
 }
 
 .timeline-item{
-  position:relative;
-  width:50%;
-  padding:15px 35px;
+    position:relative;
+    width:50%;
+    padding:15px 35px;
 }
 
 .timeline-item:nth-child(even){
-  margin-left:50%;
+    margin-left:50%;
 }
 
 .timeline-item:nth-child(odd){
-  text-align:right;
+    text-align:right;
 }
 
 .timeline-dot{
-  position:absolute;
-  top:30px;
-  width:15px;
-  height:15px;
-  border-radius:50%;
-  background:#ff75b4;
-  box-shadow:0 0 20px rgba(255,100,180,.8);
+    position:absolute;
+    top:30px;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    background:#ff75b4;
+    box-shadow:0 0 20px rgba(255,100,180,.8);
 }
 
 .timeline-item:nth-child(odd) .timeline-dot{
-  right:-8px;
+    right:-8px;
 }
 
 .timeline-item:nth-child(even) .timeline-dot{
-  left:-7px;
+    left:-7px;
 }
 
 .timeline-date{
-  color:#ff9bc7;
-  font-weight:bold;
+    color:#ff9bc7;
+    font-weight:bold;
 }
 
 /* =========================
-   REASONS
+   NEDENLER
 ========================= */
 
 .reasons{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
 }
 
 .reason{
-  padding:20px;
-  border-radius:20px;
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(255,255,255,.08);
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.08);
 }
 
 .reason b{
-  color:#ffafd1;
+    color:#ffafd1;
 }
 
 /* =========================
@@ -498,48 +488,48 @@ section{
 ========================= */
 
 .open-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
 }
 
 .open-card{
-  padding:24px;
-  border-radius:22px;
-  background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
-  border:1px solid rgba(255,255,255,.1);
-  cursor:pointer;
-  transition:.25s;
+    padding:24px;
+    border-radius:22px;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.09);
+    cursor:pointer;
+    transition:.25s;
 }
 
 .open-card:hover{
-  transform:translateY(-3px);
+    transform:translateY(-3px);
 }
 
 .open-card h3{
-  color:#ffc1dd;
+    color:#ffc1dc;
 }
 
 /* =========================
-   PLACES
+   YERLER
 ========================= */
 
 .memory-map{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
 }
 
 .memory-place{
-  padding:22px;
-  text-align:center;
-  border-radius:22px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.08);
+    padding:22px;
+    text-align:center;
+    border-radius:22px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
 }
 
-.memory-place .pin{
-  font-size:36px;
+.pin{
+    font-size:38px;
 }
 
 /* =========================
@@ -547,37 +537,37 @@ section{
 ========================= */
 
 .quiz-question{
-  display:none;
+    display:none;
 }
 
 .quiz-question.active{
-  display:block;
+    display:block;
 }
 
 .quiz-options{
-  display:grid;
-  gap:10px;
-  margin-top:20px;
+    display:grid;
+    gap:10px;
+    margin-top:20px;
 }
 
 .quiz-options button{
-  padding:14px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.1);
-  background:rgba(255,255,255,.06);
-  color:#fff;
-  text-align:left;
+    padding:14px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.06);
+    color:#fff;
+    text-align:left;
 }
 
 .quiz-options button:hover{
-  background:rgba(255,100,170,.15);
+    background:rgba(255,100,170,.15);
 }
 
 .quiz-result{
-  margin-top:25px;
-  text-align:center;
-  font-size:20px;
-  color:#ffc0dc;
+    margin-top:25px;
+    text-align:center;
+    color:#ffc0dc;
+    font-size:20px;
 }
 
 /* =========================
@@ -585,56 +575,28 @@ section{
 ========================= */
 
 .gift-area{
-  text-align:center;
+    text-align:center;
 }
 
 .gift{
-  display:inline-block;
-  font-size:100px;
-  cursor:pointer;
-  transition:.25s;
+    display:inline-block;
+    font-size:100px;
+    cursor:pointer;
+    transition:.25s;
 }
 
 .gift:hover{
-  transform:scale(1.08);
+    transform:scale(1.08);
 }
 
 .gift-message{
-  display:none;
-  max-width:700px;
-  margin:25px auto;
+    display:none;
+    max-width:700px;
+    margin:25px auto;
 }
 
 .gift-message.show{
-  display:block;
-}
-
-/* =========================
-   SECRET
-========================= */
-
-.secret-box{
-  max-width:520px;
-  margin:auto;
-  text-align:center;
-}
-
-.pin-input{
-  width:100%;
-  margin:18px 0 12px;
-  padding:15px;
-  border-radius:15px;
-  border:1px solid rgba(255,255,255,.15);
-  background:rgba(0,0,0,.25);
-  color:#fff;
-  text-align:center;
-  letter-spacing:6px;
-  outline:none;
-}
-
-.secret-result{
-  margin-top:18px;
-  color:#ffc1dc;
+    display:block;
 }
 
 /* =========================
@@ -642,37 +604,37 @@ section{
 ========================= */
 
 .sky{
-  position:relative;
-  min-height:360px;
-  overflow:hidden;
-  border-radius:28px;
-  background:
-    radial-gradient(circle at 50% 100%,#32104b,#0b0714 70%);
+    position:relative;
+    min-height:360px;
+    overflow:hidden;
+    border-radius:28px;
+    background:
+        radial-gradient(circle at 50% 100%,#34114e,#090611 70%);
 }
 
 .star{
-  position:absolute;
-  width:3px;
-  height:3px;
-  border-radius:50%;
-  background:#fff;
-  animation:twinkle 2s infinite alternate;
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#fff;
+    animation:twinkle 2s infinite alternate;
 }
 
 .moon{
-  position:absolute;
-  top:35px;
-  right:12%;
-  width:85px;
-  height:85px;
-  border-radius:50%;
-  background:#fff4ca;
-  box-shadow:0 0 40px rgba(255,244,202,.5);
+    position:absolute;
+    top:35px;
+    right:12%;
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    background:#fff4ca;
+    box-shadow:0 0 40px rgba(255,244,202,.5);
 }
 
 @keyframes twinkle{
-  from{opacity:.2}
-  to{opacity:1}
+    from{opacity:.2}
+    to{opacity:1}
 }
 
 /* =========================
@@ -680,47 +642,44 @@ section{
 ========================= */
 
 .puzzle{
-  max-width:420px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:4px;
-  background:#000;
-  padding:4px;
-  border-radius:18px;
-  overflow:hidden;
+    max-width:420px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:4px;
+    background:#000;
+    padding:4px;
+    border-radius:18px;
+    overflow:hidden;
 }
 
 .puzzle-piece{
-  aspect-ratio:1;
-  background-size:300% 300%;
-  border:0;
-  opacity:.9;
-}
-
-.puzzle-piece:hover{
-  opacity:1;
+    aspect-ratio:1;
+    background-size:300% 300%;
+    border:0;
 }
 
 /* =========================
-   FINAL
+   SECRET
 ========================= */
 
-.final{
-  text-align:center;
+.secret-box{
+    max-width:520px;
+    margin:auto;
+    text-align:center;
 }
 
-.final h2{
-  font-size:clamp(32px,7vw,55px);
-  color:#ffc3dd;
-}
-
-.final-buttons{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:25px;
+.pin-input{
+    width:100%;
+    margin:18px 0 12px;
+    padding:15px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(0,0,0,.25);
+    color:#fff;
+    text-align:center;
+    letter-spacing:6px;
+    outline:none;
 }
 
 /* =========================
@@ -728,61 +687,60 @@ section{
 ========================= */
 
 .posts-list{
-  display:grid;
-  gap:15px;
-  max-width:850px;
-  margin:auto;
+    display:grid;
+    gap:15px;
+    max-width:850px;
+    margin:auto;
 }
 
 .post{
-  padding:20px;
-  border-radius:22px;
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(255,255,255,.09);
+    padding:20px;
+    border-radius:22px;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.09);
 }
 
 .post-head{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
 }
 
 .post-avatar{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  object-fit:cover;
-  background:#92265f;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    object-fit:cover;
 }
 
 .post-name{
-  font-weight:bold;
-  color:#ffc0dd;
+    color:#ffc0dd;
+    font-weight:bold;
 }
 
 .post-date{
-  font-size:11px;
-  opacity:.5;
-}
-
-.post-photo{
-  display:block;
-  width:100%;
-  max-height:600px;
-  object-fit:cover;
-  border-radius:18px;
-  margin-top:15px;
+    font-size:11px;
+    opacity:.5;
 }
 
 .post-type{
-  display:inline-block;
-  padding:4px 9px;
-  border-radius:12px;
-  background:rgba(255,100,170,.12);
-  color:#ffb3d4;
-  font-size:11px;
-  margin-bottom:8px;
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:12px;
+    background:rgba(255,100,170,.12);
+    color:#ffb3d4;
+    font-size:11px;
+    margin-bottom:8px;
+}
+
+.post-photo{
+    width:100%;
+    max-height:600px;
+    object-fit:cover;
+    border-radius:18px;
+    margin-top:15px;
+    cursor:pointer;
 }
 
 /* =========================
@@ -790,128 +748,125 @@ section{
 ========================= */
 
 #musicPlayer{
-  position:fixed;
-  left:12px;
-  right:12px;
-  bottom:12px;
-  z-index:9000;
-  max-width:720px;
-  margin:auto;
-  padding:10px 12px;
-  background:rgba(17,10,21,.97);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:22px;
-  box-shadow:0 15px 50px rgba(0,0,0,.5);
-  transform:none!important;
-  animation:none!important;
+    position:fixed;
+    left:10px;
+    right:10px;
+    bottom:10px;
+    z-index:9000;
+    max-width:720px;
+    margin:auto;
+    padding:10px 12px;
+    background:rgba(15,8,19,.97);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:22px;
+    box-shadow:0 15px 50px rgba(0,0,0,.5);
 }
 
 .music-top{
-  display:flex;
-  align-items:center;
-  gap:10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
 .music-cover{
-  width:42px;
-  height:42px;
-  flex:0 0 42px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:13px;
-  background:linear-gradient(135deg,#e64991,#6d1f54);
-  font-size:20px;
+    width:43px;
+    height:43px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:13px;
+    background:linear-gradient(135deg,#e64991,#6d1f54);
+    font-size:20px;
 }
 
 .music-info{
-  min-width:0;
-  flex:1;
+    min-width:0;
+    flex:1;
 }
 
 .music-title{
-  font-size:13px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+    font-size:13px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
 .music-status{
-  font-size:10px;
-  color:#aaa;
+    font-size:10px;
+    color:#aaa;
 }
 
 .music-controls{
-  display:flex;
-  gap:4px;
+    display:flex;
+    gap:4px;
 }
 
 .music-controls button{
-  width:37px;
-  height:37px;
-  border:0;
-  border-radius:50%;
-  background:rgba(255,255,255,.08);
-  color:#fff;
+    width:37px;
+    height:37px;
+    border:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    color:#fff;
 }
 
 #playMusic{
-  background:#b73578;
+    background:#b73578;
 }
 
 .music-progress{
-  width:100%;
-  margin-top:8px;
-  accent-color:#e95698;
+    width:100%;
+    margin-top:8px;
+    accent-color:#e95698;
 }
 
 .music-bottom{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 .music-time{
-  font-size:10px;
-  color:#888;
+    font-size:10px;
+    color:#888;
 }
 
 .playlist-button{
-  border:0;
-  background:transparent;
-  color:#bbb;
-  font-size:11px;
+    border:0;
+    background:transparent;
+    color:#bbb;
+    font-size:11px;
 }
 
 .playlist{
-  display:none;
-  max-height:220px;
-  overflow-y:auto;
-  margin-top:8px;
-  border-top:1px solid rgba(255,255,255,.08);
-  padding-top:6px;
+    display:none;
+    max-height:220px;
+    overflow-y:auto;
+    margin-top:8px;
+    border-top:1px solid rgba(255,255,255,.08);
+    padding-top:6px;
 }
 
 .playlist.show{
-  display:block;
+    display:block;
 }
 
 .song-item{
-  display:flex;
-  gap:9px;
-  width:100%;
-  border:0;
-  background:transparent;
-  color:#ddd;
-  text-align:left;
-  padding:9px;
-  border-radius:12px;
-  font-size:12px;
+    display:flex;
+    gap:9px;
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#ddd;
+    text-align:left;
+    padding:9px;
+    border-radius:12px;
+    font-size:12px;
 }
 
 .song-item.active{
-  background:rgba(220,65,135,.15);
-  color:#ffafd1;
+    background:rgba(220,65,135,.15);
+    color:#ffafd1;
 }
 
 /* =========================
@@ -919,98 +874,83 @@ section{
 ========================= */
 
 .modal{
-  position:fixed;
-  inset:0;
-  z-index:20000;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:16px;
-  background:rgba(0,0,0,.82);
+    position:fixed;
+    inset:0;
+    z-index:20000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:16px;
+    background:rgba(0,0,0,.82);
 }
 
 .modal.show{
-  display:flex;
+    display:flex;
 }
 
 .modal-box{
-  width:min(100%,560px);
-  max-height:92vh;
-  overflow:auto;
-  position:relative;
-  padding:25px;
-  border-radius:25px;
-  background:#1a0d1c;
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 30px 100px rgba(0,0,0,.6);
+    width:min(100%,560px);
+    max-height:92vh;
+    overflow:auto;
+    position:relative;
+    padding:25px;
+    border-radius:25px;
+    background:#1a0d1c;
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 30px 100px rgba(0,0,0,.6);
 }
 
 .modal-close{
-  position:absolute;
-  right:14px;
-  top:10px;
-  border:0;
-  background:transparent;
-  color:#fff;
-  font-size:27px;
+    position:absolute;
+    right:14px;
+    top:10px;
+    border:0;
+    background:transparent;
+    color:#fff;
+    font-size:27px;
 }
 
 .modal-title{
-  color:#ffc1dc;
-  margin-bottom:18px;
-  font-size:25px;
+    color:#ffc1dc;
+    margin-bottom:18px;
+    font-size:25px;
 }
 
 .form-group{
-  margin-bottom:14px;
+    margin-bottom:14px;
 }
 
 .form-group label{
-  display:block;
-  margin-bottom:6px;
-  font-size:13px;
-  color:#bbb;
+    display:block;
+    margin-bottom:6px;
+    font-size:13px;
+    color:#bbb;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select{
-  width:100%;
-  padding:13px;
-  border-radius:13px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(0,0,0,.25);
-  color:#fff;
-  outline:none;
+    width:100%;
+    padding:13px;
+    border-radius:13px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(0,0,0,.25);
+    color:#fff;
+    outline:none;
 }
 
 .form-group textarea{
-  min-height:130px;
-  resize:vertical;
+    min-height:130px;
+    resize:vertical;
 }
 
 .profile-preview{
-  display:block;
-  width:95px;
-  height:95px;
-  margin:10px auto;
-  object-fit:cover;
-  border-radius:50%;
-  border:2px solid rgba(255,255,255,.15);
-}
-
-.profile-current{
-  text-align:center;
-  margin-bottom:20px;
-}
-
-.profile-current img{
-  display:block;
-  width:90px;
-  height:90px;
-  margin:0 auto 10px;
-  object-fit:cover;
-  border-radius:50%;
+    display:block;
+    width:95px;
+    height:95px;
+    margin:10px auto;
+    object-fit:cover;
+    border-radius:50%;
 }
 
 /* =========================
@@ -1018,59 +958,59 @@ section{
 ========================= */
 
 .lightbox{
-  position:fixed;
-  inset:0;
-  z-index:30000;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  background:rgba(0,0,0,.92);
-  padding:20px;
+    position:fixed;
+    inset:0;
+    z-index:30000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.92);
+    padding:20px;
 }
 
 .lightbox.show{
-  display:flex;
+    display:flex;
 }
 
 .lightbox img{
-  max-width:95%;
-  max-height:90vh;
-  border-radius:15px;
+    max-width:95%;
+    max-height:90vh;
+    border-radius:15px;
 }
 
 .lightbox button{
-  position:absolute;
-  top:15px;
-  right:20px;
-  border:0;
-  background:transparent;
-  color:#fff;
-  font-size:35px;
+    position:absolute;
+    top:15px;
+    right:20px;
+    border:0;
+    background:transparent;
+    color:#fff;
+    font-size:35px;
 }
 
 /* =========================
-   STATUS
+   SYSTEM STATUS
 ========================= */
 
 #systemStatus{
-  position:fixed;
-  left:50%;
-  bottom:90px;
-  transform:translateX(-50%);
-  z-index:9500;
-  max-width:90%;
-  padding:10px 15px;
-  border-radius:20px;
-  background:rgba(15,8,18,.95);
-  border:1px solid rgba(255,255,255,.12);
-  color:#ddd;
-  font-size:12px;
-  display:none;
-  text-align:center;
+    position:fixed;
+    left:50%;
+    bottom:90px;
+    transform:translateX(-50%);
+    z-index:9500;
+    max-width:92%;
+    padding:10px 16px;
+    border-radius:20px;
+    background:rgba(15,8,18,.97);
+    border:1px solid rgba(255,255,255,.12);
+    color:#ddd;
+    font-size:12px;
+    display:none;
+    text-align:center;
 }
 
 #systemStatus.show{
-  display:block;
+    display:block;
 }
 
 /* =========================
@@ -1078,81 +1018,81 @@ section{
 ========================= */
 
 footer{
-  text-align:center;
-  padding:60px 20px 150px;
-  color:#aaa;
+    text-align:center;
+    padding:60px 20px 150px;
+    color:#aaa;
 }
 
 /* =========================
-   MOBILE
+   MOBİL
 ========================= */
 
 @media(max-width:800px){
 
-  .nav{
-    min-height:58px;
-  }
+    .nav{
+        min-height:58px;
+    }
 
-  .logo{
-    font-size:16px;
-  }
+    .logo{
+        font-size:15px;
+    }
 
-  .nav-links{
-    display:none;
-  }
+    .nav-links{
+        display:none;
+    }
 
-  section{
-    padding:65px 14px;
-  }
+    section{
+        padding:65px 14px;
+    }
 
-  .gallery{
-    grid-template-columns:1fr;
-  }
+    .gallery{
+        grid-template-columns:1fr;
+    }
 
-  .gallery-item img{
-    aspect-ratio:16/11;
-  }
+    .gallery-item img{
+        aspect-ratio:16/11;
+    }
 
-  .timeline:before{
-    left:10px;
-  }
+    .timeline:before{
+        left:10px;
+    }
 
-  .timeline-item,
-  .timeline-item:nth-child(even){
-    width:100%;
-    margin-left:0;
-    padding-left:35px;
-    padding-right:0;
-    text-align:left;
-  }
+    .timeline-item,
+    .timeline-item:nth-child(even){
+        width:100%;
+        margin-left:0;
+        padding-left:35px;
+        padding-right:0;
+        text-align:left;
+    }
 
-  .timeline-item:nth-child(odd) .timeline-dot,
-  .timeline-item:nth-child(even) .timeline-dot{
-    left:3px;
-    right:auto;
-  }
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot{
+        left:3px;
+        right:auto;
+    }
 
-  .reasons,
-  .open-grid{
-    grid-template-columns:1fr;
-  }
+    .reasons,
+    .open-grid{
+        grid-template-columns:1fr;
+    }
 
-  .memory-map{
-    grid-template-columns:1fr;
-  }
+    .memory-map{
+        grid-template-columns:1fr;
+    }
 
-  .counter-box{
-    min-width:75px;
-  }
+    .counter-box{
+        min-width:75px;
+    }
 
-  .counter-box strong{
-    font-size:23px;
-  }
+    .counter-box strong{
+        font-size:23px;
+    }
 
-  .music-controls button{
-    width:34px;
-    height:34px;
-  }
+    .music-controls button{
+        width:34px;
+        height:34px;
+    }
 }
 </style>
 </head>
@@ -1164,51 +1104,55 @@ footer{
 ========================= -->
 
 <div id="opening">
-  <div class="opening-inner">
-    <div class="opening-heart">❤️</div>
-    <div class="opening-date">16.10.2024</div>
-    <div class="opening-text">
-      Bizim hikâyemizin başladığı gün...
+    <div class="opening-content">
+        <div class="opening-heart">❤️</div>
+        <div class="opening-date">16.10.2024</div>
+        <div class="opening-text">
+            Bizim hikâyemizin başladığı gün...
+        </div>
+        <div class="opening-small">
+            Birkaç saniye sonra hikâyemiz açılacak...
+        </div>
     </div>
-    <div class="opening-small">
-      Birkaç saniye sonra hikâyemiz açılacak...
-    </div>
-  </div>
 </div>
 
-<div class="hearts" id="hearts"></div>
+<div id="hearts"></div>
 
 <!-- =========================
      HEADER
 ========================= -->
 
 <header>
-  <div class="nav">
+    <div class="nav">
 
-    <div class="logo">
-      ❤️ Bizim Hikâyemiz
+        <div class="logo">
+            ❤️ Bizim Hikâyemiz
+        </div>
+
+        <nav class="nav-links">
+            <a href="#hikaye">Hikâyemiz</a>
+            <a href="#video">Video</a>
+            <a href="#galeri">Fotoğraflar</a>
+            <a href="#anilar">Anılar</a>
+            <a href="#ziyaretciler">Defter</a>
+        </nav>
+
+        <button
+            id="profileButton"
+            class="profile-button"
+            disabled>
+
+            <span id="profileAvatar">
+                <span class="avatar-letter">♥</span>
+            </span>
+
+            <span id="profileText">
+                Hazırlanıyor...
+            </span>
+
+        </button>
+
     </div>
-
-    <nav class="nav-links">
-      <a href="#hikaye">Hikâyemiz</a>
-      <a href="#video">Video</a>
-      <a href="#galeri">Fotoğraflar</a>
-      <a href="#timeline">Anılar</a>
-      <a href="#ziyaretciler">Ziyaretçiler</a>
-    </nav>
-
-    <button
-      id="profileButton"
-      class="profile-button"
-      type="button"
-      disabled>
-      <span id="profileAvatarContainer">
-        <span class="avatar-letter">♥</span>
-      </span>
-      <span id="profileButtonText">Hazırlanıyor...</span>
-    </button>
-
-  </div>
 </header>
 
 <main>
@@ -1219,83 +1163,87 @@ footer{
 
 <section class="hero">
 
-  <h1>Bizim Hikâyemiz ❤️</h1>
+    <h1>
+        Bizim Hikâyemiz ❤️
+    </h1>
 
-  <p>
-    Bazı hikâyeler anlatılmaz...
-    yaşanır.
-    Bizimki de tam olarak böyle başladı.
-  </p>
+    <p>
+        Bazı hikâyeler anlatılmaz...
+        yaşanır.
+        Bizimki de tam olarak böyle başladı.
+    </p>
 
-  <div class="counter">
+    <div class="counter">
 
-    <div class="counter-box">
-      <strong id="days">0</strong>
-      <span>GÜN</span>
+        <div class="counter-box">
+            <strong id="days">0</strong>
+            <span>GÜN</span>
+        </div>
+
+        <div class="counter-box">
+            <strong id="hours">0</strong>
+            <span>SAAT</span>
+        </div>
+
+        <div class="counter-box">
+            <strong id="minutes">0</strong>
+            <span>DAKİKA</span>
+        </div>
+
+        <div class="counter-box">
+            <strong id="seconds">0</strong>
+            <span>SANİYE</span>
+        </div>
+
     </div>
 
-    <div class="counter-box">
-      <strong id="hours">0</strong>
-      <span>SAAT</span>
-    </div>
-
-    <div class="counter-box">
-      <strong id="minutes">0</strong>
-      <span>DAKİKA</span>
-    </div>
-
-    <div class="counter-box">
-      <strong id="seconds">0</strong>
-      <span>SANİYE</span>
-    </div>
-
-  </div>
-
-  <p style="margin-top:30px;color:#ffafd1">
-    16 Ekim 2024'ten beri... ❤️
-  </p>
+    <p style="color:#ffafd1;margin-top:30px">
+        16 Ekim 2024'ten beri... ❤️
+    </p>
 
 </section>
 
 <!-- =========================
-     HİKÂYEMİZ
+     HİKAYE
 ========================= -->
 
 <section id="hikaye">
 
-  <h2 class="section-title">Hikâyemiz</h2>
+    <h2 class="section-title">
+        Hikâyemiz ❤️
+    </h2>
 
-  <p class="section-subtitle">
-    Bir gün başlayan ve her gün biraz daha güzelleşen hikâyemiz...
-  </p>
-
-  <div class="card story reveal">
-
-    <p>
-      Hayatta bazı insanlar vardır.
-      Onlarla karşılaştığımızda zamanın yönü değişir.
+    <p class="section-subtitle">
+        Bir gün başlayan ve her gün biraz daha güzelleşen hikâyemiz...
     </p>
 
-    <p>
-      Sen benim için sadece hayatıma giren biri olmadın.
-      Hayatımın en güzel taraflarından biri oldun.
-    </p>
+    <div class="card story reveal">
 
-    <p>
-      Birlikte güldüğümüz, birlikte sustuğumuz,
-      birlikte hayal kurduğumuz her an benim için çok değerli.
-    </p>
+        <p>
+            Hayatta bazı insanlar vardır.
+            Onlarla karşılaştığımızda zamanın yönü değişir.
+        </p>
 
-    <p>
-      Ve biliyorum ki bizim hikâyemizin
-      daha yazılacak çok güzel sayfaları var.
-    </p>
+        <p>
+            Sen benim için sadece hayatıma giren biri olmadın.
+            Hayatımın en güzel taraflarından biri oldun.
+        </p>
 
-    <p style="color:#ffafd1;font-size:22px">
-      Seni seviyorum. ❤️
-    </p>
+        <p>
+            Birlikte güldüğümüz, birlikte sustuğumuz,
+            birlikte hayal kurduğumuz her an benim için çok değerli.
+        </p>
 
-  </div>
+        <p>
+            Ve biliyorum ki bizim hikâyemizin
+            daha yazılacak çok güzel sayfaları var.
+        </p>
+
+        <p style="color:#ffafd1;font-size:22px">
+            Seni seviyorum. ❤️
+        </p>
+
+    </div>
 
 </section>
 
@@ -1305,28 +1253,29 @@ footer{
 
 <section id="video">
 
-  <h2 class="section-title">Bizden Birkaç Saniye 🎬</h2>
+    <h2 class="section-title">
+        Bizden Birkaç Saniye 🎬
+    </h2>
 
-  <p class="section-subtitle">
-    Birlikte biriktirdiğimiz güzel anlardan biri...
-  </p>
+    <p class="section-subtitle">
+        Birlikte biriktirdiğimiz güzel anlardan biri...
+    </p>
 
-  <div class="video-wrap reveal">
+    <div class="video-wrap reveal">
 
-    <video
-      controls
-      playsinline
-      preload="metadata"
-      poster="cicekler.jpg">
+        <video
+            controls
+            playsinline
+            preload="metadata"
+            poster="cicekler.jpg">
 
-      <source
-        src="7_fotografli_reels_muzikli_5inci_daha_kucuk.mp4"
-        type="video/mp4">
+            <source
+                src="7_fotografli_reels_muzikli_5inci_daha_kucuk.mp4"
+                type="video/mp4">
 
-      Tarayıcınız videoyu desteklemiyor.
-    </video>
+        </video>
 
-  </div>
+    </div>
 
 </section>
 
@@ -1336,97 +1285,105 @@ footer{
 
 <section id="galeri">
 
-  <h2 class="section-title">Fotoğraflarımız 📸</h2>
+    <h2 class="section-title">
+        Fotoğraflarımız 📸
+    </h2>
 
-  <p class="section-subtitle">
-    Her fotoğrafın arkasında başka bir anı var.
-  </p>
+    <p class="section-subtitle">
+        Her fotoğrafın arkasında başka bir anı var.
+    </p>
 
-  <div class="gallery reveal">
+    <div class="gallery reveal">
 
-    <div class="gallery-item">
-      <img src="cicekler.jpg" alt="Çiçekler">
+        <div class="gallery-item">
+            <img src="cicekler.jpg" alt="Çiçekler">
+        </div>
+
+        <div class="gallery-item">
+            <img src="gezi.jpg" alt="Gezi">
+        </div>
+
+        <div class="gallery-item">
+            <img src="kafe.jpg" alt="Kafe">
+        </div>
+
+        <div class="gallery-item">
+            <img
+                src="20260414_002840-IMG_STYLE.jpg"
+                alt="Bizden bir kare">
+        </div>
+
     </div>
-
-    <div class="gallery-item">
-      <img src="gezi.jpg" alt="Gezi">
-    </div>
-
-    <div class="gallery-item">
-      <img src="kafe.jpg" alt="Kafe">
-    </div>
-
-    <div class="gallery-item">
-      <img src="20260414_002840-IMG_STYLE.jpg" alt="Bizden bir kare">
-    </div>
-
-  </div>
 
 </section>
 
 <!-- =========================
-     TIMELINE
+     ANILAR
 ========================= -->
 
-<section id="timeline">
+<section id="anilar">
 
-  <h2 class="section-title">Anılarımız 🕰️</h2>
+    <h2 class="section-title">
+        Anılarımız 🕰️
+    </h2>
 
-  <p class="section-subtitle">
-    Hikâyemizin küçük ama güzel durakları...
-  </p>
+    <div class="timeline reveal">
 
-  <div class="timeline reveal">
+        <div class="timeline-item">
 
-    <div class="timeline-item">
+            <div class="timeline-dot"></div>
 
-      <div class="timeline-dot"></div>
+            <div class="timeline-date">
+                16.10.2024
+            </div>
 
-      <div class="timeline-date">
-        16.10.2024
-      </div>
+            <h3>
+                Başlangıç ❤️
+            </h3>
 
-      <h3>Başlangıç ❤️</h3>
+            <p>
+                Bizim için yeni bir sayfanın açıldığı gün.
+            </p>
 
-      <p>
-        Bizim için yeni bir sayfanın açıldığı gün.
-      </p>
+        </div>
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-date">
+                İlk Anılar
+            </div>
+
+            <h3>
+                Birlikte geçirilen zaman
+            </h3>
+
+            <p>
+                Küçük anların büyük mutluluklara dönüştüğü zamanlar.
+            </p>
+
+        </div>
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-date">
+                Bugün
+            </div>
+
+            <h3>
+                Hâlâ birlikte ❤️
+            </h3>
+
+            <p>
+                Ve hikâyemiz devam ediyor.
+            </p>
+
+        </div>
 
     </div>
-
-    <div class="timeline-item">
-
-      <div class="timeline-dot"></div>
-
-      <div class="timeline-date">
-        İlk Anılarımız
-      </div>
-
-      <h3>Birlikte geçirilen zaman</h3>
-
-      <p>
-        Küçük anların büyük mutluluklara dönüştüğü zamanlar.
-      </p>
-
-    </div>
-
-    <div class="timeline-item">
-
-      <div class="timeline-dot"></div>
-
-      <div class="timeline-date">
-        Bugün
-      </div>
-
-      <h3>Hâlâ birlikte ❤️</h3>
-
-      <p>
-        Ve hikâyemiz devam ediyor.
-      </p>
-
-    </div>
-
-  </div>
 
 </section>
 
@@ -1436,22 +1393,24 @@ footer{
 
 <section>
 
-  <h2 class="section-title">Seni Sevmemin 10 Nedeni 🌹</h2>
+    <h2 class="section-title">
+        Seni Sevmemin 10 Nedeni 🌹
+    </h2>
 
-  <div class="reasons reveal">
+    <div class="reasons reveal">
 
-    <div class="reason"><b>01.</b> Gülüşün</div>
-    <div class="reason"><b>02.</b> Bana bakışın</div>
-    <div class="reason"><b>03.</b> Yanımdayken hissettirdiğin huzur</div>
-    <div class="reason"><b>04.</b> Kalbin</div>
-    <div class="reason"><b>05.</b> Beni olduğum gibi kabul etmen</div>
-    <div class="reason"><b>06.</b> Birlikte gülebilmemiz</div>
-    <div class="reason"><b>07.</b> Zor zamanlarda yanımda olman</div>
-    <div class="reason"><b>08.</b> Küçük şeyleri güzelleştirmen</div>
-    <div class="reason"><b>09.</b> Sen olduğun için</div>
-    <div class="reason"><b>10.</b> Çünkü seni seviyorum ❤️</div>
+        <div class="reason"><b>01.</b> Gülüşün</div>
+        <div class="reason"><b>02.</b> Bana bakışın</div>
+        <div class="reason"><b>03.</b> Yanımdayken hissettirdiğin huzur</div>
+        <div class="reason"><b>04.</b> Kalbin</div>
+        <div class="reason"><b>05.</b> Beni olduğum gibi kabul etmen</div>
+        <div class="reason"><b>06.</b> Birlikte gülebilmemiz</div>
+        <div class="reason"><b>07.</b> Zor zamanlarda yanımda olman</div>
+        <div class="reason"><b>08.</b> Küçük şeyleri güzelleştirmen</div>
+        <div class="reason"><b>09.</b> Sen olduğun için</div>
+        <div class="reason"><b>10.</b> Çünkü seni seviyorum ❤️</div>
 
-  </div>
+    </div>
 
 </section>
 
@@ -1461,97 +1420,100 @@ footer{
 
 <section>
 
-  <h2 class="section-title">Bunu Ne Zaman Açmalısın? 💌</h2>
+    <h2 class="section-title">
+        Bunu Ne Zaman Açmalısın? 💌
+    </h2>
 
-  <div class="open-grid reveal">
+    <div class="open-grid reveal">
 
-    <div
-      class="open-card"
-      onclick="openWhen('mutlu')">
+        <div
+            class="open-card"
+            onclick="openWhen('mutlu')">
 
-      <h3>😊 Mutlu olduğunda</h3>
+            <h3>😊 Mutlu olduğunda</h3>
 
-      <p>
-        Mutluluğuna biraz daha mutluluk eklemek için.
-      </p>
+            <p>
+                Mutluluğuna biraz daha mutluluk eklemek için.
+            </p>
+
+        </div>
+
+        <div
+            class="open-card"
+            onclick="openWhen('uzgun')">
+
+            <h3>🥺 Üzgün olduğunda</h3>
+
+            <p>
+                Yanında olamasam bile birkaç kelimeyle yanında olmak için.
+            </p>
+
+        </div>
+
+        <div
+            class="open-card"
+            onclick="openWhen('ozledin')">
+
+            <h3>❤️ Beni özlediğinde</h3>
+
+            <p>
+                Aramızdaki mesafeyi birkaç saniyeliğine kapatmak için.
+            </p>
+
+        </div>
+
+        <div
+            class="open-card"
+            onclick="openWhen('kizgin')">
+
+            <h3>😌 Bana kızdığında</h3>
+
+            <p>
+                Önce derin bir nefes al.
+                Sonra bunu aç.
+            </p>
+
+        </div>
 
     </div>
-
-    <div
-      class="open-card"
-      onclick="openWhen('uzgun')">
-
-      <h3>🥺 Üzgün olduğunda</h3>
-
-      <p>
-        Yanında olamasam bile birkaç kelimeyle yanında olmak için.
-      </p>
-
-    </div>
-
-    <div
-      class="open-card"
-      onclick="openWhen('ozledin')">
-
-      <h3>❤️ Beni özlediğinde</h3>
-
-      <p>
-        Aramızdaki mesafeyi birkaç saniyeliğine kapatmak için.
-      </p>
-
-    </div>
-
-    <div
-      class="open-card"
-      onclick="openWhen('kizgin')">
-
-      <h3>😌 Bana kızdığında</h3>
-
-      <p>
-        Önce derin bir nefes al.
-        Sonra bunu aç.
-      </p>
-
-    </div>
-
-  </div>
 
 </section>
 
 <!-- =========================
-     PLACES
+     YERLER
 ========================= -->
 
 <section>
 
-  <h2 class="section-title">Bizim Yerlerimiz 🗺️</h2>
+    <h2 class="section-title">
+        Bizim Yerlerimiz 🗺️
+    </h2>
 
-  <p class="section-subtitle">
-    Bazı yerlerin adresi yoktur.
-    Hatırası vardır.
-  </p>
+    <p class="section-subtitle">
+        Bazı yerlerin adresi yoktur. Hatırası vardır.
+    </p>
 
-  <div class="memory-map reveal">
+    <div class="memory-map reveal">
 
-    <div class="memory-place">
-      <div class="pin">📍</div>
-      <h3>İlk Buluşma</h3>
-      <p>Her şeyin başladığı yer.</p>
+        <div class="memory-place">
+            <div class="pin">📍</div>
+            <h3>İlk Buluşma</h3>
+            <p>Her şeyin başladığı yer.</p>
+        </div>
+
+        <div class="memory-place">
+            <div class="pin">☕</div>
+            <h3>Favori Kafemiz</h3>
+            <p>Uzun sohbetlerin adresi.</p>
+        </div>
+
+        <div class="memory-place">
+            <div class="pin">🌹</div>
+            <h3>Güzel Bir Gün</h3>
+            <p>Hatırladıkça gülümsediğimiz yer.</p>
+        </div>
+
     </div>
-
-    <div class="memory-place">
-      <div class="pin">☕</div>
-      <h3>Favori Kafemiz</h3>
-      <p>Uzun sohbetlerin adresi.</p>
-    </div>
-
-    <div class="memory-place">
-      <div class="pin">🌹</div>
-      <h3>Güzel Bir Gün</h3>
-      <p>Hatırladıkça gülümsediğimiz yer.</p>
-    </div>
-
-  </div>
 
 </section>
 
@@ -1561,499 +1523,518 @@ footer{
 
 <section>
 
-  <h2 class="section-title">Aşk Testimiz 🎮</h2>
+    <h2 class="section-title">
+        Aşk Testimiz 🎮
+    </h2>
 
-  <p class="section-subtitle">
-    Bakalım beni ne kadar iyi tanıyorsun? ❤️
-  </p>
-
-  <div class="card reveal">
-
-    <div
-      class="quiz-question active"
-      data-question="0">
-
-      <h3>1. Bizim için en önemli tarih hangisi?</h3>
-
-      <div class="quiz-options">
-
-        <button onclick="quizAnswer(0,false)">
-          14.02.2024
-        </button>
-
-        <button onclick="quizAnswer(0,true)">
-          16.10.2024 ❤️
-        </button>
-
-        <button onclick="quizAnswer(0,false)">
-          01.01.2025
-        </button>
-
-      </div>
-
-    </div>
-
-    <div
-      class="quiz-question"
-      data-question="1">
-
-      <h3>2. Bu sitedeki en önemli kelime?</h3>
-
-      <div class="quiz-options">
-
-        <button onclick="quizAnswer(1,false)">
-          Tesadüf
-        </button>
-
-        <button onclick="quizAnswer(1,true)">
-          Sevgi ❤️
-        </button>
-
-        <button onclick="quizAnswer(1,false)">
-          Kahve
-        </button>
-
-      </div>
-
-    </div>
-
-    <div
-      class="quiz-question"
-      data-question="2">
-
-      <h3>3. Hikâyemiz ne zaman bitecek?</h3>
-
-      <div class="quiz-options">
-
-        <button onclick="quizAnswer(2,true)">
-          Hiçbir zaman ❤️
-        </button>
-
-        <button onclick="quizAnswer(2,false)">
-          Bir gün
-        </button>
-
-        <button onclick="quizAnswer(2,false)">
-          Bilmiyorum
-        </button>
-
-      </div>
-
-    </div>
-
-    <div id="quizResult" class="quiz-result"></div>
-
-  </div>
-
-</section>
-
-<!-- =========================
-     GIFT
-========================= -->
-
-<section>
-
-  <h2 class="section-title">Sana Bir Hediyem Var 🎁</h2>
-
-  <div class="gift-area">
-
-    <div
-      class="gift"
-      onclick="openGift()">
-      🎁
-    </div>
-
-    <div
-      id="giftMessage"
-      class="gift-message card">
-
-      <h3 style="color:#ffc1dc">
-        Hediyenin içinden çıkan şey...
-      </h3>
-
-      <p style="margin-top:15px">
-        Sana verebileceğim en güzel şeylerden biri
-        hayatımda sana yer açmak değil,
-        hayatımın içinde sana kocaman bir yer vermek.
-      </p>
-
-      <p style="margin-top:15px;color:#ffafd1">
-        İyi ki varsın. ❤️
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =========================
-     SKY
-========================= -->
-
-<section>
-
-  <h2 class="section-title">Bizim Gökyüzümüz 🌌</h2>
-
-  <div class="sky reveal" id="sky">
-
-    <div class="moon"></div>
-
-  </div>
-
-  <p style="text-align:center;margin-top:18px;color:#ffafd1">
-    Aynı gökyüzüne baktığımız sürece,
-    hiçbir mesafe uzak değildir.
-  </p>
-
-</section>
-
-<!-- =========================
-     PHOTO PUZZLE
-========================= -->
-
-<section>
-
-  <h2 class="section-title">Birlikte Tamamlanıyoruz 🧩</h2>
-
-  <p class="section-subtitle">
-    Parçaları karıştırılmış bir fotoğraf.
-    Dokunarak parçaları yer değiştirebilirsin.
-  </p>
-
-  <div class="puzzle reveal" id="puzzle"></div>
-
-  <div style="text-align:center;margin-top:18px">
-    <button
-      class="main-btn"
-      onclick="shufflePuzzle()">
-      🔀 Karıştır
-    </button>
-  </div>
-
-</section>
-
-<!-- =========================
-     SECRET
-========================= -->
-
-<section>
-
-  <h2 class="section-title">Gizli Sürpriz 🔐</h2>
-
-  <div class="card secret-box reveal">
-
-    <p>
-      Burada sadece bizim bildiğimiz
-      bir şey saklı...
+    <p class="section-subtitle">
+        Bakalım beni ne kadar iyi tanıyorsun? ❤️
     </p>
 
-    <input
-      id="pinInput"
-      class="pin-input"
-      maxlength="8"
-      inputmode="numeric"
-      placeholder="PIN">
+    <div class="card reveal">
 
-    <button
-      class="main-btn"
-      onclick="checkPin()">
-      🔓 Aç
-    </button>
+        <div
+            class="quiz-question active"
+            data-question="0">
 
-    <div
-      id="secretResult"
-      class="secret-result">
+            <h3>
+                1. Bizim için en önemli tarih hangisi?
+            </h3>
+
+            <div class="quiz-options">
+
+                <button onclick="quizAnswer(0,false)">
+                    14.02.2024
+                </button>
+
+                <button onclick="quizAnswer(0,true)">
+                    16.10.2024 ❤️
+                </button>
+
+                <button onclick="quizAnswer(0,false)">
+                    01.01.2025
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            class="quiz-question"
+            data-question="1">
+
+            <h3>
+                2. Bu sitedeki en önemli kelime?
+            </h3>
+
+            <div class="quiz-options">
+
+                <button onclick="quizAnswer(1,false)">
+                    Tesadüf
+                </button>
+
+                <button onclick="quizAnswer(1,true)">
+                    Sevgi ❤️
+                </button>
+
+                <button onclick="quizAnswer(1,false)">
+                    Kahve
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            class="quiz-question"
+            data-question="2">
+
+            <h3>
+                3. Hikâyemiz ne zaman bitecek?
+            </h3>
+
+            <div class="quiz-options">
+
+                <button onclick="quizAnswer(2,true)">
+                    Hiçbir zaman ❤️
+                </button>
+
+                <button onclick="quizAnswer(2,false)">
+                    Bir gün
+                </button>
+
+                <button onclick="quizAnswer(2,false)">
+                    Bilmiyorum
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            id="quizResult"
+            class="quiz-result">
+        </div>
+
     </div>
-
-  </div>
 
 </section>
 
 <!-- =========================
-     VISITOR POSTS
+     HEDİYE
+========================= -->
+
+<section>
+
+    <h2 class="section-title">
+        Sana Bir Hediyem Var 🎁
+    </h2>
+
+    <div class="gift-area">
+
+        <div
+            class="gift"
+            onclick="openGift()">
+            🎁
+        </div>
+
+        <div
+            id="giftMessage"
+            class="gift-message card">
+
+            <h3 style="color:#ffc1dc">
+                Hediyenin içinden çıkan şey...
+            </h3>
+
+            <p style="margin-top:15px">
+                Sana verebileceğim en güzel şeylerden biri
+                hayatımda sana yer açmak değil,
+                hayatımın içinde sana kocaman bir yer vermek.
+            </p>
+
+            <p style="margin-top:15px;color:#ffafd1">
+                İyi ki varsın. ❤️
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     GÖKYÜZÜ
+========================= -->
+
+<section>
+
+    <h2 class="section-title">
+        Bizim Gökyüzümüz 🌌
+    </h2>
+
+    <div
+        class="sky reveal"
+        id="sky">
+
+        <div class="moon"></div>
+
+    </div>
+
+    <p style="text-align:center;margin-top:18px;color:#ffafd1">
+        Aynı gökyüzüne baktığımız sürece,
+        hiçbir mesafe uzak değildir.
+    </p>
+
+</section>
+
+<!-- =========================
+     PUZZLE
+========================= -->
+
+<section>
+
+    <h2 class="section-title">
+        Birlikte Tamamlanıyoruz 🧩
+    </h2>
+
+    <p class="section-subtitle">
+        Fotoğraf parçalarını birbirleriyle değiştir.
+    </p>
+
+    <div
+        id="puzzle"
+        class="puzzle reveal">
+    </div>
+
+    <div style="text-align:center;margin-top:18px">
+
+        <button
+            class="main-btn"
+            onclick="shufflePuzzle()">
+            🔀 Karıştır
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     GİZLİ SÜRPRİZ
+========================= -->
+
+<section>
+
+    <h2 class="section-title">
+        Gizli Sürpriz 🔐
+    </h2>
+
+    <div class="card secret-box reveal">
+
+        <p>
+            Burada sadece bizim bildiğimiz bir şey saklı...
+        </p>
+
+        <input
+            id="pinInput"
+            class="pin-input"
+            maxlength="8"
+            inputmode="numeric"
+            placeholder="PIN">
+
+        <button
+            class="main-btn"
+            onclick="checkPin()">
+            🔓 Aç
+        </button>
+
+        <div
+            id="secretResult"
+            style="margin-top:18px;color:#ffc1dc">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     ZİYARETÇİ DEFTERİ
 ========================= -->
 
 <section id="ziyaretciler">
 
-  <h2 class="section-title">Bizim Ziyaretçi Defterimiz 💌</h2>
-
-  <p class="section-subtitle">
-    Buraya gelenler adlarını bırakabilir,
-    bir söz yazabilir veya fotoğraf paylaşabilir.
-  </p>
-
-  <div style="text-align:center;margin-bottom:30px">
-
-    <button
-      class="main-btn"
-      id="writePostButton"
-      type="button">
-      ✍️ Deftere Bir Şey Yaz
-    </button>
-
-  </div>
-
-  <div
-    id="postsList"
-    class="posts-list">
-
-    <div class="card" style="text-align:center">
-      Paylaşımlar yükleniyor... ❤️
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =========================
-     FINAL LETTER
-========================= -->
-
-<section>
-
-  <h2 class="section-title">Sana Son Birkaç Kelime ❤️</h2>
-
-  <div class="card story reveal">
-
-    <p>
-      Belki bu site bir internet sayfasından ibaret gibi görünüyor.
-    </p>
-
-    <p>
-      Ama benim için buradaki her fotoğraf,
-      her kelime ve her tarih bir anı.
-    </p>
-
-    <p>
-      Çünkü hepsinin içinde sen varsın.
-    </p>
-
-    <p>
-      Geçmişte yaşadığımız güzel günler,
-      bugünümüz ve henüz yaşamadığımız
-      bütün güzel günler...
-    </p>
-
-    <p style="font-size:24px;color:#ffafd1">
-      Hepsini seninle yaşamak istiyorum. ❤️
-    </p>
-
-  </div>
-
-</section>
-
-<!-- =========================
-     FINAL QUESTION
-========================= -->
-
-<section>
-
-  <div class="final reveal">
-
-    <h2>
-      Benimle bu hikâyeyi<br>
-      devam ettirir misin? ❤️
+    <h2 class="section-title">
+        Ziyaretçi Defterimiz 💌
     </h2>
 
-    <div class="final-buttons">
+    <p class="section-subtitle">
+        Adını bırak, mesajını yaz veya fotoğrafını paylaş.
+    </p>
 
-      <button
-        class="main-btn"
-        onclick="finalYes()">
-        ❤️ Evet
-      </button>
+    <div style="text-align:center;margin-bottom:30px">
 
-      <button
-        class="secondary-btn"
-        id="noButton"
-        onclick="moveNoButton()">
-        Hayır 🙈
-      </button>
+        <button
+            id="writePostButton"
+            class="main-btn">
+            ✍️ Deftere Bir Şey Yaz
+        </button>
 
     </div>
 
     <div
-      id="finalResult"
-      style="margin-top:25px;color:#ffafd1;font-size:20px">
+        id="postsList"
+        class="posts-list">
+
+        <div
+            class="card"
+            style="text-align:center">
+            Paylaşımlar yükleniyor... ❤️
+        </div>
+
     </div>
 
-  </div>
+</section>
+
+<!-- =========================
+     SON
+========================= -->
+
+<section>
+
+    <div class="card story reveal">
+
+        <h2 class="section-title">
+            Sana Son Birkaç Kelime ❤️
+        </h2>
+
+        <p>
+            Belki bu site bir internet sayfasından ibaret gibi görünüyor.
+        </p>
+
+        <p>
+            Ama benim için buradaki her fotoğraf,
+            her kelime ve her tarih bir anı.
+        </p>
+
+        <p>
+            Çünkü hepsinin içinde sen varsın.
+        </p>
+
+        <p>
+            Geçmişte yaşadığımız güzel günler,
+            bugünümüz ve henüz yaşamadığımız bütün güzel günler...
+        </p>
+
+        <p style="font-size:24px;color:#ffafd1">
+            Hepsini seninle yaşamak istiyorum. ❤️
+        </p>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div class="story reveal">
+
+        <h2 style="font-size:clamp(32px,7vw,55px);color:#ffc3dd">
+            Benimle bu hikâyeyi<br>
+            devam ettirir misin? ❤️
+        </h2>
+
+        <div style="
+            display:flex;
+            justify-content:center;
+            gap:12px;
+            flex-wrap:wrap;
+            margin-top:25px;
+        ">
+
+            <button
+                class="main-btn"
+                onclick="finalYes()">
+                ❤️ Evet
+            </button>
+
+            <button
+                id="noButton"
+                class="secondary-btn"
+                onclick="moveNoButton()">
+                Hayır 🙈
+            </button>
+
+        </div>
+
+        <div
+            id="finalResult"
+            style="margin-top:25px;color:#ffafd1;font-size:20px">
+        </div>
+
+    </div>
 
 </section>
 
 </main>
 
 <footer>
-  <p>
-    16.10.2024 ❤️ Sonsuza kadar...
-  </p>
+    <p>
+        16.10.2024 ❤️ Sonsuza kadar...
+    </p>
 </footer>
 
 <!-- =========================
-     MUSIC PLAYER
+     MÜZİK
 ========================= -->
 
 <div id="musicPlayer">
 
-  <div class="music-top">
+    <div class="music-top">
 
-    <div class="music-cover">🎵</div>
+        <div class="music-cover">
+            🎵
+        </div>
 
-    <div class="music-info">
+        <div class="music-info">
 
-      <div
-        id="musicTitle"
-        class="music-title">
-        Müzik hazırlanıyor...
-      </div>
+            <div
+                id="musicTitle"
+                class="music-title">
+                Müzik hazırlanıyor...
+            </div>
 
-      <div
-        id="musicStatus"
-        class="music-status">
-        Hazırlanıyor...
-      </div>
+            <div
+                id="musicStatus"
+                class="music-status">
+                Hazırlanıyor...
+            </div>
 
-    </div>
+        </div>
 
-    <div class="music-controls">
+        <div class="music-controls">
 
-      <button
-        id="prevMusic"
-        type="button">
-        ⏮
-      </button>
+            <button id="prevMusic">⏮</button>
 
-      <button
-        id="playMusic"
-        type="button">
-        ▶
-      </button>
+            <button id="playMusic">▶</button>
 
-      <button
-        id="nextMusic"
-        type="button">
-        ⏭
-      </button>
+            <button id="nextMusic">⏭</button>
+
+        </div>
 
     </div>
 
-  </div>
+    <audio
+        id="audio"
+        preload="metadata">
+    </audio>
 
-  <audio
-    id="audio"
-    preload="metadata">
-  </audio>
+    <input
+        id="musicProgress"
+        class="music-progress"
+        type="range"
+        min="0"
+        max="100"
+        value="0">
 
-  <input
-    id="musicProgress"
-    class="music-progress"
-    type="range"
-    min="0"
-    max="100"
-    value="0">
+    <div class="music-bottom">
 
-  <div class="music-bottom">
+        <span
+            id="musicTime"
+            class="music-time">
+            0:00 / 0:00
+        </span>
 
-    <span
-      id="musicTime"
-      class="music-time">
-      0:00 / 0:00
-    </span>
+        <button
+            id="playlistButton"
+            class="playlist-button">
+            ☰ Şarkılar
+        </button>
 
-    <button
-      id="playlistButton"
-      class="playlist-button"
-      type="button">
-      ☰ Şarkılar
-    </button>
+    </div>
 
-  </div>
-
-  <div
-    id="playlist"
-    class="playlist">
-  </div>
+    <div
+        id="playlist"
+        class="playlist">
+    </div>
 
 </div>
 
 <div id="systemStatus"></div>
 
 <!-- =========================
-     PROFILE MODAL
+     PROFİL MODAL
 ========================= -->
 
 <div
-  id="profileModal"
-  class="modal">
+    id="profileModal"
+    class="modal">
 
-  <div class="modal-box">
+    <div class="modal-box">
 
-    <button
-      class="modal-close"
-      onclick="closeModal('profileModal')">
-      ×
-    </button>
+        <button
+            class="modal-close"
+            onclick="closeModal('profileModal')">
+            ×
+        </button>
 
-    <h2 class="modal-title">
-      Profilin ❤️
-    </h2>
+        <h2 class="modal-title">
+            Profilin ❤️
+        </h2>
 
-    <div id="profileCurrent"></div>
+        <div
+            id="profileCurrent"
+            style="text-align:center;margin-bottom:15px">
+        </div>
 
-    <div class="form-group">
+        <div class="form-group">
 
-      <label>Adın</label>
+            <label>Adın</label>
 
-      <input
-        id="profileName"
-        type="text"
-        maxlength="40"
-        placeholder="Adın">
+            <input
+                id="profileName"
+                type="text"
+                maxlength="40"
+                placeholder="Adın">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Soyadın</label>
+
+            <input
+                id="profileSurname"
+                type="text"
+                maxlength="40"
+                placeholder="Soyadın">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Profil fotoğrafın</label>
+
+            <input
+                id="profilePhoto"
+                type="file"
+                accept="image/*">
+
+            <img
+                id="profilePreview"
+                class="profile-preview hidden">
+
+        </div>
+
+        <button
+            id="saveProfileButton"
+            class="main-btn">
+            💾 Profili Kaydet
+        </button>
+
+        <div
+            id="profileStatus"
+            style="margin-top:15px;color:#ffafd1">
+        </div>
 
     </div>
-
-    <div class="form-group">
-
-      <label>Soyadın</label>
-
-      <input
-        id="profileSurname"
-        type="text"
-        maxlength="40"
-        placeholder="Soyadın">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Profil fotoğrafın</label>
-
-      <input
-        id="profilePhoto"
-        type="file"
-        accept="image/*">
-
-      <img
-        id="profilePreview"
-        class="profile-preview hidden"
-        alt="Profil önizleme">
-
-    </div>
-
-    <button
-      class="main-btn"
-      id="saveProfileButton"
-      type="button">
-      💾 Profili Kaydet
-    </button>
-
-    <div
-      id="profileStatus"
-      style="margin-top:15px;color:#ffafd1">
-    </div>
-
-  </div>
 
 </div>
 
@@ -2062,94 +2043,92 @@ footer{
 ========================= -->
 
 <div
-  id="postModal"
-  class="modal">
+    id="postModal"
+    class="modal">
 
-  <div class="modal-box">
+    <div class="modal-box">
 
-    <button
-      class="modal-close"
-      onclick="closeModal('postModal')">
-      ×
-    </button>
+        <button
+            class="modal-close"
+            onclick="closeModal('postModal')">
+            ×
+        </button>
 
-    <h2 class="modal-title">
-      Ziyaretçi Defterine Yaz 💌
-    </h2>
+        <h2 class="modal-title">
+            Ziyaretçi Defterine Yaz 💌
+        </h2>
 
-    <div class="form-group">
+        <div class="form-group">
 
-      <label>Paylaşım türü</label>
+            <label>Paylaşım türü</label>
 
-      <select id="postType">
+            <select id="postType">
 
-        <option value="mesaj">
-          💌 Mesaj
-        </option>
+                <option value="mesaj">
+                    💌 Mesaj
+                </option>
 
-        <option value="soz">
-          💭 Güzel Söz
-        </option>
+                <option value="soz">
+                    💭 Güzel Söz
+                </option>
 
-        <option value="siir">
-          📖 Şiir
-        </option>
+                <option value="siir">
+                    📖 Şiir
+                </option>
 
-        <option value="fotograf">
-          📸 Fotoğraf
-        </option>
+                <option value="fotograf">
+                    📸 Fotoğraf
+                </option>
 
-      </select>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Başlık</label>
+
+            <input
+                id="postTitle"
+                maxlength="100"
+                placeholder="Başlık">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Mesajın</label>
+
+            <textarea
+                id="postContent"
+                maxlength="3000"
+                placeholder="Buraya yaz..."></textarea>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Fotoğraf</label>
+
+            <input
+                id="postPhoto"
+                type="file"
+                accept="image/*">
+
+        </div>
+
+        <button
+            id="publishPostButton"
+            class="main-btn">
+            🚀 Paylaş
+        </button>
+
+        <div
+            id="postStatus"
+            style="margin-top:15px;color:#ffafd1">
+        </div>
 
     </div>
-
-    <div class="form-group">
-
-      <label>Başlık</label>
-
-      <input
-        id="postTitle"
-        type="text"
-        maxlength="100"
-        placeholder="Başlık">
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Mesajın</label>
-
-      <textarea
-        id="postContent"
-        maxlength="3000"
-        placeholder="Buraya yaz..."></textarea>
-
-    </div>
-
-    <div class="form-group">
-
-      <label>Fotoğraf</label>
-
-      <input
-        id="postPhoto"
-        type="file"
-        accept="image/*">
-
-    </div>
-
-    <button
-      class="main-btn"
-      id="publishPostButton"
-      type="button">
-      🚀 Paylaş
-    </button>
-
-    <div
-      id="postStatus"
-      style="margin-top:15px;color:#ffafd1">
-    </div>
-
-  </div>
 
 </div>
 
@@ -2158,28 +2137,28 @@ footer{
 ========================= -->
 
 <div
-  id="openWhenModal"
-  class="modal">
+    id="openWhenModal"
+    class="modal">
 
-  <div class="modal-box">
+    <div class="modal-box">
 
-    <button
-      class="modal-close"
-      onclick="closeModal('openWhenModal')">
-      ×
-    </button>
+        <button
+            class="modal-close"
+            onclick="closeModal('openWhenModal')">
+            ×
+        </button>
 
-    <h2
-      id="openWhenTitle"
-      class="modal-title">
-    </h2>
+        <h2
+            id="openWhenTitle"
+            class="modal-title">
+        </h2>
 
-    <p
-      id="openWhenContent"
-      style="font-size:18px">
-    </p>
+        <p
+            id="openWhenContent"
+            style="font-size:18px">
+        </p>
 
-  </div>
+    </div>
 
 </div>
 
@@ -2188,58 +2167,35 @@ footer{
 ========================= -->
 
 <div
-  id="lightbox"
-  class="lightbox">
+    id="lightbox"
+    class="lightbox">
 
-  <button onclick="closeLightbox()">×</button>
+    <button onclick="closeLightbox()">
+        ×
+    </button>
 
-  <img
-    id="lightboxImage"
-    alt="Fotoğraf">
+    <img
+        id="lightboxImage"
+        alt="Fotoğraf">
 
 </div>
 
 <script>
+
 /* =====================================================
-   SUPABASE
+   SUPABASE AYARLARI
 ===================================================== */
 
 const SUPABASE_URL =
-  "https://oehmlrjaffydigpwbngwe.supabase.co";
+    "https://oehmlrjaffydigpwbngwe.supabase.co";
 
 const SUPABASE_KEY =
-  "sb_publishable_zabkbaGIxffiETiqQHiPNw_ToxxFdkI";
+    "sb_publishable_zabkbaGIxffiETiqQHiPNw_ToxxFdkI";
 
-const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
+let supabaseClient = null;
 let currentUser = null;
-let supabaseReady = false;
 let currentProfile = null;
-
-
-/* =====================================================
-   STATUS
-===================================================== */
-
-function showStatus(message, duration=3500){
-
-  const box =
-    document.getElementById("systemStatus");
-
-  box.textContent = message;
-  box.classList.add("show");
-
-  clearTimeout(window.statusTimer);
-
-  window.statusTimer =
-    setTimeout(()=>{
-      box.classList.remove("show");
-    },duration);
-}
+let supabaseReady = false;
 
 
 /* =====================================================
@@ -2248,844 +2204,896 @@ function showStatus(message, duration=3500){
 
 async function initSupabase(){
 
-  const profileButton =
-    document.getElementById("profileButton");
+    const button =
+        document.getElementById("profileButton");
 
-  const profileButtonText =
-    document.getElementById("profileButtonText");
+    const text =
+        document.getElementById("profileText");
 
-  try{
+    try{
 
-    let {
-      data:{
-        session
-      },
-      error:sessionError
-    } =
-      await supabaseClient.auth.getSession();
+        if(
+            !window.supabase ||
+            !window.supabase.createClient
+        ){
 
-    if(sessionError){
-      throw sessionError;
+            throw new Error(
+                "Supabase kütüphanesi yüklenemedi."
+            );
+        }
+
+        supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+        let sessionResult =
+            await supabaseClient.auth.getSession();
+
+        if(sessionResult.error){
+
+            throw sessionResult.error;
+
+        }
+
+        let session =
+            sessionResult.data.session;
+
+        if(!session){
+
+            const authResult =
+                await supabaseClient.auth.signInAnonymously();
+
+            if(authResult.error){
+
+                throw authResult.error;
+
+            }
+
+            currentUser =
+                authResult.data.user;
+
+        }else{
+
+            currentUser =
+                session.user;
+
+        }
+
+        if(!currentUser){
+
+            throw new Error(
+                "Anonim kullanıcı oluşturulamadı."
+            );
+
+        }
+
+        supabaseReady = true;
+
+        button.disabled = false;
+
+        text.textContent = "Profil";
+
+        await loadProfile();
+
+        await loadPosts();
+
+        console.log(
+            "SUPABASE HAZIR:",
+            currentUser.id
+        );
+
+    }catch(error){
+
+        console.error(
+            "SUPABASE HATASI:",
+            error
+        );
+
+        supabaseReady = false;
+
+        button.disabled = true;
+
+        text.textContent =
+            "Profil kullanılamıyor";
+
+        showStatus(
+            "Supabase bağlantı hatası: " +
+            (error.message || error)
+        );
+
     }
-
-    if(!session){
-
-      const {
-        data,
-        error
-      } =
-        await supabaseClient.auth.signInAnonymously();
-
-      if(error){
-        throw error;
-      }
-
-      currentUser =
-        data.user;
-
-    }else{
-
-      currentUser =
-        session.user;
-
-    }
-
-    if(!currentUser){
-      throw new Error(
-        "Kullanıcı oluşturulamadı."
-      );
-    }
-
-    supabaseReady = true;
-
-    profileButton.disabled = false;
-
-    profileButtonText.textContent =
-      "Profil";
-
-    await loadMyProfile();
-
-    await loadPosts();
-
-  }catch(error){
-
-    console.error(
-      "Supabase başlatma hatası:",
-      error
-    );
-
-    supabaseReady = false;
-
-    profileButton.disabled = true;
-
-    profileButtonText.textContent =
-      "Profil kullanılamıyor";
-
-    showStatus(
-      "Profil sistemi başlatılamadı. Supabase ayarlarını kontrol edin."
-    );
-
-  }
 
 }
 
 
 /* =====================================================
-   PROFİL
+   PROFİL YÜKLE
 ===================================================== */
 
-async function loadMyProfile(){
+async function loadProfile(){
 
-  if(!supabaseReady || !currentUser){
-    return;
-  }
-
-  try{
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .from("profiles")
-        .select("*")
-        .eq("id",currentUser.id)
-        .maybeSingle();
-
-    if(error){
-      console.warn(
-        "Profil okunamadı:",
-        error
-      );
-      return;
+    if(
+        !supabaseReady ||
+        !currentUser
+    ){
+        return;
     }
 
-    currentProfile = data || null;
+    const result =
+        await supabaseClient
+            .from("profiles")
+            .select("*")
+            .eq("id",currentUser.id)
+            .maybeSingle();
+
+    if(result.error){
+
+        console.error(
+            "Profil okuma hatası:",
+            result.error
+        );
+
+        return;
+    }
+
+    currentProfile =
+        result.data || null;
 
     updateProfileButton();
 
-  }catch(error){
-
-    console.error(error);
-
-  }
-
 }
 
 
+/* =====================================================
+   PROFİL BUTONU
+===================================================== */
+
 function updateProfileButton(){
 
-  const container =
-    document.getElementById(
-      "profileAvatarContainer"
-    );
+    const avatar =
+        document.getElementById(
+            "profileAvatar"
+        );
 
-  const text =
-    document.getElementById(
-      "profileButtonText"
-    );
+    const text =
+        document.getElementById(
+            "profileText"
+        );
 
-  if(
-    currentProfile &&
-    currentProfile.name
-  ){
+    if(
+        currentProfile &&
+        currentProfile.name
+    ){
 
-    const fullName =
-      `${currentProfile.name} ${
-        currentProfile.surname || ""
-      }`.trim();
+        text.textContent =
+            (
+                currentProfile.name +
+                " " +
+                (currentProfile.surname || "")
+            ).trim();
 
-    text.textContent =
-      fullName;
+        if(
+            currentProfile.photo_url
+        ){
 
-    if(currentProfile.photo_url){
+            avatar.innerHTML =
+                `<img
+                    class="profile-avatar"
+                    src="${safe(currentProfile.photo_url)}"
+                    alt="Profil">`;
 
-      container.innerHTML =
-        `<img
-          class="profile-avatar"
-          src="${escapeHtml(currentProfile.photo_url)}"
-          alt="Profil">`;
+        }else{
+
+            avatar.innerHTML =
+                `<span class="avatar-letter">
+                    ${safe(
+                        currentProfile.name
+                            .charAt(0)
+                            .toUpperCase()
+                    )}
+                </span>`;
+
+        }
 
     }else{
 
-      container.innerHTML =
-        `<span class="avatar-letter">
-          ${escapeHtml(
-            currentProfile.name
-              .charAt(0)
-              .toUpperCase()
-          )}
-        </span>`;
+        text.textContent = "Profil";
+
+        avatar.innerHTML =
+            `<span class="avatar-letter">
+                ♥
+            </span>`;
 
     }
-
-  }else{
-
-    text.textContent =
-      "Profil";
-
-    container.innerHTML =
-      `<span class="avatar-letter">♥</span>`;
-
-  }
 
 }
 
 
 /* =====================================================
-   PROFİL MODAL
+   PROFİL AÇ
 ===================================================== */
 
 document
-  .getElementById("profileButton")
-  .addEventListener(
-    "click",
-    openProfileModal
-  );
-
-
-async function openProfileModal(){
-
-  if(!supabaseReady || !currentUser){
-
-    showStatus(
-      "Profil sistemi henüz hazır değil."
+    .getElementById("profileButton")
+    .addEventListener(
+        "click",
+        openProfile
     );
 
-    return;
-  }
 
-  const modal =
+function openProfile(){
+
+    if(!supabaseReady){
+
+        showStatus(
+            "Profil sistemi henüz hazır değil."
+        );
+
+        return;
+    }
+
     document.getElementById(
-      "profileModal"
-    );
+        "profileName"
+    ).value =
+        currentProfile?.name || "";
 
-  const name =
     document.getElementById(
-      "profileName"
-    );
+        "profileSurname"
+    ).value =
+        currentProfile?.surname || "";
 
-  const surname =
+    const current =
+        document.getElementById(
+            "profileCurrent"
+        );
+
+    if(
+        currentProfile?.photo_url
+    ){
+
+        current.innerHTML =
+            `<img
+                src="${safe(currentProfile.photo_url)}"
+                style="
+                    width:90px;
+                    height:90px;
+                    border-radius:50%;
+                    object-fit:cover;
+                ">`;
+
+    }else{
+
+        current.innerHTML =
+            `<div style="font-size:60px">
+                ❤️
+            </div>`;
+
+    }
+
     document.getElementById(
-      "profileSurname"
-    );
-
-  const current =
-    document.getElementById(
-      "profileCurrent"
-    );
-
-  name.value =
-    currentProfile?.name || "";
-
-  surname.value =
-    currentProfile?.surname || "";
-
-  if(currentProfile?.photo_url){
-
-    current.innerHTML =
-      `<img
-        src="${escapeHtml(currentProfile.photo_url)}"
-        alt="Profil">`;
-
-  }else{
-
-    current.innerHTML =
-      `<div style="
-        text-align:center;
-        font-size:60px;
-        margin-bottom:15px;
-      ">❤️</div>`;
-
-  }
-
-  modal.classList.add("show");
+        "profileModal"
+    ).classList.add("show");
 
 }
 
 
+/* =====================================================
+   PROFİL KAYDET
+===================================================== */
+
 document
-  .getElementById("saveProfileButton")
-  .addEventListener(
-    "click",
-    saveProfile
-  );
+    .getElementById("saveProfileButton")
+    .addEventListener(
+        "click",
+        saveProfile
+    );
 
 
 async function saveProfile(){
 
-  if(!supabaseReady || !currentUser){
-    return;
-  }
+    if(
+        !supabaseReady ||
+        !currentUser
+    ){
+        return;
+    }
 
-  const name =
-    document
-      .getElementById("profileName")
-      .value
-      .trim();
+    const name =
+        document
+            .getElementById("profileName")
+            .value
+            .trim();
 
-  const surname =
-    document
-      .getElementById("profileSurname")
-      .value
-      .trim();
+    const surname =
+        document
+            .getElementById("profileSurname")
+            .value
+            .trim();
 
-  const file =
-    document
-      .getElementById("profilePhoto")
-      .files[0];
+    const file =
+        document
+            .getElementById("profilePhoto")
+            .files[0];
 
-  const status =
-    document.getElementById(
-      "profileStatus"
-    );
+    const status =
+        document.getElementById(
+            "profileStatus"
+        );
 
-  if(!name){
+    if(!name){
+
+        status.textContent =
+            "Lütfen adını yaz.";
+
+        return;
+    }
 
     status.textContent =
-      "Lütfen adını yaz.";
+        "Profil kaydediliyor...";
 
-    return;
-  }
+    try{
 
-  status.textContent =
-    "Profil kaydediliyor...";
+        let photoUrl =
+            currentProfile?.photo_url || null;
 
-  try{
+        if(file){
 
-    let photoUrl =
-      currentProfile?.photo_url || null;
+            const cleanName =
+                file.name.replace(
+                    /[^a-zA-Z0-9._-]/g,
+                    "_"
+                );
 
-    if(file){
+            const path =
+                currentUser.id +
+                "/" +
+                Date.now() +
+                "_" +
+                cleanName;
 
-      const safeName =
-        file.name
-          .replace(/[^a-zA-Z0-9._-]/g,"_");
+            const upload =
+                await supabaseClient
+                    .storage
+                    .from("profile-photos")
+                    .upload(
+                        path,
+                        file,
+                        {
+                            upsert:true,
+                            contentType:file.type
+                        }
+                    );
 
-      const path =
-        `${currentUser.id}/${Date.now()}_${safeName}`;
+            if(upload.error){
 
-      const {
-        error:uploadError
-      } =
-        await supabaseClient
-          .storage
-          .from("profile-photos")
-          .upload(
-            path,
-            file,
-            {
-              upsert:true,
-              contentType:file.type
+                throw upload.error;
+
             }
-          );
 
-      if(uploadError){
-        throw uploadError;
-      }
+            const publicUrl =
+                supabaseClient
+                    .storage
+                    .from("profile-photos")
+                    .getPublicUrl(path);
 
-      const {
-        data:publicData
-      } =
-        supabaseClient
-          .storage
-          .from("profile-photos")
-          .getPublicUrl(path);
+            photoUrl =
+                publicUrl.data.publicUrl;
 
-      photoUrl =
-        publicData.publicUrl;
+        }
+
+        const result =
+            await supabaseClient
+                .from("profiles")
+                .upsert(
+                    {
+                        id:currentUser.id,
+                        name:name,
+                        surname:surname || null,
+                        photo_url:photoUrl,
+                        updated_at:
+                            new Date().toISOString()
+                    },
+                    {
+                        onConflict:"id"
+                    }
+                )
+                .select()
+                .single();
+
+        if(result.error){
+
+            throw result.error;
+
+        }
+
+        currentProfile =
+            result.data;
+
+        updateProfileButton();
+
+        status.textContent =
+            "Profil başarıyla kaydedildi ❤️";
+
+        setTimeout(
+            ()=>{
+                closeModal("profileModal");
+            },
+            900
+        );
+
+    }catch(error){
+
+        console.error(
+            "PROFİL KAYDETME:",
+            error
+        );
+
+        status.textContent =
+            "Hata: " +
+            (
+                error.message ||
+                "Profil kaydedilemedi."
+            );
 
     }
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .from("profiles")
-        .upsert(
-          {
-            id:currentUser.id,
-            name:name,
-            surname:surname || null,
-            photo_url:photoUrl,
-            updated_at:new Date().toISOString()
-          },
-          {
-            onConflict:"id"
-          }
-        )
-        .select()
-        .single();
-
-    if(error){
-      throw error;
-    }
-
-    currentProfile =
-      data;
-
-    updateProfileButton();
-
-    status.textContent =
-      "Profil başarıyla kaydedildi ❤️";
-
-    setTimeout(()=>{
-      closeModal("profileModal");
-    },900);
-
-  }catch(error){
-
-    console.error(
-      "Profil kaydetme hatası:",
-      error
-    );
-
-    status.textContent =
-      "Profil kaydedilemedi: " +
-      (
-        error.message ||
-        "Bilinmeyen hata"
-      );
-
-  }
 
 }
 
 
 /* =====================================================
-   POST MODAL
+   ZİYARETÇİ POST MODAL
 ===================================================== */
 
 document
-  .getElementById("writePostButton")
-  .addEventListener(
-    "click",
-    openPostModal
-  );
-
-
-function openPostModal(){
-
-  if(!supabaseReady){
-
-    showStatus(
-      "Paylaşım sistemi henüz hazır değil."
+    .getElementById("writePostButton")
+    .addEventListener(
+        "click",
+        openPost
     );
 
-    return;
-  }
 
-  document
-    .getElementById("postModal")
-    .classList.add("show");
+function openPost(){
+
+    if(!supabaseReady){
+
+        showStatus(
+            "Paylaşım sistemi henüz hazır değil."
+        );
+
+        return;
+    }
+
+    if(
+        !currentProfile ||
+        !currentProfile.name
+    ){
+
+        showStatus(
+            "Önce sağ üstten profilini oluşturmalısın."
+        );
+
+        openProfile();
+
+        return;
+    }
+
+    document
+        .getElementById("postModal")
+        .classList.add("show");
 
 }
 
 
+/* =====================================================
+   POST PAYLAŞ
+===================================================== */
+
 document
-  .getElementById("publishPostButton")
-  .addEventListener(
-    "click",
-    publishPost
-  );
+    .getElementById("publishPostButton")
+    .addEventListener(
+        "click",
+        publishPost
+    );
 
 
 async function publishPost(){
 
-  if(!supabaseReady || !currentUser){
-    return;
-  }
+    if(
+        !supabaseReady ||
+        !currentUser
+    ){
+        return;
+    }
 
-  if(
-    !currentProfile ||
-    !currentProfile.name
-  ){
+    const type =
+        document.getElementById(
+            "postType"
+        ).value;
 
-    document.getElementById(
-      "postStatus"
-    ).textContent =
-      "Önce profilini oluşturmalısın ❤️";
+    const title =
+        document.getElementById(
+            "postTitle"
+        ).value.trim();
 
-    return;
-  }
+    const content =
+        document.getElementById(
+            "postContent"
+        ).value.trim();
 
-  const type =
-    document.getElementById(
-      "postType"
-    ).value;
+    const file =
+        document.getElementById(
+            "postPhoto"
+        ).files[0];
 
-  const title =
-    document.getElementById(
-      "postTitle"
-    ).value.trim();
+    const status =
+        document.getElementById(
+            "postStatus"
+        );
 
-  const content =
-    document.getElementById(
-      "postContent"
-    ).value.trim();
+    if(!content && !file){
 
-  const file =
-    document.getElementById(
-      "postPhoto"
-    ).files[0];
+        status.textContent =
+            "Mesaj veya fotoğraf ekle.";
 
-  const status =
-    document.getElementById(
-      "postStatus"
-    );
-
-  if(!content && !file){
+        return;
+    }
 
     status.textContent =
-      "Bir mesaj veya fotoğraf ekle.";
+        "Paylaşım hazırlanıyor...";
 
-    return;
-  }
+    try{
 
-  status.textContent =
-    "Paylaşım hazırlanıyor...";
+        let photoUrl = null;
 
-  try{
+        if(file){
 
-    let photoUrl = null;
+            const cleanName =
+                file.name.replace(
+                    /[^a-zA-Z0-9._-]/g,
+                    "_"
+                );
 
-    if(file){
+            const path =
+                currentUser.id +
+                "/" +
+                Date.now() +
+                "_" +
+                cleanName;
 
-      const safeName =
-        file.name
-          .replace(/[^a-zA-Z0-9._-]/g,"_");
+            const upload =
+                await supabaseClient
+                    .storage
+                    .from("post-photos")
+                    .upload(
+                        path,
+                        file,
+                        {
+                            upsert:false,
+                            contentType:file.type
+                        }
+                    );
 
-      const path =
-        `${currentUser.id}/${Date.now()}_${safeName}`;
+            if(upload.error){
 
-      const {
-        error:uploadError
-      } =
-        await supabaseClient
-          .storage
-          .from("post-photos")
-          .upload(
-            path,
-            file,
-            {
-              upsert:false,
-              contentType:file.type
+                throw upload.error;
+
             }
-          );
 
-      if(uploadError){
-        throw uploadError;
-      }
+            const publicUrl =
+                supabaseClient
+                    .storage
+                    .from("post-photos")
+                    .getPublicUrl(path);
 
-      const {
-        data:publicData
-      } =
-        supabaseClient
-          .storage
-          .from("post-photos")
-          .getPublicUrl(path);
+            photoUrl =
+                publicUrl.data.publicUrl;
 
-      photoUrl =
-        publicData.publicUrl;
+        }
+
+        const result =
+            await supabaseClient
+                .from("posts")
+                .insert(
+                    {
+                        user_id:currentUser.id,
+                        post_type:type,
+                        title:title || null,
+                        content:content || null,
+                        photo_url:photoUrl
+                    }
+                );
+
+        if(result.error){
+
+            throw result.error;
+
+        }
+
+        status.textContent =
+            "Paylaşım yapıldı ❤️";
+
+        document.getElementById(
+            "postTitle"
+        ).value = "";
+
+        document.getElementById(
+            "postContent"
+        ).value = "";
+
+        document.getElementById(
+            "postPhoto"
+        ).value = "";
+
+        await loadPosts();
+
+        setTimeout(
+            ()=>{
+                closeModal("postModal");
+            },
+            800
+        );
+
+    }catch(error){
+
+        console.error(
+            "POST HATASI:",
+            error
+        );
+
+        status.textContent =
+            "Hata: " +
+            (
+                error.message ||
+                "Paylaşım yapılamadı."
+            );
 
     }
-
-    const {
-      error
-    } =
-      await supabaseClient
-        .from("posts")
-        .insert({
-          user_id:currentUser.id,
-          post_type:type,
-          title:title || null,
-          content:content || null,
-          photo_url:photoUrl
-        });
-
-    if(error){
-      throw error;
-    }
-
-    status.textContent =
-      "Paylaşım yapıldı ❤️";
-
-    document.getElementById(
-      "postTitle"
-    ).value = "";
-
-    document.getElementById(
-      "postContent"
-    ).value = "";
-
-    document.getElementById(
-      "postPhoto"
-    ).value = "";
-
-    await loadPosts();
-
-    setTimeout(()=>{
-      closeModal("postModal");
-    },800);
-
-  }catch(error){
-
-    console.error(
-      "Paylaşım hatası:",
-      error
-    );
-
-    status.textContent =
-      "Paylaşım yapılamadı: " +
-      (
-        error.message ||
-        "Bilinmeyen hata"
-      );
-
-  }
 
 }
 
 
 /* =====================================================
-   POSTS YÜKLE
+   POSTLARI YÜKLE
 ===================================================== */
 
 async function loadPosts(){
 
-  const list =
-    document.getElementById(
-      "postsList"
-    );
-
-  try{
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .from("posts")
-        .select(`
-          id,
-          user_id,
-          post_type,
-          title,
-          content,
-          photo_url,
-          created_at,
-          profiles (
-            name,
-            surname,
-            photo_url
-          )
-        `)
-        .order(
-          "created_at",
-          {
-            ascending:false
-          }
-        )
-        .limit(100);
-
-    if(error){
-      throw error;
+    if(
+        !supabaseReady ||
+        !supabaseClient
+    ){
+        return;
     }
 
-    if(!data || !data.length){
+    const list =
+        document.getElementById(
+            "postsList"
+        );
 
-      list.innerHTML =
-        `<div class="card" style="text-align:center">
-          Henüz bir paylaşım yok.
-          İlk mesajı sen bırak ❤️
-        </div>`;
+    try{
 
-      return;
+        const result =
+            await supabaseClient
+                .from("posts")
+                .select(`
+                    id,
+                    user_id,
+                    post_type,
+                    title,
+                    content,
+                    photo_url,
+                    created_at,
+                    profiles(
+                        name,
+                        surname,
+                        photo_url
+                    )
+                `)
+                .order(
+                    "created_at",
+                    {
+                        ascending:false
+                    }
+                )
+                .limit(100);
+
+        if(result.error){
+
+            throw result.error;
+
+        }
+
+        if(
+            !result.data ||
+            result.data.length === 0
+        ){
+
+            list.innerHTML =
+                `<div
+                    class="card"
+                    style="text-align:center">
+                    Henüz paylaşım yok.
+                    İlk mesajı sen bırak ❤️
+                </div>`;
+
+            return;
+        }
+
+        list.innerHTML =
+            result.data
+                .map(
+                    renderPost
+                )
+                .join("");
+
+    }catch(error){
+
+        console.error(
+            "POSTLAR YÜKLENEMEDİ:",
+            error
+        );
+
+        list.innerHTML =
+            `<div
+                class="card"
+                style="text-align:center">
+
+                Paylaşımlar yüklenemiyor.
+
+                <br><br>
+
+                Supabase bağlantısı kontrol edilmeli.
+
+            </div>`;
+
     }
-
-    list.innerHTML =
-      data.map(
-        renderPost
-      ).join("");
-
-  }catch(error){
-
-    console.error(
-      "Post yükleme hatası:",
-      error
-    );
-
-    list.innerHTML =
-      `<div class="card" style="text-align:center">
-        Paylaşımlar şu anda yüklenemiyor.
-        <br><br>
-        Supabase bağlantısını kontrol ediyoruz. ❤️
-      </div>`;
-
-  }
-
-}
-
-
-function renderPost(post){
-
-  const profile =
-    post.profiles || {};
-
-  const fullName =
-    `${profile.name || "Ziyaretçi"} ${
-      profile.surname || ""
-    }`.trim();
-
-  const initial =
-    (
-      profile.name ||
-      "♥"
-    )
-      .charAt(0)
-      .toUpperCase();
-
-  const typeMap = {
-    mesaj:"💌 Mesaj",
-    soz:"💭 Güzel Söz",
-    siir:"📖 Şiir",
-    fotograf:"📸 Fotoğraf"
-  };
-
-  const date =
-    new Date(
-      post.created_at
-    ).toLocaleString(
-      "tr-TR",
-      {
-        dateStyle:"medium",
-        timeStyle:"short"
-      }
-    );
-
-  const avatar =
-    profile.photo_url
-      ?
-        `<img
-          class="post-avatar"
-          src="${escapeHtml(profile.photo_url)}"
-          alt="">`
-      :
-        `<div
-          class="post-avatar"
-          style="
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            background:#92265f;
-            font-weight:bold;
-          ">
-          ${escapeHtml(initial)}
-        </div>`;
-
-  const title =
-    post.title
-      ?
-        `<h3 style="margin-bottom:7px">
-          ${escapeHtml(post.title)}
-        </h3>`
-      :
-        "";
-
-  const content =
-    post.content
-      ?
-        `<div style="white-space:pre-wrap">
-          ${escapeHtml(post.content)}
-        </div>`
-      :
-        "";
-
-  const photo =
-    post.photo_url
-      ?
-        `<img
-          class="post-photo"
-          src="${escapeHtml(post.photo_url)}"
-          alt="Paylaşım fotoğrafı"
-          onclick="openLightboxFromUrl(this.src)">`
-      :
-        "";
-
-  return `
-    <article class="post">
-
-      <div class="post-head">
-
-        ${avatar}
-
-        <div>
-
-          <div class="post-name">
-            ${escapeHtml(fullName)}
-          </div>
-
-          <div class="post-date">
-            ${escapeHtml(date)}
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="post-type">
-        ${escapeHtml(
-          typeMap[post.post_type] ||
-          "💌 Paylaşım"
-        )}
-      </div>
-
-      ${title}
-      ${content}
-      ${photo}
-
-    </article>
-  `;
 
 }
 
 
 /* =====================================================
-   MODAL
+   POST RENDER
 ===================================================== */
 
-function closeModal(id){
+function renderPost(post){
 
-  document
-    .getElementById(id)
-    .classList.remove("show");
+    const profile =
+        post.profiles || {};
+
+    const name =
+        (
+            profile.name ||
+            "Ziyaretçi"
+        ) +
+        " " +
+        (
+            profile.surname ||
+            ""
+        );
+
+    const initial =
+        (
+            profile.name ||
+            "♥"
+        )
+        .charAt(0)
+        .toUpperCase();
+
+    const types = {
+
+        mesaj:"💌 Mesaj",
+
+        soz:"💭 Güzel Söz",
+
+        siir:"📖 Şiir",
+
+        fotograf:"📸 Fotoğraf"
+
+    };
+
+    const date =
+        new Date(
+            post.created_at
+        ).toLocaleString(
+            "tr-TR",
+            {
+                dateStyle:"medium",
+                timeStyle:"short"
+            }
+        );
+
+    let avatar = "";
+
+    if(profile.photo_url){
+
+        avatar =
+            `<img
+                class="post-avatar"
+                src="${safe(profile.photo_url)}"
+                alt="">`;
+
+    }else{
+
+        avatar =
+            `<div
+                class="post-avatar"
+                style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    background:#92265f;
+                    font-weight:bold;
+                ">
+                ${safe(initial)}
+            </div>`;
+
+    }
+
+    return `
+        <article class="post">
+
+            <div class="post-head">
+
+                ${avatar}
+
+                <div>
+
+                    <div class="post-name">
+                        ${safe(name.trim())}
+                    </div>
+
+                    <div class="post-date">
+                        ${safe(date)}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="post-type">
+                ${safe(
+                    types[post.post_type] ||
+                    "💌 Paylaşım"
+                )}
+            </div>
+
+            ${
+                post.title
+                ?
+                `<h3 style="margin-bottom:8px">
+                    ${safe(post.title)}
+                </h3>`
+                :
+                ""
+            }
+
+            ${
+                post.content
+                ?
+                `<div style="white-space:pre-wrap">
+                    ${safe(post.content)}
+                </div>`
+                :
+                ""
+            }
+
+            ${
+                post.photo_url
+                ?
+                `<img
+                    class="post-photo"
+                    src="${safe(post.photo_url)}"
+                    onclick="openLightbox('${safe(post.photo_url)}')">`
+                :
+                ""
+            }
+
+        </article>
+    `;
 
 }
-
-
-document
-  .querySelectorAll(".modal")
-  .forEach(modal=>{
-
-    modal.addEventListener(
-      "click",
-      event=>{
-
-        if(
-          event.target === modal
-        ){
-
-          modal.classList.remove(
-            "show"
-          );
-
-        }
-
-      }
-    );
-
-  });
 
 
 /* =====================================================
@@ -3094,77 +3102,65 @@ document
 
 function openWhen(type){
 
-  const data = {
+    const data = {
 
-    mutlu:{
-      title:"Mutlu olduğunda 😊",
-      text:
-        "Mutluluğun bana da bulaşıyor. " +
-        "Bugün ne kadar mutluysan, " +
-        "benim için o kadar güzel bir gün. " +
-        "Gülümsemeye devam et ❤️"
-    },
+        mutlu:{
+            title:"Mutlu olduğunda 😊",
+            text:
+                "Mutluluğun bana da bulaşıyor. " +
+                "Bugün ne kadar mutluysan benim için o kadar güzel bir gün. " +
+                "Gülümsemeye devam et ❤️"
+        },
 
-    uzgun:{
-      title:"Üzgün olduğunda 🥺",
-      text:
-        "Şu an yanında olamasam bile " +
-        "şunu bilmeni istiyorum: " +
-        "Yalnız değilsin. " +
-        "Ben buradayım. ❤️"
-    },
+        uzgun:{
+            title:"Üzgün olduğunda 🥺",
+            text:
+                "Şu an yanında olamasam bile yalnız değilsin. " +
+                "Ben buradayım. ❤️"
+        },
 
-    ozledin:{
-      title:"Beni özlediğinde ❤️",
-      text:
-        "Gözlerini kapat ve birlikte " +
-        "güldüğümüz bir anı düşün. " +
-        "Ben de aynı şeyi yapıyorum."
-    },
+        ozledin:{
+            title:"Beni özlediğinde ❤️",
+            text:
+                "Gözlerini kapat ve birlikte güldüğümüz bir anı düşün. " +
+                "Ben de aynı şeyi yapıyorum."
+        },
 
-    kizgin:{
-      title:"Bana kızdığında 😌",
-      text:
-        "Tamam... önce kızgınlığını yaşa. 😄 " +
-        "Sonra hatırla: " +
-        "Seni çok seviyorum. ❤️"
-    }
+        kizgin:{
+            title:"Bana kızdığında 😌",
+            text:
+                "Önce kızgınlığını yaşa. 😄 " +
+                "Sonra hatırla: Seni çok seviyorum. ❤️"
+        }
 
-  };
+    };
 
-  const item =
-    data[type];
+    document.getElementById(
+        "openWhenTitle"
+    ).textContent =
+        data[type].title;
 
-  document.getElementById(
-    "openWhenTitle"
-  ).textContent =
-    item.title;
+    document.getElementById(
+        "openWhenContent"
+    ).textContent =
+        data[type].text;
 
-  document.getElementById(
-    "openWhenContent"
-  ).textContent =
-    item.text;
-
-  document
-    .getElementById(
-      "openWhenModal"
-    )
-    .classList.add("show");
+    document.getElementById(
+        "openWhenModal"
+    ).classList.add("show");
 
 }
 
 
 /* =====================================================
-   GIFT
+   HEDİYE
 ===================================================== */
 
 function openGift(){
 
-  document
-    .getElementById(
-      "giftMessage"
-    )
-    .classList.toggle("show");
+    document.getElementById(
+        "giftMessage"
+    ).classList.toggle("show");
 
 }
 
@@ -3175,57 +3171,53 @@ function openGift(){
 
 function checkPin(){
 
-  const pin =
-    document
-      .getElementById(
-        "pinInput"
-      )
-      .value
-      .trim();
+    const pin =
+        document.getElementById(
+            "pinInput"
+        ).value.trim();
 
-  const result =
-    document.getElementById(
-      "secretResult"
-    );
+    const result =
+        document.getElementById(
+            "secretResult"
+        );
 
-  if(pin === "16102024"){
+    if(pin === "16102024"){
 
-    result.innerHTML =
-      `
-      <div class="card">
+        result.innerHTML =
+            `
+            <div class="card">
 
-        <div style="font-size:55px">
-          ❤️
-        </div>
+                <div style="font-size:55px">
+                    ❤️
+                </div>
 
-        <h3>
-          Gizli sürprizi buldun!
-        </h3>
+                <h3>
+                    Gizli sürprizi buldun!
+                </h3>
 
-        <p style="margin-top:15px">
-          16.10.2024 sadece bir tarih değil.
-          Benim için hayatımın en güzel
-          başlangıçlarından biri.
-        </p>
+                <p style="margin-top:15px">
+                    16.10.2024 sadece bir tarih değil.
+                    Benim için hayatımın en güzel
+                    başlangıçlarından biri.
+                </p>
 
-        <p style="
-          margin-top:15px;
-          color:#ffafd1;
-          font-size:21px;
-        ">
-          Seni her geçen gün
-          biraz daha seviyorum.
-        </p>
+                <p style="
+                    margin-top:15px;
+                    color:#ffafd1;
+                    font-size:21px;
+                ">
+                    Seni her geçen gün biraz daha seviyorum.
+                </p>
 
-      </div>
-      `;
+            </div>
+            `;
 
-  }else{
+    }else{
 
-    result.textContent =
-      "Hmm... Bu kapının anahtarı değil. ❤️";
+        result.textContent =
+            "Hmm... Bu kapının anahtarı değil. ❤️";
 
-  }
+    }
 
 }
 
@@ -3236,88 +3228,76 @@ function checkPin(){
 
 let quizScore = 0;
 
-
 function quizAnswer(question,correct){
 
-  if(correct){
-    quizScore++;
-  }
+    if(correct){
+        quizScore++;
+    }
 
-  const current =
-    document.querySelector(
-      `.quiz-question[data-question="${question}"]`
-    );
+    const current =
+        document.querySelector(
+            `.quiz-question[data-question="${question}"]`
+        );
 
-  if(current){
-    current.classList.remove(
-      "active"
-    );
-  }
+    if(current){
+        current.classList.remove("active");
+    }
 
-  const next =
-    document.querySelector(
-      `.quiz-question[data-question="${question+1}"]`
-    );
+    const next =
+        document.querySelector(
+            `.quiz-question[data-question="${question + 1}"]`
+        );
 
-  if(next){
+    if(next){
 
-    next.classList.add(
-      "active"
-    );
+        next.classList.add("active");
 
-  }else{
+    }else{
 
-    document.getElementById(
-      "quizResult"
-    ).innerHTML =
-      `Test bitti ❤️<br>
-       ${quizScore}/3 doğru!
-       <br><br>
-       Ama benim için en doğru cevap:
-       <strong>Sen ❤️</strong>`;
+        document.getElementById(
+            "quizResult"
+        ).innerHTML =
+            `
+            Test bitti ❤️<br>
+            ${quizScore}/3 doğru!
+            <br><br>
+            En güzel cevap:
+            <strong>Sen ❤️</strong>
+            `;
 
-  }
+    }
 
 }
 
 
 /* =====================================================
-   SKY STARS
+   SKY
 ===================================================== */
 
 function createStars(){
 
-  const sky =
-    document.getElementById(
-      "sky"
-    );
+    const sky =
+        document.getElementById("sky");
 
-  for(
-    let i=0;
-    i<75;
-    i++
-  ){
+    for(let i=0;i<80;i++){
 
-    const star =
-      document.createElement(
-        "div"
-      );
+        const star =
+            document.createElement("div");
 
-    star.className =
-      "star";
+        star.className = "star";
 
-    star.style.left =
-      Math.random()*100 + "%";
+        star.style.left =
+            Math.random()*100 + "%";
 
-    star.style.top =
-      Math.random()*100 + "%";
+        star.style.top =
+            Math.random()*100 + "%";
 
-    star.style.animationDelay =
-      Math.random()*2 + "s";
+        star.style.animationDelay =
+            Math.random()*2 + "s";
 
-    sky.appendChild(star);
+        sky.appendChild(star);
 
-  }
+    }
 
 }
 
@@ -3327,215 +3307,180 @@ function createStars(){
 ===================================================== */
 
 const puzzlePositions = [
-  "0% 0%",
-  "50% 0%",
-  "100% 0%",
-  "0% 50%",
-  "50% 50%",
-  "100% 50%",
-  "0% 100%",
-  "50% 100%",
-  "100% 100%"
+
+    "0% 0%",
+    "50% 0%",
+    "100% 0%",
+    "0% 50%",
+    "50% 50%",
+    "100% 50%",
+    "0% 100%",
+    "50% 100%",
+    "100% 100%"
+
 ];
 
 let puzzleOrder =
-  [...Array(9).keys()];
-
-
-function createPuzzle(){
-
-  const puzzle =
-    document.getElementById(
-      "puzzle"
-    );
-
-  puzzle.innerHTML = "";
-
-  puzzleOrder.forEach(
-    (index,position)=>{
-
-      const button =
-        document.createElement(
-          "button"
-        );
-
-      button.className =
-        "puzzle-piece";
-
-      button.style.backgroundImage =
-        "url('gezi.jpg')";
-
-      button.style.backgroundPosition =
-        puzzlePositions[index];
-
-      button.title =
-        "Parça " +
-        (index+1);
-
-      button.onclick =
-        ()=>{
-          movePuzzlePiece(
-            position
-          );
-        };
-
-      puzzle.appendChild(
-        button
-      );
-
-    }
-  );
-
-}
-
+    [0,1,2,3,4,5,6,7,8];
 
 let selectedPuzzle = null;
 
 
-function movePuzzlePiece(position){
+function createPuzzle(){
 
-  if(selectedPuzzle === null){
+    const puzzle =
+        document.getElementById("puzzle");
 
-    selectedPuzzle =
-      position;
+    puzzle.innerHTML = "";
 
-    return;
+    puzzleOrder.forEach(
+        (index,position)=>{
 
-  }
+            const piece =
+                document.createElement("button");
 
-  [
-    puzzleOrder[
-      selectedPuzzle
-    ],
-    puzzleOrder[position]
-  ] =
-  [
-    puzzleOrder[position],
-    puzzleOrder[
-      selectedPuzzle
-    ]
-  ];
+            piece.className =
+                "puzzle-piece";
 
-  selectedPuzzle = null;
+            piece.style.backgroundImage =
+                "url('gezi.jpg')";
 
-  createPuzzle();
+            piece.style.backgroundPosition =
+                puzzlePositions[index];
+
+            piece.onclick =
+                ()=>{
+                    movePuzzle(position);
+                };
+
+            puzzle.appendChild(piece);
+
+        }
+    );
+
+}
+
+
+function movePuzzle(position){
+
+    if(selectedPuzzle === null){
+
+        selectedPuzzle = position;
+
+        return;
+
+    }
+
+    const temp =
+        puzzleOrder[selectedPuzzle];
+
+    puzzleOrder[selectedPuzzle] =
+        puzzleOrder[position];
+
+    puzzleOrder[position] =
+        temp;
+
+    selectedPuzzle = null;
+
+    createPuzzle();
 
 }
 
 
 function shufflePuzzle(){
 
-  puzzleOrder.sort(
-    ()=>Math.random()-.5
-  );
+    puzzleOrder.sort(
+        ()=>Math.random()-.5
+    );
 
-  selectedPuzzle = null;
+    selectedPuzzle = null;
 
-  createPuzzle();
+    createPuzzle();
 
 }
 
 
 /* =====================================================
-   FINAL QUESTION
+   FİNAL
 ===================================================== */
 
 function finalYes(){
 
-  document.getElementById(
-    "finalResult"
-  ).innerHTML =
-    "O zaman hikâyemiz devam ediyor... ❤️<br>" +
-    "Ve daha yazılacak çok güzel sayfamız var.";
+    document.getElementById(
+        "finalResult"
+    ).innerHTML =
+        `
+        O zaman hikâyemiz devam ediyor... ❤️
+        <br>
+        Daha yazılacak çok güzel sayfamız var.
+        `;
 
-  createHeartExplosion();
+    heartExplosion();
 
 }
 
 
 function moveNoButton(){
 
-  const button =
-    document.getElementById(
-      "noButton"
-    );
+    const button =
+        document.getElementById("noButton");
 
-  const x =
-    Math.random()*160-80;
+    const x =
+        Math.random()*160-80;
 
-  const y =
-    Math.random()*100-50;
+    const y =
+        Math.random()*100-50;
 
-  button.style.transform =
-    `translate(${x}px,${y}px)`;
+    button.style.transform =
+        `translate(${x}px,${y}px)`;
 
 }
 
 
-function createHeartExplosion(){
+function heartExplosion(){
 
-  for(
-    let i=0;
-    i<25;
-    i++
-  ){
+    for(let i=0;i<25;i++){
 
-    const heart =
-      document.createElement(
-        "div"
-      );
+        const heart =
+            document.createElement("div");
 
-    heart.textContent =
-      "❤️";
+        heart.textContent = "❤️";
 
-    heart.style.position =
-      "fixed";
+        heart.style.position = "fixed";
+        heart.style.left = "50%";
+        heart.style.top = "70%";
+        heart.style.zIndex = "99999";
 
-    heart.style.left =
-      "50%";
+        document.body.appendChild(heart);
 
-    heart.style.top =
-      "70%";
+        const x =
+            (Math.random()-.5)*400;
 
-    heart.style.zIndex =
-      "99999";
+        const y =
+            -(100+Math.random()*400);
 
-    heart.style.fontSize =
-      (15+Math.random()*25)+"px";
+        heart.animate(
+            [
+                {
+                    transform:"translate(0,0)",
+                    opacity:1
+                },
+                {
+                    transform:
+                        `translate(${x}px,${y}px)`,
+                    opacity:0
+                }
+            ],
+            {
+                duration:
+                    1500+Math.random()*1000
+            }
+        ).onfinish =
+            ()=>{
+                heart.remove();
+            };
 
-    document.body.appendChild(
-      heart
-    );
-
-    const x =
-      (Math.random()-.5)*400;
-
-    const y =
-      -(100+Math.random()*400);
-
-    heart.animate(
-      [
-        {
-          transform:"translate(0,0)",
-          opacity:1
-        },
-        {
-          transform:
-            `translate(${x}px,${y}px)`,
-          opacity:0
-        }
-      ],
-      {
-        duration:
-          1500+Math.random()*1000,
-        easing:"ease-out"
-      }
-    ).onfinish =
-      ()=>{
-        heart.remove();
-      };
-
-  }
+    }
 
 }
 
@@ -3545,165 +3490,143 @@ function createHeartExplosion(){
 ===================================================== */
 
 document
-  .querySelectorAll(".gallery-item img")
-  .forEach(img=>{
+    .querySelectorAll(".gallery-item img")
+    .forEach(
+        img=>{
 
-    img.addEventListener(
-      "click",
-      ()=>{
-        openLightboxFromUrl(
-          img.src
-        );
-      }
+            img.addEventListener(
+                "click",
+                ()=>{
+                    openLightbox(
+                        img.src
+                    );
+                }
+            );
+
+        }
     );
 
-  });
 
+function openLightbox(url){
 
-function openLightboxFromUrl(url){
+    document.getElementById(
+        "lightboxImage"
+    ).src = url;
 
-  document.getElementById(
-    "lightboxImage"
-  ).src = url;
-
-  document
-    .getElementById(
-      "lightbox"
-    )
-    .classList.add("show");
+    document.getElementById(
+        "lightbox"
+    ).classList.add("show");
 
 }
 
 
 function closeLightbox(){
 
-  document
-    .getElementById(
-      "lightbox"
-    )
-    .classList.remove(
-      "show"
-    );
+    document.getElementById(
+        "lightbox"
+    ).classList.remove("show");
 
 }
 
 
 /* =====================================================
-   FLOATING HEARTS
+   KALPLER
 ===================================================== */
 
 function createFloatingHearts(){
 
-  const container =
-    document.getElementById(
-      "hearts"
-    );
+    const container =
+        document.getElementById("hearts");
 
-  for(
-    let i=0;
-    i<22;
-    i++
-  ){
+    for(let i=0;i<25;i++){
 
-    const heart =
-      document.createElement(
-        "div"
-      );
+        const heart =
+            document.createElement("div");
 
-    heart.className =
-      "heart";
+        heart.className =
+            "floating-heart";
 
-    heart.textContent =
-      Math.random()>.5
-        ? "❤️"
-        : "💕";
+        heart.textContent =
+            Math.random() > .5
+            ? "❤️"
+            : "💕";
 
-    heart.style.left =
-      Math.random()*100 + "%";
+        heart.style.left =
+            Math.random()*100 + "%";
 
-    heart.style.fontSize =
-      (12+Math.random()*24)+"px";
+        heart.style.fontSize =
+            (12+Math.random()*24) + "px";
 
-    heart.style.animationDuration =
-      (10+Math.random()*15)+"s";
+        heart.style.animationDuration =
+            (10+Math.random()*15) + "s";
 
-    heart.style.animationDelay =
-      (-Math.random()*20)+"s";
+        heart.style.animationDelay =
+            (-Math.random()*20) + "s";
 
-    container.appendChild(
-      heart
-    );
+        container.appendChild(heart);
 
-  }
+    }
 
 }
 
 
 /* =====================================================
-   COUNTER
+   SAYAÇ
 ===================================================== */
 
 const startDate =
-  new Date(
-    "2024-10-16T00:00:00"
-  );
+    new Date(
+        "2024-10-16T00:00:00"
+    );
 
 
 function updateCounter(){
 
-  const now =
-    new Date();
+    const now =
+        new Date();
 
-  let diff =
-    now.getTime() -
-    startDate.getTime();
+    let diff =
+        now.getTime() -
+        startDate.getTime();
 
-  if(diff < 0){
-    diff = 0;
-  }
+    if(diff < 0){
+        diff = 0;
+    }
 
-  const totalSeconds =
-    Math.floor(
-      diff/1000
-    );
+    const secondsTotal =
+        Math.floor(
+            diff / 1000
+        );
 
-  const days =
-    Math.floor(
-      totalSeconds/86400
-    );
+    const days =
+        Math.floor(
+            secondsTotal / 86400
+        );
 
-  const hours =
-    Math.floor(
-      (totalSeconds%86400)/3600
-    );
+    const hours =
+        Math.floor(
+            (secondsTotal % 86400) / 3600
+        );
 
-  const minutes =
-    Math.floor(
-      (totalSeconds%3600)/60
-    );
+    const minutes =
+        Math.floor(
+            (secondsTotal % 3600) / 60
+        );
 
-  const seconds =
-    totalSeconds%60;
+    const seconds =
+        secondsTotal % 60;
 
-  document.getElementById(
-    "days"
-  ).textContent =
-    days;
+    document.getElementById("days")
+        .textContent = days;
 
-  document.getElementById(
-    "hours"
-  ).textContent =
-    hours;
+    document.getElementById("hours")
+        .textContent = hours;
 
-  document.getElementById(
-    "minutes"
-  ).textContent =
-    minutes;
+    document.getElementById("minutes")
+        .textContent = minutes;
 
-  document.getElementById(
-    "seconds"
-  ).textContent =
-    seconds;
+    document.getElementById("seconds")
+        .textContent = seconds;
 
 }
 
@@ -3714,439 +3637,478 @@ function updateCounter(){
 
 function setupReveal(){
 
-  const elements =
-    document.querySelectorAll(
-      ".reveal"
-    );
+    const elements =
+        document.querySelectorAll(".reveal");
 
-  const observer =
-    new IntersectionObserver(
-      entries=>{
+    const observer =
+        new IntersectionObserver(
+            entries=>{
 
-        entries.forEach(
-          entry=>{
+                entries.forEach(
+                    entry=>{
 
-            if(entry.isIntersecting){
+                        if(entry.isIntersecting){
 
-              entry.target
-                .classList
-                .add("show");
+                            entry.target
+                                .classList
+                                .add("show");
 
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold:.1
             }
-
-          }
         );
 
-      },
-      {
-        threshold:.12
-      }
+    elements.forEach(
+        element=>{
+            observer.observe(element);
+        }
     );
-
-  elements.forEach(
-    element=>{
-      observer.observe(
-        element
-      );
-    }
-  );
 
 }
 
 
 /* =====================================================
-   MUSIC
+   MÜZİK
 ===================================================== */
 
 const songs = [
 
-  "BLOK3 - KUSURA BAKMA (Official Music Video).mp3",
+    "BLOK3 - KUSURA BAKMA (Official Music Video).mp3",
 
-  "Canım Sevgilim (Baha) Official Music Video -canımsevgilim -baha - Esen Müzik.mp3",
+    "Canım Sevgilim (Baha) Official Music Video -canımsevgilim -baha - Esen Müzik.mp3",
 
-  "Duman - Kolay Değildir.mp3",
+    "Duman - Kolay Değildir.mp3",
 
-  "Kutupta Yaz Gibi (Baha) Official Audio -kutuptayazgibi -baha - Esen Müzik.mp3",
+    "Kutupta Yaz Gibi (Baha) Official Audio -kutuptayazgibi -baha - Esen Müzik.mp3",
 
-  "Murat Boz Üzüleceksin.mp3",
+    "Murat Boz Üzüleceksin.mp3",
 
-  "Nilüfer - İnkâr Etme (1990).mp3",
+    "Nilüfer - İnkâr Etme (1990).mp3",
 
-  "Sezen Aksu - Ey Aşk [Official Audio].mp3",
+    "Sezen Aksu - Ey Aşk [Official Audio].mp3",
 
-  "Sezen Aksu - Firuze (Official Audio - Orijinal Plak Kayıt).mp3",
+    "Sezen Aksu - Firuze (Official Audio - Orijinal Plak Kayıt).mp3",
 
-  "Ta Ki Seni Görene Kadar.mp3"
+    "Ta Ki Seni Görene Kadar.mp3"
 
 ];
 
 let musicIndex = 0;
 
 const audio =
-  document.getElementById(
-    "audio"
-  );
+    document.getElementById("audio");
 
 const musicTitle =
-  document.getElementById(
-    "musicTitle"
-  );
+    document.getElementById("musicTitle");
 
 const musicStatus =
-  document.getElementById(
-    "musicStatus"
-  );
+    document.getElementById("musicStatus");
 
 const playMusic =
-  document.getElementById(
-    "playMusic"
-  );
+    document.getElementById("playMusic");
 
 const progress =
-  document.getElementById(
-    "musicProgress"
-  );
+    document.getElementById("musicProgress");
 
 const musicTime =
-  document.getElementById(
-    "musicTime"
-  );
+    document.getElementById("musicTime");
 
 const playlist =
-  document.getElementById(
-    "playlist"
-  );
+    document.getElementById("playlist");
 
 
 function songUrl(name){
 
-  return (
-    "https://raw.githubusercontent.com/" +
-    "fatmasoylu/fatmasoylu/main/" +
-    encodeURIComponent(name)
-  );
+    return (
+        "https://raw.githubusercontent.com/" +
+        "fatmasoylu/fatmasoylu/main/" +
+        encodeURIComponent(name)
+    );
 
 }
 
 
 function loadSong(index,autoplay=false){
 
-  musicIndex =
-    (index+songs.length)%songs.length;
+    musicIndex =
+        (index + songs.length) %
+        songs.length;
 
-  const name =
-    songs[musicIndex];
+    const name =
+        songs[musicIndex];
 
-  audio.src =
-    songUrl(name);
+    audio.src =
+        songUrl(name);
 
-  musicTitle.textContent =
-    name
-      .replace(".mp3","");
+    musicTitle.textContent =
+        name.replace(".mp3","");
 
-  musicStatus.textContent =
-    "Şarkı " +
-    (musicIndex+1) +
-    " / " +
-    songs.length;
+    musicStatus.textContent =
+        "Şarkı " +
+        (musicIndex+1) +
+        " / " +
+        songs.length;
 
-  progress.value =
-    0;
+    progress.value = 0;
 
-  updatePlaylist();
+    updatePlaylist();
 
-  if(autoplay){
+    if(autoplay){
 
-    audio.play()
-      .then(()=>{
-        playMusic.textContent =
-          "⏸";
-      })
-      .catch(()=>{
-        playMusic.textContent =
-          "▶";
-      });
+        audio.play()
+            .then(
+                ()=>{
+                    playMusic.textContent = "⏸";
+                }
+            )
+            .catch(
+                ()=>{
+                    playMusic.textContent = "▶";
+                }
+            );
 
-  }else{
+    }else{
 
-    playMusic.textContent =
-      "▶";
+        playMusic.textContent = "▶";
 
-  }
+    }
 
 }
 
 
 function updatePlaylist(){
 
-  playlist.innerHTML =
-    songs.map(
-      (song,index)=>`
+    playlist.innerHTML =
+        songs.map(
+            (song,index)=>{
 
-        <button
-          class="song-item ${
-            index===musicIndex
-              ? "active"
-              : ""
-          }"
-          onclick="selectSong(${index})">
+                return `
+                    <button
+                        class="song-item ${
+                            index === musicIndex
+                            ? "active"
+                            : ""
+                        }"
+                        onclick="selectSong(${index})">
 
-          <span class="song-number">
-            ${index+1}
-          </span>
+                        ${index+1}.
+                        ${safe(
+                            song.replace(".mp3","")
+                        )}
 
-          <span>
-            ${escapeHtml(
-              song.replace(".mp3","")
-            )}
-          </span>
+                    </button>
+                `;
 
-        </button>
-
-      `
-    ).join("");
+            }
+        ).join("");
 
 }
 
 
 function selectSong(index){
 
-  loadSong(
-    index,
-    true
-  );
+    loadSong(
+        index,
+        true
+    );
 
 }
 
 
 playMusic.addEventListener(
-  "click",
-  ()=>{
+    "click",
+    ()=>{
 
-    if(audio.paused){
+        if(audio.paused){
 
-      audio.play()
-        .then(()=>{
-          playMusic.textContent =
-            "⏸";
-        })
-        .catch(()=>{
-          showStatus(
-            "Müziği başlatmak için ekrana dokun."
-          );
-        });
+            audio.play()
+                .then(
+                    ()=>{
+                        playMusic.textContent = "⏸";
+                    }
+                )
+                .catch(
+                    ()=>{
+                        showStatus(
+                            "Müziği başlatmak için tekrar dokun."
+                        );
+                    }
+                );
 
-    }else{
+        }else{
 
-      audio.pause();
+            audio.pause();
 
-      playMusic.textContent =
-        "▶";
+            playMusic.textContent = "▶";
+
+        }
 
     }
-
-  }
 );
 
 
 document
-  .getElementById("prevMusic")
-  .addEventListener(
-    "click",
-    ()=>{
-      loadSong(
-        musicIndex-1,
-        true
-      );
-    }
-  );
+    .getElementById("prevMusic")
+    .addEventListener(
+        "click",
+        ()=>{
+            loadSong(
+                musicIndex-1,
+                true
+            );
+        }
+    );
 
 
 document
-  .getElementById("nextMusic")
-  .addEventListener(
-    "click",
-    ()=>{
-      loadSong(
-        musicIndex+1,
-        true
-      );
-    }
-  );
+    .getElementById("nextMusic")
+    .addEventListener(
+        "click",
+        ()=>{
+            loadSong(
+                musicIndex+1,
+                true
+            );
+        }
+    );
 
 
 audio.addEventListener(
-  "timeupdate",
-  ()=>{
+    "timeupdate",
+    ()=>{
 
-    if(
-      Number.isFinite(
-        audio.duration
-      )
-    ){
+        if(
+            Number.isFinite(
+                audio.duration
+            )
+        ){
 
-      progress.value =
-        (
-          audio.currentTime /
-          audio.duration
-        )*100;
+            progress.value =
+                (
+                    audio.currentTime /
+                    audio.duration
+                ) * 100;
 
-      musicTime.textContent =
-        formatTime(
-          audio.currentTime
-        ) +
-        " / " +
-        formatTime(
-          audio.duration
-        );
+            musicTime.textContent =
+                formatTime(audio.currentTime) +
+                " / " +
+                formatTime(audio.duration);
+
+        }
 
     }
-
-  }
 );
 
 
 progress.addEventListener(
-  "input",
-  ()=>{
+    "input",
+    ()=>{
 
-    if(
-      Number.isFinite(
-        audio.duration
-      )
-    ){
+        if(
+            Number.isFinite(
+                audio.duration
+            )
+        ){
 
-      audio.currentTime =
-        (
-          Number(
-            progress.value
-          )/100
-        ) *
-        audio.duration;
+            audio.currentTime =
+                (
+                    Number(progress.value) /
+                    100
+                ) *
+                audio.duration;
+
+        }
 
     }
-
-  }
 );
 
 
 audio.addEventListener(
-  "ended",
-  ()=>{
-    loadSong(
-      musicIndex+1,
-      true
-    );
-  }
+    "ended",
+    ()=>{
+        loadSong(
+            musicIndex+1,
+            true
+        );
+    }
 );
 
 
 audio.addEventListener(
-  "error",
-  ()=>{
-    musicStatus.textContent =
-      "Şarkı yüklenemedi";
-  }
+    "error",
+    ()=>{
+        musicStatus.textContent =
+            "Şarkı yüklenemedi";
+    }
 );
 
 
 document
-  .getElementById("playlistButton")
-  .addEventListener(
-    "click",
-    ()=>{
-      playlist.classList.toggle(
-        "show"
-      );
-    }
-  );
+    .getElementById("playlistButton")
+    .addEventListener(
+        "click",
+        ()=>{
+            playlist.classList.toggle("show");
+        }
+    );
 
 
 function formatTime(seconds){
 
-  if(!Number.isFinite(seconds)){
-    return "0:00";
-  }
+    if(!Number.isFinite(seconds)){
+        return "0:00";
+    }
 
-  const min =
-    Math.floor(
-      seconds/60
-    );
+    const min =
+        Math.floor(seconds/60);
 
-  const sec =
-    Math.floor(
-      seconds%60
-    )
-      .toString()
-      .padStart(2,"0");
+    const sec =
+        Math.floor(seconds%60)
+            .toString()
+            .padStart(2,"0");
 
-  return `${min}:${sec}`;
+    return min + ":" + sec;
 
 }
 
 
 /* =====================================================
-   ESCAPE
-===================================================== */
-
-function escapeHtml(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-
-/* =====================================================
-   PROFILE PREVIEW
+   PROFİL FOTOĞRAF ÖNİZLEME
 ===================================================== */
 
 document
-  .getElementById("profilePhoto")
-  .addEventListener(
-    "change",
-    event=>{
+    .getElementById("profilePhoto")
+    .addEventListener(
+        "change",
+        event=>{
 
-      const file =
-        event.target.files[0];
+            const file =
+                event.target.files[0];
 
-      const preview =
+            const preview =
+                document.getElementById(
+                    "profilePreview"
+                );
+
+            if(!file){
+
+                preview.classList.add(
+                    "hidden"
+                );
+
+                return;
+
+            }
+
+            const reader =
+                new FileReader();
+
+            reader.onload =
+                ()=>{
+                    preview.src =
+                        reader.result;
+
+                    preview.classList.remove(
+                        "hidden"
+                    );
+                };
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .classList.remove("show");
+
+}
+
+
+document
+    .querySelectorAll(".modal")
+    .forEach(
+        modal=>{
+
+            modal.addEventListener(
+                "click",
+                event=>{
+
+                    if(
+                        event.target === modal
+                    ){
+
+                        modal.classList.remove(
+                            "show"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function showStatus(message){
+
+    const box =
         document.getElementById(
-          "profilePreview"
+            "systemStatus"
         );
 
-      if(!file){
+    box.textContent =
+        message;
 
-        preview.classList.add(
-          "hidden"
+    box.classList.add("show");
+
+    clearTimeout(
+        window.statusTimer
+    );
+
+    window.statusTimer =
+        setTimeout(
+            ()=>{
+                box.classList.remove("show");
+            },
+            6000
         );
 
-        return;
-      }
+}
 
-      const reader =
-        new FileReader();
 
-      reader.onload =
-        ()=>{
-          preview.src =
-            reader.result;
+/* =====================================================
+   GÜVENLİ METİN
+===================================================== */
 
-          preview.classList.remove(
-            "hidden"
-          );
-        };
+function safe(value){
 
-      reader.readAsDataURL(
-        file
-      );
+    return String(value ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
 
-    }
-  );
+}
 
 
 /* =====================================================
@@ -4154,81 +4116,74 @@ document
 ===================================================== */
 
 setTimeout(
-  ()=>{
-    document
-      .getElementById(
-        "opening"
-      )
-      .classList.add(
-        "hide"
-      );
-  },
-  3500
+    ()=>{
+        document
+            .getElementById("opening")
+            .classList.add("hide");
+    },
+    3500
 );
 
 
 /* =====================================================
-   START
+   BAŞLAT
 ===================================================== */
 
 document.addEventListener(
-  "DOMContentLoaded",
-  ()=>{
+    "DOMContentLoaded",
+    ()=>{
 
-    createFloatingHearts();
+        createFloatingHearts();
 
-    createStars();
+        createStars();
 
-    createPuzzle();
+        createPuzzle();
 
-    loadSong(
-      0,
-      false
-    );
+        updateCounter();
 
-    updateCounter();
-
-    setInterval(
-      updateCounter,
-      1000
-    );
-
-    setupReveal();
-
-    initSupabase();
-
-  }
-);
-
-
-/* =====================================================
-   ESCAPE KEY
-===================================================== */
-
-document.addEventListener(
-  "keydown",
-  event=>{
-
-    if(event.key === "Escape"){
-
-      document
-        .querySelectorAll(
-          ".modal.show"
-        )
-        .forEach(
-          modal=>{
-            modal.classList.remove(
-              "show"
-            );
-          }
+        setInterval(
+            updateCounter,
+            1000
         );
 
-      closeLightbox();
+        setupReveal();
+
+        loadSong(
+            0,
+            false
+        );
+
+        initSupabase();
 
     }
-
-  }
 );
+
+
+/* =====================================================
+   ESC
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event=>{
+
+        if(event.key === "Escape"){
+
+            document
+                .querySelectorAll(".modal.show")
+                .forEach(
+                    modal=>{
+                        modal.classList.remove("show");
+                    }
+                );
+
+            closeLightbox();
+
+        }
+
+    }
+);
+
 </script>
 
 </body>
